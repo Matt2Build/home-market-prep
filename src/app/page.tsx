@@ -3,8 +3,8 @@ import CmaForm from "@/components/CmaForm";
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#F8F5F0] font-sans text-[#1A1A1A]">
-      {/* Navigation — transparent → solid on scroll */}
-      <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-black/30">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30">
         <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
           <div className="text-xl font-bold tracking-[0.2em] uppercase text-white">
             HomeMarket<span className="text-[#C6A664]">Prep</span>
@@ -20,35 +20,33 @@ export default function Home() {
 
       {/* ============ HERO ============ */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-        {/* Background photo */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
-            alt="Luxury home exterior"
-            className="w-full h-full object-cover ken-burns"
-          />
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
-        </div>
+        {/* Background — CSS gradient fallback + image */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%), url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat",
+          }}
+        />
 
         {/* Hero content */}
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-          <p className="animate-fade-in-up text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-6">
             Sell with Confidence
           </p>
-          <h1 className="animate-fade-in-up-delay-1 text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.15] tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.15] tracking-tight">
             Your Home Is Worth
             <br />
-            <span className="font-semibold text-[#C6A664] text-gold-gradient">
+            <span className="font-semibold text-[#C6A664]">
               More Than You Think
             </span>
           </h1>
-          <p className="animate-fade-in-up-delay-2 mt-8 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
             Automated estimates don&apos;t see your upgrades, your location, or
             today&apos;s buyer demand. Get a hand-built Comparative Market
             Analysis from a local real estate expert.
           </p>
-          <div className="animate-fade-in-up-delay-3 mt-10 flex flex-col gap-4 sm:flex-row justify-center">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row justify-center">
             <a
               href="#cma"
               className="group rounded-full bg-[#C6A664] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#1A1A1A] hover:bg-[#D4BC82] transition-all"
@@ -70,7 +68,7 @@ export default function Home() {
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center pt-2">
-            <div className="w-1 h-2 rounded-full bg-white/60 animate-pulse" />
+            <div className="w-1 h-2 rounded-full bg-white/60" />
           </div>
         </div>
       </section>
@@ -83,7 +81,7 @@ export default function Home() {
             { value: "$50M+", label: "Total Sales Volume" },
             { value: "WA", label: "Licensed Agent" },
             { value: "100%", label: "Free, No-Obligation CMA" },
-          ].map((item, i) => (
+          ].map((item) => (
             <div key={item.label} className="text-center">
               <div className="text-2xl sm:text-3xl font-bold text-[#C6A664]">
                 {item.value}
@@ -111,31 +109,27 @@ export default function Home() {
         <div className="grid gap-8 md:grid-cols-3">
           {[
             {
-              img: "https://images.unsplash.com/photo-1558618916-86b5e7589f80?auto=format&fit=crop&w=600&q=80",
+              emoji: "🏠",
               title: "Upgrades Count",
               desc: "A new roof, remodeled kitchen, or updated HVAC. Algorithms miss these entirely — but buyers see them and pay for them.",
             },
             {
-              img: "https://images.unsplash.com/photo-1553864237-22d06b1ae8a2?auto=format&fit=crop&w=600&q=80",
+              emoji: "📍",
               title: "Micro-Market Knowledge",
               desc: "Cul-de-sac premium, school boundaries, traffic patterns. Your address tells a story that data can't read.",
             },
             {
-              img: "https://images.unsplash.com/photo-1560518883-ce090811ffa1?auto=format&fit=crop&w=600&q=80",
+              emoji: "📈",
               title: "Current Buyer Demand",
               desc: "What's actually selling right now — not what closed 3 months ago. Active buyer interest changes everything.",
             },
           ].map((item) => (
             <div
               key={item.title}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
+              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
             >
-              <div className="h-56 overflow-hidden">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+              <div className="h-56 bg-[#F8F5F0] flex items-center justify-center text-6xl">
+                {item.emoji}
               </div>
               <div className="p-8">
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
@@ -147,50 +141,45 @@ export default function Home() {
       </section>
 
       {/* ============ SPLIT BANNER ============ */}
-      <section className="relative h-[500px] overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80"
-            alt="Modern home interior"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-4xl px-6 h-full flex items-center justify-center text-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-4">
-              How It Works
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-light text-white leading-tight">
-              Tell Us About Your Property.
-              <br />
-              <span className="font-semibold">We'll Do the Research.</span>
-            </h2>
-            <div className="mt-8 grid grid-cols-3 gap-8 text-white/80 max-w-lg mx-auto">
-              {[
-                { step: "1", label: "Share Details" },
-                { step: "2", label: "We Analyze Comps" },
-                { step: "3", label: "Get Your CMA" },
-              ].map((s) => (
-                <div key={s.step} className="text-center">
-                  <div className="w-12 h-12 mx-auto rounded-full border-2 border-[#C6A664] flex items-center justify-center text-[#C6A664] font-bold text-lg mb-3">
-                    {s.step}
-                  </div>
-                  <p className="text-xs uppercase tracking-[0.15em]">
-                    {s.label}
-                  </p>
+      <section
+        className="bg-[#1A1A1A]"
+        style={{
+          backgroundImage:
+            "linear-gradient(135deg, rgba(26,26,26,0.95), rgba(26,26,26,0.8)), url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="mx-auto max-w-4xl px-6 py-24 text-center text-white">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-4">
+            How It Works
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-light leading-tight">
+            Tell Us About Your Property.
+            <br />
+            <span className="font-semibold">We'll Do the Research.</span>
+          </h2>
+          <div className="mt-10 grid grid-cols-3 gap-8 text-white/80 max-w-lg mx-auto">
+            {[
+              { step: "1", label: "Share Details" },
+              { step: "2", label: "We Analyze Comps" },
+              { step: "3", label: "Get Your CMA" },
+            ].map((s) => (
+              <div key={s.step} className="text-center">
+                <div className="w-12 h-12 mx-auto rounded-full border-2 border-[#C6A664] flex items-center justify-center text-[#C6A664] font-bold text-lg mb-3">
+                  {s.step}
                 </div>
-              ))}
-            </div>
+                <p className="text-xs uppercase tracking-[0.15em]">
+                  {s.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ============ CMA FORM ============ */}
-      <section
-        id="cma"
-        className="bg-white"
-      >
+      <section id="cma" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Left: copy */}
@@ -248,10 +237,7 @@ export default function Home() {
       </section>
 
       {/* ============ PREP TO SELL ============ */}
-      <section
-        id="prep"
-        className="bg-[#F8F5F0]"
-      >
+      <section id="prep" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
           <div className="max-w-2xl mx-auto text-center mb-16">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-4">
@@ -330,15 +316,15 @@ export default function Home() {
       </section>
 
       {/* ============ FINAL CTA BANNER ============ */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1920&q=80"
-            alt="Luxury home at dusk"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+      <section
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1920&q=80)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight tracking-tight">
             Ready to Find Out What
