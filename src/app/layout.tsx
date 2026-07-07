@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Home Market Prep — Free CMA | Find Out What Your Home Is Really Worth",
+  title: "HomeMarketPrep — Free CMA & Seller Market Insights",
   description:
-    "Get a free, hand-built Comparative Market Analysis from a local expert. Real pricing data, not an algorithm. Prep to sell with confidence.",
+    "Get a free, hand-built Comparative Market Analysis from a local expert. Sell with confidence — real data, not an algorithm.",
 };
 
 export default function RootLayout({

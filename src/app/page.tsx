@@ -2,236 +2,182 @@ import CmaForm from "@/components/CmaForm";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900">
-      {/* Navigation */}
-      <nav className="border-b border-gray-100">
-        <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-          <div className="text-xl font-bold tracking-tight">
-            HomeMarket<span className="text-amber-600">Prep</span>
+    <div className="min-h-screen bg-[#F8F5F0] font-sans text-[#1A1A1A]">
+      {/* Navigation — transparent → solid on scroll */}
+      <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-black/30">
+        <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+          <div className="text-xl font-bold tracking-[0.2em] uppercase text-white">
+            HomeMarket<span className="text-[#C6A664]">Prep</span>
           </div>
           <a
             href="#cma"
-            className="rounded-full bg-amber-600 px-5 py-2 text-sm font-semibold text-white hover:bg-amber-700 transition-colors"
+            className="rounded-full bg-[#C6A664] px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-[#1A1A1A] hover:bg-[#D4BC82] transition-colors"
           >
             Get My Free CMA
           </a>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <div>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight tracking-tight">
-              Want to know what your home is{" "}
-              <span className="text-amber-600">really</span> worth?
-            </h1>
-            <p className="mt-5 text-lg text-gray-600 leading-relaxed">
-              Automated estimates don&apos;t know about your new roof, your
-              cul-de-sac location, or today&apos;s buyer demand. Get a free,
-              hand-built CMA from a local real estate expert who actually
-              knows your market.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#cma"
-                className="inline-flex items-center justify-center rounded-full bg-amber-600 px-7 py-3 text-base font-semibold text-white hover:bg-amber-700 transition-colors"
-              >
-                Get My Free CMA
-              </a>
-              <a
-                href="#prep"
-                className="inline-flex items-center justify-center rounded-full border border-gray-300 px-7 py-3 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
-              >
-                Seller Prep Guide
-              </a>
-            </div>
+      {/* ============ HERO ============ */}
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+        {/* Background photo */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+            alt="Luxury home exterior"
+            className="w-full h-full object-cover ken-burns"
+          />
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
+        </div>
+
+        {/* Hero content */}
+        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+          <p className="animate-fade-in-up text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-6">
+            Sell with Confidence
+          </p>
+          <h1 className="animate-fade-in-up-delay-1 text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.15] tracking-tight">
+            Your Home Is Worth
+            <br />
+            <span className="font-semibold text-[#C6A664] text-gold-gradient">
+              More Than You Think
+            </span>
+          </h1>
+          <p className="animate-fade-in-up-delay-2 mt-8 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
+            Automated estimates don&apos;t see your upgrades, your location, or
+            today&apos;s buyer demand. Get a hand-built Comparative Market
+            Analysis from a local real estate expert.
+          </p>
+          <div className="animate-fade-in-up-delay-3 mt-10 flex flex-col gap-4 sm:flex-row justify-center">
+            <a
+              href="#cma"
+              className="group rounded-full bg-[#C6A664] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#1A1A1A] hover:bg-[#D4BC82] transition-all"
+            >
+              Get My Free CMA
+              <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+            <a
+              href="#prep"
+              className="rounded-full border border-white/30 px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white hover:bg-white/10 transition-colors"
+            >
+              Seller Prep Guide
+            </a>
           </div>
-          <div className="rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100 p-8 flex items-center justify-center min-h-[320px]">
-            {/* Placeholder hero image area — swap in real photo later */}
-            <div className="text-center text-gray-500">
-              <div className="text-6xl mb-3">🏠</div>
-              <p className="text-sm font-medium">Hero image goes here</p>
-            </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center pt-2">
+            <div className="w-1 h-2 rounded-full bg-white/60 animate-pulse" />
           </div>
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="bg-gray-50 border-y border-gray-100">
-        <div className="mx-auto max-w-6xl px-6 py-8 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      {/* ============ TRUST BAR ============ */}
+      <section className="bg-[#1A1A1A]">
+        <div className="mx-auto max-w-7xl px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { value: "100+", label: "Homes Sold" },
-            { value: "$XM", label: "Total Volume" },
-            { value: "WAC", label: "Licensed Agent" },
-            { value: "100%", label: "Free CMA" },
-          ].map((item) => (
-            <div key={item.label}>
-              <div className="text-2xl font-bold text-gray-900">
+            { value: "100+", label: "Homes Successfully Sold" },
+            { value: "$50M+", label: "Total Sales Volume" },
+            { value: "WA", label: "Licensed Agent" },
+            { value: "100%", label: "Free, No-Obligation CMA" },
+          ].map((item, i) => (
+            <div key={item.label} className="text-center">
+              <div className="text-2xl sm:text-3xl font-bold text-[#C6A664]">
                 {item.value}
               </div>
-              <div className="text-sm text-gray-500 mt-1">{item.label}</div>
+              <div className="text-xs uppercase tracking-[0.15em] text-white/60 mt-2">
+                {item.label}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Why a Real CMA */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight">
-            Why a Real CMA &gt; Auto-Estimates
-          </h2>
-          <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-            Zillow, Redfin, and other algorithms give you a number based on
-            stale public data. They don&apos;t see the full picture.
+      {/* ============ WHY REAL CMA ============ */}
+      <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-4">
+            The Truth About Home Pricing
           </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight leading-[1.2]">
+            Algorithms Don&apos;t Know{" "}
+            <span className="font-semibold text-[#C6A664]">Your Home</span>
+          </h2>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+
+        <div className="grid gap-8 md:grid-cols-3">
           {[
             {
+              img: "https://images.unsplash.com/photo-1558618916-86b5e7589f80?auto=format&fit=crop&w=600&q=80",
               title: "Upgrades Count",
-              desc: "A new kitchen, roof, or HVAC system. Algorithms miss these entirely — buyers won't.",
-              icon: "🔧",
+              desc: "A new roof, remodeled kitchen, or updated HVAC. Algorithms miss these entirely — but buyers see them and pay for them.",
             },
             {
+              img: "https://images.unsplash.com/photo-1553864237-22d06b1ae8a2?auto=format&fit=crop&w=600&q=80",
               title: "Micro-Market Knowledge",
-              desc: "Cul-de-sac premiums, school boundaries, noise factors. Your location is more than a ZIP code.",
-              icon: "📍",
+              desc: "Cul-de-sac premium, school boundaries, traffic patterns. Your address tells a story that data can't read.",
             },
             {
+              img: "https://images.unsplash.com/photo-1560518883-ce090811ffa1?auto=format&fit=crop&w=600&q=80",
               title: "Current Buyer Demand",
-              desc: "What's actually selling right now — not what sold 3 months ago. Active buyer interest matters.",
-              icon: "🔥",
+              desc: "What's actually selling right now — not what closed 3 months ago. Active buyer interest changes everything.",
             },
           ].map((item) => (
             <div
               key={item.title}
-              className="rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow"
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
             >
-              <div className="text-3xl mb-4">{item.icon}</div>
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-2 text-gray-600 leading-relaxed">
-                {item.desc}
-              </p>
+              <div className="h-56 overflow-hidden">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-[#5A5A5A] leading-relaxed">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CMA Intake Form Section */}
-      <section id="cma" className="bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="max-w-2xl mx-auto text-center mb-10">
-            <h2 className="text-3xl font-bold tracking-tight">
-              Get Your Free Comparative Market Analysis
-            </h2>
-            <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-              Tell us about your property. We&apos;ll research comps, current
-              demand, and deliver a personalized report. No strings attached.
+      {/* ============ SPLIT BANNER ============ */}
+      <section className="relative h-[500px] overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80"
+            alt="Modern home interior"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-6 h-full flex items-center justify-center text-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-4">
+              How It Works
             </p>
-          </div>
-          <div className="max-w-xl mx-auto">
-            <CmaForm />
-          </div>
-        </div>
-      </section>
-
-      {/* Prep to Sell */}
-      <section id="prep" className="mx-auto max-w-6xl px-6 py-20">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight">
-            Prep Before You List
-          </h2>
-          <p className="mt-4 text-gray-600 text-lg leading-relaxed">
-            Smart sellers prepare before they list. Knowing what to fix — and
-            what to leave alone — can save you thousands and get you top dollar.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          {[
-            {
-              category: "High ROI",
-              items: [
-                "Fresh interior paint (neutral tones)",
-                "Deep clean and declutter",
-                "Curb appeal: lawn, mulch, front door",
-                "Professional photography",
-              ],
-              color: "green",
-            },
-            {
-              category: "Skip These",
-              items: [
-                "Major kitchen remodel before selling",
-                "Full bathroom renovation",
-                "Landscape overhaul",
-                "Swimming pool installation",
-              ],
-              color: "red",
-            },
-          ].map((group) => (
-            <div
-              key={group.category}
-              className="rounded-xl border border-gray-200 p-6"
-            >
-              <h3
-                className={`text-lg font-semibold ${
-                  group.color === "green"
-                    ? "text-green-700"
-                    : "text-red-600"
-                }`}
-              >
-                {group.category === "High ROI"
-                  ? "✅ Worth the Investment"
-                  : "❌ Not Worth It Before Selling"}
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-2 text-gray-700"
-                  >
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-400 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Seller FAQs */}
-      <section className="bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight text-center">
-              Common Seller Questions
+            <h2 className="text-3xl sm:text-4xl font-light text-white leading-tight">
+              Tell Us About Your Property.
+              <br />
+              <span className="font-semibold">We'll Do the Research.</span>
             </h2>
-            <div className="mt-10 space-y-6">
+            <div className="mt-8 grid grid-cols-3 gap-8 text-white/80 max-w-lg mx-auto">
               {[
-                {
-                  q: "How much is my CMA likely to cost me?",
-                  a: "Nothing. Your CMA is completely free. We build it because it's how we start conversations with serious sellers.",
-                },
-                {
-                  q: "How long does it take to get my CMA?",
-                  a: "We'll research your property and reach out within 24 hours with your hand-built comparative market analysis.",
-                },
-                {
-                  q: "Do I have to commit to selling to work with you?",
-                  a: "Absolutely not. The CMA is free with no obligation. Many sellers use it to understand their options, even if they're not ready to list yet.",
-                },
-                {
-                  q: "Now is a good time to sell?",
-                  a: "That depends on your situation, local inventory, and current buyer demand. Let's look at the data together to find out.",
-                },
-              ].map((faq) => (
-                <div key={faq.q} className="border-b border-gray-200 pb-6">
-                  <h3 className="text-base font-semibold">{faq.q}</h3>
-                  <p className="mt-2 text-gray-600 leading-relaxed">
-                    {faq.a}
+                { step: "1", label: "Share Details" },
+                { step: "2", label: "We Analyze Comps" },
+                { step: "3", label: "Get Your CMA" },
+              ].map((s) => (
+                <div key={s.step} className="text-center">
+                  <div className="w-12 h-12 mx-auto rounded-full border-2 border-[#C6A664] flex items-center justify-center text-[#C6A664] font-bold text-lg mb-3">
+                    {s.step}
+                  </div>
+                  <p className="text-xs uppercase tracking-[0.15em]">
+                    {s.label}
                   </p>
                 </div>
               ))}
@@ -240,41 +186,195 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="mx-auto max-w-6xl px-6 py-20 text-center">
-        <h2 className="text-3xl font-bold tracking-tight">
-          Ready to Find Out?
-        </h2>
-        <p className="mt-4 text-gray-600 text-lg max-w-xl mx-auto leading-relaxed">
-          Get your free, hand-built CMA — no Zillow algorithm, no strings,
-          just real market insight from a local expert.
-        </p>
-        <a
-          href="#cma"
-          className="mt-8 inline-flex items-center justify-center rounded-full bg-amber-600 px-8 py-3 text-base font-semibold text-white hover:bg-amber-700 transition-colors"
-        >
-          Get My Free CMA
-        </a>
+      {/* ============ CMA FORM ============ */}
+      <section
+        id="cma"
+        className="bg-white"
+      >
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Left: copy */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-4">
+                Free Comparative Market Analysis
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-light leading-tight tracking-tight">
+                Get a Hand-Built CMA,
+                <br />
+                <span className="font-semibold text-[#C6A664]">
+                  Not an Algorithm
+                </span>
+              </h2>
+              <p className="mt-6 text-[#5A5A5A] text-lg leading-relaxed">
+                Share your property details. We&apos;ll research comparable
+                sales, analyze current buyer demand, and deliver a personalized
+                market analysis — completely free, with zero obligation.
+              </p>
+              <div className="mt-8 space-y-4">
+                {[
+                  "Hand-built, not auto-generated",
+                  "Delivered within 24 hours",
+                  "No strings attached",
+                  "Local market expertise",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-[#C6A664]/10 flex items-center justify-center">
+                      <svg
+                        className="w-3.5 h-3.5 text-[#C6A664]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={3}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                    <span className="text-sm font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: form */}
+            <div className="bg-[#F8F5F0] rounded-3xl p-8 sm:p-10">
+              <CmaForm />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-100">
-        <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-lg font-bold tracking-tight">
-            HomeMarket<span className="text-amber-600">Prep</span>
+      {/* ============ PREP TO SELL ============ */}
+      <section
+        id="prep"
+        className="bg-[#F8F5F0]"
+      >
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] mb-4">
+              Smart Seller Guide
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight leading-[1.2]">
+              Prep Before You{" "}
+              <span className="font-semibold">List</span>
+            </h2>
+            <p className="mt-6 text-[#5A5A5A] text-lg leading-relaxed">
+              Knowing what to fix — and what to leave alone — can save you
+              thousands and help you get top dollar.
+            </p>
           </div>
-          <p className="text-sm text-gray-500">
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* High ROI */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
+              <div className="h-8 bg-green-600" />
+              <div className="p-8">
+                <h3 className="text-xl font-semibold text-green-700 flex items-center gap-2 mb-6">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Worth the Investment
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    { item: "Fresh interior paint", detail: "Neutral tones make spaces feel larger" },
+                    { item: "Deep clean & declutter", detail: "First impressions drive offers" },
+                    { item: "Curb appeal upgrades", detail: "Lawn, mulch, front door refresh" },
+                    { item: "Professional photography", detail: "Listing photos are digital curb appeal" },
+                  ].map((i) => (
+                    <li key={i.item} className="flex items-start gap-3">
+                      <span className="mt-2 w-2 h-2 rounded-full bg-green-500 shrink-0" />
+                      <div>
+                        <p className="font-medium">{i.item}</p>
+                        <p className="text-sm text-[#5A5A5A]">{i.detail}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Skip These */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm">
+              <div className="h-8 bg-red-500" />
+              <div className="p-8">
+                <h3 className="text-xl font-semibold text-red-600 flex items-center gap-2 mb-6">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 14l2-2m0 0l2-2m0 0l2-2m0 0l2 2m0 0l-2 2m0 0l-2 2m0 0l-2-2" />
+                  </svg>
+                  Not Worth It Before Selling
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    { item: "Major kitchen remodel", detail: "Rarely recouped before sale" },
+                    { item: "Full bathroom renovation", detail: "Cosmetic refresh beats full remodel" },
+                    { item: "Landscape overhaul", detail: "Cleanup beats full redesign" },
+                    { item: "Swimming pool installation", detail: "Polarizing for buyers, high cost" },
+                  ].map((i) => (
+                    <li key={i.item} className="flex items-start gap-3">
+                      <span className="mt-2 w-2 h-2 rounded-full bg-red-400 shrink-0" />
+                      <div>
+                        <p className="font-medium">{i.item}</p>
+                        <p className="text-sm text-[#5A5A5A]">{i.detail}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FINAL CTA BANNER ============ */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1920&q=80"
+            alt="Luxury home at dusk"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight tracking-tight">
+            Ready to Find Out What
+            <br />
+            <span className="font-semibold text-[#C6A664]">Your Home Is Worth?</span>
+          </h2>
+          <p className="mt-6 text-white/70 text-lg max-w-xl mx-auto">
+            Free hand-built CMA. Real market insight. Local expertise. No strings attached.
+          </p>
+          <a
+            href="#cma"
+            className="mt-10 inline-flex rounded-full bg-[#C6A664] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#1A1A1A] hover:bg-[#D4BC82] transition-colors"
+          >
+            Get My Free CMA Now
+          </a>
+        </div>
+      </section>
+
+      {/* ============ FOOTER ============ */}
+      <footer className="bg-[#1A1A1A]">
+        <div className="mx-auto max-w-7xl px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10">
+          <div className="text-lg font-bold tracking-[0.2em] uppercase text-white">
+            HomeMarket<span className="text-[#C6A664]">Prep</span>
+          </div>
+          <p className="text-sm text-white/40">
             © {new Date().getFullYear()} Home Market Prep. All rights reserved.
           </p>
-          <p className="text-sm text-gray-500">
-            Built by{" "}
+          <p className="text-sm text-white/40">
+            From the makers of{" "}
             <a
               href="https://writemyoffer.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-600 hover:text-amber-700 font-medium"
+              className="text-[#C6A664] hover:text-[#D4BC82] font-medium transition-colors"
             >
-              WriteMyOffer
+              WriteMyOffer.com
             </a>
           </p>
         </div>

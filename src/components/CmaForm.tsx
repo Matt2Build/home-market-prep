@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-const fields = [
+const allFields = [
   {
-    label: "Property Address *",
+    label: "Property Address",
     name: "address",
     type: "text",
     placeholder: "123 Main St, City, WA 98001",
@@ -21,7 +21,7 @@ const fields = [
     label: "How Many Bathrooms?",
     name: "bathrooms",
     type: "number",
-    placeholder: "2",
+    placeholder: "2.5",
     required: false,
   },
   {
@@ -32,7 +32,7 @@ const fields = [
     required: false,
   },
   {
-    label: "Any Recent Upgrades? (optional)",
+    label: "Any Recent Upgrades?",
     name: "upgrades",
     type: "text",
     placeholder: "New roof 2024, remodeled kitchen 2023…",
@@ -51,14 +51,14 @@ const fields = [
     required: false,
   },
   {
-    label: "Your Name *",
+    label: "Your Name",
     name: "name",
     type: "text",
     placeholder: "Jane Doe",
     required: true,
   },
   {
-    label: "Email *",
+    label: "Email Address",
     name: "email",
     type: "email",
     placeholder: "jane@email.com",
@@ -81,11 +81,21 @@ const fields = [
 ];
 
 const steps = [
-  fields.slice(0, 2), // Property address, beds
-  fields.slice(2, 5), // Baths, sqft, upgrades
-  fields.slice(5, 6), // Timeline (single Q)
-  fields.slice(6, 9), // Name, email, phone
-  fields.slice(9, 10), // Message
+  allFields.slice(0, 2), // Address, beds
+  allFields.slice(2, 4), // Baths, sqft
+  allFields.slice(4, 5), // Timeline (single Q)
+  allFields.slice(5, 6), // Upgrades (single Q)
+  allFields.slice(6, 9), // Name, email, phone
+  allFields.slice(9, 10), // Message
+];
+
+const stepTitles = [
+  "Where is your property?",
+  "Tell us about the space",
+  "What's your timeline?",
+  "Any recent improvements?",
+  "How do we reach you?",
+  "Anything else?",
 ];
 
 export default function CmaForm() {
@@ -99,72 +109,96 @@ export default function CmaForm() {
 
   const canNext = () => {
     const currentFields = steps[step];
-    return currentFields.every((f) => !f.required || (values[f.name] || "").trim());
+    return currentFields.every(
+      (f) => !f.required || (values[f.name] || "").trim()
+    );
   };
 
   const handleSubmit = async () => {
-    // TODO: wire to HubSpot form submission API
-    // HubSpot form submit: POST to your form endpoint
-    // Or server action for clean server-side submission
     console.log("CMA Form submitted:", values);
+    // TODO: wire to HubSpot form submission
     setSubmitted(true);
   };
 
   if (submitted) {
     return (
-      <div className="rounded-xl border border-green-200 bg-green-50 p-8 text-center">
-        <div className="text-4xl mb-4">✅</div>
-        <h3 className="text-xl font-bold text-green-800">Your CMA Is Being Prepared!</h3>
-        <p className="mt-3 text-green-700 leading-relaxed">
-          We&apos;re researching comps and current market data for your property.
-          Expect to hear from us within 24 hours.
+      <div className="text-center py-8">
+        <div className="w-16 h-16 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-6">
+          <svg
+            className="w-8 h-8 text-green-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <h3 className="text-xl font-semibold text-[#1A1A1A]">
+          Your CMA Is Being Prepared
+        </h3>
+        <p className="mt-3 text-[#5A5A5A] leading-relaxed max-w-sm mx-auto">
+          We&apos;re researching comps and current market data for your
+          property. Expect to hear from us within 24 hours.
         </p>
       </div>
     );
   }
 
+  const progress = ((step + 1) / steps.length) * 100;
+
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
-      {/* Progress */}
-      <div className="flex gap-2 mb-8">
-        {steps.map((_, i) => (
+    <div>
+      {/* Progress bar */}
+      <div className="mb-8">
+        <div className="flex justify-between items-center mb-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#C6A664]">
+            Step {step + 1} of {steps.length}
+          </p>
+          <p className="text-xs text-[#5A5A5A]">{Math.round(progress)}%</p>
+        </div>
+        <div className="h-1.5 bg-[#E8E4DF] rounded-full overflow-hidden">
           <div
-            key={i}
-            className={`h-1.5 flex-1 rounded-full transition-colors ${
-              i <= step ? "bg-amber-600" : "bg-gray-200"
-            }`}
+            className="h-full bg-[#C6A664] rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${progress}%` }}
           />
-        ))}
+        </div>
       </div>
 
-      {/* Current step fields */}
-      <div className="space-y-5">
-        {steps[step].map((field) => (
+      {/* Step title */}
+      <h3 className="text-xl font-semibold mb-6">{stepTitles[step]}</h3>
+
+      {/* Fields */}
+      <div className="space-y-4">
+        {steps[step].map((field, idx) => (
           <div key={field.name}>
-            <label className="block text-sm font-medium mb-1.5">
-              {field.label}
-            </label>
-            {field.type === "select" ? (
+            {field.type === "textarea" ? (
+              <textarea
+                value={values[field.name] || ""}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                placeholder={field.placeholder}
+                rows={3}
+                className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all resize-none"
+                autoFocus={idx === 0}
+              />
+            ) : field.type === "select" ? (
               <select
                 value={values[field.name] || ""}
                 onChange={(e) => handleChange(field.name, e.target.value)}
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all appearance-none cursor-pointer"
+                autoFocus={idx === 0}
               >
-                <option value="">Select…</option>
+                <option value="">Select a timeframe…</option>
                 {field.options?.map((opt) => (
                   <option key={opt} value={opt}>
                     {opt}
                   </option>
                 ))}
               </select>
-            ) : field.type === "textarea" ? (
-              <textarea
-                value={values[field.name] || ""}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                placeholder={field.placeholder}
-                rows={3}
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
-              />
             ) : (
               <input
                 type={field.type}
@@ -172,7 +206,8 @@ export default function CmaForm() {
                 onChange={(e) => handleChange(field.name, e.target.value)}
                 placeholder={field.placeholder}
                 required={field.required}
-                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
+                autoFocus={idx === 0}
               />
             )}
           </div>
@@ -184,9 +219,12 @@ export default function CmaForm() {
         {step > 0 ? (
           <button
             onClick={() => setStep(step - 1)}
-            className="text-sm font-medium text-gray-600 hover:text-gray-800"
+            className="flex items-center gap-1 text-sm font-medium text-[#5A5A5A] hover:text-[#1A1A1A] transition-colors"
           >
-            ← Back
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
           </button>
         ) : (
           <div />
@@ -195,15 +233,15 @@ export default function CmaForm() {
           <button
             onClick={() => canNext() && setStep(step + 1)}
             disabled={!canNext()}
-            className="rounded-full bg-amber-600 px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-amber-700 transition-colors"
+            className="rounded-full bg-[#C6A664] px-8 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-[#1A1A1A] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#D4BC82] transition-colors"
           >
-            Next →
+            Continue
           </button>
         ) : (
           <button
             onClick={handleSubmit}
             disabled={!canNext()}
-            className="rounded-full bg-green-600 px-6 py-2.5 text-sm font-semibold text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-green-700 transition-colors"
+            className="rounded-full bg-[#1A1A1A] px-8 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#333] transition-colors"
           >
             Submit My CMA Request
           </button>
