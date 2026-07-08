@@ -140,7 +140,7 @@ export default function Home() {
               <div className="h-48 bg-gradient-to-br from-[#FAF9F6] to-[#F0EDE8] flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
                 {item.icon === "building" && (
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-[#C6A664]/8 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute -inset-4 bg-[#C6A664]/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <svg
                       className="relative w-14 h-14 text-[#C6A664]"
                       fill="none"
@@ -158,7 +158,7 @@ export default function Home() {
                 )}
                 {item.icon === "map-pin" && (
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-[#C6A664]/8 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute -inset-4 bg-[#C6A664]/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <svg
                       className="relative w-14 h-14 text-[#C6A664]"
                       fill="none"
@@ -177,7 +177,7 @@ export default function Home() {
                 )}
                 {item.icon === "trending-up" && (
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-[#C6A664]/8 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute -inset-4 bg-[#C6A664]/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <svg
                       className="relative w-14 h-14 text-[#C6A664]"
                       fill="none"
@@ -200,7 +200,7 @@ export default function Home() {
                 )}
                 {item.icon === "apple-orange" && (
                   <div className="relative">
-                    <div className="absolute -inset-4 bg-[#C6A664]/8 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute -inset-4 bg-[#C6A664]/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                     <svg
                       className="relative w-14 h-14 text-[#C6A664]"
                       fill="none"
