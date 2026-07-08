@@ -7,8 +7,9 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30">
         <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
           <div className="text-xl font-bold tracking-[0.2em] uppercase">
-            <span className="text-[#C6A664]">Home</span>
-            <span className="text-white">Market</span>Prep
+            <span className="text-white">Home</span>
+            <span className="text-[#C6A664]">Market</span>
+            <span className="text-white">Prep</span>
           </div>
           <a
             href="#cma"
@@ -42,7 +43,7 @@ export default function Home() {
               Algorithm With Your Price
             </span>
           </h1>
-          <p className="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="mt-8 text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
             Zillow, Redfin, and other auto-valuators compare your single-family
             to condos, townhomes, and comps from months ago. Get a hand-built
             Comparative Market Analysis from a local real estate expert who
@@ -487,8 +488,9 @@ export default function Home() {
       <footer className="bg-[#1A1A1A]">
         <div className="mx-auto max-w-7xl px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10">
           <div className="text-lg font-bold tracking-[0.2em] uppercase">
-            <span className="text-[#C6A664]">Home</span>
-            <span className="text-white">Market</span>Prep
+            <span className="text-white">Home</span>
+            <span className="text-[#C6A664]">Market</span>
+            <span className="text-white">Prep</span>
           </div>
           <p className="text-sm text-white/40">
             © {new Date().getFullYear()} Home Market Prep. All rights reserved.
