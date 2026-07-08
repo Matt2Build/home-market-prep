@@ -6,14 +6,36 @@ export default function CmaForm() {
   const [step, setStep] = useState(0);
   const [values, setValues] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (name: string, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async () => {
-    console.log("CMA Form submitted:", values);
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/cma", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to submit. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (e: any) {
+      setError(e.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -26,7 +48,7 @@ export default function CmaForm() {
         </div>
         <h3 className="text-xl font-semibold text-[#1A1A1A]">Your CMA Is Being Prepared</h3>
         <p className="mt-3 text-[#5A5A5A] leading-relaxed max-w-sm mx-auto">
-          We&apos;re researching comps and current market data for your property. Expect to hear from us within 24 hours.
+          We&apos;re researching comps and current market data for your property. Check your inbox — we&apos;ll follow up ASAP.
         </p>
       </div>
     );
@@ -66,21 +88,21 @@ export default function CmaForm() {
             <div className="grid grid-cols-3 gap-3">
               <input
                 type="number"
-                placeholder="Beds"
+                placeholder="Beds (opt)"
                 value={values.beds || ""}
                 onChange={(e) => handleChange("beds", e.target.value)}
                 className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
               />
               <input
                 type="text"
-                placeholder="Baths"
+                placeholder="Baths (opt)"
                 value={values.baths || ""}
                 onChange={(e) => handleChange("baths", e.target.value)}
                 className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
               />
               <input
                 type="number"
-                placeholder="Sq Ft"
+                placeholder="Sq Ft (opt)"
                 value={values.sqft || ""}
                 onChange={(e) => handleChange("sqft", e.target.value)}
                 className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
@@ -108,7 +130,7 @@ export default function CmaForm() {
               value={values.email || ""}
               onChange={(e) => handleChange("email", e.target.value)}
               className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
-              autoFocus={step > 0}
+              autoFocus={step >= 1}
             />
             <input
               type="tel"
@@ -118,6 +140,13 @@ export default function CmaForm() {
               className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
             />
           </div>
+        </div>
+      )}
+
+      {/* Error */}
+      {error && (
+        <div className="mt-4 p-3 rounded-lg bg-red-50 text-red-600 text-sm">
+          {error}
         </div>
       )}
 
@@ -147,10 +176,10 @@ export default function CmaForm() {
         ) : (
           <button
             onClick={handleSubmit}
-            disabled={!values.name?.trim() || !values.email?.trim()}
+            disabled={!values.name?.trim() || !values.email?.trim() || submitting}
             className="rounded-full bg-[#1A1A1A] px-8 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#333] transition-colors"
           >
-            Get My Free CMA
+            {submitting ? "Submitting..." : "Get My Free CMA"}
           </button>
         )}
       </div>
