@@ -37,13 +37,12 @@ export default function Home() {
             Sell with Confidence
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-white leading-[1.15] tracking-tight">
-            Don&apos;t Trust an
-            <br />
-            <span className="font-semibold text-[#C6A664]">
-              Algorithm With Your Price
+            Your Home<br />
+            Is Worth More Than <span className="font-semibold text-[#C6A664]">
+              an Algorithm
             </span>
           </h1>
-          <p className="mt-8 text-lg sm:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-light">
             Zillow, Redfin, and other auto-valuators compare your single-family
             to condos, townhomes, and comps from months ago. Get a hand-built
             Comparative Market Analysis from a local real estate expert who
