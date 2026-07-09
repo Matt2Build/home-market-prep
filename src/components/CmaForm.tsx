@@ -31,8 +31,12 @@ export default function CmaForm() {
       }
 
       setSubmitted(true);
-    } catch (e: any) {
-      setError(e.message);
+    } catch (error: unknown) {
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Failed to submit. Please try again.",
+      );
     } finally {
       setSubmitting(false);
     }

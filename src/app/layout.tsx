@@ -6,9 +6,9 @@ import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "HomeMarketPrep — Free CMA & Seller Market Insights",
+  title: "HomeMarketPrep | Free CMA, Seller Prep Checklist, and Listing Guides",
   description:
-    "Get a free, hand-built Comparative Market Analysis from a local expert. Sell with confidence — real data, not an algorithm.",
+    "Get a free CMA plus practical seller guidance on what to fix, what not to remodel, how to prep for showings, and what paperwork to gather before listing in Washington.",
 };
 
 export default function RootLayout({
