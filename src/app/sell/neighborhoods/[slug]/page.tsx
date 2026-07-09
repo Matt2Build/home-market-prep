@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
+import SiteHeader from "@/components/SiteHeader";
 import { cityPageMap } from "@/lib/city-pages";
 import {
   formatSnapshotDate,
@@ -144,21 +145,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#111111]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link href="/" className="text-lg font-bold uppercase tracking-[0.2em] text-white">
-            <span>Home</span>
-            <span className="text-[#C6A664]">Market</span>
-            <span>Prep</span>
-          </Link>
-          <Link
-            href="/#cma"
-            className="rounded-full bg-[#C6A664] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
-          >
-            Get My Free CMA
-          </Link>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <section className="bg-[#111111] text-white">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">

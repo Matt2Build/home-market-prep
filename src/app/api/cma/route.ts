@@ -1,8 +1,10 @@
+import type { CreateEmailOptions, Resend } from "resend";
 import { NextResponse } from "next/server";
 
 const NOTIFICATION_FROM_EMAIL =
   "HomeMarketPrep Notifications <notifications@writemyoffer.com>";
 const USER_FROM_EMAIL = "Matt Salit <mattsalit@writemyoffer.com>";
+const FALLBACK_FROM_EMAIL = "HomeMarketPrep <onboarding@resend.dev>";
 const OWNER_EMAIL = "mattsalit@writemyoffer.com";
 
 function escapeHtml(value: string) {
@@ -21,6 +23,57 @@ function formatDetail(label: string, value?: string) {
       <td style="padding:10px 0; font-size:15px; color:#1A1A1A;">${value ? escapeHtml(value) : "Not provided"}</td>
     </tr>
   `;
+}
+
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof error.message === "string"
+  ) {
+    return error.message;
+  }
+
+  return "Unknown Resend error";
+}
+
+async function sendEmail(
+  resend: Resend,
+  payload: CreateEmailOptions,
+  fallbackFrom?: string,
+) {
+  const result = await resend.emails.send(payload);
+
+  if (!result.error) {
+    return result;
+  }
+
+  console.error("Primary Resend send failed:", result.error);
+
+  if (!fallbackFrom) {
+    throw new Error(getErrorMessage(result.error));
+  }
+
+  const fallbackResult = await resend.emails.send({
+    ...payload,
+    from: fallbackFrom,
+  });
+
+  if (fallbackResult.error) {
+    console.error("Fallback Resend send failed:", fallbackResult.error);
+    throw new Error(getErrorMessage(fallbackResult.error));
+  }
+
+  return fallbackResult;
 }
 
 export async function POST(req: Request) {
@@ -55,7 +108,9 @@ export async function POST(req: Request) {
       : `New CMA inquiry from ${name}`;
 
     await Promise.all([
-      resend.emails.send({
+      sendEmail(
+        resend,
+        {
         from: NOTIFICATION_FROM_EMAIL,
         to: [OWNER_EMAIL],
         replyTo: email,
@@ -90,10 +145,15 @@ export async function POST(req: Request) {
             <p style="margin:20px 0 0; font-size:13px; color:#5A5A5A;">Replying to this email will go to ${escapeHtml(email)}.</p>
           </div>
         `,
-      }),
-      resend.emails.send({
+        },
+        FALLBACK_FROM_EMAIL,
+      ),
+      sendEmail(
+        resend,
+        {
         from: USER_FROM_EMAIL,
         to: [email],
+        replyTo: OWNER_EMAIL,
         subject: "We received your CMA inquiry",
         text: [
           `Hi ${name},`,
@@ -149,7 +209,9 @@ export async function POST(req: Request) {
             </div>
           </div>
         `,
-      }),
+        },
+        FALLBACK_FROM_EMAIL,
+      ),
     ]);
 
     return NextResponse.json({ message: "CMA request received" });

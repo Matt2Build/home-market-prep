@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CmaForm from "@/components/CmaForm";
+import SiteHeader from "@/components/SiteHeader";
 import Link from "next/link";
 import { cityPages } from "@/lib/city-pages";
 import { countyPages } from "@/lib/county-pages";
@@ -328,21 +329,7 @@ export default function Home() {
           __html: JSON.stringify(faqSchema),
         }}
       />
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-          <div className="text-xl font-bold uppercase tracking-[0.2em]">
-            <span className="text-white">Home</span>
-            <span className="text-[#C6A664]">Market</span>
-            <span className="text-white">Prep</span>
-          </div>
-          <a
-            href="#cma"
-            className="rounded-full bg-[#C6A664] px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
-          >
-            Get My Free CMA
-          </a>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <section className="relative flex h-screen min-h-[700px] items-center justify-center overflow-hidden">
         <div
@@ -394,7 +381,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section id="county-guides" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
             <div>
@@ -674,7 +661,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
+      <section id="city-pages" className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-24">
           <div className="mb-14 max-w-3xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
@@ -708,7 +695,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section id="neighborhood-pages" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-24">
           <div className="mb-14 max-w-3xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
