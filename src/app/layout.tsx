@@ -6,9 +6,58 @@ import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "HomeMarketPrep | Free CMA, Seller Prep Checklist, and Listing Guides",
+  metadataBase: new URL("https://home-market-prep.vercel.app"),
+  title: {
+    default:
+      "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
+    template: "%s | HomeMarketPrep",
+  },
   description:
-    "Get a free CMA plus practical seller guidance on what to fix, what not to remodel, how to prep for showings, and what paperwork to gather before listing in Washington.",
+    "Free CMA and seller prep guidance for Snohomish County, WA homeowners. Learn what to fix, what to skip, how to prepare for showings, and how to price before listing.",
+  applicationName: "HomeMarketPrep",
+  keywords: [
+    "Snohomish County CMA",
+    "Snohomish County home value",
+    "what is my home worth Snohomish County",
+    "Snohomish County seller guide",
+    "how to prepare house for sale Snohomish County",
+    "what to fix before selling house Washington",
+    "seller checklist Washington",
+    "pre-list checklist Snohomish County",
+    "Matt Salit",
+    "Century 21 North Homes",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    title:
+      "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
+    description:
+      "Free CMA and seller prep guidance for Snohomish County, WA homeowners getting ready to list.",
+    siteName: "HomeMarketPrep",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
+    description:
+      "Free CMA and seller prep guidance for Snohomish County, WA homeowners getting ready to list.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({

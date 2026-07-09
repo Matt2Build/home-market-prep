@@ -1,4 +1,41 @@
+import type { Metadata } from "next";
 import CmaForm from "@/components/CmaForm";
+
+export const metadata: Metadata = {
+  title: "Free Snohomish County CMA for Sellers",
+  description:
+    "Get a free Snohomish County CMA plus a seller prep checklist, listing guidance, repair triage, and showing tips for homeowners getting ready to sell in Snohomish County, Washington.",
+  keywords: [
+    "free CMA Snohomish County",
+    "Snohomish County real estate agent seller",
+    "Snohomish County listing prep",
+    "how to sell a house in Snohomish County",
+    "what is my house worth in Snohomish County",
+    "Everett home value",
+    "Lynnwood home value",
+    "Edmonds home value",
+    "Mukilteo home value",
+    "Mill Creek home value",
+    "Lake Stevens home value",
+    "Marysville home value",
+    "Monroe home value",
+    "Snohomish WA home value",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Free Snohomish County CMA for Sellers",
+    description:
+      "Free Snohomish County CMA plus seller guidance on repairs, prep, paperwork, and pricing before you list.",
+    url: "/",
+  },
+  twitter: {
+    title: "Free Snohomish County CMA for Sellers",
+    description:
+      "Free Snohomish County CMA plus seller guidance on repairs, prep, paperwork, and pricing before you list.",
+  },
+};
 
 const sellerGuideCards = [
   {
@@ -165,9 +202,113 @@ const searchFaqs = [
   },
 ];
 
+const snohomishCities = [
+  "Everett",
+  "Lynnwood",
+  "Edmonds",
+  "Mukilteo",
+  "Mill Creek",
+  "Bothell",
+  "Snohomish",
+  "Monroe",
+  "Lake Stevens",
+  "Marysville",
+];
+
+const snohomishSellerTopics = [
+  {
+    title: "Price against the real buyer pool",
+    description:
+      "Snohomish County pricing can swing quickly based on commute access, school boundaries, views, lot usability, and whether the home competes with newer inventory nearby.",
+  },
+  {
+    title: "Prep for what buyers flag locally",
+    description:
+      "Older roofs, drainage, moss, crawlspace issues, deferred exterior maintenance, and stale interiors all matter more when buyers compare your home against cleaner options.",
+  },
+  {
+    title: "Know the paperwork early",
+    description:
+      "Seller disclosures, HOA documents, septic or well details when applicable, and repair history are easier to organize before the listing timeline gets compressed.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: searchFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": "https://home-market-prep.vercel.app/#agent",
+  name: "HomeMarketPrep",
+  url: "https://home-market-prep.vercel.app/",
+  email: "mattsalit@writemyoffer.com",
+  telephone: "+1-805-304-3976",
+  areaServed: [
+    {
+      "@type": "AdministrativeArea",
+      name: "Snohomish County, Washington",
+    },
+    ...snohomishCities.map((city) => ({
+      "@type": "City",
+      name: city,
+      containedInPlace: {
+        "@type": "AdministrativeArea",
+        name: "Washington",
+      },
+    })),
+  ],
+  serviceType: [
+    "Comparative Market Analysis",
+    "Seller pre-list preparation guidance",
+    "Home selling consultation",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Century 21 North Homes",
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "HomeMarketPrep",
+  url: "https://home-market-prep.vercel.app/",
+  description:
+    "Free Snohomish County CMA and seller prep guidance for homeowners getting ready to list.",
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#F8F5F0] font-sans text-[#1A1A1A]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
           <div className="text-xl font-bold uppercase tracking-[0.2em]">
@@ -195,7 +336,7 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           <p className="mb-6 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Free CMA for Washington Sellers
+            Free Snohomish County CMA for Sellers
           </p>
           <h1 className="text-4xl font-light leading-[1.15] tracking-tight text-white sm:text-5xl md:text-7xl">
             Know What Buyers Will Pay
@@ -203,9 +344,10 @@ export default function Home() {
             <span className="font-semibold text-[#C6A664]">Before You List</span>
           </h1>
           <p className="mx-auto mt-8 max-w-3xl text-lg font-light leading-relaxed text-white/80 sm:text-xl">
-            Get a hand-built Comparative Market Analysis plus practical seller
-            prep guidance so you can price correctly, skip the wrong repairs,
-            and go live with a cleaner listing from day one.
+            Get a hand-built Comparative Market Analysis for your Snohomish
+            County home plus practical seller prep guidance so you can price
+            correctly, skip the wrong repairs, and go live with a cleaner
+            listing from day one.
           </p>
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
             <a
@@ -229,6 +371,35 @@ export default function Home() {
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
           <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/40 pt-2">
             <div className="h-2 w-1 rounded-full bg-white/60" />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
+            <div>
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Snohomish County Sellers
+              </p>
+              <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
+                Seller guidance built for Snohomish County, WA
+              </h2>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
+                If you are getting ready to sell in Snohomish County, the goal
+                is not generic advice. It is understanding what buyers in your
+                submarket are actually comparing, what prep work moves the
+                needle, and what price story your home can support right now.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-[#E8E4DF] bg-[#F8F5F0] p-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                Areas commonly served
+              </p>
+              <p className="mt-4 text-sm leading-7 text-[#5A5A5A]">
+                {snohomishCities.join(" · ")}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -259,7 +430,7 @@ export default function Home() {
             The Truth About Home Pricing
           </p>
           <h2 className="text-3xl font-light leading-[1.2] tracking-tight sm:text-4xl md:text-5xl">
-            A Good List Price Comes From
+            A Good Snohomish County List Price Comes From
             <span className="font-semibold text-[#C6A664]"> Real Context</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-[#5A5A5A]">
@@ -357,6 +528,34 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-[#F8F5F0]">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-28">
+          <div className="mb-14 max-w-3xl">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Local Seller Strategy
+            </p>
+            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
+              What Snohomish County home sellers usually need before listing
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {snohomishSellerTopics.map((topic) => (
+              <div
+                key={topic.title}
+                className="rounded-2xl border border-[#E8E4DF] bg-white p-8 shadow-sm"
+              >
+                <h3 className="text-xl font-semibold leading-snug">
+                  {topic.title}
+                </h3>
+                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
+                  {topic.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-[#E8E4DF] bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="max-w-3xl">
@@ -437,13 +636,14 @@ export default function Home() {
                 Get a Pricing Range
                 <br />
                 <span className="font-semibold text-[#C6A664]">
-                  and a Smarter Prep Plan
+                  and a Smarter Snohomish County Prep Plan
                 </span>
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-[#5A5A5A]">
-                Share the property details and we&apos;ll review comparable sales,
-                current buyer demand, and the prep decisions most likely to
-                affect your list strategy. Free, local, and no obligation.
+                Share the property details and we&apos;ll review comparable
+                Snohomish County sales, current buyer demand, and the prep
+                decisions most likely to affect your list strategy. Free,
+                local, and no obligation.
               </p>
               <div className="mt-8 space-y-4">
                 {[
@@ -488,7 +688,7 @@ export default function Home() {
               Pre-List Checklist
             </p>
             <h2 className="text-3xl font-light leading-[1.2] tracking-tight sm:text-4xl md:text-5xl">
-              What to do before selling your house,
+              What to do before selling your Snohomish County house,
               <span className="font-semibold"> in order</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-[#5A5A5A]">
@@ -531,7 +731,7 @@ export default function Home() {
               What to Fix Before Selling
             </p>
             <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Spend where buyers notice.
+              Spend where Snohomish County buyers notice.
               <span className="font-semibold text-[#C6A664]">
                 {" "}
                 Skip vanity projects.
@@ -630,7 +830,7 @@ export default function Home() {
               Seller Questions
             </p>
             <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Search-friendly guidance for sellers planning the next move
+              Snohomish County seller questions people ask before they list
             </h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
