@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import CmaForm from "@/components/CmaForm";
+import Link from "next/link";
+import { cityPages } from "@/lib/city-pages";
 
 export const metadata: Metadata = {
   title: "Free Snohomish County CMA for Sellers",
@@ -29,11 +31,14 @@ export const metadata: Metadata = {
     description:
       "Free Snohomish County CMA plus seller guidance on repairs, prep, paperwork, and pricing before you list.",
     url: "/",
+    images: ["/opengraph-image"],
   },
   twitter: {
+    card: "summary_large_image",
     title: "Free Snohomish County CMA for Sellers",
     description:
       "Free Snohomish County CMA plus seller guidance on repairs, prep, paperwork, and pricing before you list.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -214,6 +219,8 @@ const snohomishCities = [
   "Lake Stevens",
   "Marysville",
 ];
+
+const featuredCityPages = cityPages;
 
 const snohomishSellerTopics = [
   {
@@ -583,6 +590,40 @@ export default function Home() {
                   {card.description}
                 </p>
               </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="mb-14 max-w-3xl">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              City Seller Pages
+            </p>
+            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
+              Local seller pages for the cities you actually care about
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+              Browse city-specific seller pages for pricing context, prep
+              priorities, and common questions before you list.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {featuredCityPages.map((entry) => (
+              <Link
+                key={entry.slug}
+                href={`/sell/${entry.slug}`}
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                  {entry.county}, WA
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold">{entry.city}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+                  {entry.metaDescription}
+                </p>
+              </Link>
             ))}
           </div>
         </div>

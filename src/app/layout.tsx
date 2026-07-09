@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://home-market-prep.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default:
       "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
@@ -39,6 +40,7 @@ export const metadata: Metadata = {
     description:
       "Free CMA and seller prep guidance for Snohomish County, WA homeowners getting ready to list.",
     siteName: "HomeMarketPrep",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",
@@ -46,6 +48,7 @@ export const metadata: Metadata = {
       "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
     description:
       "Free CMA and seller prep guidance for Snohomish County, WA homeowners getting ready to list.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
