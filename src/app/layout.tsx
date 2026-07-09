@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | HomeMarketPrep",
   },
   description:
-    "Free CMA and seller prep guidance for Snohomish County, WA homeowners. Learn what to fix, what to skip, how to prepare for showings, and how to price before listing.",
+    "Free CMA and seller prep guidance for Snohomish County, WA homeowners. Explore county, city, and neighborhood seller guides covering pricing, repairs, showings, paperwork, and home value context before listing.",
   applicationName: "HomeMarketPrep",
   keywords: [
     "Snohomish County CMA",
@@ -25,6 +25,16 @@ export const metadata: Metadata = {
     "what to fix before selling house Washington",
     "seller checklist Washington",
     "pre-list checklist Snohomish County",
+    "sell house Everett WA",
+    "sell house Marysville WA",
+    "sell house Bothell WA",
+    "sell house Mill Creek WA",
+    "sell house Lynnwood WA",
+    "sell house Monroe WA",
+    "sell house Sultan WA",
+    "sell house Snohomish WA",
+    "Snohomish County neighborhood seller guide",
+    "Skagit County seller guide",
     "Matt Salit",
     "Century 21 North Homes",
   ],
@@ -38,7 +48,7 @@ export const metadata: Metadata = {
     title:
       "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
     description:
-      "Free CMA and seller prep guidance for Snohomish County, WA homeowners getting ready to list.",
+      "Free CMA plus county, city, and neighborhood seller guides for Snohomish County and nearby Washington markets.",
     siteName: "HomeMarketPrep",
     images: ["/opengraph-image"],
   },
@@ -47,7 +57,7 @@ export const metadata: Metadata = {
     title:
       "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
     description:
-      "Free CMA and seller prep guidance for Snohomish County, WA homeowners getting ready to list.",
+      "Free CMA plus county, city, and neighborhood seller guides for Snohomish County and nearby Washington markets.",
     images: ["/opengraph-image"],
   },
   robots: {

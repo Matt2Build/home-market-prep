@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { cityPages } from "@/lib/city-pages";
+import { countyPages } from "@/lib/county-pages";
+import { neighborhoodPages } from "@/lib/neighborhood-pages";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -17,6 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+    })),
+    ...countyPages.map((entry) => ({
+      url: `${SITE_URL}/sell/${entry.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    })),
+    ...neighborhoodPages.map((entry) => ({
+      url: `${SITE_URL}/sell/neighborhoods/${entry.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
     })),
   ];
 }

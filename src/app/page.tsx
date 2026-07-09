@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import CmaForm from "@/components/CmaForm";
 import Link from "next/link";
 import { cityPages } from "@/lib/city-pages";
+import { countyPages } from "@/lib/county-pages";
+import {
+  formatCurrency,
+  formatSnapshotDate,
+  marketSnapshotMap,
+} from "@/lib/market-data";
+import { neighborhoodPages } from "@/lib/neighborhood-pages";
 
 export const metadata: Metadata = {
   title: "Free Snohomish County CMA for Sellers",
@@ -208,6 +215,7 @@ const searchFaqs = [
 ];
 
 const snohomishCities = [
+  "Arlington",
   "Everett",
   "Lynnwood",
   "Edmonds",
@@ -216,11 +224,15 @@ const snohomishCities = [
   "Bothell",
   "Snohomish",
   "Monroe",
+  "Stanwood",
+  "Sultan",
   "Lake Stevens",
   "Marysville",
 ];
 
 const featuredCityPages = cityPages;
+const featuredCountyPages = countyPages;
+const featuredNeighborhoodPages = neighborhoodPages;
 
 const snohomishSellerTopics = [
   {
@@ -599,6 +611,73 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-24">
           <div className="mb-14 max-w-3xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              County Seller Hubs
+            </p>
+            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
+              Start broad with county pages, then drill down by city and neighborhood
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+              These county-level guides pull together market context, city pages,
+              and neighborhood pages so sellers can move from broad trends to a
+              sharper local pricing strategy.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {featuredCountyPages.map((entry) => {
+              const snapshot = marketSnapshotMap.get(entry.slug);
+
+              return (
+                <Link
+                  key={entry.slug}
+                  href={`/sell/${entry.slug}`}
+                  className="rounded-3xl border border-[#E8E4DF] bg-[#111111] p-8 text-white transition-all hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    County guide
+                  </p>
+                  <h3 className="mt-3 text-3xl font-light">{entry.county}</h3>
+                  <p className="mt-4 max-w-xl text-sm leading-6 text-white/72">
+                    {entry.metaDescription}
+                  </p>
+                  {snapshot && (
+                    <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                      <div className="rounded-2xl bg-white/6 p-4">
+                        <div className="text-xs uppercase tracking-[0.14em] text-white/55">
+                          Median sale
+                        </div>
+                        <div className="mt-2 text-xl font-semibold">
+                          {formatCurrency(snapshot.medianSalePrice)}
+                        </div>
+                      </div>
+                      <div className="rounded-2xl bg-white/6 p-4">
+                        <div className="text-xs uppercase tracking-[0.14em] text-white/55">
+                          DOM
+                        </div>
+                        <div className="mt-2 text-xl font-semibold">
+                          {snapshot.medianDom} days
+                        </div>
+                      </div>
+                      <div className="rounded-2xl bg-white/6 p-4">
+                        <div className="text-xs uppercase tracking-[0.14em] text-white/55">
+                          Snapshot date
+                        </div>
+                        <div className="mt-2 text-sm font-semibold">
+                          {formatSnapshotDate(snapshot.periodEnd)}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="mb-14 max-w-3xl">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               City Seller Pages
             </p>
             <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
@@ -625,6 +704,53 @@ export default function Home() {
                 </p>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="mb-14 max-w-3xl">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Neighborhood and Subarea Pages
+            </p>
+            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
+              Targeted local pages for smaller search terms sellers actually use
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+              Pulled from the local area dataset in `moving2pnw`, these pages add
+              neighborhood-level seller intent coverage without feeling like a
+              directory dump.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {featuredNeighborhoodPages.map((entry) => {
+              const snapshot = marketSnapshotMap.get(entry.slug);
+
+              return (
+                <Link
+                  key={entry.slug}
+                  href={`/sell/neighborhoods/${entry.slug}`}
+                  className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    {entry.parentCity}, WA
+                  </p>
+                  <h3 className="mt-3 text-2xl font-semibold">{entry.areaName}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+                    {entry.metaDescription}
+                  </p>
+                  {snapshot && (
+                    <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
+                      {formatCurrency(snapshot.medianSalePrice)} median sale price •{" "}
+                      {snapshot.medianDom} median DOM • imported {formatSnapshotDate(
+                        snapshot.periodEnd,
+                      )}
+                    </p>
+                  )}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

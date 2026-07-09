@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
-import { cityPageMap } from "@/lib/city-pages";
-import { countyPageMap } from "@/lib/county-pages";
+import { neighborhoodPageMap } from "@/lib/neighborhood-pages";
 
 export const runtime = "edge";
 export const contentType = "image/png";
@@ -15,11 +14,9 @@ export default async function OpenGraphImage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const cityPage = cityPageMap.get(slug);
-  const countyPage = countyPageMap.get(slug);
-  const city = cityPage?.city ?? countyPage?.county ?? "Snohomish County";
-  const county = cityPage?.county ?? countyPage?.county ?? "Washington";
-  const lineTwo = cityPage ? `in ${city}, WA` : `across ${county}`;
+  const page = neighborhoodPageMap.get(slug);
+  const area = page?.areaName ?? "Snohomish County";
+  const city = page?.parentCity ?? "Washington";
 
   return new ImageResponse(
     (
@@ -50,16 +47,16 @@ export default async function OpenGraphImage({
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ fontSize: 26, textTransform: "uppercase", color: "#F0D28A" }}>
-            {county}, WA
+            {city}, WA
           </div>
-          <div style={{ fontSize: 76, lineHeight: 1.04, fontWeight: 700 }}>
-            {cityPage ? "Selling a House" : "Seller Guide"}
+          <div style={{ fontSize: 70, lineHeight: 1.04, fontWeight: 700 }}>
+            Selling a House
             <br />
-            {lineTwo}
+            in {area}
           </div>
         </div>
         <div style={{ fontSize: 26, color: "rgba(255,255,255,0.84)" }}>
-          Free CMA • Seller Prep • Listing Strategy
+          Neighborhood Guide • Seller Prep • Free CMA
         </div>
       </div>
     ),

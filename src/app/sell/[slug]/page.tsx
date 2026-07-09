@@ -1,66 +1,150 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { cityPageMap, cityPages } from "@/lib/city-pages";
+import MarketSnapshotSection from "@/components/MarketSnapshotSection";
+import { cityPageMap, cityPages, type CityPage } from "@/lib/city-pages";
+import { countyPageMap, countyPages, type CountyPage } from "@/lib/county-pages";
+import {
+  formatCurrency,
+  formatSnapshotDate,
+  marketSnapshotMap,
+} from "@/lib/market-data";
+import { neighborhoodPageMap } from "@/lib/neighborhood-pages";
 import { SITE_URL } from "@/lib/site";
 
-type CityPageProps = {
+type SellerPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return cityPages.map((entry) => ({ slug: entry.slug }));
+  return [...cityPages, ...countyPages].map((entry) => ({ slug: entry.slug }));
 }
 
 export async function generateMetadata({
   params,
-}: CityPageProps): Promise<Metadata> {
+}: SellerPageProps): Promise<Metadata> {
   const { slug } = await params;
   const cityPage = cityPageMap.get(slug);
+  const countyPage = countyPageMap.get(slug);
 
-  if (!cityPage) {
-    return {};
+  if (cityPage) {
+    const canonicalPath = `/sell/${cityPage.slug}`;
+    const imagePath = `${canonicalPath}/opengraph-image`;
+
+    return {
+      title: `${cityPage.title} | Free CMA and Seller Prep`,
+      description: cityPage.metaDescription,
+      keywords: [
+        `sell house in ${cityPage.city} wa`,
+        `${cityPage.city} wa home value`,
+        `${cityPage.city} wa CMA`,
+        `${cityPage.city} seller guide`,
+        `${cityPage.city} listing prep`,
+        `${cityPage.county} real estate seller`,
+      ],
+      alternates: {
+        canonical: canonicalPath,
+      },
+      openGraph: {
+        title: `${cityPage.title} | Free CMA and Seller Prep`,
+        description: cityPage.metaDescription,
+        url: canonicalPath,
+        images: [imagePath],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${cityPage.title} | Free CMA and Seller Prep`,
+        description: cityPage.metaDescription,
+        images: [imagePath],
+      },
+    };
   }
 
-  const canonicalPath = `/sell/${cityPage.slug}`;
-  const imagePath = `${canonicalPath}/opengraph-image`;
+  if (countyPage) {
+    const canonicalPath = `/sell/${countyPage.slug}`;
+    const imagePath = `${canonicalPath}/opengraph-image`;
 
-  return {
-    title: `${cityPage.title} | Free CMA and Seller Prep`,
-    description: cityPage.metaDescription,
-    keywords: [
-      `sell house in ${cityPage.city} wa`,
-      `${cityPage.city} wa home value`,
-      `${cityPage.city} wa CMA`,
-      `${cityPage.city} seller guide`,
-      `${cityPage.city} listing prep`,
-      `${cityPage.county} real estate seller`,
-    ],
-    alternates: {
-      canonical: canonicalPath,
-    },
-    openGraph: {
-      title: `${cityPage.title} | Free CMA and Seller Prep`,
-      description: cityPage.metaDescription,
-      url: canonicalPath,
-      images: [imagePath],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${cityPage.title} | Free CMA and Seller Prep`,
-      description: cityPage.metaDescription,
-      images: [imagePath],
-    },
-  };
+    return {
+      title: `${countyPage.title} | County Seller Guide`,
+      description: countyPage.metaDescription,
+      keywords: [
+        `sell house in ${countyPage.county.toLowerCase()} wa`,
+        `${countyPage.county} home value`,
+        `${countyPage.county} seller guide`,
+        `${countyPage.county} CMA`,
+        `how to sell a house in ${countyPage.county.toLowerCase()}`,
+      ],
+      alternates: {
+        canonical: canonicalPath,
+      },
+      openGraph: {
+        title: `${countyPage.title} | County Seller Guide`,
+        description: countyPage.metaDescription,
+        url: canonicalPath,
+        images: [imagePath],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${countyPage.title} | County Seller Guide`,
+        description: countyPage.metaDescription,
+        images: [imagePath],
+      },
+    };
+  }
+
+  return {};
 }
 
-export default async function CitySellerPage({ params }: CityPageProps) {
-  const { slug } = await params;
-  const cityPage = cityPageMap.get(slug);
+function SiteNav() {
+  return (
+    <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#111111]/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link href="/" className="text-lg font-bold uppercase tracking-[0.2em] text-white">
+          <span>Home</span>
+          <span className="text-[#C6A664]">Market</span>
+          <span>Prep</span>
+        </Link>
+        <Link
+          href="/#cma"
+          className="rounded-full bg-[#C6A664] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
+        >
+          Get My Free CMA
+        </Link>
+      </div>
+    </nav>
+  );
+}
 
-  if (!cityPage) {
-    notFound();
-  }
+function LinkCard({
+  href,
+  eyebrow,
+  title,
+  description,
+}: {
+  href: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+    >
+      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+        {eyebrow}
+      </p>
+      <h3 className="mt-3 text-2xl font-semibold">{title}</h3>
+      <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">{description}</p>
+    </Link>
+  );
+}
+
+function CityPageView({ cityPage }: { cityPage: CityPage }) {
+  const snapshot = marketSnapshotMap.get(cityPage.slug);
+  const relatedAreas = (cityPage.relatedAreaSlugs ?? [])
+    .map((slug) => neighborhoodPageMap.get(slug))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -88,8 +172,8 @@ export default async function CitySellerPage({ params }: CityPageProps) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Seller City Guides",
-        item: `${SITE_URL}/sell/${cityPage.slug}`,
+        name: cityPage.county,
+        item: `${SITE_URL}/sell/${cityPage.countySlug}`,
       },
       {
         "@type": "ListItem",
@@ -111,21 +195,7 @@ export default async function CitySellerPage({ params }: CityPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#111111]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link href="/" className="text-lg font-bold uppercase tracking-[0.2em] text-white">
-            <span>Home</span>
-            <span className="text-[#C6A664]">Market</span>
-            <span>Prep</span>
-          </Link>
-          <Link
-            href="/#cma"
-            className="rounded-full bg-[#C6A664] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
-          >
-            Get My Free CMA
-          </Link>
-        </div>
-      </nav>
+      <SiteNav />
 
       <section className="bg-[#111111] text-white">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
@@ -139,9 +209,12 @@ export default async function CitySellerPage({ params }: CityPageProps) {
             {cityPage.heroDescription}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              {cityPage.county}, WA
-            </span>
+            <Link
+              href={`/sell/${cityPage.countySlug}`}
+              className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              {cityPage.county} guide
+            </Link>
             <span className="rounded-full border border-white/15 px-4 py-2">
               Free CMA
             </span>
@@ -152,7 +225,20 @@ export default async function CitySellerPage({ params }: CityPageProps) {
         </div>
       </section>
 
-      <section className="bg-white">
+      {snapshot && (
+        <div className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-18 sm:py-20">
+            <MarketSnapshotSection
+              snapshot={snapshot}
+              eyebrow="Local Market Snapshot"
+              title={`Imported ${cityPage.city} market data for sellers`}
+              description={`This page includes the latest imported ${cityPage.city} market snapshot from the Moving2PNW dataset. The exact snapshot date is shown below so you can use the numbers as context, not guesswork.`}
+            />
+          </div>
+        </div>
+      )}
+
+      <section className="bg-[#F8F5F0]">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[1.2fr,0.8fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
@@ -165,7 +251,7 @@ export default async function CitySellerPage({ params }: CityPageProps) {
               {cityPage.localSummary}
             </p>
           </div>
-          <div className="rounded-3xl border border-[#E8E4DF] bg-[#F8F5F0] p-8">
+          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-8">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
               Start here
             </p>
@@ -173,12 +259,17 @@ export default async function CitySellerPage({ params }: CityPageProps) {
               <li>Get a local CMA before spending on projects.</li>
               <li>Fix the maintenance buyers will remember after showings.</li>
               <li>Prepare photos, paperwork, and pricing together.</li>
+              {snapshot && (
+                <li>
+                  Imported snapshot date: {formatSnapshotDate(snapshot.periodEnd)}
+                </li>
+              )}
             </ul>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F8F5F0]">
+      <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-12 max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
@@ -192,7 +283,7 @@ export default async function CitySellerPage({ params }: CityPageProps) {
             {cityPage.pricingFactors.map((factor) => (
               <div
                 key={factor}
-                className="rounded-2xl border border-[#E8E4DF] bg-white p-8 shadow-sm"
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8 shadow-sm"
               >
                 <p className="text-sm leading-7 text-[#5A5A5A]">{factor}</p>
               </div>
@@ -201,7 +292,7 @@ export default async function CitySellerPage({ params }: CityPageProps) {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="mb-12 max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
@@ -215,7 +306,7 @@ export default async function CitySellerPage({ params }: CityPageProps) {
             {cityPage.prepPriorities.map((priority) => (
               <div
                 key={priority}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8"
+                className="rounded-2xl border border-[#E8E4DF] bg-white p-8"
               >
                 <p className="text-sm leading-7 text-[#5A5A5A]">{priority}</p>
               </div>
@@ -224,42 +315,88 @@ export default async function CitySellerPage({ params }: CityPageProps) {
         </div>
       </section>
 
-      <section className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Common Seller Questions
-            </p>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              {cityPage.city} seller FAQs
-            </h2>
+      {relatedAreas.length > 0 && (
+        <section className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-20">
+            <div className="mb-12 max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Neighborhood and Subarea Guides
+              </p>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                Nearby local seller pages around {cityPage.city}
+              </h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {relatedAreas.map((area) => {
+                const areaSnapshot = marketSnapshotMap.get(area.slug);
+                return (
+                  <LinkCard
+                    key={area.slug}
+                    href={`/sell/neighborhoods/${area.slug}`}
+                    eyebrow={`${area.parentCity}, WA`}
+                    title={area.areaName}
+                    description={
+                      areaSnapshot
+                        ? `${area.metaDescription} Snapshot: ${formatCurrency(
+                            areaSnapshot.medianSalePrice,
+                          )} median sale price as of ${formatSnapshotDate(
+                            areaSnapshot.periodEnd,
+                          )}.`
+                        : area.metaDescription
+                    }
+                  />
+                );
+              })}
+            </div>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+        </section>
+      )}
+
+      <section className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr,1.2fr] lg:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Seller Questions
+              </p>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                {cityPage.city} seller FAQs
+              </h2>
+            </div>
+            <div className="rounded-3xl border border-white/10 bg-white/6 p-8">
+              <p className="text-sm leading-7 text-white/78">
+                Sellers usually get the best result when pricing, prep, and timing
+                are handled together. If the home goes live with the wrong number
+                or the wrong repair priorities, the market notices fast.
+              </p>
+            </div>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {cityPage.sellerQuestions.map((item) => (
               <div
                 key={item.question}
-                className="rounded-2xl border border-[#E8E4DF] bg-white p-8"
+                className="rounded-2xl border border-white/10 bg-white/5 p-8"
               >
                 <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
-                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">{item.answer}</p>
+                <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center">
+      <section className="bg-[#C6A664]">
+        <div className="mx-auto max-w-4xl px-6 py-20 text-center text-[#1A1A1A]">
           <h2 className="text-3xl font-light tracking-tight sm:text-5xl">
             Want a clearer price range for your {cityPage.city} home?
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/75">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
             Get a free CMA plus practical seller guidance before you spend money
             in the wrong places or list at the wrong number.
           </p>
           <Link
             href="/#cma"
-            className="mt-10 inline-flex rounded-full bg-[#C6A664] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
+            className="mt-10 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
           >
             Start My Free CMA
           </Link>
@@ -267,4 +404,273 @@ export default async function CitySellerPage({ params }: CityPageProps) {
       </section>
     </div>
   );
+}
+
+function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
+  const snapshot = marketSnapshotMap.get(countyPage.slug);
+  const cityEntries = countyPage.citySlugs
+    .map((slug) => cityPageMap.get(slug))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const neighborhoodEntries = countyPage.neighborhoodSlugs
+    .map((slug) => neighborhoodPageMap.get(slug))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const marketSpotlights = countyPage.marketSpotlightSlugs
+    .map((slug) => marketSnapshotMap.get(slug))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: countyPage.sellerQuestions.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: countyPage.county,
+        item: `${SITE_URL}/sell/${countyPage.slug}`,
+      },
+    ],
+  };
+
+  return (
+    <div className="min-h-screen bg-[#F8F5F0] text-[#1A1A1A]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
+      <SiteNav />
+
+      <section className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+            County Seller Guide
+          </p>
+          <h1 className="mt-5 max-w-5xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+            {countyPage.title}
+          </h1>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
+            {countyPage.heroDescription}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
+            <span className="rounded-full border border-white/15 px-4 py-2">
+              {countyPage.county}, WA
+            </span>
+            <span className="rounded-full border border-white/15 px-4 py-2">
+              City and neighborhood guides
+            </span>
+            <span className="rounded-full border border-white/15 px-4 py-2">
+              Free CMA
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {snapshot && (
+        <div className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-18 sm:py-20">
+            <MarketSnapshotSection
+              snapshot={snapshot}
+              eyebrow="County Market Snapshot"
+              title={`Imported ${countyPage.county} market data for sellers`}
+              description={`Use this imported county snapshot as broad context, then narrow down into city and neighborhood pages before choosing a pricing range. Exact snapshot date: ${formatSnapshotDate(
+                snapshot.periodEnd,
+              )}.`}
+            />
+          </div>
+        </div>
+      )}
+
+      <section className="bg-[#F8F5F0]">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[1.2fr,0.8fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Local Context
+            </p>
+            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+              How sellers should read this county
+            </h2>
+            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
+              {countyPage.localSummary}
+            </p>
+          </div>
+          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+              Seller takeaways
+            </p>
+            <ul className="mt-5 space-y-4 text-sm leading-6 text-[#5A5A5A]">
+              {countyPage.sellerAngles.map((angle) => (
+                <li key={angle}>{angle}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              City Guides
+            </p>
+            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+              Seller pages across {countyPage.county}
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {cityEntries.map((entry) => (
+              <LinkCard
+                key={entry.slug}
+                href={`/sell/${entry.slug}`}
+                eyebrow={countyPage.county}
+                title={entry.city}
+                description={entry.metaDescription}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {neighborhoodEntries.length > 0 && (
+        <section className="bg-[#F8F5F0]">
+          <div className="mx-auto max-w-7xl px-6 py-20">
+            <div className="mb-12 max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Neighborhood and Subarea Pages
+              </p>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                Local SEO pages for smaller search terms sellers actually use
+              </h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {neighborhoodEntries.map((entry) => (
+                <LinkCard
+                  key={entry.slug}
+                  href={`/sell/neighborhoods/${entry.slug}`}
+                  eyebrow={`${entry.parentCity}, WA`}
+                  title={entry.areaName}
+                  description={entry.metaDescription}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Market Spotlights
+            </p>
+            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+              A few local numbers to ground the conversation
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {marketSpotlights.map((entry) => (
+              <div
+                key={entry.slug}
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                  {entry.kind}
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold">{entry.name}</h3>
+                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
+                  {formatCurrency(entry.medianSalePrice)} median sale price •{" "}
+                  {entry.medianDom} median DOM • {entry.monthsOfSupply.toFixed(1)}{" "}
+                  months supply
+                </p>
+                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
+                  Imported snapshot date: {formatSnapshotDate(entry.periodEnd)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-10 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Seller Questions
+            </p>
+            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+              Common {countyPage.county} seller questions
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {countyPage.sellerQuestions.map((item) => (
+              <div
+                key={item.question}
+                className="rounded-2xl border border-white/10 bg-white/5 p-8"
+              >
+                <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
+                <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#C6A664]">
+        <div className="mx-auto max-w-4xl px-6 py-20 text-center text-[#1A1A1A]">
+          <h2 className="text-3xl font-light tracking-tight sm:text-5xl">
+            Want a county-level pricing read plus a city-specific CMA?
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
+            Start with the free CMA and we&apos;ll help narrow the broad county
+            picture down to the actual buyer pool for your home.
+          </p>
+          <Link
+            href="/#cma"
+            className="mt-10 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
+          >
+            Start My Free CMA
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default async function SellerPage({ params }: SellerPageProps) {
+  const { slug } = await params;
+  const cityPage = cityPageMap.get(slug);
+
+  if (cityPage) {
+    return <CityPageView cityPage={cityPage} />;
+  }
+
+  const countyPage = countyPageMap.get(slug);
+
+  if (countyPage) {
+    return <CountyPageView countyPage={countyPage} />;
+  }
+
+  notFound();
 }

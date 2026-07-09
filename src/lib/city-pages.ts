@@ -2,12 +2,14 @@ export type CityPage = {
   slug: string;
   city: string;
   county: string;
+  countySlug: string;
   title: string;
   metaDescription: string;
   heroDescription: string;
   localSummary: string;
   pricingFactors: string[];
   prepPriorities: string[];
+  relatedAreaSlugs?: string[];
   sellerQuestions: Array<{
     question: string;
     answer: string;
@@ -19,6 +21,7 @@ export const cityPages: CityPage[] = [
     slug: "arlington-wa",
     city: "Arlington",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Arlington, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Arlington, WA homeowners. Learn how to price, prep, and list a house in Arlington and greater Snohomish County.",
@@ -36,6 +39,7 @@ export const cityPages: CityPage[] = [
       "Triage exterior maintenance, roof wear, drainage, and anything that makes rural or edge-of-town buyers hesitate.",
       "Document major systems, improvements, and property features buyers may not understand from photos alone.",
     ],
+    relatedAreaSlugs: ["arlington-heights-wa"],
     sellerQuestions: [
       {
         question: "How do Arlington buyers judge value?",
@@ -53,6 +57,7 @@ export const cityPages: CityPage[] = [
     slug: "marysville-wa",
     city: "Marysville",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Marysville, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Marysville, WA homeowners getting ready to sell. Price your Marysville home with local context, not guesswork.",
@@ -87,6 +92,7 @@ export const cityPages: CityPage[] = [
     slug: "lake-stevens-wa",
     city: "Lake Stevens",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Lake Stevens, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Lake Stevens, WA homeowners. Learn how to price and prep your Lake Stevens house before listing.",
@@ -121,6 +127,7 @@ export const cityPages: CityPage[] = [
     slug: "snohomish-wa",
     city: "Snohomish",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Snohomish, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Snohomish, WA homeowners. Understand how to price, prep, and market your Snohomish home before listing.",
@@ -155,6 +162,7 @@ export const cityPages: CityPage[] = [
     slug: "everett-wa",
     city: "Everett",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Everett, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Everett, WA homeowners. Learn how to price and prepare your Everett house before listing.",
@@ -189,6 +197,7 @@ export const cityPages: CityPage[] = [
     slug: "mukilteo-wa",
     city: "Mukilteo",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Mukilteo, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Mukilteo, WA homeowners. Price your Mukilteo home with local insight before it hits the market.",
@@ -223,6 +232,7 @@ export const cityPages: CityPage[] = [
     slug: "mount-vernon-wa",
     city: "Mount Vernon",
     county: "Skagit County",
+    countySlug: "skagit-county-wa",
     title: "Selling a House in Mount Vernon, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Mount Vernon, WA homeowners. Learn how to price and prepare your Mount Vernon house before listing.",
@@ -257,6 +267,7 @@ export const cityPages: CityPage[] = [
     slug: "lynnwood-wa",
     city: "Lynnwood",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Lynnwood, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Lynnwood, WA homeowners. Learn how to price and prep your Lynnwood house before listing.",
@@ -291,6 +302,7 @@ export const cityPages: CityPage[] = [
     slug: "bothell-wa",
     city: "Bothell",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Bothell, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Bothell, WA homeowners. Learn how to price and prepare your Bothell home before listing.",
@@ -308,6 +320,7 @@ export const cityPages: CityPage[] = [
       "Open up main living areas so photos sell the flow and functionality clearly.",
       "Organize documents and improvement history to make the file feel clean and straightforward.",
     ],
+    relatedAreaSlugs: ["bothell-east-wa", "bothell-west-wa"],
     sellerQuestions: [
       {
         question: "How should Bothell sellers think about pricing?",
@@ -325,6 +338,7 @@ export const cityPages: CityPage[] = [
     slug: "mill-creek-wa",
     city: "Mill Creek",
     county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
     title: "Selling a House in Mill Creek, WA",
     metaDescription:
       "Free CMA and seller prep guidance for Mill Creek, WA homeowners. Learn how to price and prep your Mill Creek house before listing.",
@@ -342,6 +356,7 @@ export const cityPages: CityPage[] = [
       "Reduce furniture and visual clutter so rooms feel more open and more expensive.",
       "Fix the maintenance items buyers remember after they leave, especially in kitchens, baths, and entry areas.",
     ],
+    relatedAreaSlugs: ["mill-creek-east-wa"],
     sellerQuestions: [
       {
         question: "What makes a Mill Creek listing feel strong?",
@@ -352,6 +367,113 @@ export const cityPages: CityPage[] = [
         question: "Do Mill Creek sellers need to over-upgrade?",
         answer:
           "No. Cleanliness, repairs, and finish quality usually matter more than a rushed high-cost remodel before listing.",
+      },
+    ],
+  },
+  {
+    slug: "monroe-wa",
+    city: "Monroe",
+    county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
+    title: "Selling a House in Monroe, WA",
+    metaDescription:
+      "Free CMA and seller prep guidance for Monroe, WA homeowners. Learn how to price, prep, and list a Monroe house with local context.",
+    heroDescription:
+      "Get a free Monroe, WA CMA plus seller guidance on pricing, prep, and how buyers compare homes in Monroe and nearby subareas.",
+    localSummary:
+      "Monroe sellers often need a cleaner pricing plan around lot size, property style, commuter tradeoffs, and how much work the home appears to need after buyers tour the photos.",
+    pricingFactors: [
+      "The buyer pool can shift quickly between standard suburban homes, larger lots, and more edge-of-town properties.",
+      "Condition and financing friendliness matter because buyers usually compare Monroe value against easier turnkey options elsewhere.",
+      "A clear list strategy helps buyers understand whether your home is priced for polish, upside, or land value.",
+    ],
+    prepPriorities: [
+      "Handle visible maintenance that makes buyers worry about deferred cost.",
+      "Make the layout and any outdoor utility obvious in the first photo set.",
+      "Gather paperwork on major systems, upgrades, and any property-specific features before listing.",
+    ],
+    relatedAreaSlugs: ["monroe-north-wa"],
+    sellerQuestions: [
+      {
+        question: "What matters most for Monroe pricing?",
+        answer:
+          "Property type, condition, lot use, and how your home compares against the cleanest nearby alternatives buyers can tour at the same budget.",
+      },
+      {
+        question: "Should Monroe sellers fix everything before listing?",
+        answer:
+          "No, but they should fix what makes the home feel risky, harder to finance, or more work than the competition.",
+      },
+    ],
+  },
+  {
+    slug: "stanwood-wa",
+    city: "Stanwood",
+    county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
+    title: "Selling a House in Stanwood, WA",
+    metaDescription:
+      "Free CMA and seller prep guidance for Stanwood, WA homeowners. Learn how to price and prepare a Stanwood home before listing.",
+    heroDescription:
+      "Get a free Stanwood, WA CMA and local seller guidance on prep, pricing, and how buyers compare homes in Stanwood.",
+    localSummary:
+      "Stanwood sellers often benefit from a pricing strategy that balances affordability, lot appeal, and how the home presents against cleaner nearby listings.",
+    pricingFactors: [
+      "Buyers often compare Stanwood homes on condition, layout efficiency, and whether the property feels move-in ready.",
+      "Lot usability and exterior presentation can shape first impressions before buyers focus on interior finishes.",
+      "Well-prepared listings tend to separate quickly in price bands where buyers have several options.",
+    ],
+    prepPriorities: [
+      "Sharpen curb appeal and clean up visible exterior wear before photography.",
+      "Declutter heavily so the home feels brighter and easier to understand online.",
+      "Price against current competition, not a peak-market memory from a stronger cycle.",
+    ],
+    sellerQuestions: [
+      {
+        question: "What helps Stanwood homes sell faster?",
+        answer:
+          "A cleaner first impression, an honest price, and a home that looks easier to own than the next few options buyers are comparing.",
+      },
+      {
+        question: "Do Stanwood sellers need to remodel before listing?",
+        answer:
+          "Usually no. Cleaning, repairs, paint, and better presentation typically do more than a rushed major renovation.",
+      },
+    ],
+  },
+  {
+    slug: "sultan-wa",
+    city: "Sultan",
+    county: "Snohomish County",
+    countySlug: "snohomish-county-wa",
+    title: "Selling a House in Sultan, WA",
+    metaDescription:
+      "Free CMA and seller prep guidance for Sultan, WA homeowners. Learn how to price and prepare your Sultan house before listing.",
+    heroDescription:
+      "Get a free Sultan, WA CMA and seller prep plan built around local buyer expectations, property condition, and the first weeks on market.",
+    localSummary:
+      "Sultan sellers often compete on value, simplicity, and property clarity. Buyers usually move faster when the home feels manageable, clean, and easy to finance.",
+    pricingFactors: [
+      "Sultan buyers often weigh affordability against commute tradeoffs and visible repair needs.",
+      "Homes that feel simpler to own can outperform similar listings that read as projects.",
+      "Lot function and exterior condition matter because buyers often assume edge-of-town homes carry more maintenance risk.",
+    ],
+    prepPriorities: [
+      "Take care of maintenance that creates financing or inspection doubt.",
+      "Make the property function easy to understand from photos and remarks.",
+      "Stay disciplined on price if the home needs cosmetic or systems work compared with local competition.",
+    ],
+    relatedAreaSlugs: ["north-sultan-wa"],
+    sellerQuestions: [
+      {
+        question: "How should Sultan sellers prepare before listing?",
+        answer:
+          "Focus on visible repairs, exterior clean-up, and a photo set that makes the property feel straightforward instead of complicated.",
+      },
+      {
+        question: "What drives price in Sultan?",
+        answer:
+          "Condition, lot usability, financing friendliness, and how your home compares against the cleanest local options in the same budget range.",
       },
     ],
   },
