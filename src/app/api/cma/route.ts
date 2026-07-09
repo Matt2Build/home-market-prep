@@ -1,10 +1,11 @@
 import type { CreateEmailOptions, Resend } from "resend";
 import { NextResponse } from "next/server";
 
+const VERIFIED_SENDER = "hello@matt2build.com";
 const NOTIFICATION_FROM_EMAIL =
-  "HomeMarketPrep Notifications <notifications@writemyoffer.com>";
-const USER_FROM_EMAIL = "Matt Salit <mattsalit@writemyoffer.com>";
-const FALLBACK_FROM_EMAIL = "HomeMarketPrep <onboarding@resend.dev>";
+  `HomeMarketPrep Notifications <${VERIFIED_SENDER}>`;
+const USER_FROM_EMAIL = `Matt Salit <${VERIFIED_SENDER}>`;
+const FALLBACK_FROM_EMAIL = `HomeMarketPrep <${VERIFIED_SENDER}>`;
 const OWNER_EMAIL = "mattsalit@writemyoffer.com";
 
 function escapeHtml(value: string) {
