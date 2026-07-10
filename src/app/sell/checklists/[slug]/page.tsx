@@ -146,6 +146,20 @@ const relatedPrepSlugs: Record<string, string[]> = {
   ],
 };
 
+const localGuideSlugs: Record<string, string[]> = {
+  "declutter-before-selling-house-wa": ["everett-wa", "marysville-wa"],
+  "moving-storage-checklist-before-selling-wa": ["lynnwood-wa", "bothell-wa"],
+  "repairs-before-selling-house-wa": ["snohomish-wa", "arlington-wa"],
+  "deep-clean-before-listing-house-wa": ["mukilteo-wa", "lake-stevens-wa"],
+  "paperwork-needed-to-sell-house-wa": ["bothell-wa", "everett-wa"],
+  "show-ready-house-checklist-wa": ["marysville-wa", "lynnwood-wa"],
+  "home-staging-tips-to-sell-house-wa": ["mukilteo-wa", "mill-creek-wa"],
+  "seller-disclosures-checklist-wa": ["snohomish-wa", "bothell-wa"],
+  "best-time-to-sell-house-wa": ["lake-stevens-wa", "everett-wa"],
+  "sell-house-as-is-wa": ["arlington-wa", "mount-vernon-wa"],
+  "pre-listing-inspection-wa": ["snohomish-wa", "arlington-wa"],
+};
+
 const relatedCities = cityPages
   .filter((entry) =>
     ["everett-wa", "marysville-wa", "bothell-wa", "lynnwood-wa"].includes(
@@ -280,6 +294,47 @@ function StepGraphic({ index }: { index: number }) {
   );
 }
 
+function MistakeGraphic({ index }: { index: number }) {
+  const variant = index % 3;
+
+  if (variant === 0) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 88 64" className="h-14 w-20" fill="none">
+        <path d="M14 16H74" stroke="#E0D6C6" strokeWidth="2" strokeLinecap="round" />
+        <path d="M22 30H66" stroke="#C6A664" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M30 46H58" stroke="#E0D6C6" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="20" cy="16" r="4" fill="#F4EBD7" />
+        <circle cx="68" cy="46" r="4" fill="#F4EBD7" />
+      </svg>
+    );
+  }
+
+  if (variant === 1) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 88 64" className="h-14 w-20" fill="none">
+        <rect x="14" y="14" width="18" height="36" rx="9" fill="#F4EBD7" />
+        <rect x="36" y="22" width="18" height="28" rx="9" fill="#EBDDAB" />
+        <rect x="58" y="10" width="16" height="40" rx="8" fill="#D9CFBF" />
+        <path d="M12 54H76" stroke="#C6A664" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 88 64" className="h-14 w-20" fill="none">
+      <path
+        d="M14 42C22 28 30 22 40 22C50 22 56 34 66 34C72 34 77 30 82 24"
+        stroke="#C6A664"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <circle cx="20" cy="36" r="5" fill="#F4EBD7" />
+      <circle cx="44" cy="28" r="5" fill="#EBDDAB" />
+      <circle cx="70" cy="30" r="5" fill="#F4EBD7" />
+    </svg>
+  );
+}
+
 function SellerPrepView({ page }: { page: SellerPrepPage }) {
   const visual = prepVisuals[page.slug] ?? {
     icon: "00",
@@ -328,6 +383,9 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
     .map((slug) => sellerPrepPageMap.get(slug))
     .filter((entry): entry is SellerPrepPage => Boolean(entry));
   const heroPreviewSteps = page.checklist.slice(0, 3);
+  const relatedLocalPages = (localGuideSlugs[page.slug] ?? [])
+    .map((slug) => cityPages.find((entry) => entry.slug === slug))
+    .filter((entry): entry is (typeof cityPages)[number] => Boolean(entry));
 
   return (
     <div className="min-h-screen bg-[#F8F5F0] text-[#1A1A1A]">
@@ -367,6 +425,20 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               <span className="rounded-full border border-white/15 px-4 py-2">
                 Free CMA available
               </span>
+            </div>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#guide-steps"
+                className="rounded-full bg-[#C6A664] px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
+              >
+                Jump to the checklist
+              </a>
+              <a
+                href="#guide-links"
+                className="rounded-full border border-white/15 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/80 transition-colors hover:bg-white/8 hover:text-white"
+              >
+                Explore related guides
+              </a>
             </div>
           </div>
           <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm lg:p-7">
@@ -448,7 +520,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
         </div>
       </section>
 
-      <section className="bg-[#F8F5F0]">
+      <section id="guide-steps" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
@@ -516,25 +588,39 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Where sellers usually create extra friction
             </h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-[#5A5A5A]">
+              These are the places where good seller prep often drifts into extra
+              cost, extra delay, or a home that still does not read clearly to buyers.
+            </p>
             <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {page.mistakes.map((item, index) => (
               <div
                 key={item}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
+                className="group relative overflow-hidden rounded-[26px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/30 hover:shadow-md"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                  Avoid 0{index + 1}
-                </p>
-                <p className="mt-4 text-sm leading-7 text-[#5A5A5A]">{item}</p>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                      Avoid 0{index + 1}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-[#5A5A5A]">{item}</p>
+                  </div>
+                  <div className="shrink-0 rounded-2xl bg-white px-2 py-1">
+                    <MistakeGraphic index={index} />
+                  </div>
+                </div>
+                <div className="mt-5 border-t border-[#E8E4DF] pt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                  Common seller drag
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F8F5F0]">
+      <section id="guide-links" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mb-8 max-w-3xl">
             <div className="flex items-center gap-3">
@@ -548,39 +634,96 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Keep going from prep into pricing and local context
             </h2>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-[#5A5A5A]">
+              Use the next links deliberately: keep reading seller topics if you are
+              still deciding what to do, jump into local pages if the market context
+              matters more, or request a CMA when you need pricing tied to your house.
+            </p>
             <SectionDivider />
           </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            <RelatedGuideCard
-              href="/#cma"
-              eyebrow="Free CMA"
-              title="Get a pricing read before spending more"
-              description="Use a local CMA to decide which prep items matter most for your specific house and price range."
-            />
-            {relatedPrepPages.slice(0, 2).map((entry) => (
-              <RelatedGuideCard
-                key={entry.slug}
-                href={`/sell/checklists/${entry.slug}`}
-                eyebrow="Seller Guide"
-                title={entry.shortTitle}
-                description={entry.summary}
-              />
-            ))}
-            <RelatedGuideCard
-              href="/sell/snohomish-county-wa"
-              eyebrow="County Guide"
-              title="Snohomish County seller guide"
-              description="Browse the broader county-level market context and use city pages to narrow down buyer comparisons."
-            />
-            {relatedCities.slice(0, 1).map((city) => (
-              <RelatedGuideCard
-                key={city.href}
-                href={city.href}
-                eyebrow="City Guide"
-                title={`Selling in ${city.label}, WA`}
-                description={`See local seller guidance for ${city.label}, including pricing context, prep priorities, and common buyer comparisons.`}
-              />
-            ))}
+          <div className="grid gap-6 xl:grid-cols-[1.15fr,0.85fr]">
+            <div className="rounded-[30px] border border-[#E8E4DF] bg-white p-6 sm:p-7">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F8F5F0] text-sm font-semibold text-[#C6A664]">
+                  01
+                </span>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    Next Seller Reads
+                  </p>
+                  <p className="mt-1 text-sm text-[#5A5A5A]">
+                    Stay in the seller-prep path and read the topics that connect to this one.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-6 grid gap-5 md:grid-cols-2">
+                <RelatedGuideCard
+                  href="/#cma"
+                  eyebrow="Free CMA"
+                  title="Get a pricing read before spending more"
+                  description="Use a local CMA to decide which prep items matter most for your specific house and price range."
+                />
+                {relatedPrepPages.slice(0, 3).map((entry) => (
+                  <RelatedGuideCard
+                    key={entry.slug}
+                    href={`/sell/checklists/${entry.slug}`}
+                    eyebrow="Seller Guide"
+                    title={entry.shortTitle}
+                    description={entry.summary}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="rounded-[30px] border border-[#E8E4DF] bg-white p-6 sm:p-7">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F8F5F0] text-sm font-semibold text-[#C6A664]">
+                  02
+                </span>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    Local Market Pages
+                  </p>
+                  <p className="mt-1 text-sm text-[#5A5A5A]">
+                    Pair this seller topic with local pricing context in Snohomish County.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-6 space-y-5">
+                <RelatedGuideCard
+                  href="/sell/snohomish-county-wa"
+                  eyebrow="County Guide"
+                  title="Snohomish County seller guide"
+                  description="Browse the broader county-level market context and use city pages to narrow down buyer comparisons."
+                />
+                <div className="grid gap-5 md:grid-cols-2">
+                  {relatedLocalPages.map((city) => (
+                    <RelatedGuideCard
+                      key={city.slug}
+                      href={`/sell/${city.slug}`}
+                      eyebrow="City Guide"
+                      title={`Selling in ${city.city}, WA`}
+                      description={city.heroDescription}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                    More local guides
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    {relatedCities.slice(0, 4).map((city) => (
+                      <Link
+                        key={city.href}
+                        href={city.href}
+                        className="rounded-full border border-[#D9CFBF] bg-[#F8F5F0] px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#5A5A5A] transition-colors hover:border-[#C6A664] hover:text-[#1A1A1A]"
+                      >
+                        {city.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
