@@ -268,7 +268,7 @@ export default function Home() {
               "linear-gradient(130deg, rgba(17,17,17,0.94) 15%, rgba(17,17,17,0.78) 55%, rgba(17,17,17,0.9) 100%), url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat",
           }}
         />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-18 md:grid-cols-[1.1fr,0.9fr] md:py-24">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-18 md:grid-cols-[1.05fr,0.95fr] md:py-24">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               Free CMA for Snohomish County Sellers
@@ -282,16 +282,30 @@ export default function Home() {
               plan for pricing, repairs, and launch timing without turning the
               whole process into a project.
             </p>
+            <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
+              <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+                Free hand-built CMA
+              </span>
+              <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+                Local seller prep guidance
+              </span>
+              <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+                Fast follow-up
+              </span>
+            </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {sellerFocusPoints.map((point) => (
+              {sellerFocusPoints.map((point, index) => (
                 <div
                   key={point.title}
-                  className="rounded-2xl border border-white/10 bg-white/6 p-5"
+                  className="border-l border-white/15 pl-4"
                 >
-                  <h2 className="text-base font-semibold leading-snug">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C6A664]">
+                    0{index + 1}
+                  </p>
+                  <h2 className="mt-3 text-base font-semibold leading-snug">
                     {point.title}
                   </h2>
-                  <p className="mt-3 text-sm leading-6 text-white/70">
+                  <p className="mt-2 text-sm leading-6 text-white/70">
                     {point.description}
                   </p>
                 </div>
@@ -316,7 +330,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div id="cma" className="rounded-[32px] border border-white/10 bg-[#F8F5F0] p-7 text-[#1A1A1A] shadow-2xl sm:p-9">
+          <div
+            id="cma"
+            className="rounded-[32px] border border-white/10 bg-[#F8F5F0] p-7 text-[#1A1A1A] shadow-2xl sm:p-9"
+          >
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C6A664]">
               Start Here
             </p>
@@ -347,23 +364,58 @@ export default function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              "Hand-built CMA with real comp context",
-              "Practical guidance on what to fix and what to skip",
-              "Fast follow-up from Matt Salit",
-            ].map((item, index) => (
-              <div
-                key={item}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                  0{index + 1}
-                </p>
-                <p className="mt-3 text-lg font-medium leading-8">{item}</p>
-              </div>
-            ))}
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr,1.2fr] lg:items-start">
+            <div className="max-w-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                A Cleaner Seller Plan
+              </p>
+              <h2 className="mt-4 text-3xl font-light leading-tight tracking-tight sm:text-4xl">
+                Start with price, then prep the home around that strategy
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+                Most sellers get stuck because they are trying to answer pricing,
+                repairs, timing, and presentation all at once. The goal here is
+                to narrow that down fast.
+              </p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-3">
+              {[
+                {
+                  label: "Price",
+                  title: "See the likely range first",
+                  description:
+                    "Use current comps and competition to understand where the property fits now.",
+                },
+                {
+                  label: "Prep",
+                  title: "Focus on the visible wins",
+                  description:
+                    "Tackle cleanup, repairs, and updates that actually improve buyer perception.",
+                },
+                {
+                  label: "Launch",
+                  title: "Go live with less friction",
+                  description:
+                    "Use a simpler checklist so photos, showings, and paperwork do not pile up late.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    {item.label}
+                  </p>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -375,9 +427,12 @@ export default function Home() {
               Seller Questions
             </p>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              The homepage should answer the seller questions that matter before
-              anything else
+              What most sellers want to know before they list
             </h2>
+            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+              Start here if you are trying to figure out price, prep, repairs, or
+              how much work to do before the listing goes live.
+            </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {sellerGuideCards.map((card) => (
@@ -555,19 +610,19 @@ export default function Home() {
       </section>
 
       <section className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-18">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr,1.2fr] lg:items-center">
+        <div className="mx-auto max-w-7xl px-6 py-16 md:py-18">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-center">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                 Local Guides
               </p>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                City and county content lives on its own pages
+                Browse city and county pages separately
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-                If you want to drill into local market context, neighborhood pages,
-                or city-specific seller guidance, use the dedicated pages instead of
-                turning the homepage into a directory.
+                The homepage stays focused on seller prep and CMAs. Local market
+                pages live in their own place so they are easier to browse and
+                easier to search.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
