@@ -41,21 +41,33 @@ const searchFaqs = [
     question: "Should I get a CMA before deciding what to fix?",
     answer:
       "Usually yes. A CMA helps connect the likely price range to the prep work that actually matters, instead of spending money on projects that may not move the result.",
+    detail:
+      "The best version of this process is not price first or prep first in isolation. It is understanding the likely range, then using that range to decide which seller projects support the strategy and which ones just create more work.",
+    href: "/sell/checklists/repairs-before-selling-house-wa",
   },
   {
     question: "How far ahead should I start preparing to sell?",
     answer:
       "Most sellers should start four to six weeks before the target list date so decluttering, repairs, cleaning, and paperwork do not get compressed into one stressful week.",
+    detail:
+      "Starting early gives you room to declutter, gather documents, book cleaners or movers, and fix the visible maintenance items without turning launch week into a scramble.",
+    href: "/sell/checklists/declutter-before-selling-house-wa",
   },
   {
     question: "What paperwork should I have ready before listing?",
     answer:
       "Start with disclosures, HOA or condo documents if they apply, repair receipts, warranties, utility details, manuals, keys, remotes, and access codes.",
+    detail:
+      "Paperwork is one of the easiest places for sellers to lose time late in the process. Getting it together earlier makes the home feel better organized and reduces buyer hesitation once questions start coming in.",
+    href: "/sell/checklists/paperwork-needed-to-sell-house-wa",
   },
   {
     question: "What matters most once the home is on the market?",
     answer:
       "Show readiness and access matter a lot. The home should stay easy to tour, easy to understand, and easy for buyers to picture themselves in during the first two weeks.",
+    detail:
+      "The first two weeks usually shape the whole listing arc. A simple reset routine, flexible showing access, and a home that feels easy to buy matter more than trying to make it perfect every hour of the day.",
+    href: "/sell/checklists/show-ready-house-checklist-wa",
   },
 ];
 
@@ -157,7 +169,7 @@ export default function Home() {
           </p>
           <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight sm:text-5xl md:text-7xl">
             Thinking about selling?
-            <span className="font-semibold text-[#C6A664]"> Start with the answers buyers force you to have.</span>
+            <span className="font-semibold text-[#C6A664]"> Here&apos;s what you should be asking first.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/78 sm:text-xl">
             What should you fix? How much should you declutter? What paperwork do
@@ -165,28 +177,43 @@ export default function Home() {
             a free CMA to connect the prep work to a real pricing strategy.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
-            <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+            <Link
+              href="/sell/checklists/declutter-before-selling-house-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
               Decluttering
-            </span>
-            <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+            </Link>
+            <Link
+              href="/sell/checklists/repairs-before-selling-house-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
               Repairs
-            </span>
-            <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+            </Link>
+            <Link
+              href="/sell/checklists/paperwork-needed-to-sell-house-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
               Paperwork
-            </span>
-            <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+            </Link>
+            <Link
+              href="/sell/checklists/show-ready-house-checklist-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
               Showings
-            </span>
-            <span className="rounded-full border border-white/15 bg-white/8 px-4 py-2">
+            </Link>
+            <a
+              href="#cma"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
               Free CMA
-            </span>
+            </a>
           </div>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#seller-answers"
               className="rounded-full bg-[#C6A664] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
             >
-              Browse Seller Answers
+              Browse Seller Questions
             </a>
             <a
               href="#cma"
@@ -248,8 +275,8 @@ export default function Home() {
       </section>
 
       <section id="cma" className="bg-[#F8F5F0]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-[0.9fr,1.1fr] lg:items-start">
-          <div className="max-w-2xl">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               Free CMA
             </p>
@@ -261,7 +288,7 @@ export default function Home() {
               to understand your likely range, avoid spending money in the wrong
               places, and line up the home prep with the price strategy.
             </p>
-            <div className="mt-8 grid gap-5 sm:grid-cols-3">
+            <div className="mt-8 grid gap-5 text-left sm:grid-cols-3">
               {[
                 {
                   label: "Price",
@@ -290,8 +317,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-
-          <div className="rounded-[32px] border border-[#E8E4DF] bg-white p-7 text-[#1A1A1A] shadow-xl sm:p-9">
+          <div className="mx-auto mt-10 max-w-3xl rounded-[32px] border border-[#E8E4DF] bg-white p-7 text-[#1A1A1A] shadow-xl sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C6A664]">
               Start Here
             </p>
@@ -303,7 +329,7 @@ export default function Home() {
               get confirmation right away, and we will follow up with pricing and
               prep guidance as soon as possible.
             </p>
-            <div className="mt-6 rounded-3xl bg-[#F8F5F0] p-6 sm:p-7">
+            <div className="mt-6 rounded-3xl bg-[#F8F5F0] p-5 sm:p-6">
               <CmaForm />
             </div>
           </div>
@@ -322,17 +348,33 @@ export default function Home() {
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {searchFaqs.map((faq) => (
-              <div
+              <details
                 key={faq.question}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8"
+                className="group rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8"
               >
-                <h3 className="text-xl font-semibold leading-snug">
-                  {faq.question}
-                </h3>
-                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
-                  {faq.answer}
-                </p>
-              </div>
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-semibold leading-snug">
+                      {faq.question}
+                    </h3>
+                    <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
+                      {faq.answer}
+                    </p>
+                  </div>
+                  <span className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    Open
+                  </span>
+                </summary>
+                <div className="mt-5 border-t border-[#E8E4DF] pt-5">
+                  <p className="text-sm leading-6 text-[#5A5A5A]">{faq.detail}</p>
+                  <Link
+                    href={faq.href}
+                    className="mt-4 inline-flex text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:text-[#C6A664]"
+                  >
+                    Read the full guide
+                  </Link>
+                </div>
+              </details>
             ))}
           </div>
         </div>

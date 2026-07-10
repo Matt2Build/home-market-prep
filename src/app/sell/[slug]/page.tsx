@@ -126,6 +126,11 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
   const relatedAreas = (cityPage.relatedAreaSlugs ?? [])
     .map((slug) => neighborhoodPageMap.get(slug))
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const localInsights = relatedAreas.length
+    ? relatedAreas
+    : Array.from(neighborhoodPageMap.values()).filter(
+        (entry) => entry.parentCitySlug === cityPage.slug,
+      );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -296,19 +301,24 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
         </div>
       </section>
 
-      {relatedAreas.length > 0 && (
+      {localInsights.length > 0 && (
         <section className="bg-white">
           <div className="mx-auto max-w-7xl px-6 py-20">
             <div className="mb-12 max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Neighborhood and Subarea Guides
+                Neighborhood and Local Insights
               </p>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Nearby local seller pages around {cityPage.city}
+                Smaller-area seller pages around {cityPage.city}
               </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+                City-level pages are useful, but sellers often search by neighborhood,
+                subarea, or local pocket too. These pages help cover that more detailed
+                layer.
+              </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {relatedAreas.map((area) => {
+              {localInsights.map((area) => {
                 const areaSnapshot = marketSnapshotMap.get(area.slug);
                 return (
                   <LinkCard
@@ -539,11 +549,15 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
           <div className="mx-auto max-w-7xl px-6 py-20">
             <div className="mb-12 max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Neighborhood and Subarea Pages
+                Neighborhood and Local City Insights
               </p>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 Local SEO pages for smaller search terms sellers actually use
               </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+                These pages cover the more specific neighborhood and local-area
+                searches that sit underneath the county and city guides.
+              </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {neighborhoodEntries.map((entry) => (
