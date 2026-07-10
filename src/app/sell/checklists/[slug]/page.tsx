@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CornerAccent from "@/components/CornerAccent";
+import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { cityPages } from "@/lib/city-pages";
 import {
@@ -202,13 +204,14 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               {page.eyebrow}
             </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
-              {page.title}
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/80">
-              {page.summary}
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3 text-sm text-white/75">
+          <h1 className="mt-4 max-w-4xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+            {page.title}
+          </h1>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/80">
+            {page.summary}
+          </p>
+          <SectionDivider tone="dark" />
+          <div className="mt-7 flex flex-wrap gap-3 text-sm text-white/75">
               <span className="rounded-full border border-white/15 px-4 py-2">
                 {page.timeframe}
               </span>
@@ -220,7 +223,11 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               </span>
             </div>
           </div>
-          <div className="rounded-[28px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm">
+            <CornerAccent
+              tone="dark"
+              className="absolute right-4 top-4 h-12 w-[4.5rem]"
+            />
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C6A664] text-xl font-semibold text-[#1A1A1A]">
                 {visual.icon}
@@ -261,6 +268,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
               {page.whyItMatters}
             </p>
+            <SectionDivider />
           </div>
           <div className="rounded-3xl border border-[#E8E4DF] bg-[#F8F5F0] p-6">
             <div className="flex items-center gap-3">
@@ -293,6 +301,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 What to do
               </h2>
+              <SectionDivider />
             </div>
             <div className="hidden rounded-full border border-[#D9CFBF] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A] md:block">
               {page.checklist.length} steps
@@ -333,6 +342,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Where sellers usually create extra friction
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {page.mistakes.map((item, index) => (
@@ -364,6 +374,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Keep going from prep into pricing and local context
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             <RelatedGuideCard
@@ -405,6 +416,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Common questions on this topic
             </h2>
+            <SectionDivider tone="dark" />
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             {page.faqs.map((item) => (

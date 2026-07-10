@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CornerAccent from "@/components/CornerAccent";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
+import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { cityPageMap } from "@/lib/city-pages";
 import {
@@ -159,6 +161,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
             {page.heroDescription}
           </p>
+          <SectionDivider tone="dark" />
           <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
             {parentCity && (
               <Link
@@ -210,8 +213,13 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
               {page.localSummary}
             </p>
+            <SectionDivider />
           </div>
-          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-6">
+          <div className="relative overflow-hidden rounded-3xl border border-[#E8E4DF] bg-white p-6">
+            <CornerAccent
+              tone="gold"
+              className="absolute right-4 top-4 h-12 w-[4.5rem]"
+            />
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
               Seller moves
             </p>
@@ -238,6 +246,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               What buyers in {page.areaName} tend to compare
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {page.pricingFactors.map((factor) => (
@@ -267,6 +276,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 More neighborhood-level seller guides nearby
               </h2>
+              <SectionDivider />
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {nearbyAreas.map((entry) => (
@@ -297,6 +307,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               {page.areaName} seller FAQs
             </h2>
+            <SectionDivider tone="dark" />
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             {page.sellerQuestions.map((item) => (
@@ -322,6 +333,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             a pricing range that actually fits your home and your local buyer
             pool.
           </p>
+          <SectionDivider tone="gold" align="center" />
           <Link
             href="/#cma"
             className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"

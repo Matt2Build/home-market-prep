@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CornerAccent from "@/components/CornerAccent";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
+import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { cityPageMap, cityPages, type CityPage } from "@/lib/city-pages";
 import { countyPageMap, countyPages, type CountyPage } from "@/lib/county-pages";
@@ -201,6 +203,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
             {cityPage.heroDescription}
           </p>
+          <SectionDivider tone="dark" />
           <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
             <Link
               href={`/sell/${cityPage.countySlug}`}
@@ -248,8 +251,13 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
               {cityPage.localSummary}
             </p>
+            <SectionDivider />
           </div>
-          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-6">
+          <div className="relative overflow-hidden rounded-3xl border border-[#E8E4DF] bg-white p-6">
+            <CornerAccent
+              tone="gold"
+              className="absolute right-4 top-4 h-12 w-[4.5rem]"
+            />
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
               Start here
             </p>
@@ -281,6 +289,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               How buyers in {cityPage.city} tend to compare homes
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {cityPage.pricingFactors.map((factor) => (
@@ -309,6 +318,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               What to do before listing a house in {cityPage.city}
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {cityPage.prepPriorities.map((priority) => (
@@ -343,6 +353,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
                 subarea, or local pocket too. These pages help cover that more detailed
                 layer.
               </p>
+              <SectionDivider />
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {localInsights.map((area) => {
@@ -385,6 +396,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 {cityPage.city} seller FAQs
               </h2>
+              <SectionDivider tone="dark" />
             </div>
             <div className="rounded-3xl border border-white/10 bg-white/6 p-6">
               <p className="text-sm leading-7 text-white/78">
@@ -417,6 +429,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             Get a free CMA plus practical seller guidance before you spend money
             in the wrong places or list at the wrong number.
           </p>
+          <SectionDivider tone="gold" align="center" />
           <Link
             href="/#cma"
             className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
@@ -498,6 +511,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
             {countyPage.heroDescription}
           </p>
+          <SectionDivider tone="dark" />
           <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
             <span className="rounded-full border border-white/15 px-4 py-2">
               {countyPage.county}, WA
@@ -544,8 +558,13 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
               {countyPage.localSummary}
             </p>
+            <SectionDivider />
           </div>
-          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-6">
+          <div className="relative overflow-hidden rounded-3xl border border-[#E8E4DF] bg-white p-6">
+            <CornerAccent
+              tone="gold"
+              className="absolute right-4 top-4 h-12 w-[4.5rem]"
+            />
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
               Seller takeaways
             </p>
@@ -572,6 +591,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Seller pages across {countyPage.county}
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {cityEntries.map((entry) => (
@@ -606,6 +626,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
                 These pages cover the more specific neighborhood and local-area
                 searches that sit underneath the county and city guides.
               </p>
+              <SectionDivider />
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {neighborhoodEntries.map((entry) => (
@@ -636,6 +657,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               A few local numbers to ground the conversation
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {marketSpotlights.map((entry) => (
@@ -675,6 +697,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Common {countyPage.county} seller questions
             </h2>
+            <SectionDivider tone="dark" />
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             {countyPage.sellerQuestions.map((item) => (
@@ -699,6 +722,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             Start with the free CMA and we&apos;ll help narrow the broad county
             picture down to the actual buyer pool for your home.
           </p>
+          <SectionDivider tone="gold" align="center" />
           <Link
             href="/#cma"
             className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"

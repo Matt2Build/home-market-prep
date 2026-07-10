@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CmaForm from "@/components/CmaForm";
+import CornerAccent from "@/components/CornerAccent";
+import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { sellerPrepPages } from "@/lib/seller-prep-pages";
 
@@ -212,6 +214,7 @@ export default function Home() {
             you need? How do you keep the house show-ready? Start there, then use
             a free CMA to connect the prep work to a real pricing strategy.
           </p>
+          <SectionDivider tone="dark" align="center" />
           <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
             <Link
               href="/sell/checklists/declutter-before-selling-house-wa"
@@ -279,6 +282,7 @@ export default function Home() {
               These are the prep topics that shape how the home shows, how buyers
               react, and how stressful the launch feels once the listing goes live.
             </p>
+            <SectionDivider align="center" />
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {sellerPrepPages.map((page) => {
@@ -291,8 +295,12 @@ export default function Home() {
               <Link
                 key={page.slug}
                 href={`/sell/checklists/${page.slug}`}
-                className="group rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+                className="group relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
               >
+                <CornerAccent
+                  tone="gold"
+                  className="absolute right-4 top-4 h-12 w-18 opacity-80"
+                />
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3">
@@ -361,6 +369,7 @@ export default function Home() {
               to understand your likely range, avoid spending money in the wrong
               places, and line up the home prep with the price strategy.
             </p>
+            <SectionDivider align="center" />
             <div className="mt-8 grid gap-5 text-left sm:grid-cols-3">
               {[
                 {
@@ -390,7 +399,11 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="mx-auto mt-10 max-w-3xl rounded-[32px] border border-[#E8E4DF] bg-white p-7 text-[#1A1A1A] shadow-xl sm:p-8">
+          <div className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-[32px] border border-[#E8E4DF] bg-white p-7 text-[#1A1A1A] shadow-xl sm:p-8">
+            <CornerAccent
+              tone="gold"
+              className="absolute right-5 top-5 h-14 w-20 opacity-75"
+            />
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C6A664]">
               Start Here
             </p>
@@ -423,6 +436,7 @@ export default function Home() {
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               A few common seller questions before listing
             </h2>
+            <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             {searchFaqs.map((faq) => (
@@ -478,6 +492,7 @@ export default function Home() {
                 Local market pages live on their own so city and county content is
                 easier to browse and easier to search.
               </p>
+              <SectionDivider />
             </div>
             <div className="flex flex-wrap gap-3">
               {popularGuides.map((guide) => (
