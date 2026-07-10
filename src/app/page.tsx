@@ -4,6 +4,42 @@ import CmaForm from "@/components/CmaForm";
 import SiteHeader from "@/components/SiteHeader";
 import { sellerPrepPages } from "@/lib/seller-prep-pages";
 
+const sellerQuestionVisuals: Record<
+  string,
+  { id: string; cue: string; tone: string }
+> = {
+  "declutter-before-selling-house-wa": {
+    id: "01",
+    cue: "Make the home feel larger",
+    tone: "Clear rooms, lighter photos, less visual drag.",
+  },
+  "moving-storage-checklist-before-selling-wa": {
+    id: "02",
+    cue: "Keep the house market-ready",
+    tone: "Pack early so showing mode is easier to maintain.",
+  },
+  "repairs-before-selling-house-wa": {
+    id: "03",
+    cue: "Fix what buyers remember",
+    tone: "Visible maintenance usually matters more than remodels.",
+  },
+  "deep-clean-before-listing-house-wa": {
+    id: "04",
+    cue: "Clean for trust and light",
+    tone: "Odor, brightness, and detail-level upkeep change perception fast.",
+  },
+  "paperwork-needed-to-sell-house-wa": {
+    id: "05",
+    cue: "Get organized before launch",
+    tone: "Disclosures and practical docs are easier early than late.",
+  },
+  "show-ready-house-checklist-wa": {
+    id: "06",
+    cue: "Protect the first two weeks",
+    tone: "Simple routines create better access and better momentum.",
+  },
+};
+
 export const metadata: Metadata = {
   title: "Seller Questions Before Listing in Snohomish County",
   description:
@@ -226,11 +262,16 @@ export default function Home() {
       </section>
 
       <section id="seller-answers" className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Seller Answers
-            </p>
+            <div className="flex items-center justify-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                01
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Seller Answers
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
               The questions sellers usually search before they are ready to list
             </h2>
@@ -239,25 +280,49 @@ export default function Home() {
               react, and how stressful the launch feels once the listing goes live.
             </p>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {sellerPrepPages.map((page) => (
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {sellerPrepPages.map((page) => {
+              const visual = sellerQuestionVisuals[page.slug] ?? {
+                id: "00",
+                cue: "Seller prep",
+                tone: "Sharper prep supports cleaner pricing and launch decisions.",
+              };
+              return (
               <Link
                 key={page.slug}
                 href={`/sell/checklists/${page.slug}`}
-                className="rounded-3xl border border-[#E8E4DF] bg-[#F8F5F0] p-8 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+                className="group rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                  {page.timeframe}
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                        {visual.id}
+                      </span>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                        {page.timeframe}
+                      </p>
+                    </div>
+                    <h3 className="mt-4 text-2xl font-semibold leading-snug">
+                      {page.shortTitle}
+                    </h3>
+                  </div>
+                  <span className="rounded-full border border-[#D9CFBF] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5A5A5A] transition-colors group-hover:border-[#C6A664] group-hover:text-[#1A1A1A]">
+                    Guide
+                  </span>
+                </div>
+                <p className="mt-4 text-sm font-medium uppercase tracking-[0.16em] text-[#1A1A1A]">
+                  {visual.cue}
                 </p>
-                <h3 className="mt-4 text-2xl font-semibold leading-snug">
-                  {page.shortTitle}
-                </h3>
+                <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
+                  {visual.tone}
+                </p>
                 <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
                   {page.summary}
                 </p>
-                <div className="mt-6 border-t border-[#E8E4DF] pt-5">
+                <div className="mt-5 border-t border-[#E8E4DF] pt-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#1A1A1A]">
-                    Includes
+                    Starts with
                   </p>
                   <ul className="mt-3 space-y-2 text-sm leading-6 text-[#5A5A5A]">
                     {page.checklist.slice(0, 2).map((item) => (
@@ -268,8 +333,16 @@ export default function Home() {
                     ))}
                   </ul>
                 </div>
+                <div className="mt-5 flex items-center justify-between border-t border-[#E8E4DF] pt-5">
+                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
+                    Read full guide
+                  </span>
+                  <span className="text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
               </Link>
-            ))}
+            );})}
           </div>
         </div>
       </section>
@@ -337,20 +410,25 @@ export default function Home() {
       </section>
 
       <section id="seller-faqs" className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              FAQs
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="mb-10 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                02
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                FAQs
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               A few common seller questions before listing
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2">
             {searchFaqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8"
+                className="group rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
               >
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
                   <div>
@@ -381,12 +459,17 @@ export default function Home() {
       </section>
 
       <section className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-18">
+        <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Local Guides
-              </p>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                  03
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Local Guides
+                </p>
+              </div>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 Browse city and county seller pages separately
               </h2>
