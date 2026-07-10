@@ -227,6 +227,59 @@ function RelatedGuideCard({
   );
 }
 
+function StepGraphic({ index }: { index: number }) {
+  const variant = index % 4;
+
+  if (variant === 0) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 120 72" className="h-16 w-24" fill="none">
+        <rect x="8" y="18" width="52" height="12" rx="6" fill="#EBDDAB" />
+        <rect x="8" y="40" width="74" height="10" rx="5" fill="#F4EBD7" />
+        <path d="M72 20H112" stroke="#C6A664" strokeWidth="2" strokeLinecap="round" />
+        <path d="M90 40H112" stroke="#D9CFBF" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (variant === 1) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 120 72" className="h-16 w-24" fill="none">
+        <circle cx="28" cy="36" r="16" fill="#F4EBD7" />
+        <circle cx="28" cy="36" r="7" fill="#C6A664" fillOpacity="0.9" />
+        <path d="M58 24H110" stroke="#C6A664" strokeWidth="2" strokeLinecap="round" />
+        <path d="M58 38H98" stroke="#D9CFBF" strokeWidth="2" strokeLinecap="round" />
+        <path d="M58 52H88" stroke="#E8E4DF" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (variant === 2) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 120 72" className="h-16 w-24" fill="none">
+        <rect x="12" y="14" width="24" height="44" rx="12" fill="#F4EBD7" />
+        <rect x="44" y="24" width="24" height="34" rx="12" fill="#EBDDAB" />
+        <rect x="76" y="8" width="24" height="50" rx="12" fill="#C6A664" fillOpacity="0.85" />
+        <path d="M8 62H112" stroke="#E8E4DF" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 120 72" className="h-16 w-24" fill="none">
+      <path
+        d="M12 48C22 34 32 28 42 28C56 28 60 44 74 44C86 44 94 34 108 18"
+        stroke="#C6A664"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <circle cx="24" cy="38" r="6" fill="#F4EBD7" />
+      <circle cx="58" cy="36" r="6" fill="#EBDDAB" />
+      <circle cx="94" cy="26" r="6" fill="#F4EBD7" />
+      <path d="M12 58H72" stroke="#E8E4DF" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function SellerPrepView({ page }: { page: SellerPrepPage }) {
   const visual = prepVisuals[page.slug] ?? {
     icon: "00",
@@ -274,6 +327,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
   const relatedPrepPages = (relatedPrepSlugs[page.slug] ?? [])
     .map((slug) => sellerPrepPageMap.get(slug))
     .filter((entry): entry is SellerPrepPage => Boolean(entry));
+  const heroPreviewSteps = page.checklist.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-[#F8F5F0] text-[#1A1A1A]">
@@ -290,19 +344,20 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
 
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 px-6 py-14 sm:py-16 lg:grid-cols-[1.15fr,0.85fr] lg:items-end">
+        <div className="absolute inset-y-0 right-0 hidden w-[34rem] bg-[radial-gradient(circle_at_center,rgba(198,166,100,0.08),transparent_62%)] lg:block" />
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-6 py-12 sm:py-14 lg:grid-cols-[1.08fr,0.92fr] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               {page.eyebrow}
             </p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            {page.title}
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/80">
-            {page.summary}
-          </p>
-          <SectionDivider tone="dark" />
-          <div className="mt-7 flex flex-wrap gap-3 text-sm text-white/75">
+            <h1 className="mt-4 max-w-4xl text-4xl font-light leading-[1.04] tracking-tight sm:text-5xl md:text-6xl">
+              {page.title}
+            </h1>
+            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-white/80">
+              {page.summary}
+            </p>
+            <SectionDivider tone="dark" />
+            <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/75">
               <span className="rounded-full border border-white/15 px-4 py-2">
                 {page.timeframe}
               </span>
@@ -314,29 +369,45 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               </span>
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm">
+          <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm lg:p-7">
             <CornerAccent
               tone="dark"
-              className="absolute right-4 top-4 h-12 w-[4.5rem]"
+              className="absolute right-5 top-5 h-12 w-[4.5rem] opacity-70"
             />
-            <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#C6A664] text-xl font-semibold text-[#1A1A1A]">
+            <div className="flex items-start gap-4">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#C6A664] text-xl font-semibold text-[#1A1A1A]">
                 {visual.icon}
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#C6A664]">
                   {visual.accent}
                 </p>
-                <p className="mt-2 text-sm leading-6 text-white/76">
+                <h2 className="mt-2 text-2xl font-light tracking-tight text-white">
+                  What this guide helps you sort out
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-white/72">
                   {visual.cue}
                 </p>
               </div>
             </div>
-            <div className="mt-5 border-t border-white/10 pt-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/46">
+            <div className="mt-6 grid gap-3">
+              {heroPreviewSteps.map((item, index) => (
+                <div
+                  key={item}
+                  className="flex gap-3 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3"
+                >
+                  <span className="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/8 text-[11px] font-semibold text-[#C6A664]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-sm leading-6 text-white/76">{item}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 rounded-2xl border border-[#C6A664]/20 bg-[#C6A664]/10 px-4 py-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C6A664]">
                 Result
               </p>
-              <p className="mt-2 text-sm leading-6 text-white/76">
+              <p className="mt-2 text-sm leading-6 text-white/82">
                 {visual.result}
               </p>
             </div>
@@ -379,7 +450,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
 
       <section className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 flex items-end justify-between gap-4">
+          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
@@ -392,27 +463,39 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 What to do
               </h2>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-[#5A5A5A]">
+                Work through the highest-impact actions first. The goal is not to
+                do everything. It is to make the home feel cleaner, clearer, and
+                easier for buyers to trust.
+              </p>
               <SectionDivider />
             </div>
-            <div className="hidden rounded-full border border-[#D9CFBF] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A] md:block">
-              {page.checklist.length} steps
+            <div className="inline-flex w-fit rounded-full border border-[#D9CFBF] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
+              {page.checklist.length} actions to work through
             </div>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {page.checklist.map((item, index) => (
               <div
                 key={item}
-                className="rounded-2xl border border-[#E8E4DF] bg-white p-6 shadow-sm"
+                className="group relative overflow-hidden rounded-[26px] border border-[#E8E4DF] bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-[#C6A664]/35 hover:shadow-lg"
               >
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                    Step {String(index + 1).padStart(2, "0")}
-                  </p>
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C6A664] via-[#EBDDAB] to-transparent opacity-90" />
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+                      Action {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-[#5A5A5A]">{item}</p>
+                  </div>
+                  <div className="shrink-0 rounded-2xl bg-[#F8F5F0] px-2 py-1">
+                    <StepGraphic index={index} />
+                  </div>
                 </div>
-                <p className="mt-4 text-sm leading-7 text-[#5A5A5A]">{item}</p>
+                <div className="mt-5 flex items-center gap-2 border-t border-[#EEE8DF] pt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                  <span className="inline-flex h-2 w-2 rounded-full bg-[#C6A664]" />
+                  Seller prep priority
+                </div>
               </div>
             ))}
           </div>
