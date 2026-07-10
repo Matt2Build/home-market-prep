@@ -13,11 +13,89 @@ import {
   marketSnapshotMap,
 } from "@/lib/market-data";
 import { neighborhoodPageMap } from "@/lib/neighborhood-pages";
+import {
+  sellerPrepPageMap,
+  type SellerPrepPage,
+} from "@/lib/seller-prep-pages";
 import { SITE_URL } from "@/lib/site";
 
 type SellerPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+const citySellerGuideSlugs: Record<string, string[]> = {
+  "arlington-wa": [
+    "repairs-before-selling-house-wa",
+    "sell-house-as-is-wa",
+    "pre-listing-inspection-wa",
+  ],
+  "marysville-wa": [
+    "declutter-before-selling-house-wa",
+    "show-ready-house-checklist-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "lake-stevens-wa": [
+    "deep-clean-before-listing-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "repairs-before-selling-house-wa",
+  ],
+  "snohomish-wa": [
+    "seller-disclosures-checklist-wa",
+    "paperwork-needed-to-sell-house-wa",
+    "pre-listing-inspection-wa",
+  ],
+  "everett-wa": [
+    "declutter-before-selling-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "mukilteo-wa": [
+    "home-staging-tips-to-sell-house-wa",
+    "deep-clean-before-listing-house-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "mount-vernon-wa": [
+    "sell-house-as-is-wa",
+    "pre-listing-inspection-wa",
+    "paperwork-needed-to-sell-house-wa",
+  ],
+  "lynnwood-wa": [
+    "moving-storage-checklist-before-selling-wa",
+    "show-ready-house-checklist-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "bothell-wa": [
+    "seller-disclosures-checklist-wa",
+    "paperwork-needed-to-sell-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "mill-creek-wa": [
+    "home-staging-tips-to-sell-house-wa",
+    "show-ready-house-checklist-wa",
+    "best-time-to-sell-house-wa",
+  ],
+};
+
+const countySellerGuideSlugs: Record<string, string[]> = {
+  "snohomish-county-wa": [
+    "declutter-before-selling-house-wa",
+    "repairs-before-selling-house-wa",
+    "seller-disclosures-checklist-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "skagit-county-wa": [
+    "sell-house-as-is-wa",
+    "pre-listing-inspection-wa",
+    "paperwork-needed-to-sell-house-wa",
+    "best-time-to-sell-house-wa",
+  ],
+};
+
+function getSellerGuides(slugs: string[]) {
+  return slugs
+    .map((slug) => sellerPrepPageMap.get(slug))
+    .filter((entry): entry is SellerPrepPage => Boolean(entry));
+}
 
 export function generateStaticParams() {
   return [...cityPages, ...countyPages].map((entry) => ({ slug: entry.slug }));
@@ -139,6 +217,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       ]),
     ).values(),
   );
+  const sellerGuides = getSellerGuides(citySellerGuideSlugs[cityPage.slug] ?? []);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -211,6 +290,14 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             >
               {cityPage.county} guide
             </Link>
+            {sellerGuides[0] && (
+              <Link
+                href={`/sell/checklists/${sellerGuides[0].slug}`}
+                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+              >
+                Seller prep guide
+              </Link>
+            )}
             <span className="rounded-full border border-white/15 px-4 py-2">
               Free CMA
             </span>
@@ -333,13 +420,50 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
         </div>
       </section>
 
-      {localInsights.length > 0 && (
+      {sellerGuides.length > 0 && (
         <section className="bg-white">
           <div className="mx-auto max-w-7xl px-6 py-14">
             <div className="mb-8 max-w-3xl">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
                   4
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Seller Prep Guides
+                </p>
+              </div>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                Seller questions that usually matter in {cityPage.city}
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-[#5A5A5A]">
+                Use these topic pages when the local market question turns into a prep
+                question. They connect pricing context in {cityPage.city} to what you
+                should actually fix, clean up, disclose, or time before listing.
+              </p>
+              <SectionDivider />
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {sellerGuides.map((guide) => (
+                <LinkCard
+                  key={guide.slug}
+                  href={`/sell/checklists/${guide.slug}`}
+                  eyebrow="Seller Guide"
+                  title={guide.shortTitle}
+                  description={guide.summary}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {localInsights.length > 0 && (
+        <section className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mb-8 max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                  {sellerGuides.length > 0 ? 5 : 4}
                 </span>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                   Neighborhood and Local Insights
@@ -387,7 +511,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             <div>
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
-                  5
+                  {sellerGuides.length > 0 ? 6 : 5}
                 </span>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                   Seller Questions
@@ -453,6 +577,9 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
   const marketSpotlights = countyPage.marketSpotlightSlugs
     .map((slug) => marketSnapshotMap.get(slug))
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const sellerGuides = getSellerGuides(
+    countySellerGuideSlugs[countyPage.slug] ?? [],
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -519,6 +646,14 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             <span className="rounded-full border border-white/15 px-4 py-2">
               City and neighborhood guides
             </span>
+            {sellerGuides[0] && (
+              <Link
+                href={`/sell/checklists/${sellerGuides[0].slug}`}
+                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+              >
+                Seller prep guide
+              </Link>
+            )}
             <span className="rounded-full border border-white/15 px-4 py-2">
               Free CMA
             </span>
@@ -607,13 +742,50 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
         </div>
       </section>
 
-      {neighborhoodEntries.length > 0 && (
+      {sellerGuides.length > 0 && (
         <section className="bg-[#F8F5F0]">
           <div className="mx-auto max-w-7xl px-6 py-14">
             <div className="mb-8 max-w-3xl">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
                   3
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Seller Prep Guides
+                </p>
+              </div>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                Seller topics that usually shape outcomes across {countyPage.county}
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+                County pages are broad by design. These seller guides cover the prep
+                questions that usually decide whether a home launches cleanly or creates
+                extra friction before offers start.
+              </p>
+              <SectionDivider />
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+              {sellerGuides.map((guide) => (
+                <LinkCard
+                  key={guide.slug}
+                  href={`/sell/checklists/${guide.slug}`}
+                  eyebrow="Seller Guide"
+                  title={guide.shortTitle}
+                  description={guide.summary}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {neighborhoodEntries.length > 0 && (
+        <section className="bg-[#F8F5F0]">
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mb-8 max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                  {sellerGuides.length > 0 ? 4 : 3}
                 </span>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                   Neighborhood and Local City Insights
@@ -646,12 +818,12 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                4
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Market Spotlights
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                  {sellerGuides.length > 0 ? 5 : 4}
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Market Spotlights
               </p>
             </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
@@ -688,8 +860,8 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
           <div className="mb-8 max-w-3xl">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
-                5
-              </span>
+                  {sellerGuides.length > 0 ? 6 : 5}
+                </span>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                 Seller Questions
               </p>

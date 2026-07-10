@@ -15,11 +15,54 @@ import {
   neighborhoodPages,
   type NeighborhoodPage,
 } from "@/lib/neighborhood-pages";
+import {
+  sellerPrepPageMap,
+  type SellerPrepPage,
+} from "@/lib/seller-prep-pages";
 import { SITE_URL } from "@/lib/site";
 
 type NeighborhoodSellerPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+const neighborhoodSellerGuideSlugs: Record<string, string[]> = {
+  "bothell-east-wa": [
+    "seller-disclosures-checklist-wa",
+    "paperwork-needed-to-sell-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "bothell-west-wa": [
+    "home-staging-tips-to-sell-house-wa",
+    "seller-disclosures-checklist-wa",
+    "show-ready-house-checklist-wa",
+  ],
+  "mill-creek-east-wa": [
+    "home-staging-tips-to-sell-house-wa",
+    "show-ready-house-checklist-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "mill-creek-west-wa": [
+    "declutter-before-selling-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "show-ready-house-checklist-wa",
+  ],
+  "north-everett-wa": [
+    "declutter-before-selling-house-wa",
+    "best-time-to-sell-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "arlington-heights-wa": [
+    "sell-house-as-is-wa",
+    "pre-listing-inspection-wa",
+    "repairs-before-selling-house-wa",
+  ],
+};
+
+function getNeighborhoodSellerGuides(slugs: string[]) {
+  return slugs
+    .map((slug) => sellerPrepPageMap.get(slug))
+    .filter((entry): entry is SellerPrepPage => Boolean(entry));
+}
 
 export function generateStaticParams() {
   return neighborhoodPages.map((entry) => ({ slug: entry.slug }));
@@ -97,6 +140,9 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
   const nearbyAreas = page.nearbyAreaSlugs
     .map((slug) => neighborhoodPageMap.get(slug))
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const sellerGuides = getNeighborhoodSellerGuides(
+    neighborhoodSellerGuideSlugs[page.slug] ?? [],
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -174,6 +220,14 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             <span className="rounded-full border border-white/15 px-4 py-2">
               {page.county}, WA
             </span>
+            {sellerGuides[0] && (
+              <Link
+                href={`/sell/checklists/${sellerGuides[0].slug}`}
+                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+              >
+                Seller prep guide
+              </Link>
+            )}
             <span className="rounded-full border border-white/15 px-4 py-2">
               Neighborhood-level seller SEO page
             </span>
@@ -261,13 +315,49 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
         </div>
       </section>
 
-      {nearbyAreas.length > 0 && (
+      {sellerGuides.length > 0 && (
         <section className="bg-[#F8F5F0]">
           <div className="mx-auto max-w-7xl px-6 py-14">
             <div className="mb-8 max-w-3xl">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
                   3
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Seller Prep Guides
+                </p>
+              </div>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                Seller topics that usually connect to {page.areaName}
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+                These guides cover the prep decisions that tend to matter once sellers
+                understand the local buyer expectations in {page.areaName}.
+              </p>
+              <SectionDivider />
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {sellerGuides.map((guide) => (
+                <LinkCard
+                  key={guide.slug}
+                  href={`/sell/checklists/${guide.slug}`}
+                  eyebrow="Seller Guide"
+                  title={guide.shortTitle}
+                  description={guide.summary}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {nearbyAreas.length > 0 && (
+        <section className="bg-[#F8F5F0]">
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mb-8 max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                  {sellerGuides.length > 0 ? 4 : 3}
                 </span>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                   Nearby Local Pages
@@ -298,8 +388,8 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
           <div className="mb-8 max-w-3xl">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
-                4
-              </span>
+                  {sellerGuides.length > 0 ? 5 : 4}
+                </span>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                 Seller Questions
               </p>
