@@ -75,6 +75,7 @@ export const cityPages: CityPage[] = [
       "Lighten, declutter, and simplify rooms so buyers compare the space to newer inventory more favorably.",
       "Get the first two weeks right, when most serious Marysville buyers are deciding whether to visit in person.",
     ],
+    relatedAreaSlugs: ["sunnyside-marysville-wa", "lakewood-marysville-wa"],
     sellerQuestions: [
       {
         question: "Do Marysville sellers need to fully remodel before listing?",
@@ -110,6 +111,7 @@ export const cityPages: CityPage[] = [
       "Neutralize bold spaces so buyers focus on light and layout instead of your personalization.",
       "Fix anything that reads as maintenance risk, especially on the exterior or around moisture-prone areas.",
     ],
+    relatedAreaSlugs: ["frontier-village-wa", "cavalero-wa"],
     sellerQuestions: [
       {
         question: "What helps a Lake Stevens house sell faster?",
@@ -145,6 +147,7 @@ export const cityPages: CityPage[] = [
       "Clarify what is included, what has been upgraded, and what is unique about the property before showings begin.",
       "Make the home feel brighter and simpler so buyers focus on value, not your move-out workload.",
     ],
+    relatedAreaSlugs: ["dutch-hill-snohomish-wa", "fobes-hill-snohomish-wa"],
     sellerQuestions: [
       {
         question: "How should Snohomish sellers think about unique properties?",
@@ -180,6 +183,7 @@ export const cityPages: CityPage[] = [
       "Address cosmetic wear that makes the home look tired next to refreshed nearby listings.",
       "Pay attention to exterior presentation, especially entry sequence and first-photo curb appeal.",
     ],
+    relatedAreaSlugs: ["north-everett-wa", "silver-lake-everett-wa"],
     sellerQuestions: [
       {
         question: "What should Everett sellers do before listing photos?",
@@ -215,6 +219,7 @@ export const cityPages: CityPage[] = [
       "Maximize light, sightlines, and any outdoor or view-related advantages before photos.",
       "Tighten the finish quality of the home so it feels consistent with the price point you want to hit.",
     ],
+    relatedAreaSlugs: ["harbour-pointe-mukilteo-wa", "old-town-mukilteo-wa"],
     sellerQuestions: [
       {
         question: "Do view homes in Mukilteo need a different pricing approach?",
@@ -250,6 +255,7 @@ export const cityPages: CityPage[] = [
       "Clarify any property-specific considerations early so the listing feels transparent and organized.",
       "Prepare the home to photograph bright, simple, and move-in ready rather than personalized and crowded.",
     ],
+    relatedAreaSlugs: ["hillcrest-park-mount-vernon-wa", "little-mountain-mount-vernon-wa"],
     sellerQuestions: [
       {
         question: "Should Mount Vernon sellers still get a local CMA?",
@@ -285,6 +291,7 @@ export const cityPages: CityPage[] = [
       "Declutter and brighten rooms to help the layout feel more efficient and move-in ready.",
       "Handle maintenance items that make buyers assume a bigger punch list is waiting after inspection.",
     ],
+    relatedAreaSlugs: ["alderwood-lynnwood-wa", "martha-lake-lynnwood-wa"],
     sellerQuestions: [
       {
         question: "What helps Lynnwood homes stand out?",
@@ -356,7 +363,7 @@ export const cityPages: CityPage[] = [
       "Reduce furniture and visual clutter so rooms feel more open and more expensive.",
       "Fix the maintenance items buyers remember after they leave, especially in kitchens, baths, and entry areas.",
     ],
-    relatedAreaSlugs: ["mill-creek-east-wa"],
+    relatedAreaSlugs: ["mill-creek-east-wa", "mill-creek-west-wa"],
     sellerQuestions: [
       {
         question: "What makes a Mill Creek listing feel strong?",

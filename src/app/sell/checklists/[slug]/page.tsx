@@ -5,6 +5,7 @@ import CornerAccent from "@/components/CornerAccent";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { cityPages } from "@/lib/city-pages";
+import { neighborhoodPageMap } from "@/lib/neighborhood-pages";
 import {
   sellerPrepPageMap,
   sellerPrepPages,
@@ -158,6 +159,53 @@ const localGuideSlugs: Record<string, string[]> = {
   "best-time-to-sell-house-wa": ["lake-stevens-wa", "everett-wa"],
   "sell-house-as-is-wa": ["arlington-wa", "mount-vernon-wa"],
   "pre-listing-inspection-wa": ["snohomish-wa", "arlington-wa"],
+};
+
+const localNeighborhoodSlugs: Record<string, string[]> = {
+  "declutter-before-selling-house-wa": [
+    "north-everett-wa",
+    "sunnyside-marysville-wa",
+  ],
+  "moving-storage-checklist-before-selling-wa": [
+    "alderwood-lynnwood-wa",
+    "harbour-pointe-mukilteo-wa",
+  ],
+  "repairs-before-selling-house-wa": [
+    "fobes-hill-snohomish-wa",
+    "arlington-heights-wa",
+  ],
+  "deep-clean-before-listing-house-wa": [
+    "silver-lake-everett-wa",
+    "martha-lake-lynnwood-wa",
+  ],
+  "paperwork-needed-to-sell-house-wa": [
+    "dutch-hill-snohomish-wa",
+    "hillcrest-park-mount-vernon-wa",
+  ],
+  "show-ready-house-checklist-wa": [
+    "lakewood-marysville-wa",
+    "alderwood-lynnwood-wa",
+  ],
+  "home-staging-tips-to-sell-house-wa": [
+    "harbour-pointe-mukilteo-wa",
+    "mill-creek-west-wa",
+  ],
+  "seller-disclosures-checklist-wa": [
+    "bothell-east-wa",
+    "old-town-mukilteo-wa",
+  ],
+  "best-time-to-sell-house-wa": [
+    "frontier-village-wa",
+    "north-everett-wa",
+  ],
+  "sell-house-as-is-wa": [
+    "cavalero-wa",
+    "little-mountain-mount-vernon-wa",
+  ],
+  "pre-listing-inspection-wa": [
+    "fobes-hill-snohomish-wa",
+    "little-mountain-mount-vernon-wa",
+  ],
 };
 
 const relatedCities = cityPages
@@ -386,6 +434,9 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
   const relatedLocalPages = (localGuideSlugs[page.slug] ?? [])
     .map((slug) => cityPages.find((entry) => entry.slug === slug))
     .filter((entry): entry is (typeof cityPages)[number] => Boolean(entry));
+  const relatedNeighborhoodPages = (localNeighborhoodSlugs[page.slug] ?? [])
+    .map((slug) => neighborhoodPageMap.get(slug))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
   return (
     <div className="min-h-screen bg-[#F8F5F0] text-[#1A1A1A]">
@@ -706,6 +757,24 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
                     />
                   ))}
                 </div>
+                {relatedNeighborhoodPages.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                      Neighborhood seller pages
+                    </p>
+                    <div className="mt-3 grid gap-5 md:grid-cols-2">
+                      {relatedNeighborhoodPages.map((entry) => (
+                        <RelatedGuideCard
+                          key={entry.slug}
+                          href={`/sell/neighborhoods/${entry.slug}`}
+                          eyebrow={`${entry.parentCity} Subarea`}
+                          title={`Selling in ${entry.areaName}`}
+                          description={entry.heroDescription}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
                     More local guides

@@ -51,6 +51,71 @@ const neighborhoodSellerGuideSlugs: Record<string, string[]> = {
     "best-time-to-sell-house-wa",
     "home-staging-tips-to-sell-house-wa",
   ],
+  "silver-lake-everett-wa": [
+    "deep-clean-before-listing-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "show-ready-house-checklist-wa",
+  ],
+  "sunnyside-marysville-wa": [
+    "declutter-before-selling-house-wa",
+    "repairs-before-selling-house-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "lakewood-marysville-wa": [
+    "show-ready-house-checklist-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "frontier-village-wa": [
+    "repairs-before-selling-house-wa",
+    "deep-clean-before-listing-house-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "cavalero-wa": [
+    "sell-house-as-is-wa",
+    "pre-listing-inspection-wa",
+    "repairs-before-selling-house-wa",
+  ],
+  "dutch-hill-snohomish-wa": [
+    "seller-disclosures-checklist-wa",
+    "paperwork-needed-to-sell-house-wa",
+    "pre-listing-inspection-wa",
+  ],
+  "fobes-hill-snohomish-wa": [
+    "sell-house-as-is-wa",
+    "pre-listing-inspection-wa",
+    "seller-disclosures-checklist-wa",
+  ],
+  "harbour-pointe-mukilteo-wa": [
+    "home-staging-tips-to-sell-house-wa",
+    "deep-clean-before-listing-house-wa",
+    "show-ready-house-checklist-wa",
+  ],
+  "old-town-mukilteo-wa": [
+    "seller-disclosures-checklist-wa",
+    "repairs-before-selling-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "alderwood-lynnwood-wa": [
+    "declutter-before-selling-house-wa",
+    "show-ready-house-checklist-wa",
+    "repairs-before-selling-house-wa",
+  ],
+  "martha-lake-lynnwood-wa": [
+    "deep-clean-before-listing-house-wa",
+    "show-ready-house-checklist-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "hillcrest-park-mount-vernon-wa": [
+    "repairs-before-selling-house-wa",
+    "paperwork-needed-to-sell-house-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "little-mountain-mount-vernon-wa": [
+    "pre-listing-inspection-wa",
+    "sell-house-as-is-wa",
+    "seller-disclosures-checklist-wa",
+  ],
   "arlington-heights-wa": [
     "sell-house-as-is-wa",
     "pre-listing-inspection-wa",

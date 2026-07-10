@@ -47,11 +47,24 @@ export const countyPages: CountyPage[] = [
     ],
     neighborhoodSlugs: [
       "arlington-heights-wa",
+      "alderwood-lynnwood-wa",
       "bothell-east-wa",
       "bothell-west-wa",
+      "cavalero-wa",
+      "dutch-hill-snohomish-wa",
+      "fobes-hill-snohomish-wa",
+      "frontier-village-wa",
+      "harbour-pointe-mukilteo-wa",
+      "lakewood-marysville-wa",
       "mill-creek-east-wa",
+      "mill-creek-west-wa",
       "monroe-north-wa",
+      "martha-lake-lynnwood-wa",
+      "north-everett-wa",
       "north-sultan-wa",
+      "old-town-mukilteo-wa",
+      "silver-lake-everett-wa",
+      "sunnyside-marysville-wa",
     ],
     marketSpotlightSlugs: [
       "everett-wa",
@@ -92,7 +105,10 @@ export const countyPages: CountyPage[] = [
       "The best pre-list moves are usually repairs, paperwork clarity, and presentation that makes the home feel simple to understand and easy to buy.",
     ],
     citySlugs: ["mount-vernon-wa"],
-    neighborhoodSlugs: [],
+    neighborhoodSlugs: [
+      "hillcrest-park-mount-vernon-wa",
+      "little-mountain-mount-vernon-wa",
+    ],
     marketSpotlightSlugs: ["mount-vernon-wa"],
     sellerQuestions: [
       {
