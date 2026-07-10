@@ -1,9 +1,8 @@
 import Link from "next/link";
 
 const navLinks = [
+  { href: "/#seller-answers", label: "Seller Answers" },
   { href: "/sell/snohomish-county-wa", label: "Local Guides" },
-  { href: "/#timeline", label: "Checklist" },
-  { href: "/#repairs", label: "Repairs" },
   { href: "/#seller-faqs", label: "FAQs" },
 ];
 

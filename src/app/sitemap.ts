@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { cityPages } from "@/lib/city-pages";
 import { countyPages } from "@/lib/county-pages";
 import { neighborhoodPages } from "@/lib/neighborhood-pages";
+import { sellerPrepPages } from "@/lib/seller-prep-pages";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -31,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly" as const,
       priority: 0.7,
+    })),
+    ...sellerPrepPages.map((entry) => ({
+      url: `${SITE_URL}/sell/checklists/${entry.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.75,
     })),
   ];
 }
