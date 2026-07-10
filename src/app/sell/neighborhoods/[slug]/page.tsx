@@ -147,8 +147,9 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
 
       <SiteHeader />
 
-      <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
+      <section className="relative overflow-hidden bg-[#111111] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
+        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:py-16">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             Neighborhood Seller Guide
           </p>
@@ -179,7 +180,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
 
       {snapshot && (
         <div className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-18 sm:py-20">
+          <div className="mx-auto max-w-7xl px-6 py-12 sm:py-14">
             <MarketSnapshotSection
               snapshot={snapshot}
               eyebrow="Neighborhood Snapshot"
@@ -193,11 +194,16 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
       )}
 
       <section className="bg-[#F8F5F0]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[1.2fr,0.8fr]">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.2fr,0.8fr] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Local Overview
-            </p>
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                1
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Local Overview
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               How sellers should think about {page.areaName}
             </h2>
@@ -205,7 +211,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
               {page.localSummary}
             </p>
           </div>
-          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-8">
+          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
               Seller moves
             </p>
@@ -219,20 +225,25 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Pricing Factors
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                2
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Pricing Factors
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               What buyers in {page.areaName} tend to compare
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {page.pricingFactors.map((factor) => (
               <div
                 key={factor}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8"
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
               >
                 <p className="text-sm leading-7 text-[#5A5A5A]">{factor}</p>
               </div>
@@ -243,16 +254,21 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
 
       {nearbyAreas.length > 0 && (
         <section className="bg-[#F8F5F0]">
-          <div className="mx-auto max-w-7xl px-6 py-20">
-            <div className="mb-12 max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Nearby Local Pages
-              </p>
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mb-8 max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                  3
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Nearby Local Pages
+                </p>
+              </div>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 More neighborhood-level seller guides nearby
               </h2>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {nearbyAreas.map((entry) => (
                 <LinkCard
                   key={entry.slug}
@@ -268,20 +284,25 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
       )}
 
       <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Seller Questions
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
+                4
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Seller Questions
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               {page.areaName} seller FAQs
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2">
             {page.sellerQuestions.map((item) => (
               <div
                 key={item.question}
-                className="rounded-2xl border border-white/10 bg-white/5 p-8"
+                className="rounded-2xl border border-white/10 bg-white/5 p-6"
               >
                 <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
                 <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
@@ -292,18 +313,18 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
       </section>
 
       <section className="bg-[#C6A664]">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center text-[#1A1A1A]">
+        <div className="mx-auto max-w-4xl px-6 py-14 text-center text-[#1A1A1A]">
           <h2 className="text-3xl font-light tracking-tight sm:text-5xl">
             Want a tighter local pricing read for {page.areaName}?
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
             Start with the free CMA and we&apos;ll translate the broad market into
             a pricing range that actually fits your home and your local buyer
             pool.
           </p>
           <Link
             href="/#cma"
-            className="mt-10 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
+            className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
           >
             Start My Free CMA
           </Link>

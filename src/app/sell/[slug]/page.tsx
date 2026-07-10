@@ -189,8 +189,9 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
 
       <SiteHeader />
 
-      <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
+      <section className="relative overflow-hidden bg-[#111111] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
+        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:py-16">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             {cityPage.city}, WA Seller Guide
           </p>
@@ -219,7 +220,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
 
       {snapshot && (
         <div className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-18 sm:py-20">
+          <div className="mx-auto max-w-7xl px-6 py-12 sm:py-14">
             <MarketSnapshotSection
               snapshot={snapshot}
               eyebrow="Local Market Snapshot"
@@ -231,19 +232,24 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       )}
 
       <section className="bg-[#F8F5F0]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[1.2fr,0.8fr]">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.2fr,0.8fr] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Local Overview
-            </p>
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                1
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Local Overview
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               What sellers in {cityPage.city} usually need to know
             </h2>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
+            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
               {cityPage.localSummary}
             </p>
           </div>
-          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-8">
+          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
               Start here
             </p>
@@ -262,20 +268,25 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Pricing Factors
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                2
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Pricing Factors
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               How buyers in {cityPage.city} tend to compare homes
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {cityPage.pricingFactors.map((factor) => (
               <div
                 key={factor}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8 shadow-sm"
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 shadow-sm"
               >
                 <p className="text-sm leading-7 text-[#5A5A5A]">{factor}</p>
               </div>
@@ -285,20 +296,25 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       </section>
 
       <section className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Prep Priorities
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                3
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Prep Priorities
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               What to do before listing a house in {cityPage.city}
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3">
             {cityPage.prepPriorities.map((priority) => (
               <div
                 key={priority}
-                className="rounded-2xl border border-[#E8E4DF] bg-white p-8"
+                className="rounded-2xl border border-[#E8E4DF] bg-white p-6"
               >
                 <p className="text-sm leading-7 text-[#5A5A5A]">{priority}</p>
               </div>
@@ -309,21 +325,26 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
 
       {localInsights.length > 0 && (
         <section className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-20">
-            <div className="mb-12 max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Neighborhood and Local Insights
-              </p>
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mb-8 max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                  4
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Neighborhood and Local Insights
+                </p>
+              </div>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 Smaller-area seller pages around {cityPage.city}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+              <p className="mt-4 text-lg leading-relaxed text-[#5A5A5A]">
                 City-level pages are useful, but sellers often search by neighborhood,
                 subarea, or local pocket too. These pages help cover that more detailed
                 layer.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {localInsights.map((area) => {
                 const areaSnapshot = marketSnapshotMap.get(area.slug);
                 return (
@@ -350,17 +371,22 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       )}
 
       <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid gap-8 lg:grid-cols-[0.8fr,1.2fr] lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Seller Questions
-              </p>
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
+                  5
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Seller Questions
+                </p>
+              </div>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 {cityPage.city} seller FAQs
               </h2>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/6 p-8">
+            <div className="rounded-3xl border border-white/10 bg-white/6 p-6">
               <p className="text-sm leading-7 text-white/78">
                 Sellers usually get the best result when pricing, prep, and timing
                 are handled together. If the home goes live with the wrong number
@@ -368,11 +394,11 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
               </p>
             </div>
           </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
             {cityPage.sellerQuestions.map((item) => (
               <div
                 key={item.question}
-                className="rounded-2xl border border-white/10 bg-white/5 p-8"
+                className="rounded-2xl border border-white/10 bg-white/5 p-6"
               >
                 <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
                 <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
@@ -383,17 +409,17 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       </section>
 
       <section className="bg-[#C6A664]">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center text-[#1A1A1A]">
+        <div className="mx-auto max-w-4xl px-6 py-14 text-center text-[#1A1A1A]">
           <h2 className="text-3xl font-light tracking-tight sm:text-5xl">
             Want a clearer price range for your {cityPage.city} home?
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
             Get a free CMA plus practical seller guidance before you spend money
             in the wrong places or list at the wrong number.
           </p>
           <Link
             href="/#cma"
-            className="mt-10 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
+            className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
           >
             Start My Free CMA
           </Link>
@@ -460,8 +486,9 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
 
       <SiteHeader />
 
-      <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:py-24">
+      <section className="relative overflow-hidden bg-[#111111] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
+        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:py-16">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             County Seller Guide
           </p>
@@ -487,7 +514,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
 
       {snapshot && (
         <div className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-18 sm:py-20">
+          <div className="mx-auto max-w-7xl px-6 py-12 sm:py-14">
             <MarketSnapshotSection
               snapshot={snapshot}
               eyebrow="County Market Snapshot"
@@ -501,11 +528,16 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       )}
 
       <section className="bg-[#F8F5F0]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-16 lg:grid-cols-[1.2fr,0.8fr]">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.2fr,0.8fr] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Local Context
-            </p>
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                1
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Local Context
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               How sellers should read this county
             </h2>
@@ -513,7 +545,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
               {countyPage.localSummary}
             </p>
           </div>
-          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-8">
+          <div className="rounded-3xl border border-[#E8E4DF] bg-white p-6">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
               Seller takeaways
             </p>
@@ -527,16 +559,21 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              City Guides
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                2
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                City Guides
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Seller pages across {countyPage.county}
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {cityEntries.map((entry) => (
               <LinkCard
                 key={entry.slug}
@@ -552,11 +589,16 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
 
       {neighborhoodEntries.length > 0 && (
         <section className="bg-[#F8F5F0]">
-          <div className="mx-auto max-w-7xl px-6 py-20">
-            <div className="mb-12 max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Neighborhood and Local City Insights
-              </p>
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mb-8 max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                  3
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Neighborhood and Local City Insights
+                </p>
+              </div>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
                 Local SEO pages for smaller search terms sellers actually use
               </h2>
@@ -565,7 +607,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
                 searches that sit underneath the county and city guides.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {neighborhoodEntries.map((entry) => (
                 <LinkCard
                   key={entry.slug}
@@ -581,20 +623,25 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       )}
 
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Market Spotlights
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
+                4
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Market Spotlights
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               A few local numbers to ground the conversation
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {marketSpotlights.map((entry) => (
               <div
                 key={entry.slug}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8"
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                   {entry.kind}
@@ -615,20 +662,25 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       </section>
 
       <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Seller Questions
-            </p>
+        <div className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
+                5
+              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Seller Questions
+              </p>
+            </div>
             <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
               Common {countyPage.county} seller questions
             </h2>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2">
             {countyPage.sellerQuestions.map((item) => (
               <div
                 key={item.question}
-                className="rounded-2xl border border-white/10 bg-white/5 p-8"
+                className="rounded-2xl border border-white/10 bg-white/5 p-6"
               >
                 <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
                 <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
@@ -639,17 +691,17 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       </section>
 
       <section className="bg-[#C6A664]">
-        <div className="mx-auto max-w-4xl px-6 py-20 text-center text-[#1A1A1A]">
+        <div className="mx-auto max-w-4xl px-6 py-14 text-center text-[#1A1A1A]">
           <h2 className="text-3xl font-light tracking-tight sm:text-5xl">
             Want a county-level pricing read plus a city-specific CMA?
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
             Start with the free CMA and we&apos;ll help narrow the broad county
             picture down to the actual buyer pool for your home.
           </p>
           <Link
             href="/#cma"
-            className="mt-10 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
+            className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
           >
             Start My Free CMA
           </Link>
