@@ -126,11 +126,17 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
   const relatedAreas = (cityPage.relatedAreaSlugs ?? [])
     .map((slug) => neighborhoodPageMap.get(slug))
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
-  const localInsights = relatedAreas.length
-    ? relatedAreas
-    : Array.from(neighborhoodPageMap.values()).filter(
-        (entry) => entry.parentCitySlug === cityPage.slug,
-      );
+  const matchingNeighborhoods = Array.from(neighborhoodPageMap.values()).filter(
+    (entry) => entry.parentCitySlug === cityPage.slug,
+  );
+  const localInsights = Array.from(
+    new Map(
+      [...matchingNeighborhoods, ...relatedAreas].map((entry) => [
+        entry.slug,
+        entry,
+      ]),
+    ).values(),
+  );
 
   const faqSchema = {
     "@context": "https://schema.org",
