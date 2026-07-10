@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const navLinks = [
-  { href: "/#county-guides", label: "Counties" },
-  { href: "/#city-pages", label: "Cities" },
-  { href: "/#neighborhood-pages", label: "Neighborhoods" },
+  { href: "/sell/snohomish-county-wa", label: "Local Guides" },
   { href: "/#timeline", label: "Checklist" },
+  { href: "/#repairs", label: "Repairs" },
+  { href: "/#seller-faqs", label: "FAQs" },
 ];
 
 export default function SiteHeader() {

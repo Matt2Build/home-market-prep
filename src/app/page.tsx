@@ -1,35 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CmaForm from "@/components/CmaForm";
 import SiteHeader from "@/components/SiteHeader";
-import Link from "next/link";
-import { cityPages } from "@/lib/city-pages";
-import { countyPages } from "@/lib/county-pages";
-import {
-  formatCurrency,
-  formatSnapshotDate,
-  marketSnapshotMap,
-} from "@/lib/market-data";
-import { neighborhoodPages } from "@/lib/neighborhood-pages";
 
 export const metadata: Metadata = {
   title: "Free Snohomish County CMA for Sellers",
   description:
-    "Get a free Snohomish County CMA plus a seller prep checklist, listing guidance, repair triage, and showing tips for homeowners getting ready to sell in Snohomish County, Washington.",
+    "Get a free Snohomish County CMA plus straightforward seller guidance on pricing, repairs, showings, and listing prep before you put your home on the market.",
   keywords: [
     "free CMA Snohomish County",
-    "Snohomish County real estate agent seller",
-    "Snohomish County listing prep",
-    "how to sell a house in Snohomish County",
-    "what is my house worth in Snohomish County",
-    "Everett home value",
-    "Lynnwood home value",
-    "Edmonds home value",
-    "Mukilteo home value",
-    "Mill Creek home value",
-    "Lake Stevens home value",
-    "Marysville home value",
-    "Monroe home value",
-    "Snohomish WA home value",
+    "Snohomish County seller guide",
+    "what is my home worth Snohomish County",
+    "how to prepare house for sale Snohomish County",
+    "what to fix before selling house Washington",
+    "seller checklist Washington",
   ],
   alternates: {
     canonical: "/",
@@ -37,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free Snohomish County CMA for Sellers",
     description:
-      "Free Snohomish County CMA plus seller guidance on repairs, prep, paperwork, and pricing before you list.",
+      "Free CMA plus practical seller guidance on pricing, repairs, and listing prep before you sell.",
     url: "/",
     images: ["/opengraph-image"],
   },
@@ -45,100 +29,91 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Free Snohomish County CMA for Sellers",
     description:
-      "Free Snohomish County CMA plus seller guidance on repairs, prep, paperwork, and pricing before you list.",
+      "Free CMA plus practical seller guidance on pricing, repairs, and listing prep before you sell.",
     images: ["/opengraph-image"],
   },
 };
 
 const sellerGuideCards = [
   {
-    eyebrow: "Before Listing",
-    title: "What to do before selling your house",
+    eyebrow: "Pricing",
+    title: "How to price before you list",
     description:
-      "Start with decluttering, minor repairs, brighter lighting, and a pricing plan based on real comps before you spend on big projects.",
+      "Use real comps, current competition, and property condition instead of broad online estimates.",
+    href: "#cma",
+  },
+  {
+    eyebrow: "Checklist",
+    title: "What to do before selling",
+    description:
+      "Declutter, repair the obvious problems, clean deeply, and gather paperwork before launch week.",
     href: "#timeline",
   },
   {
     eyebrow: "Repairs",
-    title: "What fixes are worth it before you sell",
+    title: "What fixes are worth it",
     description:
-      "Cosmetic clean-up and anything visibly broken matter more than expensive remodels that rarely pay back in full.",
+      "Cosmetic cleanup and visible maintenance usually matter more than rushed high-cost remodels.",
     href: "#repairs",
   },
   {
     eyebrow: "Showings",
-    title: "How to get your house ready for showings",
+    title: "How to get show-ready fast",
     description:
-      "Less stuff, more light, and a daily show-ready routine help photos land better and buyers stay longer in the home.",
+      "Create a brighter, simpler, lower-friction home that photographs well and feels easy to buy.",
     href: "#show-ready",
-  },
-  {
-    eyebrow: "Paperwork",
-    title: "What documents to gather before listing",
-    description:
-      "Seller disclosures, HOA documents, warranties, utility info, and keys are easier to organize before the market clock starts.",
-    href: "#paperwork",
   },
 ];
 
-const valuationReasons = [
+const sellerFocusPoints = [
   {
-    title: "Upgrades Count",
+    title: "Price around the real buyer pool",
     description:
-      "A new roof, updated HVAC, clean inspection history, and thoughtful improvements all change how buyers price risk.",
+      "The right list price comes from what buyers will compare today, not a Zestimate or stale county average.",
   },
   {
-    title: "Micro-Market Matters",
+    title: "Prep for the issues buyers notice",
     description:
-      "Quiet streets, views, school boundaries, traffic patterns, and lot position move value even when the ZIP code is the same.",
+      "Deferred maintenance, odors, clutter, dark rooms, and weak curb appeal cost more than most sellers expect.",
   },
   {
-    title: "Current Demand Wins",
+    title: "List with cleaner paperwork",
     description:
-      "Pending activity, showing velocity, and buyer competition right now matter more than stale comps from a different market.",
-  },
-  {
-    title: "Prep Changes Price",
-    description:
-      "The same home can perform very differently depending on clutter, odors, deferred maintenance, and how it photographs on day one.",
+      "Disclosures, receipts, HOA information, warranties, and access details are easier to organize before the market clock starts.",
   },
 ];
 
 const timelineSteps = [
   {
-    label: "4 to 6 weeks out",
-    title: "Declutter and make the home feel bigger.",
+    label: "First",
+    title: "Declutter and simplify the home.",
     bullets: [
-      "Box anything you have not used in the last six months.",
-      "Clear countertops, dressers, and shelves down to a few intentional items.",
-      "Thin closets and cabinets so storage reads larger when buyers open them.",
+      "Clear surfaces, thin closets, and remove anything that makes rooms feel smaller.",
+      "Box up extra decor, bulky furniture, and personal items early.",
     ],
   },
   {
-    label: "2 to 4 weeks out",
-    title: "Handle the repairs buyers notice immediately.",
+    label: "Next",
+    title: "Fix the obvious buyer objections.",
     bullets: [
-      "Fix leaky faucets, running toilets, sticking doors, loose hardware, and cracked covers.",
-      "Patch nail holes, touch up paint, and neutralize bold-color rooms if the budget allows.",
-      "Replace burned-out bulbs, refresh caulk, and swap dirty HVAC filters.",
+      "Handle leaky faucets, sticking doors, loose hardware, cracked covers, and burned-out bulbs.",
+      "Touch up paint, refresh caulk, and clean up visible exterior neglect.",
     ],
   },
   {
-    label: "1 to 2 weeks out",
-    title: "Deep clean and gather the seller paperwork.",
+    label: "Then",
+    title: "Deep clean and gather the paperwork.",
     bullets: [
-      "Clean windows, tracks, vents, grout, baseboards, and appliance interiors.",
-      "Pull together disclosure notes, HOA documents, warranties, and repair receipts.",
-      "Set aside keys, mailbox keys, remotes, gate codes, and utility details buyers ask for.",
+      "Clean windows, vents, baseboards, appliances, and bathrooms thoroughly.",
+      "Pull together disclosures, HOA docs, receipts, manuals, remotes, and keys.",
     ],
   },
   {
     label: "Once live",
-    title: "Keep the home show-ready and easy to access.",
+    title: "Keep it show-ready for the first two weeks.",
     bullets: [
-      "Make beds, clear dishes, wipe counters, and do a quick vacuum daily.",
-      "Say yes to as many showings as possible, especially during the first two weeks.",
-      "Leave for showings when you can and take pets with you so buyers linger longer.",
+      "Make beds, wipe counters, vacuum quickly, and remove pet clutter daily.",
+      "Say yes to as many showings as possible while the listing is freshest.",
     ],
   },
 ];
@@ -150,43 +125,35 @@ const repairSections = [
     text: "text-green-700",
     items: [
       {
-        item: "Fresh interior paint",
-        detail: "Neutral rooms photograph better and feel larger online and in person.",
+        item: "Paint, patching, and touch-ups",
+        detail: "A cleaner, more neutral home photographs better and feels easier to buy.",
       },
       {
-        item: "Deep clean and odor removal",
-        detail: "This is often the best prep money spent in the entire listing process.",
+        item: "Deep cleaning and odor removal",
+        detail: "This is often the highest-return pre-list spend on the entire house.",
       },
       {
-        item: "Minor repairs",
-        detail: "Loose hardware, broken fixtures, and deferred maintenance create avoidable buyer doubt.",
-      },
-      {
-        item: "Curb appeal clean-up",
-        detail: "Trimmed landscaping and a sharp front entry change the first showing before buyers walk in.",
+        item: "Minor visible repairs",
+        detail: "Fix the things buyers mentally add to a future repair list during the showing.",
       },
     ],
   },
   {
-    title: "Ask before spending",
+    title: "Usually not first",
     accent: "bg-red-500",
     text: "text-red-600",
     items: [
       {
-        item: "Full kitchen remodel",
-        detail: "The market rarely pays you back dollar-for-dollar for a major last-minute renovation.",
+        item: "Full kitchen remodels",
+        detail: "The market rarely pays back a rushed last-minute renovation dollar for dollar.",
       },
       {
-        item: "Major bath renovation",
-        detail: "A clean cosmetic refresh usually outperforms an expensive overhaul right before listing.",
+        item: "Major bath overhauls",
+        detail: "A clean cosmetic refresh is usually enough if the rest of the home shows well.",
       },
       {
-        item: "Landscape redesign",
-        detail: "Buyers respond to clean and maintained more than elaborate new installs.",
-      },
-      {
-        item: "Any large project without pricing context",
-        detail: "Know the likely list strategy first so you do not improve the wrong thing for your buyer pool.",
+        item: "Large projects without pricing context",
+        detail: "Know your target buyer and likely list strategy before spending heavily.",
       },
     ],
   },
@@ -196,7 +163,7 @@ const searchFaqs = [
   {
     question: "What should I fix before selling my house?",
     answer:
-      "Start with anything obviously broken, anything that smells, and anything that makes the home feel smaller or darker. Buyers forgive dated finishes faster than deferred maintenance.",
+      "Start with anything obviously broken, anything that smells, and anything that makes the home feel smaller, darker, or harder to maintain.",
   },
   {
     question: "Should I remodel before listing my home?",
@@ -206,51 +173,22 @@ const searchFaqs = [
   {
     question: "How do I prepare my house for listing photos?",
     answer:
-      "Clear surfaces, pull excess furniture, open blinds, replace burned-out bulbs, hide pet items, and make every room read as clean, bright, and easy to move through.",
+      "Clear surfaces, remove excess furniture, open blinds, replace burned-out bulbs, hide pet items, and make every room read as clean and bright.",
   },
   {
     question: "What paperwork do I need before I sell a house in Washington?",
     answer:
-      "Most sellers should have disclosure information ready, plus HOA documents if applicable, repair receipts, appliance details, utility information, and all keys, remotes, and access codes.",
+      "Most sellers should have disclosure information ready, plus HOA documents if applicable, repair receipts, appliance details, utility information, and all keys or access codes.",
   },
 ];
 
-const snohomishCities = [
-  "Arlington",
-  "Everett",
-  "Lynnwood",
-  "Edmonds",
-  "Mukilteo",
-  "Mill Creek",
-  "Bothell",
-  "Snohomish",
-  "Monroe",
-  "Stanwood",
-  "Sultan",
-  "Lake Stevens",
-  "Marysville",
-];
-
-const featuredCityPages = cityPages;
-const featuredCountyPages = countyPages;
-const featuredNeighborhoodPages = neighborhoodPages;
-
-const snohomishSellerTopics = [
-  {
-    title: "Price against the real buyer pool",
-    description:
-      "Snohomish County pricing can swing quickly based on commute access, school boundaries, views, lot usability, and whether the home competes with newer inventory nearby.",
-  },
-  {
-    title: "Prep for what buyers flag locally",
-    description:
-      "Older roofs, drainage, moss, crawlspace issues, deferred exterior maintenance, and stale interiors all matter more when buyers compare your home against cleaner options.",
-  },
-  {
-    title: "Know the paperwork early",
-    description:
-      "Seller disclosures, HOA documents, septic or well details when applicable, and repair history are easier to organize before the listing timeline gets compressed.",
-  },
+const popularGuides = [
+  { href: "/sell/snohomish-county-wa", label: "Snohomish County Guide" },
+  { href: "/sell/skagit-county-wa", label: "Skagit County Guide" },
+  { href: "/sell/everett-wa", label: "Everett Seller Page" },
+  { href: "/sell/bothell-wa", label: "Bothell Seller Page" },
+  { href: "/sell/lynnwood-wa", label: "Lynnwood Seller Page" },
+  { href: "/sell/marysville-wa", label: "Marysville Seller Page" },
 ];
 
 const faqSchema = {
@@ -279,14 +217,10 @@ const serviceSchema = {
       "@type": "AdministrativeArea",
       name: "Snohomish County, Washington",
     },
-    ...snohomishCities.map((city) => ({
-      "@type": "City",
-      name: city,
-      containedInPlace: {
-        "@type": "AdministrativeArea",
-        name: "Washington",
-      },
-    })),
+    {
+      "@type": "AdministrativeArea",
+      name: "Skagit County, Washington",
+    },
   ],
   serviceType: [
     "Comparative Market Analysis",
@@ -313,263 +247,125 @@ export default function Home() {
     <div className="min-h-screen bg-[#F8F5F0] font-sans text-[#1A1A1A]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
       <SiteHeader />
 
-      <section className="relative flex h-screen min-h-[700px] items-center justify-center overflow-hidden">
+      <section className="relative overflow-hidden bg-[#111111] text-white">
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%), url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat",
+              "linear-gradient(130deg, rgba(17,17,17,0.94) 15%, rgba(17,17,17,0.78) 55%, rgba(17,17,17,0.9) 100%), url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat",
           }}
         />
-
-        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Free Snohomish County CMA for Sellers
-          </p>
-          <h1 className="text-4xl font-light leading-[1.15] tracking-tight text-white sm:text-5xl md:text-7xl">
-            Know What Buyers Will Pay
-            <br />
-            <span className="font-semibold text-[#C6A664]">Before You List</span>
-          </h1>
-          <p className="mx-auto mt-8 max-w-3xl text-lg font-light leading-relaxed text-white/80 sm:text-xl">
-            Get a hand-built Comparative Market Analysis for your Snohomish
-            County home plus practical seller prep guidance so you can price
-            correctly, skip the wrong repairs, and go live with a cleaner
-            listing from day one.
-          </p>
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href="#cma"
-              className="group rounded-full bg-[#C6A664] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#1A1A1A] transition-all hover:bg-[#D4BC82]"
-            >
-              Get My Free CMA
-              <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </a>
-            <a
-              href="#timeline"
-              className="rounded-full border border-white/30 px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-white/10"
-            >
-              Seller Prep Guide
-            </a>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/40 pt-2">
-            <div className="h-2 w-1 rounded-full bg-white/60" />
-          </div>
-        </div>
-      </section>
-
-      <section id="county-guides" className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="grid gap-8 lg:grid-cols-[1.2fr,0.8fr] lg:items-center">
-            <div>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Snohomish County Sellers
-              </p>
-              <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-                Seller guidance built for Snohomish County, WA
-              </h2>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
-                If you are getting ready to sell in Snohomish County, the goal
-                is not generic advice. It is understanding what buyers in your
-                submarket are actually comparing, what prep work moves the
-                needle, and what price story your home can support right now.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-[#E8E4DF] bg-[#F8F5F0] p-8">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                Areas commonly served
-              </p>
-              <p className="mt-4 text-sm leading-7 text-[#5A5A5A]">
-                {snohomishCities.join(" · ")}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#1A1A1A]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-10 md:grid-cols-4">
-          {[
-            { value: "100+", label: "Homes Successfully Sold" },
-            { value: "$50M+", label: "Total Sales Volume" },
-            { value: "WA", label: "Licensed Agent" },
-            { value: "ASAP", label: "CMA Follow-Up and Prep Guidance" },
-          ].map((item) => (
-            <div key={item.label} className="text-center">
-              <div className="text-2xl font-bold text-[#C6A664] sm:text-3xl">
-                {item.value}
-              </div>
-              <div className="mt-2 text-xs uppercase tracking-[0.15em] text-white/60">
-                {item.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            The Truth About Home Pricing
-          </p>
-          <h2 className="text-3xl font-light leading-[1.2] tracking-tight sm:text-4xl md:text-5xl">
-            A Good Snohomish County List Price Comes From
-            <span className="font-semibold text-[#C6A664]"> Real Context</span>
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-[#5A5A5A]">
-            Automated estimates can be a reference point. They are not a
-            pricing strategy. Sellers usually make or lose money on the details
-            the algorithm cannot see.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-4">
-          {valuationReasons.map((item, index) => (
-            <div
-              key={item.title}
-              className="group overflow-hidden rounded-2xl border border-[#E8E4DF] bg-white shadow-lg transition-all duration-500 hover:border-[#C6A664]/30 hover:shadow-2xl"
-            >
-              <div className="flex h-48 items-center justify-center bg-gradient-to-br from-[#FAF9F6] to-[#F0EDE8] transition-transform duration-700 group-hover:scale-105">
-                {index === 0 && (
-                  <svg
-                    className="h-14 w-14 text-[#C6A664]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 21h18M5 21V7l7-4 7 4v14M9 9h6v6H9z"
-                    />
-                  </svg>
-                )}
-                {index === 1 && (
-                  <svg
-                    className="h-14 w-14 text-[#C6A664]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 21C12 21 3 13.5 3 9a9 9 0 1118 0c0 4.5-9 12-9 12z"
-                    />
-                    <circle cx="12" cy="9" r="2.5" />
-                  </svg>
-                )}
-                {index === 2 && (
-                  <svg
-                    className="h-14 w-14 text-[#C6A664]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M22 7l-8.5 8.5L11 13l-6.5 7H22"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16 7h6v6"
-                    />
-                  </svg>
-                )}
-                {index === 3 && (
-                  <svg
-                    className="h-14 w-14 text-[#C6A664]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 12h14M12 5v14"
-                    />
-                    <circle cx="12" cy="12" r="9" />
-                  </svg>
-                )}
-              </div>
-              <div className="p-6">
-                <h3 className="mb-3 text-lg font-semibold transition-colors group-hover:text-[#C6A664]">
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[#5A5A5A]">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-28">
-          <div className="mb-14 max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Local Seller Strategy
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 py-18 md:grid-cols-[1.1fr,0.9fr] md:py-24">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Free CMA for Snohomish County Sellers
             </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              What Snohomish County home sellers usually need before listing
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {snohomishSellerTopics.map((topic) => (
-              <div
-                key={topic.title}
-                className="rounded-2xl border border-[#E8E4DF] bg-white p-8 shadow-sm"
+            <h1 className="mt-5 text-4xl font-light leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
+              Get a clear price range
+              <br />
+              <span className="font-semibold text-[#C6A664]">
+                before you list
+              </span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/78">
+              HomeMarketPrep helps sellers understand what their home could sell
+              for, what to fix first, and how to get market-ready without
+              overcomplicating the process.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {sellerFocusPoints.map((point) => (
+                <div
+                  key={point.title}
+                  className="rounded-2xl border border-white/10 bg-white/6 p-5"
+                >
+                  <h2 className="text-base font-semibold leading-snug">
+                    {point.title}
+                  </h2>
+                  <p className="mt-3 text-sm leading-6 text-white/70">
+                    {point.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#cma"
+                className="rounded-full bg-[#C6A664] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
               >
-                <h3 className="text-xl font-semibold leading-snug">
-                  {topic.title}
-                </h3>
-                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
-                  {topic.description}
+                Get My Free CMA
+              </a>
+              <a
+                href="#seller-guides"
+                className="rounded-full border border-white/20 px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
+              >
+                Seller Questions
+              </a>
+            </div>
+          </div>
+
+          <div id="cma" className="rounded-[32px] border border-white/10 bg-[#F8F5F0] p-7 text-[#1A1A1A] shadow-2xl sm:p-9">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C6A664]">
+              Start Here
+            </p>
+            <h2 className="mt-3 text-3xl font-light leading-tight tracking-tight">
+              Request your free CMA
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+              Share the property details and we&apos;ll review comparable sales,
+              buyer demand, and the prep moves most likely to affect your list
+              strategy.
+            </p>
+            <div className="mt-6 rounded-3xl bg-white p-6 sm:p-7">
+              <CmaForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              "Hand-built CMA with real comp context",
+              "Practical guidance on what to fix and what to skip",
+              "Fast follow-up from Matt Salit",
+            ].map((item, index) => (
+              <div
+                key={item}
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                  0{index + 1}
                 </p>
+                <p className="mt-3 text-lg font-medium leading-8">{item}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-y border-[#E8E4DF] bg-white">
+      <section id="seller-guides" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Seller Features and Guides
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Seller Questions
             </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Built around the questions sellers actually search before they list
+            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+              The homepage should answer the seller questions that matter before
+              anything else
             </h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -577,7 +373,7 @@ export default function Home() {
               <a
                 key={card.title}
                 href={card.href}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+                className="rounded-2xl border border-[#E8E4DF] bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                   {card.eyebrow}
@@ -594,269 +390,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <div className="mb-14 max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              County Seller Hubs
+      <section id="timeline" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Seller Checklist
             </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Start broad with county pages, then drill down by city and neighborhood
+            <h2 className="mt-4 text-3xl font-light leading-tight tracking-tight sm:text-4xl md:text-5xl">
+              What to do before your house hits the market
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-              These county-level guides pull together market context, city pages,
-              and neighborhood pages so sellers can move from broad trends to a
-              sharper local pricing strategy.
+              Keep it simple: declutter first, fix the obvious issues, clean
+              deeply, and make the home easy to show when the listing goes live.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {featuredCountyPages.map((entry) => {
-              const snapshot = marketSnapshotMap.get(entry.slug);
-
-              return (
-                <Link
-                  key={entry.slug}
-                  href={`/sell/${entry.slug}`}
-                  className="rounded-3xl border border-[#E8E4DF] bg-[#111111] p-8 text-white transition-all hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                    County guide
-                  </p>
-                  <h3 className="mt-3 text-3xl font-light">{entry.county}</h3>
-                  <p className="mt-4 max-w-xl text-sm leading-6 text-white/72">
-                    {entry.metaDescription}
-                  </p>
-                  {snapshot && (
-                    <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                      <div className="rounded-2xl bg-white/6 p-4">
-                        <div className="text-xs uppercase tracking-[0.14em] text-white/55">
-                          Median sale
-                        </div>
-                        <div className="mt-2 text-xl font-semibold">
-                          {formatCurrency(snapshot.medianSalePrice)}
-                        </div>
-                      </div>
-                      <div className="rounded-2xl bg-white/6 p-4">
-                        <div className="text-xs uppercase tracking-[0.14em] text-white/55">
-                          DOM
-                        </div>
-                        <div className="mt-2 text-xl font-semibold">
-                          {snapshot.medianDom} days
-                        </div>
-                      </div>
-                      <div className="rounded-2xl bg-white/6 p-4">
-                        <div className="text-xs uppercase tracking-[0.14em] text-white/55">
-                          Snapshot date
-                        </div>
-                        <div className="mt-2 text-sm font-semibold">
-                          {formatSnapshotDate(snapshot.periodEnd)}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section id="city-pages" className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <div className="mb-14 max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              City Seller Pages
-            </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Local seller pages for the cities you actually care about
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-              Browse city-specific seller pages for pricing context, prep
-              priorities, and common questions before you list.
-            </p>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {featuredCityPages.map((entry) => (
-              <Link
-                key={entry.slug}
-                href={`/sell/${entry.slug}`}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                  {entry.county}, WA
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold">{entry.city}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-                  {entry.metaDescription}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="neighborhood-pages" className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-24">
-          <div className="mb-14 max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Neighborhood and Subarea Pages
-            </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Targeted local pages for smaller search terms sellers actually use
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-              Pulled from the local area dataset in `moving2pnw`, these pages add
-              neighborhood-level seller intent coverage without feeling like a
-              directory dump.
-            </p>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {featuredNeighborhoodPages.map((entry) => {
-              const snapshot = marketSnapshotMap.get(entry.slug);
-
-              return (
-                <Link
-                  key={entry.slug}
-                  href={`/sell/neighborhoods/${entry.slug}`}
-                  className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                    {entry.parentCity}, WA
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold">{entry.areaName}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-                    {entry.metaDescription}
-                  </p>
-                  {snapshot && (
-                    <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
-                      {formatCurrency(snapshot.medianSalePrice)} median sale price •{" "}
-                      {snapshot.medianDom} median DOM • imported {formatSnapshotDate(
-                        snapshot.periodEnd,
-                      )}
-                    </p>
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="bg-[#1A1A1A]"
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, rgba(26,26,26,0.95), rgba(26,26,26,0.8)), url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80)",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="mx-auto max-w-4xl px-6 py-24 text-center text-white">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            How It Works
-          </p>
-          <h2 className="text-3xl font-light leading-tight sm:text-4xl">
-            Tell us about the property.
-            <br />
-            <span className="font-semibold">We&apos;ll do the research.</span>
-          </h2>
-          <div className="mx-auto mt-10 grid max-w-lg grid-cols-3 gap-8 text-white/80">
-            {[
-              { step: "1", label: "Share Details" },
-              { step: "2", label: "We Analyze Comps" },
-              { step: "3", label: "Get Your CMA" },
-            ].map((step) => (
-              <div key={step.step} className="text-center">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#C6A664] text-lg font-bold text-[#C6A664]">
-                  {step.step}
-                </div>
-                <p className="text-xs uppercase tracking-[0.15em]">
-                  {step.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="cma" className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-          <div className="grid items-center gap-16 md:grid-cols-2">
-            <div>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Free Comparative Market Analysis
-              </p>
-              <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-                Get a Pricing Range
-                <br />
-                <span className="font-semibold text-[#C6A664]">
-                  and a Smarter Snohomish County Prep Plan
-                </span>
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-[#5A5A5A]">
-                Share the property details and we&apos;ll review comparable
-                Snohomish County sales, current buyer demand, and the prep
-                decisions most likely to affect your list strategy. Free,
-                local, and no obligation.
-              </p>
-              <div className="mt-8 space-y-4">
-                {[
-                  "Hand-built CMA with real comparable context",
-                  "Practical guidance on what to fix and what to skip",
-                  "ASAP follow-up from Matt Salit",
-                  "No obligation and no pressure",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-[#C6A664]/10">
-                      <svg
-                        className="h-3.5 w-3.5 text-[#C6A664]"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-sm font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-3xl bg-[#F8F5F0] p-8 sm:p-10">
-              <CmaForm />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="timeline" className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-          <div className="mx-auto mb-16 max-w-3xl text-center">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Pre-List Checklist
-            </p>
-            <h2 className="text-3xl font-light leading-[1.2] tracking-tight sm:text-4xl md:text-5xl">
-              What to do before selling your Snohomish County house,
-              <span className="font-semibold"> in order</span>
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#5A5A5A]">
-              Work top to bottom as the list date approaches: less stuff, more
-              light, and everything working. That is the simplest version of a
-              home that shows well and supports a stronger price story.
-            </p>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-4">
+          <div className="mt-14 grid gap-6 lg:grid-cols-4">
             {timelineSteps.map((step) => (
               <div
                 key={step.label}
-                className="rounded-2xl border border-[#E8E4DF] bg-white p-8 shadow-sm"
+                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-8 shadow-sm"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                   {step.label}
@@ -878,26 +430,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="repairs" className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-          <div className="mb-14 max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              What to Fix Before Selling
+      <section id="repairs" className="bg-[#F8F5F0]">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Repairs and Prep
             </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Spend where Snohomish County buyers notice.
-              <span className="font-semibold text-[#C6A664]">
-                {" "}
-                Skip vanity projects.
-              </span>
+            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+              Spend where buyers notice. Skip the vanity projects.
             </h2>
           </div>
-
-          <div className="grid gap-10 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
             {repairSections.map((section) => (
               <div
                 key={section.title}
-                className="overflow-hidden rounded-2xl bg-[#F8F5F0] shadow-sm"
+                className="overflow-hidden rounded-2xl bg-white shadow-sm"
               >
                 <div className={`h-8 ${section.accent}`} />
                 <div className="p-8">
@@ -910,7 +457,9 @@ export default function Home() {
                         <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#C6A664]" />
                         <div>
                           <p className="font-medium">{item.item}</p>
-                          <p className="text-sm text-[#5A5A5A]">{item.detail}</p>
+                          <p className="text-sm leading-6 text-[#5A5A5A]">
+                            {item.detail}
+                          </p>
                         </div>
                       </li>
                     ))}
@@ -919,30 +468,20 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div id="show-ready" className="rounded-3xl bg-[#1A1A1A] p-10 text-white">
+          <div className="mt-8 grid gap-8 lg:grid-cols-2">
+            <div id="show-ready" className="rounded-3xl bg-[#111111] p-10 text-white">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                How to Prepare for Showings
+                Showings
               </p>
               <h2 className="mt-4 text-3xl font-light leading-tight">
                 Show-ready beats perfect.
               </h2>
-              <p className="mt-5 leading-7 text-white/75">
-                Buyers decide quickly. A home that feels bright, open, and easy
-                to move through photographs better, gets stronger showing
-                feedback, and supports cleaner offers.
-              </p>
               <ul className="mt-8 space-y-4 text-sm leading-6 text-white/80">
                 {[
                   "Make beds, clear dishes, wipe counters, and do a quick vacuum daily.",
-                  "Remove pet bowls, litter boxes, and anything creating odor or visual clutter.",
-                  "Open blinds, turn on lights, and keep matching warm bulbs throughout the house.",
-                  "Secure valuables, medications, and personal paperwork before the first showing.",
+                  "Remove pet bowls, litter boxes, and anything that creates odor or clutter.",
+                  "Open blinds, turn on lights, and keep the home easy to move through.",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#C6A664]" />
@@ -952,19 +491,18 @@ export default function Home() {
               </ul>
             </div>
 
-            <div id="paperwork" className="rounded-3xl border border-[#E8E4DF] bg-white p-10">
+            <div className="rounded-3xl border border-[#E8E4DF] bg-white p-10">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Seller Paperwork Checklist
+                Paperwork
               </p>
               <h2 className="mt-4 text-3xl font-light leading-tight">
-                Gather these before the listing clock starts.
+                Gather the important documents early.
               </h2>
               <ul className="mt-8 space-y-4 text-sm leading-6 text-[#5A5A5A]">
                 {[
-                  "Disclosure details for Form 17 so known issues are documented early and accurately.",
-                  "HOA or condo resale documents, dues, CC&Rs, and any special assessment information.",
-                  "Appliance manuals, repair receipts, warranties, and notes on recent improvements.",
-                  "Average utility costs, service contracts, keys, fobs, remotes, and access codes.",
+                  "Disclosure notes and Form 17 details.",
+                  "HOA or condo documents, dues, CC&Rs, and assessments if applicable.",
+                  "Repair receipts, warranties, manuals, utility notes, keys, remotes, and codes.",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#C6A664]" />
@@ -977,14 +515,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
-          <div className="mb-14 max-w-3xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Seller Questions
+      <section id="seller-faqs" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              FAQs
             </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight sm:text-4xl">
-              Snohomish County seller questions people ask before they list
+            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+              Common questions sellers ask before they list
             </h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -1005,25 +543,57 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
+        <div className="mx-auto max-w-7xl px-6 py-18">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr,1.2fr] lg:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Local Guides
+              </p>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                City and county content lives on its own pages
+              </h2>
+              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
+                If you want to drill into local market context, neighborhood pages,
+                or city-specific seller guidance, use the dedicated pages instead of
+                turning the homepage into a directory.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {popularGuides.map((guide) => (
+                <Link
+                  key={guide.href}
+                  href={guide.href}
+                  className="rounded-full border border-[#D8D0C4] bg-white px-4 py-2 text-sm font-medium text-[#1A1A1A] transition-colors hover:border-[#C6A664] hover:text-[#111111]"
+                >
+                  {guide.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         className="relative overflow-hidden"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1920&q=80)",
+            "linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.68)), url(https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1920&q=80)",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
       >
         <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center">
           <h2 className="text-3xl font-light leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
-            Ready to Price the Home
+            Ready to price the home
             <br />
             <span className="font-semibold text-[#C6A664]">
-              and Prep It the Right Way?
+              and prep it the right way?
             </span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-white/70">
-            Free hand-built CMA. Practical seller prep guidance. Local expertise.
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/72">
+            Start with the CMA. Then use the checklist, repair guidance, and seller
+            FAQs to clean up the rest of the process.
           </p>
           <a
             href="#cma"
