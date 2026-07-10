@@ -257,6 +257,206 @@ export const sellerPrepPages: SellerPrepPage[] = [
       },
     ],
   },
+  {
+    slug: "home-staging-tips-to-sell-house-wa",
+    eyebrow: "Staging and Presentation",
+    title: "Home Staging Tips to Sell a House in Washington",
+    shortTitle: "How to stage your house to sell",
+    metaDescription:
+      "Washington home staging guide for sellers. Learn which rooms matter most, what to remove, and how to make listing photos and showings feel stronger before your house hits the market.",
+    summary:
+      "Staging is less about decorating and more about helping buyers read the layout quickly. The right edits make the home feel brighter, calmer, and easier to imagine living in.",
+    timeframe: "Start 2-3 weeks before listing",
+    whyItMatters:
+      "Buyers compare homes fast online and in person. Staging helps the strongest rooms read clearly, keeps attention on the home instead of your belongings, and supports better listing photos.",
+    checklist: [
+      "Start with the rooms buyers care about most first: living room, kitchen, primary bedroom, and main bathrooms.",
+      "Edit furniture so walkways stay open and each room reads with a clear purpose.",
+      "Use lighter bedding, simple pillows, and a small amount of neutral decor instead of filling surfaces.",
+      "Open blinds, replace dim bulbs, and keep window areas clean so natural light does more work.",
+      "Remove oversized recliners, extra dining chairs, or bulky pieces that make rooms feel tighter.",
+      "Make sure the exterior entry and front porch feel maintained because the showing starts before the lockbox.",
+    ],
+    mistakes: [
+      "Trying to decorate around clutter instead of actually removing enough belongings.",
+      "Leaving too much furniture in place because the room works for daily life even if it feels cramped in photos.",
+      "Treating every room equally instead of focusing first on the rooms that sell the house.",
+    ],
+    localAngle:
+      "In Snohomish County, buyers often compare presentation quality closely within the same price band. Cleaner staging and better light can make a home feel more competitive before anyone studies the details.",
+    faqs: [
+      {
+        question: "Do I need professional staging before selling my house?",
+        answer:
+          "Not always. Many homes improve enough through furniture editing, decluttering, cleaner bedding, lighter decor, and stronger photo prep. Professional staging can help when rooms feel empty, awkward, or dated.",
+      },
+      {
+        question: "Which rooms should I stage first before listing?",
+        answer:
+          "Start with the living room, kitchen, primary bedroom, and the cleanest bathrooms. Those spaces do most of the work in photos and set the tone for the rest of the tour.",
+      },
+    ],
+  },
+  {
+    slug: "seller-disclosures-checklist-wa",
+    eyebrow: "Disclosures and Known Issues",
+    title: "Seller Disclosures Checklist for Washington Home Sellers",
+    shortTitle: "Seller disclosures checklist",
+    metaDescription:
+      "Washington seller disclosures checklist for homeowners preparing to list. Learn what to gather, what buyers usually ask about, and how to reduce last-minute disclosure stress.",
+    summary:
+      "Disclosure stress usually comes from disorganization, not just from the form itself. The earlier you gather facts, receipts, and property history, the easier the listing feels once questions start.",
+    timeframe: "Start 1-2 weeks before listing",
+    whyItMatters:
+      "Disclosures shape buyer confidence. When the property story feels clear and consistent, buyers spend less energy wondering what they are missing and more energy deciding whether the house fits.",
+    checklist: [
+      "List known repairs, updates, leaks, insurance claims, or recurring issues while they are still easy to remember.",
+      "Pull receipts or invoices for major system work, roof work, plumbing, electrical, or water-related repairs.",
+      "Review any HOA, condo, or neighborhood documents that affect the property or the buyer experience.",
+      "Note what stays with the property, including appliances, mounted TVs, hot tubs, sheds, or outdoor equipment.",
+      "Be ready to explain any past issues that were resolved, including what was done and when it happened.",
+      "Keep disclosure notes and supporting documents together so answers stay consistent once the home is active.",
+    ],
+    mistakes: [
+      "Assuming buyers will not ask about past repairs once the home looks clean and updated.",
+      "Trying to reconstruct property history after the listing is live and questions are already coming in.",
+      "Answering from memory when receipts, invoices, or prior records would give a cleaner explanation.",
+    ],
+    localAngle:
+      "In Washington, organized disclosures matter because buyers often compare risk just as much as finishes. A clear paper trail can keep a property-specific issue from feeling bigger than it is.",
+    faqs: [
+      {
+        question: "What should I gather for seller disclosures before listing?",
+        answer:
+          "Start with repair receipts, warranty information, HOA or condo information if applicable, notes on known issues, and anything that helps explain past maintenance or improvements accurately.",
+      },
+      {
+        question: "Should I disclose old issues that were already fixed?",
+        answer:
+          "Usually yes. Resolved issues are easier for buyers to process when they are explained clearly with supporting details than when they are discovered later without context.",
+      },
+    ],
+  },
+  {
+    slug: "best-time-to-sell-house-wa",
+    eyebrow: "Timing the Launch",
+    title: "When Is the Best Time to Sell a House in Washington?",
+    shortTitle: "Best time to sell a house",
+    metaDescription:
+      "Washington seller timing guide on when to list a house for sale. Learn how season, prep readiness, buyer demand, and your own move timeline affect the best listing window.",
+    summary:
+      "The best time to list is not just seasonal. It is when the home is ready, the pricing is realistic, and the launch is strong enough to make the first two weeks count.",
+    timeframe: "Start planning 4-8 weeks before listing",
+    whyItMatters:
+      "Timing affects buyer traffic, but readiness affects conversion. A well-prepared listing in a normal week often outperforms a rushed listing launched in a supposedly perfect one.",
+    checklist: [
+      "Work backward from your move, school, job, or purchase timeline so the list date serves a real goal.",
+      "Make sure decluttering, repairs, cleaning, photos, and paperwork are ready before fixing the launch date.",
+      "Use a CMA to compare current competition instead of assuming the season alone will carry the listing.",
+      "Avoid launching during a week when the home is only half ready or showing access will be difficult.",
+      "Plan for the first two weeks on market to be the strongest window for buyer attention and feedback.",
+      "Leave enough time for any prep vendors you need so the listing date is not built around avoidable delays.",
+    ],
+    mistakes: [
+      "Choosing a list date based on the calendar while the house itself is still not launch-ready.",
+      "Waiting for a perfect market moment while ignoring the leverage of better prep and clearer pricing.",
+      "Underestimating how much first-week showing access shapes the whole listing timeline.",
+    ],
+    localAngle:
+      "Snohomish County sellers usually benefit most when timing and readiness line up together. A cleaner launch often matters more than chasing a specific week if the home still needs work.",
+    faqs: [
+      {
+        question: "What month is best to sell a house in Washington?",
+        answer:
+          "There is no single best month for every seller. Seasonal demand matters, but the stronger question is whether the home is prepared well enough to take advantage of the launch window when it goes live.",
+      },
+      {
+        question: "Should I wait to list until everything is perfect?",
+        answer:
+          "Usually no. The goal is not perfection. It is a home that is priced credibly, photographed well, easy to show, and not carrying visible issues that distract buyers.",
+      },
+    ],
+  },
+  {
+    slug: "sell-house-as-is-wa",
+    eyebrow: "As-Is Strategy",
+    title: "Should You Sell Your House As-Is in Washington?",
+    shortTitle: "Should you sell as-is",
+    metaDescription:
+      "Washington seller guide on selling a house as-is. Learn when as-is makes sense, what prep still matters, and how pricing and disclosures affect buyer reaction.",
+    summary:
+      "Selling as-is does not mean doing nothing. It means being deliberate about what you will not repair while still making the home easier to understand and easier to tour.",
+    timeframe: "Decide before repair money is spent",
+    whyItMatters:
+      "As-is listings can work, but buyers still compare condition, transparency, and price. A home marketed as-is without a clear strategy often just feels uncertain instead of straightforward.",
+    checklist: [
+      "Use a CMA first so the as-is decision is tied to realistic value instead of frustration or guesswork.",
+      "Handle trash, deep cleaning, and the most distracting cosmetic issues even if bigger repairs stay undone.",
+      "Consider whether a pre-inspection or contractor bids would help frame larger known issues more clearly.",
+      "Be ready with organized disclosures and an honest explanation of what is known about the property.",
+      "Price against the likely buyer pool, not against renovated listings that solve different problems.",
+      "Make the showing experience easy so buyers can evaluate the property without extra friction.",
+    ],
+    mistakes: [
+      "Using as-is as a reason to skip cleaning, access, or basic presentation entirely.",
+      "Pricing close to updated competition while expecting buyers to absorb visible repair risk.",
+      "Being vague about known condition issues and hoping buyers will fill in the gaps kindly.",
+    ],
+    localAngle:
+      "In local Washington markets, as-is homes still benefit from clean presentation and sharper disclosures. Buyers can handle work, but they hesitate when the condition story feels unclear.",
+    faqs: [
+      {
+        question: "Can I sell my house as-is without making repairs?",
+        answer:
+          "Yes, but that does not mean no prep. Cleaning, access, pricing discipline, and clear disclosures still matter because buyers are evaluating both the work itself and the uncertainty around it.",
+      },
+      {
+        question: "Does selling as-is mean I should price lower?",
+        answer:
+          "Usually yes relative to comparable homes that are more updated or easier to finance. The key is understanding how much condition risk the likely buyer pool will mentally deduct.",
+      },
+    ],
+  },
+  {
+    slug: "pre-listing-inspection-wa",
+    eyebrow: "Inspection Strategy",
+    title: "Should You Get a Pre-Listing Inspection Before Selling?",
+    shortTitle: "Pre-listing inspection before selling",
+    metaDescription:
+      "Washington seller guide on pre-listing inspections. Learn when a pre-inspection can help, what it changes, and how to use the findings without creating extra confusion.",
+    summary:
+      "A pre-listing inspection is not always necessary, but it can help when the house is older, the condition is unclear, or you want fewer surprises once buyers start writing offers.",
+    timeframe: "Consider 2-4 weeks before listing",
+    whyItMatters:
+      "Some sellers need more certainty before spending repair money or setting price expectations. A pre-inspection can create cleaner decisions around repairs, disclosures, and buyer negotiation risk.",
+    checklist: [
+      "Consider a pre-list inspection if the home is older, has deferred maintenance, or has systems buyers may question quickly.",
+      "Use the report to separate safety or confidence issues from items that are mostly cosmetic.",
+      "Decide whether to repair key items, disclose them clearly, or leave them reflected in price.",
+      "Avoid doing every recommendation automatically without first understanding the likely price strategy.",
+      "Keep contractor bids or repair estimates if you want buyers to understand the cost range more clearly.",
+      "Use the inspection as a planning tool, not just as a way to generate a longer to-do list.",
+    ],
+    mistakes: [
+      "Getting a pre-inspection and then panicking into unnecessary work before pricing is clear.",
+      "Treating every line item as equally important when many items will not influence buyer decisions much.",
+      "Ordering the inspection too late to use the information well before photos and launch.",
+    ],
+    localAngle:
+      "For Snohomish County sellers with older homes, acreage properties, or a longer maintenance story, a pre-list inspection can help turn uncertainty into a clearer repair-or-disclose decision.",
+    faqs: [
+      {
+        question: "Should I get a pre-listing inspection before selling?",
+        answer:
+          "Sometimes. It is most useful when the home has condition questions that could otherwise create messy surprises later or when you need help deciding what should be repaired before listing.",
+      },
+      {
+        question: "Will a pre-list inspection make buyers more confident?",
+        answer:
+          "It can, especially when it helps you clean up major questions early and present the home with better context. The report alone does not solve everything, but it can reduce ambiguity.",
+      },
+    ],
+  },
 ];
 
 export const sellerPrepPageMap = new Map(

@@ -40,17 +40,71 @@ const sellerQuestionVisuals: Record<
     cue: "Protect the first two weeks",
     tone: "Simple routines create better access and better momentum.",
   },
+  "home-staging-tips-to-sell-house-wa": {
+    id: "07",
+    cue: "Help buyers read the layout",
+    tone: "Furniture edits and better light usually beat extra decor.",
+  },
+  "seller-disclosures-checklist-wa": {
+    id: "08",
+    cue: "Reduce risk before questions hit",
+    tone: "Clear disclosures keep property issues from feeling larger.",
+  },
+  "best-time-to-sell-house-wa": {
+    id: "09",
+    cue: "Line up timing with readiness",
+    tone: "The right week matters less than a stronger launch.",
+  },
+  "sell-house-as-is-wa": {
+    id: "10",
+    cue: "Be deliberate about condition",
+    tone: "As-is still works better with clean prep and pricing discipline.",
+  },
+  "pre-listing-inspection-wa": {
+    id: "11",
+    cue: "Find issues before buyers do",
+    tone: "Use inspection clarity to decide repair, disclose, or price around it.",
+  },
 };
+
+const featuredPrepSlugs = [
+  "declutter-before-selling-house-wa",
+  "repairs-before-selling-house-wa",
+  "paperwork-needed-to-sell-house-wa",
+  "show-ready-house-checklist-wa",
+  "home-staging-tips-to-sell-house-wa",
+  "best-time-to-sell-house-wa",
+];
+
+const additionalPrepSlugs = [
+  "deep-clean-before-listing-house-wa",
+  "moving-storage-checklist-before-selling-wa",
+  "seller-disclosures-checklist-wa",
+  "sell-house-as-is-wa",
+  "pre-listing-inspection-wa",
+];
+
+const featuredPrepPages = sellerPrepPages.filter((page) =>
+  featuredPrepSlugs.includes(page.slug),
+);
+
+const additionalPrepPages = sellerPrepPages.filter((page) =>
+  additionalPrepSlugs.includes(page.slug),
+);
 
 export const metadata: Metadata = {
   title: "Seller Questions Before Listing in Snohomish County",
   description:
-    "Seller answers for Snohomish County homeowners getting ready to list. Learn what to fix, how to declutter, what paperwork to gather, how to stay show-ready, and when to request a CMA.",
+    "Seller answers for Snohomish County homeowners getting ready to list. Learn what to fix, how to declutter, stage, disclose, time the launch, sell as-is, and request a CMA.",
   keywords: [
     "seller questions before listing",
     "how to prepare house for sale Snohomish County",
     "what to fix before selling house Washington",
+    "how to stage a house to sell Washington",
     "paperwork needed to sell house Washington",
+    "seller disclosures checklist Washington",
+    "best time to sell house Washington",
+    "sell house as is Washington",
     "show ready house checklist",
     "free CMA Snohomish County",
     "pre listing checklist Washington",
@@ -61,7 +115,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Seller Questions Before Listing in Snohomish County",
     description:
-      "Seller answers on decluttering, repairs, paperwork, showings, and free CMA help before you list.",
+      "Seller answers on decluttering, repairs, staging, disclosures, showings, as-is strategy, and free CMA help before you list.",
     url: "/",
     images: ["/opengraph-image"],
   },
@@ -69,7 +123,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Seller Questions Before Listing in Snohomish County",
     description:
-      "Seller answers on decluttering, repairs, paperwork, showings, and free CMA help before you list.",
+      "Seller answers on decluttering, repairs, staging, disclosures, showings, as-is strategy, and free CMA help before you list.",
     images: ["/opengraph-image"],
   },
 };
@@ -106,6 +160,22 @@ const searchFaqs = [
     detail:
       "The first two weeks usually shape the whole listing arc. A simple reset routine, flexible showing access, and a home that feels easy to buy matter more than trying to make it perfect every hour of the day.",
     href: "/sell/checklists/show-ready-house-checklist-wa",
+  },
+  {
+    question: "Do I need staging before I list my house?",
+    answer:
+      "Not always professionally, but most sellers need some form of staging. Furniture editing, cleaner bedding, better light, and less visual clutter usually help the home photograph and show better.",
+    detail:
+      "Staging is really about making the layout easier to read. Sellers usually get more from removing bulky pieces and simplifying the rooms than from adding more decor.",
+    href: "/sell/checklists/home-staging-tips-to-sell-house-wa",
+  },
+  {
+    question: "Should I sell my house as-is or fix it first?",
+    answer:
+      "That depends on price range, buyer pool, and the type of condition issues involved. Many sellers can skip major repairs, but as-is still works best when the home is clean, accessible, and priced realistically.",
+    detail:
+      "As-is is a pricing and expectation strategy, not an excuse to leave the home confusing. Buyers still compare presentation, disclosures, and how much uncertainty they are being asked to absorb.",
+    href: "/sell/checklists/sell-house-as-is-wa",
   },
 ];
 
@@ -285,7 +355,7 @@ export default function Home() {
             <SectionDivider align="center" />
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {sellerPrepPages.map((page) => {
+            {featuredPrepPages.map((page) => {
               const visual = sellerQuestionVisuals[page.slug] ?? {
                 id: "00",
                 cue: "Seller prep",
@@ -351,6 +421,63 @@ export default function Home() {
                 </div>
               </Link>
             );})}
+          </div>
+          <div className="mt-12 rounded-[32px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 sm:p-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div className="max-w-3xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  More Seller Questions
+                </p>
+                <h3 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl">
+                  The topics sellers usually realize they need right after the basics
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[#5A5A5A] sm:text-base">
+                  These pages cover the things sellers search once pricing, repairs,
+                  and paperwork lead into deeper decisions about timing, condition,
+                  inspection risk, and how much effort to put in before launch.
+                </p>
+              </div>
+              <div className="rounded-full border border-[#D8D0C4] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
+                Smart extras
+              </div>
+            </div>
+            <div className="mt-8 grid gap-4 lg:grid-cols-2">
+              {additionalPrepPages.map((page) => {
+                const visual = sellerQuestionVisuals[page.slug] ?? {
+                  id: "00",
+                  cue: "Seller prep",
+                  tone: "Sharper prep supports cleaner pricing and launch decisions.",
+                };
+
+                return (
+                  <Link
+                    key={page.slug}
+                    href={`/sell/checklists/${page.slug}`}
+                    className="group rounded-[24px] border border-[#E8E4DF] bg-white p-5 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-md"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C6A664]">
+                          {visual.id} · {page.timeframe}
+                        </p>
+                        <h4 className="mt-3 text-xl font-semibold leading-snug">
+                          {page.shortTitle}
+                        </h4>
+                      </div>
+                      <span className="text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
+                        →
+                      </span>
+                    </div>
+                    <p className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-[#1A1A1A]">
+                      {visual.cue}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
+                      {page.summary}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

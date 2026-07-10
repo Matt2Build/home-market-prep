@@ -56,6 +56,94 @@ const prepVisuals: Record<
     cue: "Keep the reset routine simple and sustainable.",
     result: "Better access and better early momentum.",
   },
+  "home-staging-tips-to-sell-house-wa": {
+    icon: "07",
+    accent: "Stage",
+    cue: "Edit the rooms so buyers understand them faster.",
+    result: "Stronger photos and cleaner room-to-room flow.",
+  },
+  "seller-disclosures-checklist-wa": {
+    icon: "08",
+    accent: "Disclose",
+    cue: "Organize the property story before buyers ask for it.",
+    result: "Less uncertainty around known issues and repairs.",
+  },
+  "best-time-to-sell-house-wa": {
+    icon: "09",
+    accent: "Time",
+    cue: "Launch when readiness and pricing are actually aligned.",
+    result: "A stronger first two weeks on market.",
+  },
+  "sell-house-as-is-wa": {
+    icon: "10",
+    accent: "As-Is",
+    cue: "Frame the condition honestly and price around it clearly.",
+    result: "Less confusion between buyer expectation and reality.",
+  },
+  "pre-listing-inspection-wa": {
+    icon: "11",
+    accent: "Inspect",
+    cue: "Use inspection clarity before repair money gets spent blindly.",
+    result: "Cleaner decisions on repairs, disclosures, and pricing.",
+  },
+};
+
+const relatedPrepSlugs: Record<string, string[]> = {
+  "declutter-before-selling-house-wa": [
+    "deep-clean-before-listing-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "moving-storage-checklist-before-selling-wa",
+  ],
+  "moving-storage-checklist-before-selling-wa": [
+    "declutter-before-selling-house-wa",
+    "show-ready-house-checklist-wa",
+    "best-time-to-sell-house-wa",
+  ],
+  "repairs-before-selling-house-wa": [
+    "pre-listing-inspection-wa",
+    "sell-house-as-is-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "deep-clean-before-listing-house-wa": [
+    "declutter-before-selling-house-wa",
+    "show-ready-house-checklist-wa",
+    "home-staging-tips-to-sell-house-wa",
+  ],
+  "paperwork-needed-to-sell-house-wa": [
+    "seller-disclosures-checklist-wa",
+    "best-time-to-sell-house-wa",
+    "show-ready-house-checklist-wa",
+  ],
+  "show-ready-house-checklist-wa": [
+    "deep-clean-before-listing-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "moving-storage-checklist-before-selling-wa",
+  ],
+  "home-staging-tips-to-sell-house-wa": [
+    "declutter-before-selling-house-wa",
+    "deep-clean-before-listing-house-wa",
+    "show-ready-house-checklist-wa",
+  ],
+  "seller-disclosures-checklist-wa": [
+    "paperwork-needed-to-sell-house-wa",
+    "pre-listing-inspection-wa",
+    "sell-house-as-is-wa",
+  ],
+  "best-time-to-sell-house-wa": [
+    "repairs-before-selling-house-wa",
+    "show-ready-house-checklist-wa",
+    "moving-storage-checklist-before-selling-wa",
+  ],
+  "sell-house-as-is-wa": [
+    "repairs-before-selling-house-wa",
+    "seller-disclosures-checklist-wa",
+    "pre-listing-inspection-wa",
+  ],
+  "pre-listing-inspection-wa": [
+    "repairs-before-selling-house-wa",
+    "seller-disclosures-checklist-wa",
+    "sell-house-as-is-wa",
+  ],
 };
 
 const relatedCities = cityPages
@@ -183,6 +271,9 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
       },
     ],
   };
+  const relatedPrepPages = (relatedPrepSlugs[page.slug] ?? [])
+    .map((slug) => sellerPrepPageMap.get(slug))
+    .filter((entry): entry is SellerPrepPage => Boolean(entry));
 
   return (
     <div className="min-h-screen bg-[#F8F5F0] text-[#1A1A1A]">
@@ -383,13 +474,22 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               title="Get a pricing read before spending more"
               description="Use a local CMA to decide which prep items matter most for your specific house and price range."
             />
+            {relatedPrepPages.slice(0, 2).map((entry) => (
+              <RelatedGuideCard
+                key={entry.slug}
+                href={`/sell/checklists/${entry.slug}`}
+                eyebrow="Seller Guide"
+                title={entry.shortTitle}
+                description={entry.summary}
+              />
+            ))}
             <RelatedGuideCard
               href="/sell/snohomish-county-wa"
               eyebrow="County Guide"
               title="Snohomish County seller guide"
               description="Browse the broader county-level market context and use city pages to narrow down buyer comparisons."
             />
-            {relatedCities.slice(0, 2).map((city) => (
+            {relatedCities.slice(0, 1).map((city) => (
               <RelatedGuideCard
                 key={city.href}
                 href={city.href}
