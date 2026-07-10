@@ -50,9 +50,10 @@ export default function CmaForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-[#1A1A1A]">Your CMA Is Being Prepared</h3>
+        <h3 className="text-xl font-semibold text-[#1A1A1A]">Your CMA request is in</h3>
         <p className="mt-3 text-[#5A5A5A] leading-relaxed max-w-sm mx-auto">
-          We&apos;re researching comps and current market data for your property. Check your inbox — we&apos;ll follow up ASAP.
+          We&apos;re reviewing comps and current market data for your property now.
+          Check your inbox and we&apos;ll follow up ASAP.
         </p>
       </div>
     );
@@ -64,7 +65,7 @@ export default function CmaForm() {
       <div className="mb-8">
         <div className="flex justify-between items-center mb-3">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#C6A664]">
-            Step {step + 1} of 2
+            Quick 2-step form
           </p>
           <p className="text-xs text-[#5A5A5A]">{step === 0 ? "50" : "100"}%</p>
         </div>
@@ -79,11 +80,14 @@ export default function CmaForm() {
       {/* Step 0: Property Address */}
       {step === 0 && (
         <div>
-          <h3 className="text-xl font-semibold mb-6">What&apos;s your address?</h3>
+          <h3 className="text-xl font-semibold mb-2">What property should we price?</h3>
+          <p className="mb-6 text-sm leading-6 text-[#5A5A5A]">
+            Enter the address first. Extra details help, but they&apos;re optional.
+          </p>
           <div className="space-y-4">
             <input
               type="text"
-              placeholder="123 Main St, City, WA 98001"
+              placeholder="123 Main St, City, WA 98201"
               value={values.address || ""}
               onChange={(e) => handleChange("address", e.target.value)}
               className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
@@ -92,21 +96,21 @@ export default function CmaForm() {
             <div className="grid grid-cols-3 gap-3">
               <input
                 type="number"
-                placeholder="Beds (opt)"
+                placeholder="Beds"
                 value={values.beds || ""}
                 onChange={(e) => handleChange("beds", e.target.value)}
                 className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
               />
               <input
                 type="text"
-                placeholder="Baths (opt)"
+                placeholder="Baths"
                 value={values.baths || ""}
                 onChange={(e) => handleChange("baths", e.target.value)}
                 className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
               />
               <input
                 type="number"
-                placeholder="Sq Ft (opt)"
+                placeholder="Sq Ft"
                 value={values.sqft || ""}
                 onChange={(e) => handleChange("sqft", e.target.value)}
                 className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
@@ -119,18 +123,21 @@ export default function CmaForm() {
       {/* Step 1: Email + Name */}
       {step === 1 && (
         <div>
-          <h3 className="text-xl font-semibold mb-6">Where should we send your CMA?</h3>
+          <h3 className="text-xl font-semibold mb-2">Where should we send it?</h3>
+          <p className="mb-6 text-sm leading-6 text-[#5A5A5A]">
+            We&apos;ll email your CMA and any quick prep notes here.
+          </p>
           <div className="space-y-4">
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Name"
               value={values.name || ""}
               onChange={(e) => handleChange("name", e.target.value)}
               className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
             />
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="Email"
               value={values.email || ""}
               onChange={(e) => handleChange("email", e.target.value)}
               className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
@@ -183,7 +190,7 @@ export default function CmaForm() {
             disabled={!values.name?.trim() || !values.email?.trim() || submitting}
             className="rounded-full bg-[#1A1A1A] px-8 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#333] transition-colors"
           >
-            {submitting ? "Submitting..." : "Get My Free CMA"}
+            {submitting ? "Sending..." : "Send My Free CMA"}
           </button>
         )}
       </div>

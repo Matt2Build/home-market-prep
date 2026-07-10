@@ -67,19 +67,19 @@ const sellerGuideCards = [
 
 const sellerFocusPoints = [
   {
-    title: "Price around the real buyer pool",
+    title: "Know the likely price range",
     description:
-      "The right list price comes from what buyers will compare today, not a Zestimate or stale county average.",
+      "Get a real comp-based read before you pick a list price or spend money in the wrong places.",
   },
   {
-    title: "Prep for the issues buyers notice",
+    title: "Prioritize the right prep",
     description:
-      "Deferred maintenance, odors, clutter, dark rooms, and weak curb appeal cost more than most sellers expect.",
+      "Find out which repairs and cleanup items actually matter before you go live.",
   },
   {
-    title: "List with cleaner paperwork",
+    title: "Get market-ready faster",
     description:
-      "Disclosures, receipts, HOA information, warranties, and access details are easier to organize before the market clock starts.",
+      "Use the checklist, repair guidance, and seller FAQs to avoid a messy pre-list scramble.",
   },
 ];
 
@@ -274,16 +274,13 @@ export default function Home() {
               Free CMA for Snohomish County Sellers
             </p>
             <h1 className="mt-5 text-4xl font-light leading-[1.08] tracking-tight sm:text-5xl md:text-6xl">
-              Get a clear price range
-              <br />
-              <span className="font-semibold text-[#C6A664]">
-                before you list
-              </span>
+              Find out what your home could sell for
+              <span className="font-semibold text-[#C6A664]"> before you list</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/78">
-              HomeMarketPrep helps sellers understand what their home could sell
-              for, what to fix first, and how to get market-ready without
-              overcomplicating the process.
+              Get a hand-built CMA, straightforward prep guidance, and a cleaner
+              plan for pricing, repairs, and launch timing without turning the
+              whole process into a project.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {sellerFocusPoints.map((point) => (
@@ -314,6 +311,9 @@ export default function Home() {
                 Seller Questions
               </a>
             </div>
+            <p className="mt-5 text-sm leading-6 text-white/60">
+              No obligation. Just local pricing context and clear next steps.
+            </p>
           </div>
 
           <div id="cma" className="rounded-[32px] border border-white/10 bg-[#F8F5F0] p-7 text-[#1A1A1A] shadow-2xl sm:p-9">
@@ -324,10 +324,21 @@ export default function Home() {
               Request your free CMA
             </h2>
             <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-              Share the property details and we&apos;ll review comparable sales,
-              buyer demand, and the prep moves most likely to affect your list
-              strategy.
+              Tell us where the property is and where to send the CMA. We&apos;ll
+              review comps, current competition, and the prep moves most likely
+              to change your list strategy.
             </p>
+            <div className="mt-5 flex flex-wrap gap-3 text-xs font-medium text-[#5A5A5A]">
+              <span className="rounded-full bg-white px-3 py-1.5">
+                Hand-built comp review
+              </span>
+              <span className="rounded-full bg-white px-3 py-1.5">
+                Seller prep guidance
+              </span>
+              <span className="rounded-full bg-white px-3 py-1.5">
+                Fast follow-up
+              </span>
+            </div>
             <div className="mt-6 rounded-3xl bg-white p-6 sm:p-7">
               <CmaForm />
             </div>
