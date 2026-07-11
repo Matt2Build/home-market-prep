@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  LocalGuideAnchorNav,
+  LocalGuideFactGrid,
   LocalGuideHeroAside,
   LocalGuideLinkCard,
   LocalGuidePanel,
+  LocalGuideSectionHeader,
   LocalGuideStatementCard,
 } from "@/components/LocalGuideBlocks";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
@@ -185,6 +188,17 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
   const sellerGuides = getNeighborhoodSellerGuides(
     neighborhoodSellerGuideSlugs[page.slug] ?? [],
   );
+  const neighborhoodAnchorLinks = [
+    { href: "#neighborhood-overview", label: "Overview" },
+    { href: "#neighborhood-pricing", label: "Buyer lens" },
+    ...(sellerGuides.length > 0
+      ? [{ href: "#neighborhood-guides", label: "Seller guides" }]
+      : []),
+    ...(nearbyAreas.length > 0
+      ? [{ href: "#neighborhood-nearby", label: "Nearby pages" }]
+      : []),
+    { href: "#neighborhood-faqs", label: "FAQs" },
+  ];
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -271,9 +285,12 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
                   Seller prep guide
                 </Link>
               )}
-              <span className="rounded-full border border-white/15 px-4 py-2">
-                Neighborhood-level seller SEO page
-              </span>
+              <Link
+                href="/#cma"
+                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+              >
+                Free CMA
+              </Link>
             </div>
           </div>
           <LocalGuideHeroAside
@@ -306,6 +323,8 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
         </div>
       </section>
 
+      <LocalGuideAnchorNav links={neighborhoodAnchorLinks} />
+
       {snapshot && (
         <div className="bg-white">
           <div className="mx-auto max-w-7xl px-6 py-12 sm:py-14">
@@ -321,23 +340,15 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
         </div>
       )}
 
-      <section className="bg-[#F8F5F0]">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.2fr,0.8fr] lg:items-start">
+      <section id="neighborhood-overview" className="bg-[#F8F5F0]">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                1
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Local Overview
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              How sellers should think about {page.areaName}
-            </h2>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
-              {page.localSummary}
-            </p>
+            <LocalGuideSectionHeader
+              index="1"
+              eyebrow="Local Overview"
+              title={`How sellers should think about ${page.areaName}`}
+              description={page.localSummary}
+            />
             <SectionDivider />
           </div>
           <LocalGuidePanel
@@ -346,24 +357,40 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             items={page.sellerMoves}
           />
         </div>
+        <div className="mx-auto max-w-7xl px-6 pb-12">
+          <LocalGuideFactGrid
+            items={[
+              {
+                label: "Parent city",
+                value: parentCity?.city ?? page.parentCity,
+                detail: "Use the city page when you need the broader comparison set that surrounds this subarea.",
+              },
+              {
+                label: "Nearby pages",
+                value: `${nearbyAreas.length}`,
+                detail: "Cross-shopping nearby subareas helps when buyers compare one pocket against another inside the same city.",
+              },
+              {
+                label: "Pricing view",
+                value: snapshot ? formatCurrency(snapshot.medianSalePrice) : "Hyperlocal",
+                detail: snapshot
+                  ? `Imported snapshot dated ${formatSnapshotDate(snapshot.periodEnd)}.`
+                  : "Request a CMA when the neighborhood view still needs to be translated into your exact property.",
+              },
+            ]}
+          />
+        </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                2
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Pricing Factors
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              What buyers in {page.areaName} tend to compare
-            </h2>
-            <SectionDivider />
-          </div>
+      <section id="neighborhood-pricing" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="2"
+            eyebrow="Pricing Factors"
+            title={`What buyers in ${page.areaName} tend to compare`}
+            description="Neighborhood pages work best when buyer comparisons get pickier than a broad city median can explain."
+          />
+          <SectionDivider />
           <div className="grid gap-5 md:grid-cols-3">
             {page.pricingFactors.map((factor) => (
               <LocalGuideStatementCard
@@ -377,26 +404,17 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
       </section>
 
       {sellerGuides.length > 0 && (
-        <section className="bg-[#F8F5F0]">
-          <div className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  3
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Seller Prep Guides
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Seller topics that usually connect to {page.areaName}
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-                These guides cover the prep decisions that tend to matter once sellers
-                understand the local buyer expectations in {page.areaName}.
-              </p>
-              <SectionDivider />
-            </div>
+        <section id="neighborhood-guides" className="bg-[#F8F5F0]">
+          <div className="mx-auto max-w-7xl px-6 py-12">
+            <LocalGuideSectionHeader
+              index="3"
+              eyebrow="Seller Prep Guides"
+              title={`Seller topics that usually connect to ${page.areaName}`}
+              description={`These guides cover the prep decisions that tend to matter once sellers understand the local buyer expectations in ${page.areaName}.`}
+              badge={`${sellerGuides.length} related guides`}
+              align="split"
+            />
+            <SectionDivider />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {sellerGuides.map((guide) => (
                 <LocalGuideLinkCard
@@ -413,22 +431,17 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
       )}
 
       {nearbyAreas.length > 0 && (
-        <section className="bg-[#F8F5F0]">
-          <div className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  {sellerGuides.length > 0 ? 4 : 3}
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Nearby Local Pages
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                More neighborhood-level seller guides nearby
-              </h2>
-              <SectionDivider />
-            </div>
+        <section id="neighborhood-nearby" className="bg-[#F8F5F0]">
+          <div className="mx-auto max-w-7xl px-6 py-12">
+            <LocalGuideSectionHeader
+              index={sellerGuides.length > 0 ? "4" : "3"}
+              eyebrow="Nearby Local Pages"
+              title="More neighborhood-level seller guides nearby"
+              description="These pages help when sellers need to compare adjacent pockets instead of assuming the whole city behaves the same way."
+              badge={`${nearbyAreas.length} nearby pages`}
+              align="split"
+            />
+            <SectionDivider />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {nearbyAreas.map((entry) => (
                 <LocalGuideLinkCard
@@ -444,22 +457,16 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
         </section>
       )}
 
-      <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
-                  {sellerGuides.length > 0 ? 5 : 4}
-                </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Seller Questions
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              {page.areaName} seller FAQs
-            </h2>
-            <SectionDivider tone="dark" />
-          </div>
+      <section id="neighborhood-faqs" className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index={sellerGuides.length > 0 ? "5" : "4"}
+            eyebrow="Seller Questions"
+            title={`${page.areaName} seller FAQs`}
+            description="These usually surface once sellers understand the local market context but still need clarity on prep, timing, or how buyers will react."
+            tone="dark"
+          />
+          <SectionDivider tone="dark" />
           <div className="grid gap-5 md:grid-cols-2">
             {page.sellerQuestions.map((item) => (
               <LocalGuideStatementCard

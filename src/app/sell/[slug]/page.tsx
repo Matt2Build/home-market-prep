@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  LocalGuideAnchorNav,
+  LocalGuideFactGrid,
   LocalGuideHeroAside,
   LocalGuideLinkCard,
   LocalGuidePanel,
+  LocalGuideSectionHeader,
   LocalGuideStatementCard,
 } from "@/components/LocalGuideBlocks";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
@@ -198,6 +201,18 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
     ).values(),
   );
   const sellerGuides = getSellerGuides(citySellerGuideSlugs[cityPage.slug] ?? []);
+  const cityAnchorLinks = [
+    { href: "#city-overview", label: "Overview" },
+    { href: "#city-pricing", label: "Buyer lens" },
+    { href: "#city-prep", label: "Prep moves" },
+    ...(sellerGuides.length > 0
+      ? [{ href: "#city-guides", label: "Seller guides" }]
+      : []),
+    ...(localInsights.length > 0
+      ? [{ href: "#city-neighborhoods", label: "Local pages" }]
+      : []),
+    { href: "#city-faqs", label: "FAQs" },
+  ];
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -279,9 +294,12 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
                   Seller prep guide
                 </Link>
               )}
-              <span className="rounded-full border border-white/15 px-4 py-2">
+              <Link
+                href="/#cma"
+                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+              >
                 Free CMA
-              </span>
+              </Link>
               <span className="rounded-full border border-white/15 px-4 py-2">
                 Seller Prep Guidance
               </span>
@@ -315,6 +333,8 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
         </div>
       </section>
 
+      <LocalGuideAnchorNav links={cityAnchorLinks} />
+
       {snapshot && (
         <div className="bg-white">
           <div className="mx-auto max-w-7xl px-6 py-12 sm:py-14">
@@ -328,23 +348,15 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
         </div>
       )}
 
-      <section className="bg-[#F8F5F0]">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.2fr,0.8fr] lg:items-start">
+      <section id="city-overview" className="bg-[#F8F5F0]">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                1
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Local Overview
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              What sellers in {cityPage.city} usually need to know
-            </h2>
-            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
-              {cityPage.localSummary}
-            </p>
+            <LocalGuideSectionHeader
+              index="1"
+              eyebrow="Local Overview"
+              title={`What sellers in ${cityPage.city} usually need to know`}
+              description={cityPage.localSummary}
+            />
             <SectionDivider />
           </div>
           <LocalGuidePanel
@@ -364,24 +376,40 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             ]}
           />
         </div>
+        <div className="mx-auto max-w-7xl px-6 pb-12">
+          <LocalGuideFactGrid
+            items={[
+              {
+                label: "County path",
+                value: cityPage.county,
+                detail: "Use the county guide when you want broader pace and pricing context before narrowing back down.",
+              },
+              {
+                label: "Local pages",
+                value: `${localInsights.length}`,
+                detail: "Neighborhood and subarea pages help when one part of the city sells on a different comparison set.",
+              },
+              {
+                label: "Pricing view",
+                value: snapshot ? formatCurrency(snapshot.medianSalePrice) : "By CMA",
+                detail: snapshot
+                  ? `Imported snapshot dated ${formatSnapshotDate(snapshot.periodEnd)}.`
+                  : "Request the free CMA when the imported data is too broad for your property.",
+              },
+            ]}
+          />
+        </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                2
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Pricing Factors
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              How buyers in {cityPage.city} tend to compare homes
-            </h2>
-            <SectionDivider />
-          </div>
+      <section id="city-pricing" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="2"
+            eyebrow="Pricing Factors"
+            title={`How buyers in ${cityPage.city} tend to compare homes`}
+            description="These are usually the filters buyers apply before they ever look at the exact square footage or seller story."
+          />
+          <SectionDivider />
           <div className="grid gap-5 md:grid-cols-3">
             {cityPage.pricingFactors.map((factor) => (
               <LocalGuideStatementCard
@@ -394,22 +422,15 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
         </div>
       </section>
 
-      <section className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                3
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Prep Priorities
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              What to do before listing a house in {cityPage.city}
-            </h2>
-            <SectionDivider />
-          </div>
+      <section id="city-prep" className="bg-[#F8F5F0]">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="3"
+            eyebrow="Prep Priorities"
+            title={`What to do before listing a house in ${cityPage.city}`}
+            description="Focus on the work that helps the home show more clearly and keeps buyers from mentally discounting the price."
+          />
+          <SectionDivider />
           <div className="grid gap-5 md:grid-cols-3">
             {cityPage.prepPriorities.map((priority) => (
               <LocalGuideStatementCard
@@ -424,27 +445,17 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       </section>
 
       {sellerGuides.length > 0 && (
-        <section className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                  4
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Seller Prep Guides
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Seller questions that usually matter in {cityPage.city}
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-[#5A5A5A]">
-                Use these topic pages when the local market question turns into a prep
-                question. They connect pricing context in {cityPage.city} to what you
-                should actually fix, clean up, disclose, or time before listing.
-              </p>
-              <SectionDivider />
-            </div>
+        <section id="city-guides" className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-12">
+            <LocalGuideSectionHeader
+              index="4"
+              eyebrow="Seller Prep Guides"
+              title={`Seller questions that usually matter in ${cityPage.city}`}
+              description={`Use these topic pages when the local market question turns into a prep question. They connect pricing context in ${cityPage.city} to what you should actually fix, clean up, disclose, or time before listing.`}
+              badge={`${sellerGuides.length} related guides`}
+              align="split"
+            />
+            <SectionDivider />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {sellerGuides.map((guide) => (
                 <LocalGuideLinkCard
@@ -461,27 +472,17 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
       )}
 
       {localInsights.length > 0 && (
-        <section className="bg-white">
-          <div className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                  {sellerGuides.length > 0 ? 5 : 4}
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Neighborhood and Local Insights
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Smaller-area seller pages around {cityPage.city}
-              </h2>
-              <p className="mt-4 text-lg leading-relaxed text-[#5A5A5A]">
-                City-level pages are useful, but sellers often search by neighborhood,
-                subarea, or local pocket too. These pages help cover that more detailed
-                layer.
-              </p>
-              <SectionDivider />
-            </div>
+        <section id="city-neighborhoods" className="bg-white">
+          <div className="mx-auto max-w-7xl px-6 py-12">
+            <LocalGuideSectionHeader
+              index={sellerGuides.length > 0 ? "5" : "4"}
+              eyebrow="Neighborhood and Local Insights"
+              title={`Smaller-area seller pages around ${cityPage.city}`}
+              description="City-level pages are useful, but sellers often search by neighborhood, subarea, or local pocket too. These pages help cover that more detailed layer."
+              badge={`${localInsights.length} nearby pages`}
+              align="split"
+            />
+            <SectionDivider />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {localInsights.map((area) => {
                 const areaSnapshot = marketSnapshotMap.get(area.slug);
@@ -508,21 +509,16 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
         </section>
       )}
 
-      <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
+      <section id="city-faqs" className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
           <div className="grid gap-8 lg:grid-cols-[0.8fr,1.2fr] lg:items-center">
             <div>
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
-                  {sellerGuides.length > 0 ? 6 : 5}
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Seller Questions
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                {cityPage.city} seller FAQs
-              </h2>
+              <LocalGuideSectionHeader
+                index={sellerGuides.length > 0 ? "6" : "5"}
+                eyebrow="Seller Questions"
+                title={`${cityPage.city} seller FAQs`}
+                tone="dark"
+              />
               <SectionDivider tone="dark" />
             </div>
             <div className="rounded-3xl border border-white/10 bg-white/6 p-6">
@@ -582,6 +578,18 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
   const sellerGuides = getSellerGuides(
     countySellerGuideSlugs[countyPage.slug] ?? [],
   );
+  const countyAnchorLinks = [
+    { href: "#county-overview", label: "Overview" },
+    { href: "#county-cities", label: "Cities" },
+    ...(sellerGuides.length > 0
+      ? [{ href: "#county-guides", label: "Seller guides" }]
+      : []),
+    ...(neighborhoodEntries.length > 0
+      ? [{ href: "#county-neighborhoods", label: "Local pages" }]
+      : []),
+    { href: "#county-spotlights", label: "Market numbers" },
+    { href: "#county-faqs", label: "FAQs" },
+  ];
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -657,9 +665,12 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
                   Seller prep guide
                 </Link>
               )}
-              <span className="rounded-full border border-white/15 px-4 py-2">
+              <Link
+                href="/#cma"
+                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+              >
                 Free CMA
-              </span>
+              </Link>
             </div>
           </div>
           <LocalGuideHeroAside
@@ -690,6 +701,8 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
         </div>
       </section>
 
+      <LocalGuideAnchorNav links={countyAnchorLinks} />
+
       {snapshot && (
         <div className="bg-white">
           <div className="mx-auto max-w-7xl px-6 py-12 sm:py-14">
@@ -705,23 +718,15 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
         </div>
       )}
 
-      <section className="bg-[#F8F5F0]">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.2fr,0.8fr] lg:items-start">
+      <section id="county-overview" className="bg-[#F8F5F0]">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                1
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Local Context
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              How sellers should read this county
-            </h2>
-            <p className="mt-5 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
-              {countyPage.localSummary}
-            </p>
+            <LocalGuideSectionHeader
+              index="1"
+              eyebrow="Local Context"
+              title="How sellers should read this county"
+              description={countyPage.localSummary}
+            />
             <SectionDivider />
           </div>
           <LocalGuidePanel
@@ -730,24 +735,40 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             items={countyPage.sellerAngles}
           />
         </div>
+        <div className="mx-auto max-w-7xl px-6 pb-12">
+          <LocalGuideFactGrid
+            items={[
+              {
+                label: "City guides",
+                value: `${cityEntries.length}`,
+                detail: "Use city pages when broad county pricing starts feeling too generic for how buyers will compare your home.",
+              },
+              {
+                label: "Subarea pages",
+                value: `${neighborhoodEntries.length}`,
+                detail: "These tighter pages help when one side of a city competes differently than another.",
+              },
+              {
+                label: "Market view",
+                value: snapshot ? formatCurrency(snapshot.medianSalePrice) : "Broad",
+                detail: snapshot
+                  ? `Imported snapshot dated ${formatSnapshotDate(snapshot.periodEnd)}.`
+                  : "Use the CMA when county numbers need to be translated into a sharper price range.",
+              },
+            ]}
+          />
+        </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                2
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                City Guides
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              Seller pages across {countyPage.county}
-            </h2>
-            <SectionDivider />
-          </div>
+      <section id="county-cities" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="2"
+            eyebrow="City Guides"
+            title={`Seller pages across ${countyPage.county}`}
+            description="This is usually the next layer down once sellers stop asking county-wide questions and start comparing specific city-level competition."
+          />
+          <SectionDivider />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {cityEntries.map((entry) => (
               <LocalGuideLinkCard
@@ -763,27 +784,17 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       </section>
 
       {sellerGuides.length > 0 && (
-        <section className="bg-[#F8F5F0]">
-          <div className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  3
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Seller Prep Guides
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Seller topics that usually shape outcomes across {countyPage.county}
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-                County pages are broad by design. These seller guides cover the prep
-                questions that usually decide whether a home launches cleanly or creates
-                extra friction before offers start.
-              </p>
-              <SectionDivider />
-            </div>
+        <section id="county-guides" className="bg-[#F8F5F0]">
+          <div className="mx-auto max-w-7xl px-6 py-12">
+            <LocalGuideSectionHeader
+              index="3"
+              eyebrow="Seller Prep Guides"
+              title={`Seller topics that usually shape outcomes across ${countyPage.county}`}
+              description="County pages are broad by design. These seller guides cover the prep questions that usually decide whether a home launches cleanly or creates extra friction before offers start."
+              badge={`${sellerGuides.length} related guides`}
+              align="split"
+            />
+            <SectionDivider />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {sellerGuides.map((guide) => (
                 <LocalGuideLinkCard
@@ -800,26 +811,17 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
       )}
 
       {neighborhoodEntries.length > 0 && (
-        <section className="bg-[#F8F5F0]">
-          <div className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  {sellerGuides.length > 0 ? 4 : 3}
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Neighborhood and Local City Insights
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Local SEO pages for smaller search terms sellers actually use
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-                These pages cover the more specific neighborhood and local-area
-                searches that sit underneath the county and city guides.
-              </p>
-              <SectionDivider />
-            </div>
+        <section id="county-neighborhoods" className="bg-[#F8F5F0]">
+          <div className="mx-auto max-w-7xl px-6 py-12">
+            <LocalGuideSectionHeader
+              index={sellerGuides.length > 0 ? "4" : "3"}
+              eyebrow="Neighborhood and Local City Insights"
+              title="Local SEO pages for smaller search terms sellers actually use"
+              description="These pages cover the more specific neighborhood and local-area searches that sit underneath the county and city guides."
+              badge={`${neighborhoodEntries.length} smaller-area pages`}
+              align="split"
+            />
+            <SectionDivider />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {neighborhoodEntries.map((entry) => (
                 <LocalGuideLinkCard
@@ -835,22 +837,15 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
         </section>
       )}
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                  {sellerGuides.length > 0 ? 5 : 4}
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Market Spotlights
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              A few local numbers to ground the conversation
-            </h2>
-            <SectionDivider />
-          </div>
+      <section id="county-spotlights" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index={sellerGuides.length > 0 ? "5" : "4"}
+            eyebrow="Market Spotlights"
+            title="A few local numbers to ground the conversation"
+            description="These spotlights are there to help sellers contextualize pace and price without turning the page into a spreadsheet."
+          />
+          <SectionDivider />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {marketSpotlights.map((entry) => (
               <LocalGuideStatementCard
@@ -863,22 +858,16 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
         </div>
       </section>
 
-      <section className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
-                  {sellerGuides.length > 0 ? 6 : 5}
-                </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Seller Questions
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              Common {countyPage.county} seller questions
-            </h2>
-            <SectionDivider tone="dark" />
-          </div>
+      <section id="county-faqs" className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index={sellerGuides.length > 0 ? "6" : "5"}
+            eyebrow="Seller Questions"
+            title={`Common ${countyPage.county} seller questions`}
+            description="These questions usually sit underneath the county-level pricing conversation once sellers start thinking about timing, prep, and local competition."
+            tone="dark"
+          />
+          <SectionDivider tone="dark" />
           <div className="grid gap-5 md:grid-cols-2">
             {countyPage.sellerQuestions.map((item) => (
               <LocalGuideStatementCard

@@ -1,6 +1,173 @@
 import Link from "next/link";
 import CornerAccent from "@/components/CornerAccent";
 
+export function LocalGuideAnchorNav({
+  links,
+  tone = "light",
+}: {
+  links: Array<{ href: string; label: string }>;
+  tone?: "light" | "dark";
+}) {
+  const isDark = tone === "dark";
+
+  return (
+    <div
+      className={`border-y ${
+        isDark
+          ? "border-white/10 bg-[#151515]"
+          : "border-[#E8E4DF] bg-white"
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl gap-3 overflow-x-auto px-6 py-4">
+        {links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className={`whitespace-nowrap rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+              isDark
+                ? "border-white/12 bg-white/[0.03] text-white/72 hover:border-[#C6A664] hover:text-white"
+                : "border-[#DDD5C8] bg-[#F8F5F0] text-[#5A5A5A] hover:border-[#C6A664] hover:text-[#1A1A1A]"
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function LocalGuideSectionHeader({
+  index,
+  eyebrow,
+  title,
+  description,
+  tone = "light",
+  align = "left",
+  badge,
+}: {
+  index: string;
+  eyebrow: string;
+  title: string;
+  description?: string;
+  tone?: "light" | "dark";
+  align?: "left" | "split";
+  badge?: string;
+}) {
+  const isDark = tone === "dark";
+
+  return (
+    <div
+      className={`${
+        align === "split"
+          ? "flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
+          : ""
+      }`}
+    >
+      <div className="max-w-3xl">
+        <div className="flex items-center gap-3">
+          <span
+            className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold ${
+              isDark
+                ? "bg-white/10 text-[#C6A664]"
+                : "bg-white text-[#C6A664]"
+            }`}
+          >
+            {index}
+          </span>
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+            {eyebrow}
+          </p>
+        </div>
+        <h2
+          className={`mt-4 text-3xl font-light tracking-tight sm:text-4xl ${
+            isDark ? "text-white" : "text-[#1A1A1A]"
+          }`}
+        >
+          {title}
+        </h2>
+        {description ? (
+          <p
+            className={`mt-4 text-base leading-7 ${
+              isDark ? "text-white/72" : "text-[#5A5A5A]"
+            }`}
+          >
+            {description}
+          </p>
+        ) : null}
+      </div>
+      {badge ? (
+        <div
+          className={`inline-flex w-fit rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] ${
+            isDark
+              ? "border-white/12 bg-white/[0.03] text-white/68"
+              : "border-[#D9CFBF] bg-[#F8F5F0] text-[#5A5A5A]"
+          }`}
+        >
+          {badge}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+export function LocalGuideFactGrid({
+  items,
+  tone = "light",
+}: {
+  items: Array<{ label: string; value: string; detail: string }>;
+  tone?: "light" | "dark";
+}) {
+  const isDark = tone === "dark";
+
+  return (
+    <div className="grid gap-4 md:grid-cols-3">
+      {items.map((item, index) => (
+        <div
+          key={`${item.label}-${item.value}`}
+          className={`relative overflow-hidden rounded-[24px] border p-5 shadow-sm ${
+            isDark
+              ? "border-white/10 bg-white/5"
+              : "border-[#E8E4DF] bg-white"
+          }`}
+        >
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C6A664] via-[#EBDDAB] to-transparent" />
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                {item.label}
+              </p>
+              <p
+                className={`mt-3 text-2xl font-semibold tracking-tight ${
+                  isDark ? "text-white" : "text-[#1A1A1A]"
+                }`}
+              >
+                {item.value}
+              </p>
+            </div>
+            <span
+              className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-semibold ${
+                isDark
+                  ? "bg-white/10 text-[#C6A664]"
+                  : "bg-[#F8F5F0] text-[#C6A664]"
+              }`}
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+          </div>
+          <p
+            className={`mt-4 text-sm leading-6 ${
+              isDark ? "text-white/72" : "text-[#5A5A5A]"
+            }`}
+          >
+            {item.detail}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function LocalGuideLinkCard({
   href,
   eyebrow,
