@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CornerAccent from "@/components/CornerAccent";
 import {
   LocalGuideHeroAside,
   LocalGuideLinkCard,
@@ -51,6 +52,45 @@ const groupedNeighborhoods = cityPages
   }))
   .filter((entry) => entry.neighborhoods.length > 0);
 
+const cityGroups = countyPages.map((county) => ({
+  county,
+  cities: cityPages.filter((city) => city.countySlug === county.slug),
+}));
+
+const quickStartPaths = [
+  {
+    label: "County first",
+    title: "Use this when the question is broad",
+    description:
+      "Start here if you need pricing pace, market direction, and a high-level read before narrowing down.",
+    href: "#counties",
+    countLabel: `${countyPages.length} county guides`,
+  },
+  {
+    label: "City guide",
+    title: "Use this when buyers compare at the city level",
+    description:
+      "Move here when seller questions start sounding local: Everett, Marysville, Lake Stevens, Snohomish, and more.",
+    href: "#cities",
+    countLabel: `${cityPages.length} city guides`,
+  },
+  {
+    label: "Neighborhood page",
+    title: "Use this when broad city numbers feel too generic",
+    description:
+      "These pages help when buyers will compare one side of a city, school pocket, or neighborhood differently.",
+    href: "#neighborhoods",
+    countLabel: `${neighborhoodPages.length} neighborhood pages`,
+  },
+];
+
+const sellerIntentTags = [
+  "Home value context",
+  "What to fix first",
+  "Best time to list",
+  "Neighborhood comparisons",
+];
+
 const guideDirectorySchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -81,6 +121,9 @@ export default function LocalGuidesIndexPage() {
   const snapshotCount = [...countyPages, ...cityPages].filter((entry) =>
     marketSnapshotMap.has(entry.slug),
   ).length;
+  const neighborhoodSnapshotCount = neighborhoodPages.filter((entry) =>
+    marketSnapshotMap.has(entry.slug),
+  ).length;
 
   return (
     <div className="min-h-screen bg-[#F8F5F0] text-[#1A1A1A]">
@@ -107,6 +150,16 @@ export default function LocalGuidesIndexPage() {
               pocket of Snohomish County or nearby Skagit County against another.
             </p>
             <SectionDivider tone="dark" />
+            <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/68">
+              {sellerIntentTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
               <a
                 href="#counties"
@@ -151,9 +204,89 @@ export default function LocalGuidesIndexPage() {
         </div>
       </section>
 
+      <section className="border-b border-[#E8E4DF] bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-10 sm:py-12">
+          <div className="grid gap-5 lg:grid-cols-[0.92fr,1.08fr] lg:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                Quick Start
+              </p>
+              <h2 className="mt-4 max-w-2xl text-3xl font-light tracking-tight sm:text-4xl">
+                Pick the guide type that matches the question in your head
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#5A5A5A]">
+                Most sellers do not need every page. They need the right layer of
+                local context fast, then a clean path into pricing or prep.
+              </p>
+              <SectionDivider />
+            </div>
+            <div className="rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 shadow-sm">
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                    Imported snapshots
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                    {snapshotCount + neighborhoodSnapshotCount}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                    Seller guides
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                    {sellerPrepPages.length}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white bg-white px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                    Local markets
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                    {countyPages.length + cityPages.length + neighborhoodPages.length}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 grid gap-5 xl:grid-cols-3">
+            {quickStartPaths.map((path) => (
+              <a
+                key={path.href}
+                href={path.href}
+                className="group relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C6A664] via-[#EBDDAB] to-transparent" />
+                <CornerAccent
+                  tone="gold"
+                  className="absolute right-4 top-4 h-10 w-[4.2rem] opacity-70"
+                />
+                <p className="relative text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+                  {path.label}
+                </p>
+                <h3 className="relative mt-3 max-w-sm text-2xl font-semibold leading-snug text-[#1A1A1A]">
+                  {path.title}
+                </h3>
+                <p className="relative mt-3 text-sm leading-6 text-[#5A5A5A]">
+                  {path.description}
+                </p>
+                <div className="relative mt-5 flex items-center justify-between border-t border-[#E8E4DF] pt-4">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                    {path.countLabel}
+                  </span>
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-white" id="counties">
         <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr,1.28fr] lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-[0.66fr,1.34fr] lg:items-start">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                 Counties First
@@ -167,6 +300,16 @@ export default function LocalGuidesIndexPage() {
                 neighborhood pages live underneath.
               </p>
               <SectionDivider />
+              <div className="mt-8 rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+                  Best for
+                </p>
+                <ul className="mt-4 space-y-3 text-sm leading-6 text-[#5A5A5A]">
+                  <li>Pricing direction before you decide whether prep is worth it.</li>
+                  <li>Finding which city and neighborhood pages deserve a closer look.</li>
+                  <li>Understanding whether the broader market is moving faster or softer.</li>
+                </ul>
+              </div>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               {countyPages.map((entry) => (
@@ -199,15 +342,64 @@ export default function LocalGuidesIndexPage() {
             </p>
             <SectionDivider />
           </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {cityPages.map((entry) => (
-              <LocalGuideLinkCard
-                key={entry.slug}
-                href={`/sell/${entry.slug}`}
-                eyebrow={entry.county}
-                title={entry.city}
-                description={entry.metaDescription}
-              />
+          <div className="grid gap-6 xl:grid-cols-2">
+            {cityGroups.map(({ county, cities }) => (
+              <div
+                key={county.slug}
+                className="relative overflow-hidden rounded-[30px] border border-[#E8E4DF] bg-white p-6 shadow-sm"
+              >
+                <CornerAccent
+                  tone="gold"
+                  className="absolute right-4 top-4 h-12 w-[4.5rem] opacity-70"
+                />
+                <div className="relative flex flex-col gap-3 border-b border-[#EEE8DF] pb-5 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+                      County group
+                    </p>
+                    <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                      {county.county}
+                    </h3>
+                  </div>
+                  <div className="rounded-full border border-[#E8E4DF] bg-[#F8F5F0] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                    {cities.length} city guides
+                  </div>
+                </div>
+                <div className="mt-5 grid gap-4">
+                  {cities.map((entry) => {
+                    const localNeighborhoodCount = groupedNeighborhoods.find(
+                      (group) => group.city.slug === entry.slug,
+                    )?.neighborhoods.length ?? 0;
+
+                    return (
+                      <Link
+                        key={entry.slug}
+                        href={`/sell/${entry.slug}`}
+                        className="group rounded-[24px] border border-[#EEE8DF] bg-[#F8F5F0] px-5 py-5 transition-all hover:-translate-y-0.5 hover:border-[#C6A664]/45 hover:bg-white"
+                      >
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                          <div>
+                            <p className="text-lg font-semibold tracking-tight text-[#1A1A1A]">
+                              {entry.city}
+                            </p>
+                            <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5A5A5A]">
+                              {entry.metaDescription}
+                            </p>
+                          </div>
+                          <div className="flex shrink-0 flex-wrap gap-2">
+                            <span className="rounded-full border border-[#DDD5C8] bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8C8375]">
+                              {localNeighborhoodCount} local pages
+                            </span>
+                            <span className="rounded-full border border-[#DDD5C8] bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8C8375]">
+                              Open guide
+                            </span>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -233,10 +425,14 @@ export default function LocalGuidesIndexPage() {
             {groupedNeighborhoods.map(({ city, neighborhoods }) => (
               <div
                 key={city.slug}
-                className="rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 shadow-sm"
+                className="relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 shadow-sm"
               >
+                <CornerAccent
+                  tone="gold"
+                  className="absolute right-4 top-4 h-10 w-[4.2rem] opacity-65"
+                />
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
+                  <div className="relative">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
                       {city.county}
                     </p>
@@ -247,12 +443,17 @@ export default function LocalGuidesIndexPage() {
                       {city.metaDescription}
                     </p>
                   </div>
-                  <Link
-                    href={`/sell/${city.slug}`}
-                    className="rounded-full border border-[#D8D0C4] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#1A1A1A] transition-colors hover:border-[#C6A664]"
-                  >
-                    Open city guide
-                  </Link>
+                  <div className="relative flex items-center gap-3">
+                    <span className="rounded-full border border-[#D8D0C4] bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+                      {neighborhoods.length} local pages
+                    </span>
+                    <Link
+                      href={`/sell/${city.slug}`}
+                      className="rounded-full border border-[#D8D0C4] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#1A1A1A] transition-colors hover:border-[#C6A664]"
+                    >
+                      Open city guide
+                    </Link>
+                  </div>
                 </div>
                 <div className="mt-5 flex flex-wrap gap-3">
                   {neighborhoods.map((page) => (
@@ -273,7 +474,8 @@ export default function LocalGuidesIndexPage() {
 
       <section className="bg-[#F8F5F0]" id="seller-guides">
         <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
+          <div className="mb-8 grid gap-8 lg:grid-cols-[0.78fr,1.22fr] lg:items-end">
+            <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               Seller Prep Searches
             </p>
@@ -286,6 +488,27 @@ export default function LocalGuidesIndexPage() {
               to sell as-is.
             </p>
             <SectionDivider />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-[24px] border border-[#E8E4DF] bg-white px-5 py-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                  Most useful when
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+                  You already know the city or neighborhood and now need to decide what
+                  to repair, stage, disclose, or skip.
+                </p>
+              </div>
+              <div className="rounded-[24px] border border-[#E8E4DF] bg-white px-5 py-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                  Search intent
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+                  These pages are built around the seller questions people search before
+                  they are ready to talk price out loud.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {featuredSellerGuides.map((guide) => (
