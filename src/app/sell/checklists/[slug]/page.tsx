@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CornerAccent from "@/components/CornerAccent";
+import {
+  LocalGuideAnchorNav,
+  LocalGuideFactGrid,
+  LocalGuideSectionHeader,
+  LocalGuideStatementCard,
+} from "@/components/LocalGuideBlocks";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { cityPages } from "@/lib/city-pages";
@@ -278,13 +284,22 @@ function RelatedGuideCard({
   return (
     <Link
       href={href}
-      className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+      className="group relative overflow-hidden rounded-[24px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
     >
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C6A664] via-[#EBDDAB] to-transparent" />
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
         {eyebrow}
       </p>
       <h3 className="mt-3 text-xl font-semibold leading-snug">{title}</h3>
       <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">{description}</p>
+      <div className="mt-5 flex items-center justify-between border-t border-[#E8E4DF] pt-4">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
+          Open guide
+        </span>
+        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
+          →
+        </span>
+      </div>
     </Link>
   );
 }
@@ -437,6 +452,13 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
   const relatedNeighborhoodPages = (localNeighborhoodSlugs[page.slug] ?? [])
     .map((slug) => neighborhoodPageMap.get(slug))
     .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const sellerGuideAnchorLinks = [
+    { href: "#guide-overview", label: "Overview" },
+    { href: "#guide-steps", label: "Checklist" },
+    { href: "#guide-mistakes", label: "Avoid this" },
+    { href: "#guide-links", label: "Related pages" },
+    { href: "#seller-faqs", label: "FAQs" },
+  ];
 
   return (
     <div className="min-h-screen bg-[#F8F5F0] text-[#1A1A1A]">
@@ -473,9 +495,12 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               <span className="rounded-full border border-white/15 px-4 py-2">
                 Washington seller guide
               </span>
-              <span className="rounded-full border border-white/15 px-4 py-2">
+              <Link
+                href="/#cma"
+                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+              >
                 Free CMA available
-              </span>
+              </Link>
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
@@ -538,21 +563,17 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.2fr,0.8fr] lg:items-start">
+      <LocalGuideAnchorNav links={sellerGuideAnchorLinks} />
+
+      <section id="guide-overview" className="bg-white">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-12 lg:grid-cols-[1.08fr,0.92fr] lg:items-start">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="h-8 w-8 rounded-full border border-[#D9CFBF] bg-[#F8F5F0]" />
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Why Sellers Search This
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              The goal is to make the home easier to buy
-            </h2>
-            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#5A5A5A]">
-              {page.whyItMatters}
-            </p>
+            <LocalGuideSectionHeader
+              index="1"
+              eyebrow="Why Sellers Search This"
+              title="The goal is to make the home easier to buy"
+              description={page.whyItMatters}
+            />
             <SectionDivider />
           </div>
           <div className="rounded-3xl border border-[#E8E4DF] bg-[#F8F5F0] p-6">
@@ -569,34 +590,40 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
             </p>
           </div>
         </div>
+        <div className="mx-auto max-w-7xl px-6 pb-12">
+          <LocalGuideFactGrid
+            items={[
+              {
+                label: "Timeline",
+                value: page.timeframe,
+                detail: "This works best when it is started early enough that the home can launch without compressing every task into one week.",
+              },
+              {
+                label: "Checklist size",
+                value: `${page.checklist.length} actions`,
+                detail: "The point is not to do everything. It is to finish the highest-impact work in the right order.",
+              },
+              {
+                label: "Local tie-in",
+                value: `${relatedLocalPages.length + relatedNeighborhoodPages.length} local pages`,
+                detail: "Pair this prep topic with local pricing and neighborhood context when the market changes what matters most.",
+              },
+            ]}
+          />
+        </div>
       </section>
 
       <section id="guide-steps" className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  2
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Checklist
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                What to do
-              </h2>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-[#5A5A5A]">
-                Work through the highest-impact actions first. The goal is not to
-                do everything. It is to make the home feel cleaner, clearer, and
-                easier for buyers to trust.
-              </p>
-              <SectionDivider />
-            </div>
-            <div className="inline-flex w-fit rounded-full border border-[#D9CFBF] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
-              {page.checklist.length} actions to work through
-            </div>
-          </div>
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="2"
+            eyebrow="Checklist"
+            title="What to do"
+            description="Work through the highest-impact actions first. The goal is not to do everything. It is to make the home feel cleaner, clearer, and easier for buyers to trust."
+            badge={`${page.checklist.length} actions to work through`}
+            align="split"
+          />
+          <SectionDivider />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {page.checklist.map((item, index) => (
               <div
@@ -625,26 +652,15 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                3
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Common Mistakes
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              Where sellers usually create extra friction
-            </h2>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-[#5A5A5A]">
-              These are the places where good seller prep often drifts into extra
-              cost, extra delay, or a home that still does not read clearly to buyers.
-            </p>
-            <SectionDivider />
-          </div>
+      <section id="guide-mistakes" className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="3"
+            eyebrow="Common Mistakes"
+            title="Where sellers usually create extra friction"
+            description="These are the places where good seller prep often drifts into extra cost, extra delay, or a home that still does not read clearly to buyers."
+          />
+          <SectionDivider />
           <div className="grid gap-5 md:grid-cols-3">
             {page.mistakes.map((item, index) => (
               <div
@@ -672,26 +688,14 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
       </section>
 
       <section id="guide-links" className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                4
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Related Seller Pages
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              Keep going from prep into pricing and local context
-            </h2>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-[#5A5A5A]">
-              Use the next links deliberately: keep reading seller topics if you are
-              still deciding what to do, jump into local pages if the market context
-              matters more, or request a CMA when you need pricing tied to your house.
-            </p>
-            <SectionDivider />
-          </div>
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="4"
+            eyebrow="Related Seller Pages"
+            title="Keep going from prep into pricing and local context"
+            description="Use the next links deliberately: keep reading seller topics if you are still deciding what to do, jump into local pages if the market context matters more, or request a CMA when you need pricing tied to your house."
+          />
+          <SectionDivider />
           <div className="grid gap-6 xl:grid-cols-[1.15fr,0.85fr]">
             <div className="rounded-[30px] border border-[#E8E4DF] bg-white p-6 sm:p-7">
               <div className="flex items-center gap-3">
@@ -798,34 +802,23 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
       </section>
 
       <section id="seller-faqs" className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-8 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[#C6A664]">
-                5
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                FAQs
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              Common questions on this topic
-            </h2>
-            <SectionDivider tone="dark" />
-          </div>
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <LocalGuideSectionHeader
+            index="5"
+            eyebrow="FAQs"
+            title="Common questions on this topic"
+            description="These are the questions sellers usually have after they understand the checklist but before they know how far to take it."
+            tone="dark"
+          />
+          <SectionDivider tone="dark" />
           <div className="grid gap-5 md:grid-cols-2">
             {page.faqs.map((item) => (
-              <div
+              <LocalGuideStatementCard
                 key={item.question}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
-                <h3 className="text-xl font-semibold leading-snug">
-                  {item.question}
-                </h3>
-                <p className="mt-4 text-sm leading-6 text-white/72">
-                  {item.answer}
-                </p>
-              </div>
+                label={item.question}
+                text={item.answer}
+                tone="dark"
+              />
             ))}
           </div>
         </div>
