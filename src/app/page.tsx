@@ -483,67 +483,47 @@ export default function Home() {
       </section>
 
       <section id="cma" className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Free CMA
-            </p>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
-              When pricing becomes the question, start here
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-              A CMA works best after the seller prep questions are clearer. Use it
-              to understand your likely range, avoid spending money in the wrong
-              places, and line up the home prep with the price strategy.
-            </p>
-            <SectionDivider align="center" />
-            <div className="mt-8 grid gap-5 text-left sm:grid-cols-3">
-              {[
-                {
-                  label: "Price",
-                  text: "See how nearby comps and current competition frame the likely range.",
-                },
-                {
-                  label: "Prep",
-                  text: "Figure out which cleanup or repair items are worth doing first.",
-                },
-                {
-                  label: "Launch",
-                  text: "Get clearer on timing, presentation, and next steps before you list.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-[#E8E4DF] bg-white p-6"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                    {item.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
+        <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
+          <div className="grid gap-8 lg:grid-cols-[0.88fr,1.12fr] lg:items-start">
+            <div className="max-w-2xl">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                  02
+                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                  Free CMA
+                </p>
+              </div>
+              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                Start with the pricing question
+              </h2>
+              <p className="mt-4 text-base leading-7 text-[#5A5A5A] sm:text-lg">
+                If you want to know what the home could sell for before spending
+                money or picking a list strategy, request the CMA here. We&apos;ll
+                use it to connect price, prep, and next steps.
+              </p>
+              <SectionDivider />
             </div>
-          </div>
-          <div className="relative mx-auto mt-10 max-w-3xl overflow-hidden rounded-[32px] border border-[#E8E4DF] bg-white p-7 text-[#1A1A1A] shadow-xl sm:p-8">
-            <CornerAccent
-              tone="gold"
-              className="absolute right-5 top-5 h-14 w-20 opacity-75"
-            />
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C6A664]">
-              Start Here
-            </p>
-            <h2 className="mt-3 text-3xl font-light leading-tight tracking-tight">
-              Request your free CMA
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-              Tell us where the property is and where to send the CMA. You will
-              get confirmation right away, and we will follow up with pricing and
-              prep guidance as soon as possible.
-            </p>
-            <div className="mt-6 rounded-3xl bg-[#F8F5F0] p-5 sm:p-6">
-              <CmaForm />
+            <div className="relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-white p-5 text-[#1A1A1A] shadow-lg sm:p-6">
+              <CornerAccent
+                tone="gold"
+                className="absolute right-4 top-4 h-12 w-[4.5rem] opacity-70"
+              />
+              <div className="max-w-2xl pr-12">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C6A664]">
+                  Quick request
+                </p>
+                <h3 className="mt-2 text-2xl font-light leading-tight tracking-tight sm:text-[2rem]">
+                  Request your free CMA
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
+                  Send the address, your name, and your email. We&apos;ll confirm
+                  right away and follow up with pricing and prep guidance.
+                </p>
+              </div>
+              <div className="mt-5 rounded-[24px] bg-[#F8F5F0] p-4 sm:p-5">
+                <CmaForm />
+              </div>
             </div>
           </div>
         </div>
@@ -554,7 +534,7 @@ export default function Home() {
           <div className="mb-10 max-w-3xl">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                02
+                03
               </span>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                 FAQs
@@ -604,8 +584,8 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-center">
             <div>
               <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  03
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
+                  04
                 </span>
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                   Local Guides

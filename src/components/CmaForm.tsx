@@ -60,13 +60,12 @@ export default function CmaForm() {
 
   return (
     <div>
-      <div className="mb-6">
+      <div className="mb-4">
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#C6A664]">
-          Quick request form
+          3 fields
         </p>
-        <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-          Just send the address, your name, and your email. We&apos;ll take it from
-          there.
+        <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
+          Address, name, email.
         </p>
       </div>
 
@@ -101,7 +100,7 @@ export default function CmaForm() {
         </div>
       )}
 
-      <div className="mt-6 flex items-center justify-end">
+      <div className="mt-5 flex items-center justify-end">
         <button
           onClick={handleSubmit}
           disabled={
