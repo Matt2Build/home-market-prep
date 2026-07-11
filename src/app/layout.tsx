@@ -14,8 +14,12 @@ export const metadata: Metadata = {
     template: "%s | HomeMarketPrep",
   },
   description:
-    "Free CMA and seller prep guidance for Snohomish County, WA homeowners. Explore county, city, and neighborhood seller guides covering pricing, repairs, showings, paperwork, and home value context before listing.",
+    "Free CMA and seller prep guidance for Snohomish County and nearby Washington homeowners. Explore seller question pages, county guides, city guides, and neighborhood pages covering pricing, repairs, showings, paperwork, disclosures, timing, and home value context before listing.",
   applicationName: "HomeMarketPrep",
+  category: "real estate",
+  creator: "HomeMarketPrep",
+  publisher: "HomeMarketPrep",
+  authors: [{ name: "Matt Salit" }],
   keywords: [
     "Snohomish County CMA",
     "Snohomish County home value",
@@ -38,6 +42,15 @@ export const metadata: Metadata = {
     "Matt Salit",
     "Century 21 North Homes",
   ],
+  icons: {
+    icon: [
+      { url: "/icon", type: "image/png", sizes: "32x32" },
+      { url: "/icon", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/icon"],
+  },
+  manifest: "/manifest.webmanifest",
   alternates: {
     canonical: "/",
   },

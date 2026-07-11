@@ -18,7 +18,7 @@ export function LocalGuideAnchorNav({
           : "border-[#E8E4DF] bg-white"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl gap-3 overflow-x-auto px-6 py-4">
+      <div className="mx-auto flex max-w-7xl gap-3 overflow-x-auto px-4 py-3 sm:px-6 sm:py-4">
         {links.map((link) => (
           <a
             key={link.href}
@@ -80,7 +80,7 @@ export function LocalGuideSectionHeader({
           </p>
         </div>
         <h2
-          className={`mt-4 text-3xl font-light tracking-tight sm:text-4xl ${
+          className={`mt-3 text-[2rem] font-light tracking-tight sm:mt-4 sm:text-4xl ${
             isDark ? "text-white" : "text-[#1A1A1A]"
           }`}
         >
@@ -121,7 +121,7 @@ export function LocalGuideFactGrid({
   const isDark = tone === "dark";
 
   return (
-    <div className="grid gap-4 md:grid-cols-3">
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
       {items.map((item, index) => (
         <div
           key={`${item.label}-${item.value}`}
