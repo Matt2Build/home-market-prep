@@ -41,11 +41,23 @@ export default function CmaForm() {
     }
   };
 
+  const isDisabled =
+    !values.address?.trim() ||
+    !values.name?.trim() ||
+    !values.email?.trim() ||
+    submitting;
+
   if (submitted) {
     return (
       <div className="py-4 text-center">
-        <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 mx-auto">
-          <svg className="h-7 w-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+          <svg
+            className="h-7 w-7 text-green-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -59,14 +71,25 @@ export default function CmaForm() {
   }
 
   return (
-    <div>
-      <div className="mb-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#C6A664]">
-          3 fields
-        </p>
-        <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
-          Address, name, email.
-        </p>
+    <form
+      className="space-y-4"
+      onSubmit={(event) => {
+        event.preventDefault();
+        void handleSubmit();
+      }}
+    >
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#C6A664]">
+            3 fields
+          </p>
+          <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
+            Address, name, email.
+          </p>
+        </div>
+        <div className="rounded-full border border-[#E8E4DF] bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8C8375]">
+          No obligation
+        </div>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
@@ -100,20 +123,18 @@ export default function CmaForm() {
         </div>
       )}
 
-      <div className="mt-5 flex items-center justify-end">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs leading-5 text-[#8C8375]">
+          You&apos;ll receive a confirmation email after submission.
+        </p>
         <button
-          onClick={handleSubmit}
-          disabled={
-            !values.address?.trim() ||
-            !values.name?.trim() ||
-            !values.email?.trim() ||
-            submitting
-          }
+          type="submit"
+          disabled={isDisabled}
           className="rounded-full bg-[#1A1A1A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white disabled:cursor-not-allowed disabled:opacity-30 transition-colors hover:bg-[#333]"
         >
           {submitting ? "Sending..." : "Request My Free CMA"}
         </button>
       </div>
-    </div>
+    </form>
   );
 }

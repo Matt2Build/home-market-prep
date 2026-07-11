@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CmaForm from "@/components/CmaForm";
 import CornerAccent from "@/components/CornerAccent";
+import {
+  LocalGuideAnchorNav,
+  LocalGuideFactGrid,
+  LocalGuideSectionHeader,
+} from "@/components/LocalGuideBlocks";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { sellerPrepPages } from "@/lib/seller-prep-pages";
@@ -195,6 +200,13 @@ const popularGuides = [
   { href: "/sell/arlington-wa", label: "Arlington" },
 ];
 
+const homeAnchorLinks = [
+  { href: "#seller-answers", label: "Seller answers" },
+  { href: "#cma", label: "Free CMA" },
+  { href: "#seller-faqs", label: "FAQs" },
+  { href: "/sell/local-guides", label: "Local guides" },
+];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -286,6 +298,32 @@ export default function Home() {
             a free CMA to connect the prep work to a real pricing strategy.
           </p>
           <SectionDivider tone="dark" align="center" />
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                Start here
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white/74">
+                Seller questions first, then pricing. It keeps prep from turning into random projects.
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                Local focus
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white/74">
+                Built around Snohomish County and nearby Skagit sellers, not generic national advice.
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                CMA path
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white/74">
+                Quick request, confirmation email, then local pricing and prep follow-up.
+              </p>
+            </div>
+          </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
             <Link
               href="/sell/checklists/declutter-before-selling-house-wa"
@@ -335,24 +373,17 @@ export default function Home() {
         </div>
       </section>
 
+      <LocalGuideAnchorNav links={homeAnchorLinks} tone="dark" />
+
       <section id="seller-answers" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="flex items-center justify-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                01
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                Seller Answers
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
-              The questions sellers usually search before they are ready to list
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-              These are the prep topics that shape how the home shows, how buyers
-              react, and how stressful the launch feels once the listing goes live.
-            </p>
+          <div className="mx-auto max-w-4xl text-center">
+            <LocalGuideSectionHeader
+              index="01"
+              eyebrow="Seller Answers"
+              title="The questions sellers usually search before they are ready to list"
+              description="These are the prep topics that shape how the home shows, how buyers react, and how stressful the launch feels once the listing goes live."
+            />
             <SectionDivider align="center" />
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -485,25 +516,33 @@ export default function Home() {
 
       <section id="cma" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
-          <div className="grid gap-8 lg:grid-cols-[0.88fr,1.12fr] lg:items-start">
+          <div className="grid gap-8 lg:grid-cols-[0.94fr,1.06fr] lg:items-start">
             <div className="max-w-2xl">
-              <div className="flex items-center gap-3">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  02
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Free CMA
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Start with the pricing question
-              </h2>
-              <p className="mt-4 text-base leading-7 text-[#5A5A5A] sm:text-lg">
-                If you want to know what the home could sell for before spending
-                money or picking a list strategy, request the CMA here. We&apos;ll
-                use it to connect price, prep, and next steps.
-              </p>
+              <LocalGuideSectionHeader
+                index="02"
+                eyebrow="Free CMA"
+                title="Start with the pricing question"
+                description="If you want to know what the home could sell for before spending money or picking a list strategy, request the CMA here. We’ll use it to connect price, prep, and next steps."
+              />
               <SectionDivider />
+              <div className="mt-8 grid gap-4">
+                <div className="rounded-[24px] border border-[#E8E4DF] bg-white px-5 py-5 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    What you send
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+                    Address, name, and email. No long intake, no extra fields, no clunky step flow.
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-[#E8E4DF] bg-white px-5 py-5 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                    What happens next
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
+                    You get a confirmation email right away, then local comp and prep follow-up as soon as possible.
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-white p-5 text-[#1A1A1A] shadow-lg sm:p-6">
               <CornerAccent
@@ -522,6 +561,27 @@ export default function Home() {
                   right away and follow up with pricing and prep guidance.
                 </p>
               </div>
+              <div className="mt-5">
+                <LocalGuideFactGrid
+                  items={[
+                    {
+                      label: "Response path",
+                      value: "Email first",
+                      detail: "Both the submission notification and your confirmation route through the live CMA request flow.",
+                    },
+                    {
+                      label: "Coverage",
+                      value: "Snohomish + Skagit",
+                      detail: "The site content and local guides are built around the markets you are already targeting.",
+                    },
+                    {
+                      label: "Goal",
+                      value: "Price + prep",
+                      detail: "The CMA is not isolated from the prep questions. It is there to support them.",
+                    },
+                  ]}
+                />
+              </div>
               <div className="mt-5 rounded-[24px] bg-[#F8F5F0] p-4 sm:p-5">
                 <CmaForm />
               </div>
@@ -532,18 +592,13 @@ export default function Home() {
 
       <section id="seller-faqs" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="mb-10 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F8F5F0] text-xs font-semibold text-[#C6A664]">
-                03
-              </span>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                FAQs
-              </p>
-            </div>
-            <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-              A few common seller questions before listing
-            </h2>
+          <div className="mb-10 max-w-4xl">
+            <LocalGuideSectionHeader
+              index="03"
+              eyebrow="FAQs"
+              title="A few common seller questions before listing"
+              description="These are the high-intent questions that usually sit between the first seller-search click and a real pricing conversation."
+            />
             <SectionDivider />
           </div>
           <div className="grid gap-5 md:grid-cols-2">
@@ -584,23 +639,12 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-center">
             <div>
-              <div className="flex items-center gap-3">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                  04
-                </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  Local Guides
-                </p>
-              </div>
-              <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Browse county, city, and neighborhood seller pages
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-                The homepage stays focused on seller questions and CMA requests. The
-                local guide hub breaks out county, city, and smaller neighborhood pages
-                so sellers can move from broad market context to tighter local insight
-                without getting lost.
-              </p>
+              <LocalGuideSectionHeader
+                index="04"
+                eyebrow="Local Guides"
+                title="Browse county, city, and neighborhood seller pages"
+                description="The homepage stays focused on seller questions and CMA requests. The local guide hub breaks out county, city, and smaller neighborhood pages so sellers can move from broad market context to tighter local insight without getting lost."
+              />
               <SectionDivider />
             </div>
             <div className="flex flex-wrap gap-3">
