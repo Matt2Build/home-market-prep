@@ -21,19 +21,21 @@ export default function MarketSnapshotSection({
   description,
   className,
 }: MarketSnapshotSectionProps) {
-  const stats = [
+  const headlineStats = [
     {
-      label: "Median Sale Price",
+      label: "Median price",
       value: formatCurrency(snapshot.medianSalePrice),
     },
     {
-      label: "Median Days on Market",
+      label: "Median DOM",
       value: `${snapshot.medianDom} days`,
     },
     {
-      label: "Months of Supply",
-      value: snapshot.monthsOfSupply.toFixed(1),
+      label: "Supply",
+      value: `${snapshot.monthsOfSupply.toFixed(1)} months`,
     },
+  ];
+  const stats = [
     {
       label: "Homes Sold",
       value: snapshot.homesSold.toString(),
@@ -72,14 +74,43 @@ export default function MarketSnapshotSection({
               Sale-to-list: {formatPercentFromRatio(snapshot.avgSaleToList)}
             </span>
           </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {headlineStats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-[22px] border border-[#E8E4DF] bg-white px-5 py-5 shadow-sm"
+              >
+                <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A7D68]">
+                  {stat.label}
+                </div>
+                <div className="mt-2 text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                  {stat.value}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="rounded-3xl border border-[#E8E4DF] bg-white p-6 sm:p-8">
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="rounded-[30px] border border-[#E8E4DF] bg-white p-6 shadow-sm sm:p-8">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+                Working details
+              </p>
+              <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
+                Use the market temperature for context, then compare the detailed stats below.
+              </p>
+            </div>
+            <span className="rounded-full border border-[#E8E4DF] bg-[#F8F5F0] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
+              {snapshot.marketTemp}
+            </span>
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-[#EFEAE2] bg-[#F8F5F0] p-5"
+                className="rounded-[22px] border border-[#EFEAE2] bg-[#F8F5F0] p-5"
               >
                 <div className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8A7D68]">
                   {stat.label}
@@ -91,9 +122,21 @@ export default function MarketSnapshotSection({
             ))}
           </div>
 
-          <div className="mt-6 grid gap-4 border-t border-[#EFEAE2] pt-6 sm:grid-cols-3">
+          <div className="mt-6 border-t border-[#EFEAE2] pt-6">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+                Recent snapshot trend
+              </p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A7D68]">
+                Last 3 periods
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
             {snapshot.historical.map((point) => (
-              <div key={point.periodEnd} className="rounded-2xl bg-[#111111] p-5 text-white">
+              <div
+                key={point.periodEnd}
+                className="rounded-[22px] bg-[#111111] p-5 text-white"
+              >
                 <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                   {formatSnapshotDate(point.periodEnd)}
                 </div>
@@ -106,6 +149,7 @@ export default function MarketSnapshotSection({
                 </div>
               </div>
             ))}
+            </div>
           </div>
 
           {typeof snapshot.priceChange === "number" && (

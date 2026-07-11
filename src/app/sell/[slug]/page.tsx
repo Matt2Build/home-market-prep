@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import CornerAccent from "@/components/CornerAccent";
+import {
+  LocalGuideLinkCard,
+  LocalGuidePanel,
+  LocalGuideStatementCard,
+} from "@/components/LocalGuideBlocks";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
@@ -176,31 +180,6 @@ export async function generateMetadata({
   return {};
 }
 
-function LinkCard({
-  href,
-  eyebrow,
-  title,
-  description,
-}: {
-  href: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
-    >
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-        {eyebrow}
-      </p>
-      <h3 className="mt-3 text-2xl font-semibold">{title}</h3>
-      <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">{description}</p>
-    </Link>
-  );
-}
-
 function CityPageView({ cityPage }: { cityPage: CityPage }) {
   const snapshot = marketSnapshotMap.get(cityPage.slug);
   const relatedAreas = (cityPage.relatedAreaSlugs ?? [])
@@ -340,25 +319,22 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             </p>
             <SectionDivider />
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-[#E8E4DF] bg-white p-6">
-            <CornerAccent
-              tone="gold"
-              className="absolute right-4 top-4 h-12 w-[4.5rem]"
-            />
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-              Start here
-            </p>
-            <ul className="mt-5 space-y-4 text-sm leading-6 text-[#5A5A5A]">
-              <li>Get a local CMA before spending on projects.</li>
-              <li>Fix the maintenance buyers will remember after showings.</li>
-              <li>Prepare photos, paperwork, and pricing together.</li>
-              {snapshot && (
-                <li>
-                  Imported snapshot date: {formatSnapshotDate(snapshot.periodEnd)}
-                </li>
-              )}
-            </ul>
-          </div>
+          <LocalGuidePanel
+            eyebrow="Start here"
+            title={`${cityPage.city} seller game plan`}
+            items={[
+              "Get a local CMA before spending on projects.",
+              "Fix the maintenance buyers will remember after showings.",
+              "Prepare photos, paperwork, and pricing together.",
+              ...(snapshot
+                ? [
+                    `Imported snapshot date: ${formatSnapshotDate(
+                      snapshot.periodEnd,
+                    )}.`,
+                  ]
+                : []),
+            ]}
+          />
         </div>
       </section>
 
@@ -380,12 +356,11 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {cityPage.pricingFactors.map((factor) => (
-              <div
+              <LocalGuideStatementCard
                 key={factor}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 shadow-sm"
-              >
-                <p className="text-sm leading-7 text-[#5A5A5A]">{factor}</p>
-              </div>
+                label="Buyer lens"
+                text={factor}
+              />
             ))}
           </div>
         </div>
@@ -409,12 +384,12 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {cityPage.prepPriorities.map((priority) => (
-              <div
+              <LocalGuideStatementCard
                 key={priority}
-                className="rounded-2xl border border-[#E8E4DF] bg-white p-6"
-              >
-                <p className="text-sm leading-7 text-[#5A5A5A]">{priority}</p>
-              </div>
+                label="Prep move"
+                text={priority}
+                tone="white"
+              />
             ))}
           </div>
         </div>
@@ -444,7 +419,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {sellerGuides.map((guide) => (
-                <LinkCard
+                <LocalGuideLinkCard
                   key={guide.slug}
                   href={`/sell/checklists/${guide.slug}`}
                   eyebrow="Seller Guide"
@@ -483,7 +458,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
               {localInsights.map((area) => {
                 const areaSnapshot = marketSnapshotMap.get(area.slug);
                 return (
-                  <LinkCard
+                  <LocalGuideLinkCard
                     key={area.slug}
                     href={`/sell/neighborhoods/${area.slug}`}
                     eyebrow={`${area.parentCity}, WA`}
@@ -532,13 +507,12 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
           </div>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {cityPage.sellerQuestions.map((item) => (
-              <div
+              <LocalGuideStatementCard
                 key={item.question}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
-                <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
-                <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
-              </div>
+                label={item.question}
+                text={item.answer}
+                tone="dark"
+              />
             ))}
           </div>
         </div>
@@ -695,20 +669,11 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             </p>
             <SectionDivider />
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-[#E8E4DF] bg-white p-6">
-            <CornerAccent
-              tone="gold"
-              className="absolute right-4 top-4 h-12 w-[4.5rem]"
-            />
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-              Seller takeaways
-            </p>
-            <ul className="mt-5 space-y-4 text-sm leading-6 text-[#5A5A5A]">
-              {countyPage.sellerAngles.map((angle) => (
-                <li key={angle}>{angle}</li>
-              ))}
-            </ul>
-          </div>
+          <LocalGuidePanel
+            eyebrow="Seller takeaways"
+            title={`${countyPage.county} in one pass`}
+            items={countyPage.sellerAngles}
+          />
         </div>
       </section>
 
@@ -730,7 +695,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {cityEntries.map((entry) => (
-              <LinkCard
+              <LocalGuideLinkCard
                 key={entry.slug}
                 href={`/sell/${entry.slug}`}
                 eyebrow={countyPage.county}
@@ -766,7 +731,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {sellerGuides.map((guide) => (
-                <LinkCard
+                <LocalGuideLinkCard
                   key={guide.slug}
                   href={`/sell/checklists/${guide.slug}`}
                   eyebrow="Seller Guide"
@@ -802,7 +767,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {neighborhoodEntries.map((entry) => (
-                <LinkCard
+                <LocalGuideLinkCard
                   key={entry.slug}
                   href={`/sell/neighborhoods/${entry.slug}`}
                   eyebrow={`${entry.parentCity}, WA`}
@@ -833,23 +798,11 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {marketSpotlights.map((entry) => (
-              <div
+              <LocalGuideStatementCard
                 key={entry.slug}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                  {entry.kind}
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold">{entry.name}</h3>
-                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
-                  {formatCurrency(entry.medianSalePrice)} median sale price •{" "}
-                  {entry.medianDom} median DOM • {entry.monthsOfSupply.toFixed(1)}{" "}
-                  months supply
-                </p>
-                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
-                  Imported snapshot date: {formatSnapshotDate(entry.periodEnd)}
-                </p>
-              </div>
+                label={`${entry.kind} · ${entry.name}`}
+                text={`${formatCurrency(entry.medianSalePrice)} median sale price • ${entry.medianDom} median DOM • ${entry.monthsOfSupply.toFixed(1)} months supply. Imported snapshot date: ${formatSnapshotDate(entry.periodEnd)}.`}
+              />
             ))}
           </div>
         </div>
@@ -873,13 +826,12 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             {countyPage.sellerQuestions.map((item) => (
-              <div
+              <LocalGuideStatementCard
                 key={item.question}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
-                <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
-                <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
-              </div>
+                label={item.question}
+                text={item.answer}
+                tone="dark"
+              />
             ))}
           </div>
         </div>

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import CornerAccent from "@/components/CornerAccent";
+import {
+  LocalGuideLinkCard,
+  LocalGuidePanel,
+  LocalGuideStatementCard,
+} from "@/components/LocalGuideBlocks";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
@@ -174,31 +178,6 @@ export async function generateMetadata({
   };
 }
 
-function LinkCard({
-  href,
-  eyebrow,
-  title,
-  description,
-}: {
-  href: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
-    >
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-        {eyebrow}
-      </p>
-      <h3 className="mt-3 text-2xl font-semibold">{title}</h3>
-      <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">{description}</p>
-    </Link>
-  );
-}
-
 function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
   const snapshot = marketSnapshotMap.get(page.slug);
   const parentCity = cityPageMap.get(page.parentCitySlug);
@@ -334,20 +313,11 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             </p>
             <SectionDivider />
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-[#E8E4DF] bg-white p-6">
-            <CornerAccent
-              tone="gold"
-              className="absolute right-4 top-4 h-12 w-[4.5rem]"
-            />
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-              Seller moves
-            </p>
-            <ul className="mt-5 space-y-4 text-sm leading-6 text-[#5A5A5A]">
-              {page.sellerMoves.map((move) => (
-                <li key={move}>{move}</li>
-              ))}
-            </ul>
-          </div>
+          <LocalGuidePanel
+            eyebrow="Seller moves"
+            title={`${page.areaName} prep priorities`}
+            items={page.sellerMoves}
+          />
         </div>
       </section>
 
@@ -369,12 +339,11 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {page.pricingFactors.map((factor) => (
-              <div
+              <LocalGuideStatementCard
                 key={factor}
-                className="rounded-2xl border border-[#E8E4DF] bg-[#F8F5F0] p-6"
-              >
-                <p className="text-sm leading-7 text-[#5A5A5A]">{factor}</p>
-              </div>
+                label="Buyer lens"
+                text={factor}
+              />
             ))}
           </div>
         </div>
@@ -403,7 +372,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {sellerGuides.map((guide) => (
-                <LinkCard
+                <LocalGuideLinkCard
                   key={guide.slug}
                   href={`/sell/checklists/${guide.slug}`}
                   eyebrow="Seller Guide"
@@ -435,7 +404,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
             </div>
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {nearbyAreas.map((entry) => (
-                <LinkCard
+                <LocalGuideLinkCard
                   key={entry.slug}
                   href={`/sell/neighborhoods/${entry.slug}`}
                   eyebrow={`${entry.parentCity}, WA`}
@@ -466,13 +435,12 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             {page.sellerQuestions.map((item) => (
-              <div
+              <LocalGuideStatementCard
                 key={item.question}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
-              >
-                <h3 className="text-xl font-semibold leading-snug">{item.question}</h3>
-                <p className="mt-4 text-sm leading-6 text-white/72">{item.answer}</p>
-              </div>
+                label={item.question}
+                text={item.answer}
+                tone="dark"
+              />
             ))}
           </div>
         </div>
