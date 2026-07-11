@@ -180,6 +180,7 @@ const searchFaqs = [
 ];
 
 const popularGuides = [
+  { href: "/sell/local-guides", label: "All Local Guides" },
   { href: "/sell/snohomish-county-wa", label: "Snohomish County" },
   { href: "/sell/skagit-county-wa", label: "Skagit County" },
   { href: "/sell/everett-wa", label: "Everett" },
@@ -592,12 +593,13 @@ export default function Home() {
                 </p>
               </div>
               <h2 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
-                Browse city and county seller pages separately
+                Browse county, city, and neighborhood seller pages
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-[#5A5A5A]">
-                The homepage stays focused on seller questions and CMA requests.
-                Local market pages live on their own so city and county content is
-                easier to browse and easier to search.
+                The homepage stays focused on seller questions and CMA requests. The
+                local guide hub breaks out county, city, and smaller neighborhood pages
+                so sellers can move from broad market context to tighter local insight
+                without getting lost.
               </p>
               <SectionDivider />
             </div>

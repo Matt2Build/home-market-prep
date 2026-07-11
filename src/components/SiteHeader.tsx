@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "/#seller-answers", label: "Seller Answers" },
-  { href: "/sell/snohomish-county-wa", label: "Local Guides" },
+  { href: "/sell/local-guides", label: "Local Guides" },
   { href: "/#seller-faqs", label: "FAQs" },
 ];
 
