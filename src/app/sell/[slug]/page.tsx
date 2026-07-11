@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  LocalGuideHeroAside,
   LocalGuideLinkCard,
   LocalGuidePanel,
   LocalGuideStatementCard,
@@ -251,39 +252,66 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
 
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
-        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:py-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            {cityPage.city}, WA Seller Guide
-          </p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            {cityPage.title}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
-            {cityPage.heroDescription}
-          </p>
-          <SectionDivider tone="dark" />
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
-            <Link
-              href={`/sell/${cityPage.countySlug}`}
-              className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-            >
-              {cityPage.county} guide
-            </Link>
-            {sellerGuides[0] && (
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-6 py-14 sm:py-16 lg:grid-cols-[1.02fr,0.98fr] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              {cityPage.city}, WA Seller Guide
+            </p>
+            <h1 className="mt-5 max-w-4xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+              {cityPage.title}
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
+              {cityPage.heroDescription}
+            </p>
+            <SectionDivider tone="dark" />
+            <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
               <Link
-                href={`/sell/checklists/${sellerGuides[0].slug}`}
+                href={`/sell/${cityPage.countySlug}`}
                 className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
               >
-                Seller prep guide
+                {cityPage.county} guide
               </Link>
-            )}
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              Free CMA
-            </span>
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              Seller Prep Guidance
-            </span>
+              {sellerGuides[0] && (
+                <Link
+                  href={`/sell/checklists/${sellerGuides[0].slug}`}
+                  className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+                >
+                  Seller prep guide
+                </Link>
+              )}
+              <span className="rounded-full border border-white/15 px-4 py-2">
+                Free CMA
+              </span>
+              <span className="rounded-full border border-white/15 px-4 py-2">
+                Seller Prep Guidance
+              </span>
+            </div>
           </div>
+          <LocalGuideHeroAside
+            eyebrow="Use this page for"
+            title={`${cityPage.city} pricing and prep in one pass`}
+            stats={[
+              {
+                label: "Local guides",
+                value: `${localInsights.length || 0}`,
+              },
+              {
+                label: "Seller topics",
+                value: `${sellerGuides.length || 0}`,
+              },
+              {
+                label: "Median price",
+                value: snapshot ? formatCurrency(snapshot.medianSalePrice) : "CMA only",
+              },
+            ]}
+            bullets={[
+              `Use ${cityPage.city}-level context before choosing what to fix or leave alone.`,
+              "Compare the neighborhood pages below when buyers will judge smaller subareas differently.",
+              snapshot
+                ? `Current imported market temperature: ${snapshot.marketTemp.toLowerCase()}.`
+                : "Request the CMA if you need the pricing read tied directly to your property.",
+            ]}
+          />
         </div>
       </section>
 
@@ -602,36 +630,63 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
 
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
-        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:py-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            County Seller Guide
-          </p>
-          <h1 className="mt-5 max-w-5xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            {countyPage.title}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
-            {countyPage.heroDescription}
-          </p>
-          <SectionDivider tone="dark" />
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              {countyPage.county}, WA
-            </span>
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              City and neighborhood guides
-            </span>
-            {sellerGuides[0] && (
-              <Link
-                href={`/sell/checklists/${sellerGuides[0].slug}`}
-                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-              >
-                Seller prep guide
-              </Link>
-            )}
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              Free CMA
-            </span>
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-6 py-14 sm:py-16 lg:grid-cols-[1.02fr,0.98fr] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              County Seller Guide
+            </p>
+            <h1 className="mt-5 max-w-5xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+              {countyPage.title}
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
+              {countyPage.heroDescription}
+            </p>
+            <SectionDivider tone="dark" />
+            <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
+              <span className="rounded-full border border-white/15 px-4 py-2">
+                {countyPage.county}, WA
+              </span>
+              <span className="rounded-full border border-white/15 px-4 py-2">
+                City and neighborhood guides
+              </span>
+              {sellerGuides[0] && (
+                <Link
+                  href={`/sell/checklists/${sellerGuides[0].slug}`}
+                  className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+                >
+                  Seller prep guide
+                </Link>
+              )}
+              <span className="rounded-full border border-white/15 px-4 py-2">
+                Free CMA
+              </span>
+            </div>
           </div>
+          <LocalGuideHeroAside
+            eyebrow="Use this page for"
+            title={`${countyPage.county} market context first`}
+            stats={[
+              {
+                label: "City guides",
+                value: `${cityEntries.length}`,
+              },
+              {
+                label: "Subarea pages",
+                value: `${neighborhoodEntries.length}`,
+              },
+              {
+                label: "Median price",
+                value: snapshot ? formatCurrency(snapshot.medianSalePrice) : "Broad view",
+              },
+            ]}
+            bullets={[
+              "Use the county view for pace and broader pricing context, then narrow down into city and neighborhood pages.",
+              `There are ${cityEntries.length} city guides and ${neighborhoodEntries.length} smaller-area pages linked from here.`,
+              snapshot
+                ? `Current imported market temperature: ${snapshot.marketTemp.toLowerCase()}.`
+                : "Use the free CMA when the county numbers need to be translated into your actual buyer pool.",
+            ]}
+          />
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  LocalGuideHeroAside,
   LocalGuideLinkCard,
   LocalGuidePanel,
   LocalGuideStatementCard,
@@ -10,10 +11,7 @@ import MarketSnapshotSection from "@/components/MarketSnapshotSection";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import { cityPageMap } from "@/lib/city-pages";
-import {
-  formatSnapshotDate,
-  marketSnapshotMap,
-} from "@/lib/market-data";
+import { formatCurrency, formatSnapshotDate, marketSnapshotMap } from "@/lib/market-data";
 import {
   neighborhoodPageMap,
   neighborhoodPages,
@@ -241,41 +239,70 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
 
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
-        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:py-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Neighborhood Seller Guide
-          </p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            {page.title}
-          </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
-            {page.heroDescription}
-          </p>
-          <SectionDivider tone="dark" />
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
-            {parentCity && (
-              <Link
-                href={`/sell/${parentCity.slug}`}
-                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-              >
-                {parentCity.city} city guide
-              </Link>
-            )}
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              {page.county}, WA
-            </span>
-            {sellerGuides[0] && (
-              <Link
-                href={`/sell/checklists/${sellerGuides[0].slug}`}
-                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-              >
-                Seller prep guide
-              </Link>
-            )}
-            <span className="rounded-full border border-white/15 px-4 py-2">
-              Neighborhood-level seller SEO page
-            </span>
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-6 py-14 sm:py-16 lg:grid-cols-[1.02fr,0.98fr] lg:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Neighborhood Seller Guide
+            </p>
+            <h1 className="mt-5 max-w-4xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+              {page.title}
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
+              {page.heroDescription}
+            </p>
+            <SectionDivider tone="dark" />
+            <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
+              {parentCity && (
+                <Link
+                  href={`/sell/${parentCity.slug}`}
+                  className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+                >
+                  {parentCity.city} city guide
+                </Link>
+              )}
+              <span className="rounded-full border border-white/15 px-4 py-2">
+                {page.county}, WA
+              </span>
+              {sellerGuides[0] && (
+                <Link
+                  href={`/sell/checklists/${sellerGuides[0].slug}`}
+                  className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+                >
+                  Seller prep guide
+                </Link>
+              )}
+              <span className="rounded-full border border-white/15 px-4 py-2">
+                Neighborhood-level seller SEO page
+              </span>
+            </div>
           </div>
+          <LocalGuideHeroAside
+            eyebrow="Use this page for"
+            title={`${page.areaName} seller context fast`}
+            stats={[
+              {
+                label: "Parent city",
+                value: parentCity?.city ?? page.parentCity,
+              },
+              {
+                label: "Seller topics",
+                value: `${sellerGuides.length || 0}`,
+              },
+              {
+                label: "Median price",
+                value: snapshot ? formatCurrency(snapshot.medianSalePrice) : "Hyperlocal",
+              },
+            ]}
+            bullets={[
+              `Use ${page.areaName} when city-wide numbers are too broad for how buyers compare this pocket.`,
+              nearbyAreas.length > 0
+                ? `There are ${nearbyAreas.length} nearby neighborhood pages linked below for tighter cross-shopping.`
+                : "Pair this page with the city guide when you need the broader comparison set too.",
+              snapshot
+                ? `Current imported market temperature: ${snapshot.marketTemp.toLowerCase()}.`
+                : "Request the free CMA if the neighborhood view needs to be tied to your specific house.",
+            ]}
+          />
         </div>
       </section>
 

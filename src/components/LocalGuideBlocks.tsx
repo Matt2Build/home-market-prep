@@ -158,3 +158,60 @@ export function LocalGuideStatementCard({
     </div>
   );
 }
+
+export function LocalGuideHeroAside({
+  eyebrow,
+  title,
+  stats,
+  bullets,
+}: {
+  eyebrow: string;
+  title: string;
+  stats: Array<{ label: string; value: string }>;
+  bullets: string[];
+}) {
+  return (
+    <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-sm sm:p-7">
+      <CornerAccent
+        tone="dark"
+        className="absolute right-4 top-4 h-12 w-[4.5rem] opacity-50"
+      />
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+        {eyebrow}
+      </p>
+      <h2 className="mt-3 max-w-sm text-2xl font-light leading-tight tracking-tight text-white">
+        {title}
+      </h2>
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        {stats.map((stat) => (
+          <div
+            key={`${stat.label}-${stat.value}`}
+            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4"
+          >
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/58">
+              {stat.label}
+            </p>
+            <p className="mt-2 text-lg font-semibold tracking-tight text-white">
+              {stat.value}
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-6 space-y-3">
+        {bullets.map((item, index) => (
+          <div
+            key={item}
+            className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4"
+          >
+            <div className="flex items-start gap-3">
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 text-[11px] font-semibold text-[#C6A664]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p className="text-sm leading-6 text-white/74">{item}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
