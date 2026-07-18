@@ -150,7 +150,7 @@ export default function LocalGuidesIndexPage() {
               pocket of Snohomish County or nearby Skagit County against another.
             </p>
             <SectionDivider tone="dark" />
-            <p className="text-[11px] leading-6 text-white/40">Local seller guides by Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
+            <p className="text-[11px] leading-6 text-white/40">Local seller guides by Matt Salit · 425-645-2181 · mattsalit@writemyoffer.com · Century 21 North Homes Realty</p>
             <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/68">
               {sellerIntentTags.map((tag) => (
                 <span
@@ -558,7 +558,7 @@ export default function LocalGuidesIndexPage() {
               Browse Seller Answers
             </Link>
           </div>
-          <p className="mt-8 text-center text-[11px] text-white/40">Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
+          <p className="mt-8 text-center text-[11px] text-white/40">Matt Salit · 425-645-2181 · mattsalit@writemyoffer.com · Century 21 North Homes Realty</p>
         </div>
       </section>
     </div>

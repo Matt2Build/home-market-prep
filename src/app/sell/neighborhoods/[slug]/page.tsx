@@ -265,7 +265,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
               {page.heroDescription}
             </p>
             <SectionDivider tone="dark" />
-            <p className="text-[11px] leading-6 text-white/40">Neighborhood seller guidance by Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
+            <p className="text-[11px] leading-6 text-white/40">Neighborhood seller guidance by Matt Salit · 425-645-2181 · mattsalit@writemyoffer.com · Century 21 North Homes Realty</p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
               {parentCity && (
                 <Link
@@ -498,7 +498,7 @@ function NeighborhoodPageView({ page }: { page: NeighborhoodPage }) {
           >
             Start My Free CMA
           </Link>
-          <p className="mx-auto mt-5 max-w-xl text-[11px] text-[#1A1A1A]/50">Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
+          <p className="mx-auto mt-5 max-w-xl text-[11px] text-[#1A1A1A]/50">Matt Salit · 425-645-2181 · mattsalit@writemyoffer.com · Century 21 North Homes Realty</p>
         </div>
       </section>
     </div>
