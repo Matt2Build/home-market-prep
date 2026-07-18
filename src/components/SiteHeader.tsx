@@ -44,6 +44,13 @@ export default function SiteHeader() {
             >
               {CONTACT_PHONE}
             </a>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-xs font-medium text-white/60 transition-colors hover:text-[#C6A664] truncate max-w-[140px]"
+              title={CONTACT_EMAIL}
+            >
+              {CONTACT_EMAIL.split("@")[0]}@{CONTACT_EMAIL.split("@")[1]}
+            </a>
             <Link
               href="/#cma"
               className="rounded-full bg-[#C6A664] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82] sm:px-5 sm:text-xs"
