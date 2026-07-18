@@ -9,6 +9,9 @@ const navLinks = [
   { href: "/#seller-faqs", label: "FAQs" },
 ];
 
+const CONTACT_PHONE = "425-645-2181";
+const CONTACT_EMAIL = "mattsalit@writemyoffer.com";
+
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -34,10 +37,24 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href={`tel:${CONTACT_PHONE.replace(/-/g, "")}`}
+              className="text-xs font-medium text-white/60 transition-colors hover:text-[#C6A664]"
+            >
+              {CONTACT_PHONE}
+            </a>
             <Link
               href="/#cma"
               className="rounded-full bg-[#C6A664] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82] sm:px-5 sm:text-xs"
+            >
+              Free CMA
+            </Link>
+          </div>
+          <div className="flex items-center gap-2 md:hidden">
+            <Link
+              href="/#cma"
+              className="rounded-full bg-[#C6A664] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
             >
               Free CMA
             </Link>
@@ -66,6 +83,18 @@ export default function SiteHeader() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href={`tel:${CONTACT_PHONE.replace(/-/g, "")}`}
+              className="rounded-2xl border border-[#C6A664]/30 bg-[#C6A664]/10 px-4 py-3 text-center text-[11px] font-semibold tracking-[0.16em] text-[#C6A664] transition-colors hover:bg-[#C6A664]/20"
+            >
+              {CONTACT_PHONE}
+            </a>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-center text-[11px] font-semibold tracking-[0.16em] text-white/78 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </nav>
         ) : null}
       </div>

@@ -227,7 +227,7 @@ const serviceSchema = {
   name: "HomeMarketPrep",
   url: "https://home-market-prep.vercel.app/",
   email: "mattsalit@writemyoffer.com",
-  telephone: "+1-805-304-3976",
+  telephone: "+1-425-645-2181",
   areaServed: [
     {
       "@type": "AdministrativeArea",
@@ -286,17 +286,26 @@ export default function Home() {
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Seller Questions Before You Hit the Market
+            Snohomish County & Skagit County Seller Guide
           </p>
           <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight sm:text-5xl md:text-7xl">
             Thinking about selling?
-            <span className="font-semibold text-[#C6A664]"> Here&apos;s what you should be asking first.</span>
+            <span className="font-semibold text-[#C6A664]"> Start with the questions buyers are already asking.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/78 sm:text-xl">
             What should you fix? How much should you declutter? What paperwork do
-            you need? How do you keep the house show-ready? Start there, then use
-            a free CMA to connect the prep work to a real pricing strategy.
+            you need? How do you keep the house show-ready without burning out?
+            Get clear, local answers — then use a free CMA to connect the prep work to a real pricing strategy.
           </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-white/60">
+            <a href="tel:4256452181" className="transition-colors hover:text-[#C6A664]">
+              425-645-2181
+            </a>
+            <span className="text-white/30">•</span>
+            <a href="mailto:mattsalit@writemyoffer.com" className="transition-colors hover:text-[#C6A664]">
+              mattsalit@writemyoffer.com
+            </a>
+          </div>
           <SectionDivider tone="dark" align="center" />
           <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
             <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
@@ -326,25 +335,25 @@ export default function Home() {
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
             <Link
-              href="/sell/checklists/declutter-before-selling-house-wa"
+              href="/sell/local-guides/declutter-before-selling-house-wa"
               className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
             >
               Decluttering
             </Link>
             <Link
-              href="/sell/checklists/repairs-before-selling-house-wa"
+              href="/sell/local-guides/repairs-before-selling-house-wa"
               className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
             >
               Repairs
             </Link>
             <Link
-              href="/sell/checklists/paperwork-needed-to-sell-house-wa"
+              href="/sell/local-guides/paperwork-needed-to-sell-house-wa"
               className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
             >
               Paperwork
             </Link>
             <Link
-              href="/sell/checklists/show-ready-house-checklist-wa"
+              href="/sell/local-guides/show-ready-house-checklist-wa"
               className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
             >
               Showings

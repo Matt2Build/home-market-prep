@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "HomeMarketPrep | Snohomish County CMA, Seller Prep Checklist, and Listing Guides",
+      "Matt Salit | HomeMarketPrep — Snohomish County CMA, Seller Prep & Listing Guides",
     template: "%s | HomeMarketPrep",
   },
   description:
-    "Free CMA and seller prep guidance for Snohomish County and nearby Washington homeowners. Explore seller question pages, county guides, city guides, and neighborhood pages covering pricing, repairs, showings, paperwork, disclosures, timing, and home value context before listing.",
+    "Free CMA and seller prep guidance from Matt Salit, Century 21 North Homes, for Snohomish County and nearby Washington homeowners. Explore seller question pages, county guides, city guides, and neighborhood pages covering pricing, repairs, showings, paperwork, disclosures, timing, and home value context before listing.",
   applicationName: "HomeMarketPrep",
   category: "real estate",
-  creator: "HomeMarketPrep",
+  creator: "Matt Salit — Century 21 North Homes",
   publisher: "HomeMarketPrep",
   authors: [{ name: "Matt Salit" }],
   keywords: [

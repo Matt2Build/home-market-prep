@@ -1,0 +1,968 @@
+[
+  {
+    "slug": "snohomish-county-wa",
+    "name": "Snohomish County",
+    "kind": "county",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 760000,
+    "medianDom": 13,
+    "inventory": 2027,
+    "newListings": 1352,
+    "avgSaleToList": 1.0,
+    "medianPpsf": 403,
+    "monthsOfSupply": 2.4,
+    "homesSold": 859,
+    "homesSoldChange": 19.3,
+    "priceChange": 1.3,
+    "soldAboveList": 0.312,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 760000,
+        "homesSold": 859,
+        "medianDom": 13,
+        "inventory": 2027,
+        "monthsOfSupply": 2.4
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 750000,
+        "homesSold": 720,
+        "medianDom": 11,
+        "inventory": 1864,
+        "monthsOfSupply": 2.6
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 749475,
+        "homesSold": 798,
+        "medianDom": 14,
+        "inventory": 1512,
+        "monthsOfSupply": 1.9
+      }
+    ]
+  },
+  {
+    "slug": "skagit-county-wa",
+    "name": "Skagit County",
+    "kind": "county",
+    "county": "Skagit County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 610140,
+    "medianDom": 14,
+    "inventory": 397,
+    "newListings": 214,
+    "avgSaleToList": 0.996,
+    "medianPpsf": 352,
+    "monthsOfSupply": 3.5,
+    "homesSold": 114,
+    "homesSoldChange": -1.7,
+    "priceChange": 3.7,
+    "soldAboveList": 0.333,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 610140,
+        "homesSold": 114,
+        "medianDom": 14,
+        "inventory": 397,
+        "monthsOfSupply": 3.5
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 588090,
+        "homesSold": 116,
+        "medianDom": 19,
+        "inventory": 364,
+        "monthsOfSupply": 3.1
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 604640,
+        "homesSold": 98,
+        "medianDom": 32,
+        "inventory": 298,
+        "monthsOfSupply": 3.0
+      }
+    ]
+  },
+  {
+    "slug": "arlington-wa",
+    "name": "Arlington",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Hot Seller's Market",
+    "marketColor": "seller",
+    "medianSalePrice": 612000,
+    "medianDom": 17,
+    "inventory": 40,
+    "newListings": 36,
+    "avgSaleToList": 1.002,
+    "medianPpsf": 342,
+    "monthsOfSupply": 1.9,
+    "homesSold": 21,
+    "homesSoldChange": 0.0,
+    "priceChange": 2.0,
+    "soldAboveList": 0.286,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 612000,
+        "homesSold": 21,
+        "medianDom": 17,
+        "inventory": 40,
+        "monthsOfSupply": 1.9
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 600000,
+        "homesSold": 21,
+        "medianDom": 10,
+        "inventory": 23,
+        "monthsOfSupply": 1.1
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 575000,
+        "homesSold": 23,
+        "medianDom": 8,
+        "inventory": 24,
+        "monthsOfSupply": 1.0
+      }
+    ]
+  },
+  {
+    "slug": "marysville-wa",
+    "name": "Marysville",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 649990,
+    "medianDom": 9,
+    "inventory": 221,
+    "newListings": 132,
+    "avgSaleToList": 1.005,
+    "medianPpsf": 355,
+    "monthsOfSupply": 2.7,
+    "homesSold": 83,
+    "homesSoldChange": 20.3,
+    "priceChange": 1.2,
+    "soldAboveList": 0.361,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 649990,
+        "homesSold": 83,
+        "medianDom": 9,
+        "inventory": 221,
+        "monthsOfSupply": 2.7
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 642262,
+        "homesSold": 69,
+        "medianDom": 14,
+        "inventory": 192,
+        "monthsOfSupply": 2.8
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 630000,
+        "homesSold": 89,
+        "medianDom": 13,
+        "inventory": 152,
+        "monthsOfSupply": 1.7
+      }
+    ]
+  },
+  {
+    "slug": "lake-stevens-wa",
+    "name": "Lake Stevens",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 748116,
+    "medianDom": 14,
+    "inventory": 116,
+    "newListings": 67,
+    "avgSaleToList": 1.004,
+    "medianPpsf": 344,
+    "monthsOfSupply": 2.3,
+    "homesSold": 50,
+    "homesSoldChange": 51.5,
+    "priceChange": 10.8,
+    "soldAboveList": 0.38,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 748116,
+        "homesSold": 50,
+        "medianDom": 14,
+        "inventory": 116,
+        "monthsOfSupply": 2.3
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 675000,
+        "homesSold": 33,
+        "medianDom": 18,
+        "inventory": 110,
+        "monthsOfSupply": 3.3
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 667500,
+        "homesSold": 46,
+        "medianDom": 23,
+        "inventory": 91,
+        "monthsOfSupply": 2.0
+      }
+    ]
+  },
+  {
+    "slug": "snohomish-wa",
+    "name": "Snohomish",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 742500,
+    "medianDom": 26,
+    "inventory": 38,
+    "newListings": 23,
+    "avgSaleToList": 0.986,
+    "medianPpsf": 377,
+    "monthsOfSupply": 2.2,
+    "homesSold": 17,
+    "homesSoldChange": 70.0,
+    "priceChange": 1.7,
+    "soldAboveList": 0.176,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 742500,
+        "homesSold": 17,
+        "medianDom": 26,
+        "inventory": 38,
+        "monthsOfSupply": 2.2
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 729975,
+        "homesSold": 10,
+        "medianDom": 3,
+        "inventory": 25,
+        "monthsOfSupply": 2.5
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 850000,
+        "homesSold": 10,
+        "medianDom": 13,
+        "inventory": 26,
+        "monthsOfSupply": 2.6
+      }
+    ]
+  },
+  {
+    "slug": "everett-wa",
+    "name": "Everett",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Hot Seller's Market",
+    "marketColor": "seller",
+    "medianSalePrice": 587500,
+    "medianDom": 7,
+    "inventory": 165,
+    "newListings": 124,
+    "avgSaleToList": 1.006,
+    "medianPpsf": 374,
+    "monthsOfSupply": 1.8,
+    "homesSold": 90,
+    "homesSoldChange": 15.4,
+    "priceChange": 0.4,
+    "soldAboveList": 0.444,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 587500,
+        "homesSold": 90,
+        "medianDom": 7,
+        "inventory": 165,
+        "monthsOfSupply": 1.8
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 585000,
+        "homesSold": 78,
+        "medianDom": 7,
+        "inventory": 157,
+        "monthsOfSupply": 2.0
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 560000,
+        "homesSold": 71,
+        "medianDom": 12,
+        "inventory": 112,
+        "monthsOfSupply": 1.6
+      }
+    ]
+  },
+  {
+    "slug": "mukilteo-wa",
+    "name": "Mukilteo",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 941500,
+    "medianDom": 5,
+    "inventory": 51,
+    "newListings": 43,
+    "avgSaleToList": 0.996,
+    "medianPpsf": 440,
+    "monthsOfSupply": 2.0,
+    "homesSold": 26,
+    "homesSoldChange": 73.3,
+    "priceChange": 9.5,
+    "soldAboveList": 0.385,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 941500,
+        "homesSold": 26,
+        "medianDom": 5,
+        "inventory": 51,
+        "monthsOfSupply": 2.0
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 860000,
+        "homesSold": 15,
+        "medianDom": 14,
+        "inventory": 39,
+        "monthsOfSupply": 2.6
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 980000,
+        "homesSold": 23,
+        "medianDom": 12,
+        "inventory": 23,
+        "monthsOfSupply": 1.0
+      }
+    ]
+  },
+  {
+    "slug": "mount-vernon-wa",
+    "name": "Mount Vernon",
+    "kind": "city",
+    "county": "Skagit County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 625000,
+    "medianDom": 11,
+    "inventory": 94,
+    "newListings": 64,
+    "avgSaleToList": 0.997,
+    "medianPpsf": 350,
+    "monthsOfSupply": 3.2,
+    "homesSold": 29,
+    "homesSoldChange": -14.7,
+    "priceChange": 11.3,
+    "soldAboveList": 0.276,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 625000,
+        "homesSold": 29,
+        "medianDom": 11,
+        "inventory": 94,
+        "monthsOfSupply": 3.2
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 561500,
+        "homesSold": 34,
+        "medianDom": 23,
+        "inventory": 77,
+        "monthsOfSupply": 2.3
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 619500,
+        "homesSold": 34,
+        "medianDom": 17,
+        "inventory": 62,
+        "monthsOfSupply": 1.8
+      }
+    ]
+  },
+  {
+    "slug": "lynnwood-wa",
+    "name": "Lynnwood",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 820000,
+    "medianDom": 6,
+    "inventory": 59,
+    "newListings": 45,
+    "avgSaleToList": 1.001,
+    "medianPpsf": 410,
+    "monthsOfSupply": 2.2,
+    "homesSold": 27,
+    "homesSoldChange": 0.0,
+    "priceChange": 12.3,
+    "soldAboveList": 0.444,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 820000,
+        "homesSold": 27,
+        "medianDom": 6,
+        "inventory": 59,
+        "monthsOfSupply": 2.2
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 730000,
+        "homesSold": 27,
+        "medianDom": 18,
+        "inventory": 50,
+        "monthsOfSupply": 1.9
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 720000,
+        "homesSold": 27,
+        "medianDom": 12,
+        "inventory": 41,
+        "monthsOfSupply": 1.5
+      }
+    ]
+  },
+  {
+    "slug": "bothell-wa",
+    "name": "Bothell",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 1099950,
+    "medianDom": 13,
+    "inventory": 156,
+    "newListings": 78,
+    "avgSaleToList": 1.007,
+    "medianPpsf": 513,
+    "monthsOfSupply": 2.9,
+    "homesSold": 53,
+    "homesSoldChange": 39.5,
+    "priceChange": 17.4,
+    "soldAboveList": 0.264,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 1099950,
+        "homesSold": 53,
+        "medianDom": 13,
+        "inventory": 156,
+        "monthsOfSupply": 2.9
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 937000,
+        "homesSold": 38,
+        "medianDom": 13,
+        "inventory": 148,
+        "monthsOfSupply": 3.9
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 980000,
+        "homesSold": 50,
+        "medianDom": 8,
+        "inventory": 120,
+        "monthsOfSupply": 2.4
+      }
+    ]
+  },
+  {
+    "slug": "mill-creek-wa",
+    "name": "Mill Creek",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 741750,
+    "medianDom": 14,
+    "inventory": 47,
+    "newListings": 30,
+    "avgSaleToList": 0.99,
+    "medianPpsf": 428,
+    "monthsOfSupply": 2.9,
+    "homesSold": 16,
+    "homesSoldChange": 14.3,
+    "priceChange": -27.5,
+    "soldAboveList": 0.125,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 741750,
+        "homesSold": 16,
+        "medianDom": 14,
+        "inventory": 47,
+        "monthsOfSupply": 2.9
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 1023500,
+        "homesSold": 14,
+        "medianDom": 10,
+        "inventory": 42,
+        "monthsOfSupply": 3.0
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 830000,
+        "homesSold": 13,
+        "medianDom": 3,
+        "inventory": 25,
+        "monthsOfSupply": 1.9
+      }
+    ]
+  },
+  {
+    "slug": "monroe-wa",
+    "name": "Monroe",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 712500,
+    "medianDom": 15,
+    "inventory": 49,
+    "newListings": 37,
+    "avgSaleToList": 0.996,
+    "medianPpsf": 335,
+    "monthsOfSupply": 2.7,
+    "homesSold": 18,
+    "homesSoldChange": -5.3,
+    "priceChange": -17.2,
+    "soldAboveList": 0.222,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 712500,
+        "homesSold": 18,
+        "medianDom": 15,
+        "inventory": 49,
+        "monthsOfSupply": 2.7
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 861000,
+        "homesSold": 19,
+        "medianDom": 27,
+        "inventory": 51,
+        "monthsOfSupply": 2.7
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 710000,
+        "homesSold": 25,
+        "medianDom": 27,
+        "inventory": 42,
+        "monthsOfSupply": 1.7
+      }
+    ]
+  },
+  {
+    "slug": "stanwood-wa",
+    "name": "Stanwood",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 659900,
+    "medianDom": 57,
+    "inventory": 42,
+    "newListings": 30,
+    "avgSaleToList": 0.996,
+    "medianPpsf": 313,
+    "monthsOfSupply": 3.8,
+    "homesSold": 11,
+    "homesSoldChange": -47.6,
+    "priceChange": 3.9,
+    "soldAboveList": 0.091,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 659900,
+        "homesSold": 11,
+        "medianDom": 57,
+        "inventory": 42,
+        "monthsOfSupply": 3.8
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 635000,
+        "homesSold": 21,
+        "medianDom": 14,
+        "inventory": 42,
+        "monthsOfSupply": 2.0
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 676435,
+        "homesSold": 17,
+        "medianDom": 23,
+        "inventory": 45,
+        "monthsOfSupply": 2.6
+      }
+    ]
+  },
+  {
+    "slug": "sultan-wa",
+    "name": "Sultan",
+    "kind": "city",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Hot Seller's Market",
+    "marketColor": "seller",
+    "medianSalePrice": 580000,
+    "medianDom": 17,
+    "inventory": 25,
+    "newListings": 19,
+    "avgSaleToList": 1.014,
+    "medianPpsf": 309,
+    "monthsOfSupply": 1.5,
+    "homesSold": 17,
+    "homesSoldChange": 88.9,
+    "priceChange": -2.5,
+    "soldAboveList": 0.647,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 580000,
+        "homesSold": 17,
+        "medianDom": 17,
+        "inventory": 25,
+        "monthsOfSupply": 1.5
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 595000,
+        "homesSold": 9,
+        "medianDom": 12,
+        "inventory": 19,
+        "monthsOfSupply": 2.1
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 580000,
+        "homesSold": 15,
+        "medianDom": 37,
+        "inventory": 23,
+        "monthsOfSupply": 1.5
+      }
+    ]
+  },
+  {
+    "slug": "bothell-east-wa",
+    "name": "Bothell East",
+    "kind": "neighborhood",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 1335000,
+    "medianDom": 20,
+    "inventory": 41,
+    "newListings": 17,
+    "avgSaleToList": 0.98,
+    "medianPpsf": 491,
+    "monthsOfSupply": 2.0,
+    "homesSold": 21,
+    "homesSoldChange": 133.3,
+    "priceChange": 11.7,
+    "soldAboveList": 0.143,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 1335000,
+        "homesSold": 21,
+        "medianDom": 20,
+        "inventory": 41,
+        "monthsOfSupply": 2.0
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 1194995,
+        "homesSold": 9,
+        "medianDom": 69,
+        "inventory": 48,
+        "monthsOfSupply": 5.3
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 1140995,
+        "homesSold": 15,
+        "medianDom": 41,
+        "inventory": 42,
+        "monthsOfSupply": 2.8
+      }
+    ]
+  },
+  {
+    "slug": "bothell-west-wa",
+    "name": "Bothell West",
+    "kind": "neighborhood",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 892500,
+    "medianDom": 25,
+    "inventory": 61,
+    "newListings": 40,
+    "avgSaleToList": 0.999,
+    "medianPpsf": 453,
+    "monthsOfSupply": 2.5,
+    "homesSold": 24,
+    "homesSoldChange": 14.3,
+    "priceChange": -6.1,
+    "soldAboveList": 0.25,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 892500,
+        "homesSold": 24,
+        "medianDom": 25,
+        "inventory": 61,
+        "monthsOfSupply": 2.5
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 950000,
+        "homesSold": 21,
+        "medianDom": 10,
+        "inventory": 56,
+        "monthsOfSupply": 2.7
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 976123,
+        "homesSold": 18,
+        "medianDom": 9,
+        "inventory": 58,
+        "monthsOfSupply": 3.2
+      }
+    ]
+  },
+  {
+    "slug": "mill-creek-east-wa",
+    "name": "Mill Creek East",
+    "kind": "neighborhood",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Balanced Market",
+    "marketColor": "balanced",
+    "medianSalePrice": 925000,
+    "medianDom": 28,
+    "inventory": 63,
+    "newListings": 34,
+    "avgSaleToList": 0.98,
+    "medianPpsf": 471,
+    "monthsOfSupply": 2.7,
+    "homesSold": 23,
+    "homesSoldChange": 0.0,
+    "priceChange": -9.3,
+    "soldAboveList": 0.087,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 925000,
+        "homesSold": 23,
+        "medianDom": 28,
+        "inventory": 63,
+        "monthsOfSupply": 2.7
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 1020000,
+        "homesSold": 23,
+        "medianDom": 13,
+        "inventory": 64,
+        "monthsOfSupply": 2.8
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 925000,
+        "homesSold": 17,
+        "medianDom": 6,
+        "inventory": 50,
+        "monthsOfSupply": 2.9
+      }
+    ]
+  },
+  {
+    "slug": "monroe-north-wa",
+    "name": "Monroe North",
+    "kind": "neighborhood",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Buyer's Market",
+    "marketColor": "buyer",
+    "medianSalePrice": 875000,
+    "medianDom": 1,
+    "inventory": 7,
+    "newListings": 4,
+    "avgSaleToList": 1.0,
+    "medianPpsf": 407,
+    "monthsOfSupply": 7.0,
+    "homesSold": 1,
+    "homesSoldChange": -50.0,
+    "priceChange": 12.9,
+    "soldAboveList": 0.0,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 875000,
+        "homesSold": 1,
+        "medianDom": 1,
+        "inventory": 7,
+        "monthsOfSupply": 7.0
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 775000,
+        "homesSold": 2,
+        "medianDom": 28,
+        "inventory": 5,
+        "monthsOfSupply": 2.5
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 736000,
+        "homesSold": 4,
+        "medianDom": 6,
+        "inventory": 2,
+        "monthsOfSupply": 0.5
+      }
+    ]
+  },
+  {
+    "slug": "arlington-heights-wa",
+    "name": "Arlington Heights",
+    "kind": "neighborhood",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Hot Seller's Market",
+    "marketColor": "seller",
+    "medianSalePrice": 874500,
+    "medianDom": 13,
+    "inventory": 3,
+    "newListings": 3,
+    "avgSaleToList": 0.974,
+    "medianPpsf": 399,
+    "monthsOfSupply": 1.5,
+    "homesSold": 2,
+    "homesSoldChange": 0.0,
+    "priceChange": -11.0,
+    "soldAboveList": 0.0,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 874500,
+        "homesSold": 2,
+        "medianDom": 13,
+        "inventory": 3,
+        "monthsOfSupply": 1.5
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 983000,
+        "homesSold": 2,
+        "medianDom": 182,
+        "inventory": 1,
+        "monthsOfSupply": 0.5
+      },
+      {
+        "periodEnd": "2026-02-28",
+        "medianSalePrice": 760000,
+        "homesSold": 1,
+        "medianDom": 264,
+        "inventory": 2,
+        "monthsOfSupply": 2.0
+      }
+    ]
+  },
+  {
+    "slug": "cavalero-wa",
+    "name": "Cavalero",
+    "kind": "neighborhood",
+    "county": "Snohomish County",
+    "periodEnd": "2026-05-31",
+    "marketTemp": "Hot Seller's Market",
+    "marketColor": "seller",
+    "medianSalePrice": 675000,
+    "medianDom": 7,
+    "inventory": 5,
+    "newListings": 3,
+    "avgSaleToList": 0.995,
+    "medianPpsf": 309,
+    "monthsOfSupply": 1.7,
+    "homesSold": 3,
+    "homesSoldChange": 50.0,
+    "priceChange": 2.5,
+    "soldAboveList": 0.0,
+    "historical": [
+      {
+        "periodEnd": "2026-05-31",
+        "medianSalePrice": 675000,
+        "homesSold": 3,
+        "medianDom": 7,
+        "inventory": 5,
+        "monthsOfSupply": 1.7
+      },
+      {
+        "periodEnd": "2026-04-30",
+        "medianSalePrice": 658500,
+        "homesSold": 2,
+        "medianDom": 3,
+        "inventory": 7,
+        "monthsOfSupply": 3.5
+      },
+      {
+        "periodEnd": "2026-03-31",
+        "medianSalePrice": 725000,
+        "homesSold": 1,
+        "medianDom": 159,
+        "inventory": 4,
+        "monthsOfSupply": 4.0
+      }
+    ]
+  }
+]
