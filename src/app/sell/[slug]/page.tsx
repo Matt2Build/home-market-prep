@@ -279,6 +279,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
               {cityPage.heroDescription}
             </p>
             <SectionDivider tone="dark" />
+            <p className="text-[11px] leading-6 text-white/40">Seller pricing & prep guidance by Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
               <Link
                 href={`/sell/${cityPage.countySlug}`}
@@ -552,6 +553,7 @@ function CityPageView({ cityPage }: { cityPage: CityPage }) {
             in the wrong places or list at the wrong number.
           </p>
           <SectionDivider tone="gold" align="center" />
+          <p className="mx-auto mt-5 max-w-xl text-[11px] text-[#1A1A1A]/50">Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
           <Link
             href="/#cma"
             className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
@@ -650,6 +652,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
               {countyPage.heroDescription}
             </p>
             <SectionDivider tone="dark" />
+            <p className="text-[11px] leading-6 text-white/40">Seller pricing & prep guidance by Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
               <span className="rounded-full border border-white/15 px-4 py-2">
                 {countyPage.county}, WA
@@ -891,6 +894,7 @@ function CountyPageView({ countyPage }: { countyPage: CountyPage }) {
             picture down to the actual buyer pool for your home.
           </p>
           <SectionDivider tone="gold" align="center" />
+          <p className="mx-auto mt-5 max-w-xl text-[11px] text-[#1A1A1A]/50">Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
           <Link
             href="/#cma"
             className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"

@@ -305,7 +305,10 @@ export default function Home() {
             <a href="mailto:mattsalit@writemyoffer.com" className="transition-colors hover:text-[#C6A664]">
               mattsalit@writemyoffer.com
             </a>
+            <span className="text-white/30">•</span>
+            <span>Century 21 North Homes Realty</span>
           </div>
+          <p className="mt-2 text-[10px] text-white/30">HomeMarketPrep by Matt Salit</p>
           <SectionDivider tone="dark" align="center" />
           <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
             <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
@@ -679,7 +682,7 @@ export default function Home() {
             <span className="text-white">Prep</span>
           </div>
           <p className="text-sm text-white/40">
-            © {new Date().getFullYear()} Home Market Prep. All rights reserved.
+            © {new Date().getFullYear()} Home Market Prep. Matt Salit · Century 21 North Homes Realty.
           </p>
           <p className="text-sm text-white/40">
             From the makers of{" "}

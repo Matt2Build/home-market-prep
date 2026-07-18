@@ -488,6 +488,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
               {page.summary}
             </p>
             <SectionDivider tone="dark" />
+            <p className="text-[11px] leading-6 text-white/40">Seller prep guidance by Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/75">
               <span className="rounded-full border border-white/15 px-4 py-2">
                 {page.timeframe}
@@ -839,6 +840,7 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
           >
             Request My Free CMA
           </Link>
+          <p className="mx-auto mt-5 max-w-xl text-[11px] text-[#1A1A1A]/50">Matt Salit · 425-645-2181 · Century 21 North Homes Realty</p>
         </div>
       </section>
     </div>
