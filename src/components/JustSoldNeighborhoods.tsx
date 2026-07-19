@@ -122,7 +122,7 @@ export default function JustSoldNeighborhoods() {
               prefetch={false}
             >
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8C8375]">
-                {n.city}
+                {n.parentName}
               </p>
               <p className="text-lg font-semibold text-[#1A1A1A]">{n.name}</p>
               <div className="flex flex-col gap-2 text-xs text-[#5A5A5A]">
