@@ -136,22 +136,21 @@ export default function LocalGuidesIndexPage() {
 
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-          <div>
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 px-6 py-14 sm:py-16 lg:py-20">
+          <div className="flex max-w-3xl flex-col items-center text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               Local Guides
             </p>
-            <h1 className="mt-5 max-w-5xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="mt-5 text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
               Browse seller guides by county, city, and neighborhood
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
+            <p className="mt-6 text-lg leading-relaxed text-white/80">
               This is the cleanest way to move through the site if you are trying to
               price a house, decide what to fix, or narrow down how buyers compare one
               pocket of Snohomish County or nearby Skagit County against another.
             </p>
-            <SectionDivider tone="dark" />
-            <p className="text-[11px] leading-6 text-white/40">Local seller guides by Matt Salit · 425-645-2181 · mattsalit@writemyoffer.com · Century 21 North Homes Realty</p>
-            <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/68">
+            <SectionDivider className="mx-auto" tone="dark" />
+            <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/68">
               {sellerIntentTags.map((tag) => (
                 <span
                   key={tag}
@@ -161,7 +160,7 @@ export default function LocalGuidesIndexPage() {
                 </span>
               ))}
             </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
+            <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm text-white/75">
               <a
                 href="#counties"
                 className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
@@ -187,22 +186,44 @@ export default function LocalGuidesIndexPage() {
                 Request free CMA
               </Link>
             </div>
+            <p className="mt-6 text-[11px] leading-6 text-white/40">Local seller guides by Matt Salit · 425-645-2181 · mattsalit@writemyoffer.com · Century 21 North Homes Realty</p>
           </div>
-          <LocalGuideHeroAside
-            eyebrow="What is here"
-            title="A cleaner local map for seller search intent"
-            stats={[
-              { label: "Counties", value: `${countyPages.length}` },
-              { label: "City guides", value: `${cityPages.length}` },
-              { label: "Neighborhoods", value: `${neighborhoodPages.length}` },
-              { label: "Snapshots", value: `${snapshotCount + neighborhoodSnapshotCount}` },
-            ]}
-            bullets={[
-              "Start at the county level for a fast market read",
-              "Narrow to city when buyer expectations get specific",
-              "Use neighborhood pages when city averages are too broad",
-            ]}
-          />
+          <div className="w-full max-w-3xl">
+            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.05] p-6 backdrop-blur-sm sm:p-8">
+              <div className="absolute right-6 top-6 h-1 w-12 bg-gradient-to-r from-transparent via-[#C6A664]/30 to-transparent" />
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+                What is here
+              </p>
+              <p className="mt-3 max-w-lg text-xl font-light leading-tight tracking-tight text-white/90">
+                A cleaner local map for seller search intent
+              </p>
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {[
+                  { label: "Counties", value: `${countyPages.length}` },
+                  { label: "Cities", value: `${cityPages.length}` },
+                  { label: "Neighborhoods", value: `${neighborhoodPages.length}` },
+                  { label: "Snapshots", value: `${snapshotCount + neighborhoodSnapshotCount}` },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-3 text-center"
+                  >
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/50">
+                      {stat.label}
+                    </p>
+                    <p className="mt-1 text-xl font-semibold tracking-tight text-[#C6A664]">
+                      {stat.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2 text-[11px] text-white/50">
+                <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">Counties → broad read</span>
+                <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">Cities → local intent</span>
+                <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1">Neighborhoods → precise context</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -221,15 +242,16 @@ export default function LocalGuidesIndexPage() {
             </p>
             <SectionDivider className="mx-auto" />
           </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {quickStartPaths.map((path, i) => (
               <a
                 key={path.href}
                 href={path.href}
-                className="group flex flex-col justify-between rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-8 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-xl"
               >
+                <div className="absolute right-0 top-0 h-1 w-14 bg-gradient-to-l from-[#C6A664]/40 to-transparent" />
                 <div>
-                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C6A664]/10 text-xl font-bold text-[#C6A664] transition-transform duration-300 group-hover:scale-110">
+                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C6A664] text-xl font-bold text-[#1A1A1A] shadow-lg shadow-[#C6A664]/20 transition-transform duration-300 group-hover:scale-110">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C6A664]/80">
@@ -246,7 +268,7 @@ export default function LocalGuidesIndexPage() {
                   <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8C8375]">
                     {path.countLabel}
                   </span>
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#C6A664] text-sm font-bold text-white transition-transform duration-300 group-hover:translate-x-1">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#C6A664] text-sm font-bold text-white shadow-md shadow-[#C6A664]/25 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-110">
                     →
                   </span>
                 </div>
@@ -256,8 +278,8 @@ export default function LocalGuidesIndexPage() {
         </div>
       </section>
 
-      <section className="bg-white" id="counties">
-        <div className="mx-auto max-w-4xl px-6 py-14">
+      <section className="bg-[#F8F5F0]" id="counties">
+        <div className="mx-auto max-w-2xl px-6 py-14">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               Counties First
@@ -272,7 +294,7 @@ export default function LocalGuidesIndexPage() {
             </p>
             <SectionDivider />
           </div>
-          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          <div className="mt-8 flex flex-col gap-4">
             {countyPages.map((entry) => (
               <LocalGuideLinkCard
                 key={entry.slug}
