@@ -285,30 +285,104 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(17,17,17,0.88) 0%, rgba(17,17,17,0.74) 50%, rgba(17,17,17,0.90) 100%), url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat",
+              "linear-gradient(180deg, rgba(17,17,17,0.86) 0%, rgba(17,17,17,0.72) 45%, rgba(17,17,17,0.84) 100%), url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat",
           }}
         />
-        <div className="relative mx-auto max-w-4xl px-6 py-28 text-center sm:py-36">
-          <h1 className="text-5xl font-light tracking-tight md:text-6xl lg:text-7xl">
-            Thinking about selling?
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
-            Get your seller questions answered — or download the free pre-list checklist and see exactly what to fix, declutter, and gather before your list date.
+        <div className="relative mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+            Snohomish County & Skagit County Seller Guide
           </p>
+          <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight sm:text-5xl md:text-7xl">
+            Thinking about selling?
+            <span className="font-semibold text-[#C6A664]"> Start with the questions buyers are already asking.</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/78 sm:text-xl">
+            What should you fix? How much should you declutter? What paperwork do
+            you need? How do you keep the house show-ready without burning out?
+            Get clear, local answers — then use a free CMA to connect the prep work to a real pricing strategy.
+          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-white/60">
+            <a href="tel:4256452181" className="transition-colors hover:text-[#C6A664]">
+              425-645-2181
+            </a>
+            <span className="text-white/30">•</span>
+            <a href="mailto:mattsalit@writemyoffer.com" className="transition-colors hover:text-[#C6A664]">
+              mattsalit@writemyoffer.com
+            </a>
+            <span className="text-white/30">•</span>
+            <span>Matt Salit · Century 21 North Homes Realty</span>
+          </div>
+          <SectionDivider tone="dark" align="center" />
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                Start here
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white/74">
+                Seller questions first, then pricing. It keeps prep from turning into random projects.
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                Local focus
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white/74">
+                Built around Snohomish County and nearby Skagit sellers, not generic national advice.
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                CMA path
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white/74">
+                Quick request, confirmation email, then local pricing and prep follow-up.
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
+            <Link
+              href="/sell/checklists/declutter-before-selling-house-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Decluttering
+            </Link>
+            <Link
+              href="/sell/checklists/repairs-before-selling-house-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Repairs
+            </Link>
+            <Link
+              href="/sell/checklists/paperwork-needed-to-sell-house-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Paperwork
+            </Link>
+            <Link
+              href="/sell/checklists/show-ready-house-checklist-wa"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Showings
+            </Link>
+            <Link
+              href="/#cma"
+              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Free CMA
+            </Link>
+          </div>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="/downloads/seller-prelist-checklist.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#seller-answers"
               className="rounded-full bg-[#C6A664] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
             >
-              Download Free Checklist
+              Browse Seller Questions
             </a>
             <a
               href="#cma"
               className="rounded-full border border-white/20 px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
             >
-              Get Free CMA
+              Request Free CMA
             </a>
           </div>
         </div>
@@ -316,57 +390,12 @@ export default function Home() {
 
       <LocalGuideAnchorNav links={homeAnchorLinks} tone="dark" />
 
-      {/* ===== CHECKLIST PROMO ===== */}
-      <section id="checklist" className="bg-white">
-        <div className="mx-auto max-w-3xl px-6 py-14 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Free Download
-          </p>
-          <h2 className="mt-3 text-3xl font-light tracking-tight sm:text-4xl text-[#1A1A1A]">
-            Getting Ready to Sell: Home Prep Checklist
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-base text-[#5A5A5A]">
-            A step-by-step guide for Washington sellers. Work top to bottom as your list date approaches.
-          </p>
-          <div className="mt-8 rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 sm:p-8">
-            <div className="grid gap-4 sm:grid-cols-4 text-left">
-              <div className="rounded-2xl bg-white p-4 shadow-sm">
-                <p className="text-xs font-semibold text-[#C6A664]">4–6 weeks</p>
-                <p className="mt-1 text-sm text-[#5A5A5A]">Declutter & open up the space</p>
-              </div>
-              <div className="rounded-2xl bg-white p-4 shadow-sm">
-                <p className="text-xs font-semibold text-[#C6A664]">3–4 weeks</p>
-                <p className="mt-1 text-sm text-[#5A5A5A]">Repairs, touch-ups, deep clean</p>
-              </div>
-              <div className="rounded-2xl bg-white p-4 shadow-sm">
-                <p className="text-xs font-semibold text-[#C6A664]">2–3 weeks</p>
-                <p className="mt-1 text-sm text-[#5A5A5A]">Paperwork to gather</p>
-              </div>
-              <div className="rounded-2xl bg-white p-4 shadow-sm">
-                <p className="text-xs font-semibold text-[#C6A664]">1–2 weeks</p>
-                <p className="mt-1 text-sm text-[#5A5A5A]">Show-ready daily routine</p>
-              </div>
-            </div>
-            <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <a
-                href="/downloads/seller-prelist-checklist.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-[#1A1A1A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors hover:bg-[#333]"
-              >
-                Download Checklist PDF
-              </a>
-              <span className="text-xs text-[#8C8375]">Free · No sign-up required</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ===== SELLER ANSWERS ===== */}
       <section id="seller-answers" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center">
             <LocalGuideSectionHeader
+              align="center"
               index="01"
               eyebrow="Seller Answers"
               title="The questions sellers usually search before they are ready to list"
@@ -424,8 +453,8 @@ export default function Home() {
                   </p>
                   <ul className="mt-3 space-y-2 text-sm leading-6 text-[#5A5A5A]">
                     {page.checklist.slice(0, 2).map((item) => (
-                      <li key={item} className="flex gap-3">
-                        <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#C6A664]" />
+                      <li key={item} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#C6A664]" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -502,7 +531,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== VERIFIED REVIEWS (above CMA) ===== */}
+      {/* ===== VERIFIED REVIEWS ===== */}
       <section id="reviews" className="bg-[#111111] text-white">
         <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
           <div className="text-center mb-8">
