@@ -191,6 +191,11 @@ export default function LocalGuidesIndexPage() {
           <LocalGuideHeroAside
             eyebrow="What is here"
             title="A cleaner local map for seller search intent"
+            bullets={[
+              "Browse all local seller guides in one place.",
+              "County → city → neighborhood for faster answers.",
+              "Every page built around seller intent, not vanity metrics.",
+            ]}
             stats={[
               { label: "Counties", value: `${countyPages.length}` },
               { label: "City guides", value: `${cityPages.length}` },
