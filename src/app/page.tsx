@@ -395,7 +395,6 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center">
             <LocalGuideSectionHeader
-              align="center"
               index="01"
               eyebrow="Seller Answers"
               title="The questions sellers usually search before they are ready to list"
