@@ -72,65 +72,80 @@ export default function CmaForm() {
 
   return (
     <form
-      className="space-y-4"
+      className="space-y-5"
       onSubmit={(event) => {
         event.preventDefault();
         void handleSubmit();
       }}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#C6A664]">
-            3 fields
-          </p>
-          <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
-            Address, name, email.
-          </p>
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="rounded-full bg-[#C6A664]/10 px-4 py-1.5">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+            Free CMA
+          </span>
         </div>
-        <div className="rounded-full border border-[#E8E4DF] bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8C8375]">
+        <span className="text-xs text-[#8C8375]">·</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#8C8375]">
           No obligation
-        </div>
+        </span>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
-        <input
-          type="text"
-          placeholder="Property address"
-          value={values.address || ""}
-          onChange={(e) => handleChange("address", e.target.value)}
-          className="sm:col-span-2 w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
-          autoFocus
-        />
-        <input
-          type="text"
-          placeholder="Your name"
-          value={values.name || ""}
-          onChange={(e) => handleChange("name", e.target.value)}
-          className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
-        />
-        <input
-          type="email"
-          placeholder="Your email"
-          value={values.email || ""}
-          onChange={(e) => handleChange("email", e.target.value)}
-          className="w-full rounded-xl border border-[#E8E4DF] bg-white px-4 py-3 text-base placeholder:text-[#A1A1A1] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] transition-all"
-        />
+      <div className="space-y-3">
+        <div>
+          <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-[#1A1A1A]">
+            Property address
+          </label>
+          <input
+            type="text"
+            placeholder="123 Maple St, Marysville, WA 98270"
+            value={values.address || ""}
+            onChange={(e) => handleChange("address", e.target.value)}
+            className="w-full rounded-xl border border-[#E8E4DF] bg-[#FAFAF8] px-4 py-3.5 text-base placeholder:text-[#B8B0A4] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] focus:bg-white transition-all"
+            autoFocus
+          />
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-[#1A1A1A]">
+              Your name
+            </label>
+            <input
+              type="text"
+              placeholder="Jane Smith"
+              value={values.name || ""}
+              onChange={(e) => handleChange("name", e.target.value)}
+              className="w-full rounded-xl border border-[#E8E4DF] bg-[#FAFAF8] px-4 py-3.5 text-base placeholder:text-[#B8B0A4] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] focus:bg-white transition-all"
+            />
+          </div>
+          <div>
+            <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-[#1A1A1A]">
+              Your email
+            </label>
+            <input
+              type="email"
+              placeholder="jane@example.com"
+              value={values.email || ""}
+              onChange={(e) => handleChange("email", e.target.value)}
+              className="w-full rounded-xl border border-[#E8E4DF] bg-[#FAFAF8] px-4 py-3.5 text-base placeholder:text-[#B8B0A4] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] focus:bg-white transition-all"
+            />
+          </div>
+        </div>
       </div>
 
       {error && (
-        <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-600">
+        <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
           {error}
         </div>
       )}
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
         <p className="text-xs leading-5 text-[#8C8375]">
           You&apos;ll receive a confirmation email after submission.
         </p>
         <button
           type="submit"
           disabled={isDisabled}
-          className="rounded-full bg-[#1A1A1A] px-7 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white disabled:cursor-not-allowed disabled:opacity-30 transition-colors hover:bg-[#333]"
+          className="w-full sm:w-auto rounded-full bg-[#C6A664] px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-md shadow-[#C6A664]/20 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none transition-all hover:bg-[#D4BC82] hover:shadow-lg hover:shadow-[#C6A664]/30 active:scale-[0.98]"
         >
           {submitting ? "Sending..." : "Request My Free CMA"}
         </button>

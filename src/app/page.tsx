@@ -537,12 +537,13 @@ export default function Home() {
               index="02"
               eyebrow="Verified Reviews"
               title="What sellers and buyers in Snohomish County say"
-              description=""
+              description="Real feedback from people who worked through a Snohomish County home sale."
+              tone="dark"
             />
             <SectionDivider tone="dark" align="center" />
           </div>
           <div className="mt-12">
-            <GbpReviewsCarousel />
+            <GbpReviewsCarousel tone="dark" />
           </div>
         </div>
       </section>
