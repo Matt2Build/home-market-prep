@@ -219,7 +219,7 @@ export default function LocalGuidesIndexPage() {
             Most sellers do not need every page. They need the right layer of
             local context fast, then a clean path into pricing or prep.
           </p>
-          <SectionDivider className="mx-auto" />
+          <SectionDivider />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {quickStartPaths.map((path, i) => (
               <a
