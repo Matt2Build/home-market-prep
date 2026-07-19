@@ -390,13 +390,13 @@ export default function Home() {
 
       <LocalGuideAnchorNav links={homeAnchorLinks} tone="dark" />
 
-      {/* ===== SELLER ANSWERS ===== */}
+      {/* ===== SECTION 01 — SELLER QUESTIONS ===== */}
       <section id="seller-answers" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center">
             <LocalGuideSectionHeader
               index="01"
-              eyebrow="Seller Answers"
+              eyebrow="Seller Questions"
               title="The questions sellers usually search before they are ready to list"
               description="These are the prep topics that shape how the home shows, how buyers react, and how stressful the launch feels once the listing goes live."
             />
@@ -477,12 +477,11 @@ export default function Home() {
                   More Seller Questions
                 </p>
                 <h3 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl">
-                  The topics sellers usually realize they need right after the basics
+                  The topics sellers realize they need right after the basics
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-[#5A5A5A] sm:text-base">
-                  These pages cover the things sellers search once pricing, repairs,
-                  and paperwork lead into deeper decisions about timing, condition,
-                  inspection risk, and how much effort to put in before launch.
+                  These pages cover timing, condition, inspection risk, and how much
+                  effort to put in before launch.
                 </p>
               </div>
               <div className="rounded-full border border-[#D8D0C4] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
@@ -530,22 +529,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== VERIFIED REVIEWS ===== */}
+      {/* ===== SECTION 02 — VERIFIED REVIEWS ===== */}
       <section id="reviews" className="bg-[#111111] text-white">
-        <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
-          <div className="text-center mb-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Verified Reviews
-            </p>
-            <h2 className="mt-3 text-[2rem] font-light tracking-tight text-white sm:text-4xl">
-              What sellers and buyers in Snohomish County say
-            </h2>
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <div className="mx-auto max-w-4xl text-center">
+            <LocalGuideSectionHeader
+              index="02"
+              eyebrow="Verified Reviews"
+              title="What sellers and buyers in Snohomish County say"
+              description=""
+            />
+            <SectionDivider tone="dark" align="center" />
           </div>
-          <GbpReviewsCarousel />
+          <div className="mt-12">
+            <GbpReviewsCarousel />
+          </div>
         </div>
       </section>
 
-      {/* ===== CMA (condensed) ===== */}
+      {/* ===== CMA — NO SECTION DIVIDER — NO NUMBER ===== */}
       <section id="cma" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-xl px-6 py-12 sm:py-16 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
@@ -563,17 +565,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== FAQS ===== */}
+      {/* ===== FAQS — SECTION 03 ===== */}
       <section id="seller-faqs" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="mb-10 max-w-4xl">
+          <div className="mx-auto max-w-4xl text-center mb-10">
             <LocalGuideSectionHeader
               index="03"
-              eyebrow="FAQs"
-              title="A few common seller questions before listing"
-              description="These are the high-intent questions that usually sit between the first seller-search click and a real pricing conversation."
+              eyebrow="Common Questions"
+              title="Answers sellers usually need before booking a CMA"
+              description="Quick answers to the high-intent questions sellers search between their first click and a real pricing conversation."
             />
-            <SectionDivider />
+            <SectionDivider align="center" />
           </div>
           <div className="grid gap-5 md:grid-cols-2">
             {searchFaqs.map((faq) => (
@@ -609,20 +611,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== LOCAL GUIDES ===== */}
+      {/* ===== LOCAL GUIDES — SECTION 04 ===== */}
       <section className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-14">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-center">
-            <div>
-              <LocalGuideSectionHeader
-                index="04"
-                eyebrow="Local Guides"
-                title="Browse county, city, and neighborhood seller pages"
-                description="The homepage stays focused on seller questions and CMA requests. The local guide hub breaks out county, city, and smaller neighborhood pages so sellers can move from broad market context to tighter local insight without getting lost."
-              />
-              <SectionDivider />
-            </div>
-            <div className="flex flex-wrap gap-3">
+          <div className="mx-auto max-w-4xl text-center mb-10">
+            <LocalGuideSectionHeader
+              index="04"
+
+              eyebrow="Local Guides"
+              title="Browse county, city, and neighborhood seller pages"
+              description="The homepage stays focused on seller questions and CMA requests. The local guide hub breaks out county, city, and smaller neighborhood pages so sellers can move from broad market context to tighter local insight without getting lost."
+            />
+            <SectionDivider align="center" />
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
               {popularGuides.map((guide) => (
                 <Link
                   key={guide.href}
@@ -633,13 +635,10 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-          </div>
         </div>
       </section>
 
       <JustSoldNeighborhoods />
-
-      {/* ===== FOOTER ===== */}
       <footer className="bg-[#1A1A1A]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-b border-white/10 px-6 py-12 sm:flex-row">
           <div className="text-lg font-bold uppercase tracking-[0.2em]">
