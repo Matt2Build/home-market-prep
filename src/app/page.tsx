@@ -4,7 +4,6 @@ import CmaForm from "@/components/CmaForm";
 import CornerAccent from "@/components/CornerAccent";
 import GbpReviewsCarousel from "@/components/GbpReviewsCarousel";
 import JustSoldNeighborhoods from "@/components/JustSoldNeighborhoods";
-import ReviewsCarousel from "@/components/ReviewsCarousel";
 import {
   LocalGuideAnchorNav,
   LocalGuideFactGrid,
@@ -205,6 +204,7 @@ const popularGuides = [
 
 const homeAnchorLinks = [
   { href: "#seller-answers", label: "Seller answers" },
+  { href: "#reviews", label: "Reviews" },
   { href: "#cma", label: "Free CMA" },
   { href: "#seller-faqs", label: "FAQs" },
   { href: "/sell/local-guides", label: "Local guides" },
@@ -279,9 +279,7 @@ export default function Home() {
 
       <SiteHeader />
 
-      <GbpReviewsCarousel />
-      <ReviewsCarousel />
-
+      {/* ===== HERO ===== */}
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div
           className="absolute inset-0"
@@ -314,7 +312,6 @@ export default function Home() {
             <span className="text-white/30">•</span>
             <span>Matt Salit · Century 21 North Homes Realty</span>
           </div>
-          <p className="mt-2 text-[10px] text-white/30">mattsalit@writemyoffer.com · HomeMarketPrep by Matt Salit</p>
           <SectionDivider tone="dark" align="center" />
           <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
             <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
@@ -393,6 +390,7 @@ export default function Home() {
 
       <LocalGuideAnchorNav links={homeAnchorLinks} tone="dark" />
 
+      {/* ===== SELLER ANSWERS ===== */}
       <section id="seller-answers" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="mx-auto max-w-4xl text-center">
@@ -532,82 +530,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== VERIFIED REVIEWS (above CMA) ===== */}
+      <section id="reviews" className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+          <div className="text-center mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Verified Reviews
+            </p>
+            <h2 className="mt-3 text-[2rem] font-light tracking-tight text-white sm:text-4xl">
+              What sellers and buyers in Snohomish County say
+            </h2>
+          </div>
+          <GbpReviewsCarousel />
+        </div>
+      </section>
+
+      {/* ===== CMA (condensed) ===== */}
       <section id="cma" className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
-          <div className="grid gap-8 lg:grid-cols-[0.94fr,1.06fr] lg:items-start">
-            <div className="max-w-2xl">
-              <LocalGuideSectionHeader
-                index="02"
-                eyebrow="Free CMA"
-                title="Start with the pricing question"
-                description="If you want to know what the home could sell for before spending money or picking a list strategy, request the CMA here. We’ll use it to connect price, prep, and next steps."
-              />
-              <SectionDivider />
-              <div className="mt-8 grid gap-4">
-                <div className="rounded-[24px] border border-[#E8E4DF] bg-white px-5 py-5 shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                    What you send
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-                    Address, name, and email. No long intake, no extra fields, no clunky step flow.
-                  </p>
-                </div>
-                <div className="rounded-[24px] border border-[#E8E4DF] bg-white px-5 py-5 shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                    What happens next
-                  </p>
-                  <p className="mt-3 text-sm leading-6 text-[#5A5A5A]">
-                    You get a confirmation email right away, then local comp and prep follow-up as soon as possible.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-white p-5 text-[#1A1A1A] shadow-lg sm:p-6">
-              <CornerAccent
-                tone="gold"
-                className="absolute right-4 top-4 h-12 w-[4.5rem] opacity-70"
-              />
-              <div className="max-w-2xl pr-12">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#C6A664]">
-                  Quick request
-                </p>
-                <h3 className="mt-2 text-2xl font-light leading-tight tracking-tight sm:text-[2rem]">
-                  Request your free CMA
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
-                  Send the address, your name, and your email. We&apos;ll confirm
-                  right away and follow up with pricing and prep guidance.
-                </p>
-              </div>
-              <div className="mt-5">
-                <LocalGuideFactGrid
-                  items={[
-                    {
-                      label: "Response path",
-                      value: "Email first",
-                      detail: "Both the submission notification and your confirmation route through the live CMA request flow.",
-                    },
-                    {
-                      label: "Coverage",
-                      value: "Snohomish + Skagit",
-                      detail: "The site content and local guides are built around the markets you are already targeting.",
-                    },
-                    {
-                      label: "Goal",
-                      value: "Price + prep",
-                      detail: "The CMA is not isolated from the prep questions. It is there to support them.",
-                    },
-                  ]}
-                />
-              </div>
-              <div className="mt-5 rounded-[24px] bg-[#F8F5F0] p-4 sm:p-5">
-                <CmaForm />
-              </div>
-            </div>
+        <div className="mx-auto max-w-xl px-6 py-12 sm:py-16 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+            Free CMA
+          </p>
+          <h2 className="mt-3 text-[2rem] font-light tracking-tight sm:text-4xl text-[#1A1A1A]">
+            What could your home sell for?
+          </h2>
+          <p className="mt-3 text-base text-[#5A5A5A] max-w-md mx-auto">
+            Get a free, local pricing analysis. No pressure, just clarity.
+          </p>
+          <div className="mt-8 rounded-[28px] bg-white p-6 sm:p-8 shadow-sm border border-[#E8E4DF]">
+            <CmaForm />
           </div>
         </div>
       </section>
 
+      {/* ===== FAQS ===== */}
       <section id="seller-faqs" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="mb-10 max-w-4xl">
@@ -653,6 +609,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== LOCAL GUIDES ===== */}
       <section className="border-y border-[#E8E4DF] bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="grid gap-8 lg:grid-cols-[0.85fr,1.15fr] lg:items-center">
@@ -682,6 +639,7 @@ export default function Home() {
 
       <JustSoldNeighborhoods />
 
+      {/* ===== FOOTER ===== */}
       <footer className="bg-[#1A1A1A]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-b border-white/10 px-6 py-12 sm:flex-row">
           <div className="text-lg font-bold uppercase tracking-[0.2em]">
