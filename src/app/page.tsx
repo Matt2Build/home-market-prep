@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CmaForm from "@/components/CmaForm";
 import CornerAccent from "@/components/CornerAccent";
+import GbpReviewsCarousel from "@/components/GbpReviewsCarousel";
+import JustSoldNeighborhoods from "@/components/JustSoldNeighborhoods";
+import ReviewsCarousel from "@/components/ReviewsCarousel";
 import {
   LocalGuideAnchorNav,
   LocalGuideFactGrid,
@@ -275,6 +278,9 @@ export default function Home() {
       />
 
       <SiteHeader />
+
+      <GbpReviewsCarousel />
+      <ReviewsCarousel />
 
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div
@@ -673,6 +679,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <JustSoldNeighborhoods />
 
       <footer className="bg-[#1A1A1A]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-b border-white/10 px-6 py-12 sm:flex-row">
