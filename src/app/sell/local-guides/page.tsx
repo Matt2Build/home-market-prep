@@ -197,6 +197,11 @@ export default function LocalGuidesIndexPage() {
               { label: "Neighborhoods", value: `${neighborhoodPages.length}` },
               { label: "Snapshots", value: `${snapshotCount + neighborhoodSnapshotCount}` },
             ]}
+            bullets={[
+              "Start at the county level for a fast market read",
+              "Narrow to city when buyer expectations get specific",
+              "Use neighborhood pages when city averages are too broad",
+            ]}
           />
         </div>
       </section>
