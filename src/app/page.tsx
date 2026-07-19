@@ -543,7 +543,7 @@ export default function Home() {
             <SectionDivider tone="dark" align="center" />
           </div>
           <div className="mt-12">
-            <GbpReviewsCarousel tone="dark" />
+            <GbpReviewsCarousel tone="light" />
           </div>
         </div>
       </section>

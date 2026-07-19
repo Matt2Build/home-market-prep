@@ -87,7 +87,7 @@ const SNOHO_TO_PAGE: Record<string, string> = {
 };
 
 function resolvePageSlug(n: SnohoNeighborhood): string {
-  return SNOHO_TO_PAGE[n.slug] ?? `${n.slug}-wa`;
+  return `/sell/neighborhoods/${SNOHO_TO_PAGE[n.slug] ?? `${n.slug}-wa`}`;
 }
 
 /**
@@ -108,31 +108,53 @@ export default function JustSoldNeighborhoods() {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
               Neighborhood Activity
             </p>
-            <h2 className="mt-1 te
-              <span className="font-semibold text-[#1A1A1A]">Best for: </span>
-                {n.bestFit}
-              </p>
-            </div>
-            {n.tradeoff && (
-              <div className="flex items-start gap-2">
-                <span className="mt-0.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-amber-400" />
-                <p className="text-xs leading-5 text-[#5A5A5A]">
-                  <span className="font-semibold text-[#1A1A1A]">Tradeoff: </span>
-                  {n.tradeoff}
-                </p>
-              </div>
-            )}
+            <h2 className="mt-1 text-2xl font-light text-[#1A1A1A] sm:text-3xl">
+              Areas that just closed
+            </h2>
           </div>
-          {n.localTexture && (
-            <p className="mt-3 text-[11px] leading-5 text-[#8C8375]">
-              {n.localTexture}
-            </p>
-          )}
         </div>
-        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F8F5F0] text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
-          →
-        </span>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {active.map((n) => (
+            <Link
+              key={n.slug}
+              href={resolvePageSlug(n)}
+              className="group relative flex flex-col gap-3 rounded-[22px] border border-[#E8E4DF] bg-white p-6 transition-shadow hover:shadow-md"
+              prefetch={false}
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8C8375]">
+                {n.city}
+              </p>
+              <p className="text-lg font-semibold text-[#1A1A1A]">{n.name}</p>
+              <div className="flex flex-col gap-2 text-xs text-[#5A5A5A]">
+                <div className="flex items-start gap-2">
+                  <span className="mt-0.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-emerald-500" />
+                  <p>
+                    <span className="font-semibold text-[#1A1A1A]">Best for: </span>
+                    {n.bestFit}
+                  </p>
+                </div>
+                {n.tradeoff && (
+                  <div className="flex items-start gap-2">
+                    <span className="mt-0.5 inline-flex h-2 w-2 shrink-0 rounded-full bg-amber-400" />
+                    <p className="text-xs leading-5 text-[#5A5A5A]">
+                      <span className="font-semibold text-[#1A1A1A]">Tradeoff: </span>
+                      {n.tradeoff}
+                    </p>
+                  </div>
+                )}
+              </div>
+              {n.localTexture && (
+                <p className="mt-2 text-[11px] leading-5 text-[#8C8375]">
+                  {n.localTexture}
+                </p>
+              )}
+              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F8F5F0] text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
-    </Link>
+    </section>
   );
 }
