@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 
+const timeframeOptions = [
+  { value: "0-3 months", label: "Now — within 3 months" },
+  { value: "3-6 months", label: "3 to 6 months" },
+  { value: "6-12 months", label: "6 to 12 months" },
+  { value: "just curious", label: "Just curious" },
+];
+
 export default function CmaForm() {
   const [values, setValues] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -130,6 +137,23 @@ export default function CmaForm() {
             />
           </div>
         </div>
+        <div>
+          <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.14em] text-[#1A1A1A]">
+            When are you thinking of listing?
+          </label>
+          <select
+            value={values.timeframe || ""}
+            onChange={(e) => handleChange("timeframe", e.target.value)}
+            className="w-full rounded-xl border border-[#E8E4DF] bg-[#FAFAF8] px-4 py-3.5 text-base text-[#5A5A5A] focus:outline-none focus:ring-2 focus:ring-[#C6A664]/40 focus:border-[#C6A664] focus:bg-white transition-all appearance-none"
+          >
+            <option value="" disabled>Select your timeframe</option>
+            {timeframeOptions.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {error && (
@@ -139,9 +163,14 @@ export default function CmaForm() {
       )}
 
       <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-        <p className="text-xs leading-5 text-[#8C8375]">
-          You&apos;ll receive a confirmation email after submission.
-        </p>
+        <div>
+          <p className="text-xs leading-5 text-[#8C8375]">
+            You&apos;ll receive a confirmation email after submission.
+          </p>
+          <p className="mt-1 text-xs text-[#A1A1A1]">
+            Your info goes directly to Matt — no shared lists, no spam.
+          </p>
+        </div>
         <button
           type="submit"
           disabled={isDisabled}

@@ -311,7 +311,7 @@ export default function Home() {
             Thinking about selling?
             <span className="font-semibold text-[#C6A664]"> Start with the questions buyers are already asking.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/78 sm:text-xl">
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl">
             What should you fix? How much should you declutter? What paperwork do
             you need? How do you keep the house show-ready without burning out?
             Get clear, local answers — then use a free CMA to connect the prep work to a real pricing strategy.
@@ -333,7 +333,7 @@ export default function Home() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                 Start here
               </p>
-              <p className="mt-3 text-sm leading-6 text-white/74">
+              <p className="mt-3 text-sm leading-6 text-white/90">
                 Seller questions first, then pricing. It keeps prep from turning into random projects.
               </p>
             </div>
@@ -341,7 +341,7 @@ export default function Home() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                 Local focus
               </p>
-              <p className="mt-3 text-sm leading-6 text-white/74">
+              <p className="mt-3 text-sm leading-6 text-white/90">
                 Built around Snohomish County and nearby Skagit sellers, not generic national advice.
               </p>
             </div>
@@ -349,12 +349,12 @@ export default function Home() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                 CMA path
               </p>
-              <p className="mt-3 text-sm leading-6 text-white/74">
+              <p className="mt-3 text-sm leading-6 text-white/90">
                 Quick request, confirmation email, then local pricing and prep follow-up.
               </p>
             </div>
           </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/78">
+          <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/90">
             <Link
               href="/sell/checklists/declutter-before-selling-house-wa"
               className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
