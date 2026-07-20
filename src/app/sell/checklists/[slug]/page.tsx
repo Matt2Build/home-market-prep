@@ -688,6 +688,31 @@ function SellerPrepView({ page }: { page: SellerPrepPage }) {
         </div>
       </section>
 
+      <section className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-6xl px-6 py-10 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+            Free Resource
+          </p>
+          <h3 className="mt-2 text-xl font-light sm:text-2xl">
+            Get the complete pre-listing checklist as a PDF
+          </h3>
+          <p className="mt-2 text-sm text-white/60 max-w-md mx-auto">
+            All the prep actions, common mistakes, and a structured plan — compiled into one downloadable file. Enter your email and it will arrive instantly.
+          </p>
+          <div className="mt-6">
+            <a
+              href="/downloads/seller-checklist"
+              className="inline-flex items-center gap-2 rounded-full bg-[#C6A664] px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
+            >
+              Download the PDF
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 18h16" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="guide-links" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-12">
           <LocalGuideSectionHeader
