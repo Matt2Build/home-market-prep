@@ -298,7 +298,7 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(17,17,17,0.86) 0%, rgba(17,17,17,0.72) 45%, rgba(17,17,17,0.84) 100%)",
+                "linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.92) 100%)",
               zIndex: 1,
             }}
           />
@@ -307,24 +307,24 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             Snohomish County & Skagit County Seller Guide
           </p>
-          <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight sm:text-5xl md:text-7xl">
+          <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight text-white sm:text-5xl md:text-7xl">
             Thinking about selling?
             <span className="font-semibold text-[#C6A664]"> Start with the questions buyers are already asking.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl">
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white sm:text-xl">
             What should you fix? How much should you declutter? What paperwork do
             you need? How do you keep the house show-ready without burning out?
             Get clear, local answers — then use a free CMA to connect the prep work to a real pricing strategy.
           </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-white/60">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-white/80">
             <a href="tel:4256452181" className="transition-colors hover:text-[#C6A664]">
               425-645-2181
             </a>
-            <span className="text-white/30">•</span>
+            <span className="text-white/50">•</span>
             <a href="mailto:mattsalit@writemyoffer.com" className="transition-colors hover:text-[#C6A664]">
               mattsalit@writemyoffer.com
             </a>
-            <span className="text-white/30">•</span>
+            <span className="text-white/50">•</span>
             <span>Matt Salit · Century 21 North Homes Realty</span>
           </div>
           <SectionDivider tone="dark" align="center" />
@@ -333,7 +333,7 @@ export default function Home() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                 Start here
               </p>
-              <p className="mt-3 text-sm leading-6 text-white/90">
+              <p className="mt-3 text-sm leading-6 text-white">
                 Seller questions first, then pricing. It keeps prep from turning into random projects.
               </p>
             </div>
@@ -341,7 +341,7 @@ export default function Home() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                 Local focus
               </p>
-              <p className="mt-3 text-sm leading-6 text-white/90">
+              <p className="mt-3 text-sm leading-6 text-white">
                 Built around Snohomish County and nearby Skagit sellers, not generic national advice.
               </p>
             </div>
@@ -349,12 +349,12 @@ export default function Home() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
                 CMA path
               </p>
-              <p className="mt-3 text-sm leading-6 text-white/90">
+              <p className="mt-3 text-sm leading-6 text-white">
                 Quick request, confirmation email, then local pricing and prep follow-up.
               </p>
             </div>
           </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/90">
+          <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white">
             <Link
               href="/sell/checklists/declutter-before-selling-house-wa"
               className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
