@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import CmaForm from "@/components/CmaForm";
 import CornerAccent from "@/components/CornerAccent";
 import GbpReviewsCarousel from "@/components/GbpReviewsCarousel";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import JustSoldNeighborhoods from "@/components/JustSoldNeighborhoods";
 import {
   LocalGuideAnchorNav,
@@ -281,13 +283,26 @@ export default function Home() {
 
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden bg-[#111111] text-white">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(17,17,17,0.86) 0%, rgba(17,17,17,0.72) 45%, rgba(17,17,17,0.84) 100%), url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat",
-          }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80"
+            alt="Modern home exterior at dusk"
+            fill
+            priority
+            quality={85}
+            sizes="100vw"
+            className="object-cover"
+            style={{ zIndex: 0 }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(17,17,17,0.86) 0%, rgba(17,17,17,0.72) 45%, rgba(17,17,17,0.84) 100%)",
+              zIndex: 1,
+            }}
+          />
+        </div>
         <div className="relative mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             Snohomish County & Skagit County Seller Guide
@@ -640,6 +655,27 @@ export default function Home() {
       </section>
 
       <JustSoldNeighborhoods />
+
+      {/* ===== NEWSLETTER ===== */}
+      <section className="bg-[#111111] text-white">
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+              Newsletter
+            </p>
+            <h2 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl">
+              Seller insights, delivered to your inbox
+            </h2>
+            <p className="mt-3 text-base text-white/60 max-w-md mx-auto">
+              Prep checklists, local market notes, and the occasional reminder about what actually moves a sale.
+            </p>
+            <div className="mx-auto mt-8 flex max-w-md">
+              <NewsletterSignup />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-[#1A1A1A]">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 border-b border-white/10 px-6 py-12 sm:flex-row">
           <div className="text-lg font-bold uppercase tracking-[0.2em]">
