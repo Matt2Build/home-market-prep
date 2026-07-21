@@ -298,7 +298,7 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.88) 45%, rgba(0,0,0,0.94) 100%)",
+                "linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.92) 100%)",
               zIndex: 1,
             }}
           />
@@ -309,7 +309,7 @@ export default function Home() {
           </p>
           <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight text-white sm:text-5xl md:text-7xl">
             Thinking about selling?
-            <span className="font-semibold"> Start with the questions buyers are already asking.</span>
+            <span className="font-semibold text-[#C6A664]"> Start with the questions buyers are already asking.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white sm:text-xl">
             What should you fix? How much should you declutter? What paperwork do
