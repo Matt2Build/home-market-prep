@@ -298,12 +298,12 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.92) 100%)",
+                "linear-gradient(180deg, rgba(17,17,17,0.86) 0%, rgba(17,17,17,0.72) 45%, rgba(17,17,17,0.84) 100%)",
               zIndex: 1,
             }}
           />
         </div>
-        <div className="relative mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
+        <div className="relative z-20 mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             Snohomish County & Skagit County Seller Guide
           </p>
