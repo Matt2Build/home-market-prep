@@ -298,7 +298,7 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.92) 100%)",
+                "linear-gradient(180deg, rgba(10,10,10,0.60) 0%, rgba(10,10,10,0.50) 50%, rgba(10,10,10,0.70) 100%)",
               zIndex: 1,
             }}
           />
@@ -379,12 +379,12 @@ export default function Home() {
             >
               Showings
             </Link>
-            <Link
-              href="/#cma"
+            <a
+              href="#cma"
               className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
             >
               Free CMA
-            </Link>
+            </a>
           </div>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a

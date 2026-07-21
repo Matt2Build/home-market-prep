@@ -51,20 +51,20 @@ export default function SiteHeader() {
             >
               {CONTACT_EMAIL.split("@")[0]}@{CONTACT_EMAIL.split("@")[1]}
             </a>
-            <Link
+            <a
               href="/#cma"
               className="rounded-full bg-[#C6A664] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82] sm:px-5 sm:text-xs"
             >
               Free CMA
-            </Link>
+            </a>
           </div>
           <div className="flex items-center gap-2 md:hidden">
-            <Link
+            <a
               href="/#cma"
               className="rounded-full bg-[#C6A664] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
             >
               Free CMA
-            </Link>
+            </a>
             <button
               type="button"
               aria-expanded={menuOpen}

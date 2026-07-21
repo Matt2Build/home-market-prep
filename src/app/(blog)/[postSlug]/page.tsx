@@ -43,12 +43,12 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
 function InlineCmaLink() {
   return (
-    <Link
+    <a
       href="/#cma"
       className="inline-flex items-center gap-1 rounded-full bg-[#C6A664]/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[#C6A664] no-underline transition-colors hover:bg-[#C6A664]/25"
     >
       Free CMA →
-    </Link>
+    </a>
   );
 }
 
@@ -127,12 +127,12 @@ export default async function BlogPostPage({ params }: PostPageProps) {
             <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
               Get a free, neighborhood-level CMA based on real comparable sales and current buyer demand.
             </p>
-            <Link
+            <a
               href="/#cma"
               className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
             >
               Request My Free CMA
-            </Link>
+            </a>
           </div>
         </section>
 

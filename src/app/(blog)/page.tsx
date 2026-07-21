@@ -92,12 +92,12 @@ export default function BlogIndexPage() {
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-[#1A1A1A]/80">
             Get a free, neighborhood-level CMA based on actual comparable sales — not an algorithm.
           </p>
-          <Link
+          <a
             href="/#cma"
             className="mt-8 inline-flex rounded-full bg-[#111111] px-10 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-[#2B2B2B]"
           >
             Request My Free CMA
-          </Link>
+          </a>
         </div>
       </section>
     </div>
