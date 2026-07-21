@@ -298,7 +298,7 @@ export default function Home() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(10,10,10,0.60) 0%, rgba(10,10,10,0.50) 50%, rgba(10,10,10,0.70) 100%)",
+                "linear-gradient(180deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.70) 45%, rgba(0,0,0,0.82) 100%)",
               zIndex: 1,
             }}
           />
