@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 
-export default function InlinePdfSignup() {
+interface InlinePdfSignupProps {
+  compact?: boolean;
+}
+
+export default function InlinePdfSignup({ compact }: InlinePdfSignupProps) {
   const [step, setStep] = useState<"form" | "submitted">("form");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -50,6 +54,33 @@ export default function InlinePdfSignup() {
         </p>
         <p className="mt-1 text-xs text-white/40">Check spam if it doesn't arrive shortly.</p>
       </div>
+    );
+  }
+
+  if (compact) {
+    return (
+      <form onSubmit={handleSubmit}>
+        <div className="flex items-center gap-2">
+          <input
+            type="email"
+            placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full rounded-lg border border-white/15 bg-white/[0.04] px-3 py-1.5 text-sm text-white placeholder:text-white/40 focus:border-[#C6A664]/60 focus:outline-none focus:ring-1 focus:ring-[#C6A664]/20 transition-all"
+            required
+          />
+          <button
+            type="submit"
+            disabled={submitting || !email.trim()}
+            className="shrink-0 whitespace-nowrap rounded-full bg-[#C6A664] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.10em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            {submitting ? "..." : "Send"}
+          </button>
+        </div>
+        {error && (
+          <p className="mt-1 text-xs text-red-400">{error}</p>
+        )}
+      </form>
     );
   }
 

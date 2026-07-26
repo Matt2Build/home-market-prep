@@ -214,6 +214,7 @@ const homeAnchorLinks = [
   { href: "#cma", label: "Free CMA" },
   { href: "#seller-faqs", label: "FAQs" },
   { href: "/sell/local-guides", label: "Local guides" },
+  { href: "#about", label: "About" },
 ];
 
 const faqSchema = {
@@ -307,45 +308,78 @@ export default function Home() {
             }}
           />
         </div>
-        <div className="relative z-20 mx-auto max-w-4xl px-6 py-20 text-center sm:py-24 md:py-28">
+        <div className="relative z-20 mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             Snohomish County & Skagit County Seller Guide
           </p>
-          <h1 className="mx-auto mt-4 max-w-3xl text-3xl font-light leading-[1.08] tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight text-white sm:text-5xl md:text-7xl">
             Thinking about selling?
-            <span className="font-semibold text-[#C6A664]"> Start with the questions buyers are already asking.</span>
+            <span className="font-semibold text-[#C6A664]"> Start with topics buyers focus on.</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/70 sm:text-lg">
-            Get clear, local answers — then use a free CMA to connect prep work to real pricing.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white sm:text-xl">
+            What should you fix? How much should you declutter? What paperwork do
+            you need? How do you keep the house show-ready without burning out?
+            Get clear, local answers — then use a free CMA to connect the prep work to a real pricing strategy.
           </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-white/80">
+            <a href="tel:4256452181" className="transition-colors hover:text-[#C6A664]">
+              425-645-2181
+            </a>
+            <span className="text-white/50">•</span>
+            <a href="mailto:mattsalit@writemyoffer.com" className="transition-colors hover:text-[#C6A664]">
+              mattsalit@writemyoffer.com
+            </a>
+            <span className="text-white/50">•</span>
+            <span>Matt Salit · Century 21 North Homes Realty</span>
+          </div>
           <SectionDivider tone="dark" align="center" />
-
-          {/* Inline PDF checklist signup */}
-          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm px-5 py-5 sm:px-8 sm:py-6">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-              Free pre-list check-list
-            </p>
-            <p className="mt-1.5 text-sm text-white/70" id="pdf-checklist">
-              Get the compact PDF sellers actually use — delivered to your inbox.
-            </p>
-            <div className="mt-4">
-              <InlinePdfSignup />
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                Start here
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white">
+                Seller questions first, then pricing. It keeps prep from turning into random projects.
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                Local focus
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white">
+                Built around Snohomish County and nearby Skagit sellers, not generic national advice.
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                CMA path
+              </p>
+              <p className="mt-3 text-sm leading-6 text-white">
+                Quick request, confirmation email, then local pricing and prep follow-up.
+              </p>
             </div>
           </div>
-
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#seller-answers"
-              className="rounded-full bg-[#C6A664] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
+              className="rounded-full bg-[#C6A664] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
             >
               Browse Seller Questions
             </a>
             <a
               href="#cma"
-              className="rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
+              className="rounded-full border border-white/20 px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
             >
               Request Free CMA
             </a>
+          </div>
+          <div className="mt-8 inline-flex w-full max-w-md mx-auto items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-5 py-3 backdrop-blur-sm">
+            <p className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C6A664] whitespace-nowrap">
+              Free pre-list PDF:
+            </p>
+            <div className="min-w-0 flex-1">
+              <InlinePdfSignup compact />
+            </div>
           </div>
         </div>
       </section>
@@ -505,6 +539,12 @@ export default function Home() {
               description="Real feedback from people who worked through a Snohomish County home sale."
               tone="dark"
             />
+            <div className="mx-auto mt-6 max-w-2xl">
+              <p className="text-sm leading-7 text-white/60">
+                "I don't measure reviews by the star count alone. I measure them by what they reflect about how I operate: clear communication, local insight, and no pressure. Every review here is from a real person I worked with in Snohomish County or nearby."
+              </p>
+              <p className="mt-3 text-sm font-semibold text-[#C6A664]">— Matt Salit · Century 21 North Homes</p>
+            </div>
             <SectionDivider tone="dark" align="center" />
           </div>
           <div className="mt-12">
@@ -625,10 +665,10 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6 py-14">
           <div className="mx-auto max-w-3xl text-center mb-10">
             <LocalGuideSectionHeader
-              index="05"
+              index="06"
               eyebrow="About"
               title="Meet Matt Salit"
-              description="Realtor with Century 21 North Homes in Lynnwood, WA — helping Snohomish and Skagit County sellers since 2014."
+              description="Matt Salit has been a licensed Realtor since 2014, working out of Century 21 North Homes in Lynnwood, WA and helping Snohomish and Skagit County sellers prepare, price, and sell with clarity."
             />
             <SectionDivider align="center" />
           </div>
@@ -649,13 +689,13 @@ export default function Home() {
                 Local expertise, straight answers.
               </h3>
               <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
-                I&apos;ve been a realtor with Century 21 North Homes since 2014, and my entire practice has been focused on Snohomish County and the surrounding area. I know these neighborhoods, these schools, and these micro-markets — down to the block.
+                Matt Salit has been a licensed Realtor since 2014, working out of Century 21 North Homes in Lynnwood, WA. His entire practice is focused on Snohomish County, Skagit County, and the surrounding area — neighborhoods, schools, and micro-markets down to the block.
               </p>
               <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
-                I built HomeMarketPrep because I kept hearing the same seller questions: what should I fix, how much does staging matter, what paperwork do I need, and how should I price the home. Instead of scrambling for answers during the busiest weeks of a listing, sellers should have clear local guidance before they ever sign a listing agreement.
+                He built HomeMarketPrep because he kept hearing the same seller questions: what to fix, how much staging matters, what paperwork is needed, and how to price a home for a strong launch. Sellers get clear local guidance before they ever sign a listing agreement — not scrambling during the busiest weeks.
               </p>
               <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
-                Whether you&apos;re three months from listing or just curious about what your home might sell for, I&apos;m here to give you straight, practical advice — no pressure.
+                Whether you&apos;re three months from listing or just curious about what your home might sell for, Matt is here to give straight, practical advice — no pressure.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
