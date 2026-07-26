@@ -4,6 +4,7 @@ import Link from "next/link";
 import CmaForm from "@/components/CmaForm";
 import CornerAccent from "@/components/CornerAccent";
 import GbpReviewsCarousel from "@/components/GbpReviewsCarousel";
+import InlinePdfSignup from "@/components/InlinePdfSignup";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import JustSoldNeighborhoods from "@/components/JustSoldNeighborhoods";
 import {
@@ -13,6 +14,9 @@ import {
 } from "@/components/LocalGuideBlocks";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
+import StickyMobileCta from "@/components/StickyMobileCta";
+import MarketSnapshotSection from "@/components/MarketSnapshotSection";
+import SellerJourney from "@/components/SellerJourney";
 import { sellerPrepPages } from "@/lib/seller-prep-pages";
 
 const sellerQuestionVisuals: Record<
@@ -303,99 +307,42 @@ export default function Home() {
             }}
           />
         </div>
-        <div className="relative z-20 mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
+        <div className="relative z-20 mx-auto max-w-4xl px-6 py-20 text-center sm:py-24 md:py-28">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             Snohomish County & Skagit County Seller Guide
           </p>
-          <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight text-white sm:text-5xl md:text-7xl">
+          <h1 className="mx-auto mt-4 max-w-3xl text-3xl font-light leading-[1.08] tracking-tight text-white sm:text-4xl md:text-5xl">
             Thinking about selling?
             <span className="font-semibold text-[#C6A664]"> Start with the questions buyers are already asking.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white sm:text-xl">
-            What should you fix? How much should you declutter? What paperwork do
-            you need? How do you keep the house show-ready without burning out?
-            Get clear, local answers — then use a free CMA to connect the prep work to a real pricing strategy.
+          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/70 sm:text-lg">
+            Get clear, local answers — then use a free CMA to connect prep work to real pricing.
           </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-white/80">
-            <a href="tel:4256452181" className="transition-colors hover:text-[#C6A664]">
-              425-645-2181
-            </a>
-            <span className="text-white/50">•</span>
-            <a href="mailto:mattsalit@writemyoffer.com" className="transition-colors hover:text-[#C6A664]">
-              mattsalit@writemyoffer.com
-            </a>
-            <span className="text-white/50">•</span>
-            <span>Matt Salit · Century 21 North Homes Realty</span>
-          </div>
           <SectionDivider tone="dark" align="center" />
-          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                Start here
-              </p>
-              <p className="mt-3 text-sm leading-6 text-white">
-                Seller questions first, then pricing. It keeps prep from turning into random projects.
-              </p>
-            </div>
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                Local focus
-              </p>
-              <p className="mt-3 text-sm leading-6 text-white">
-                Built around Snohomish County and nearby Skagit sellers, not generic national advice.
-              </p>
-            </div>
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                CMA path
-              </p>
-              <p className="mt-3 text-sm leading-6 text-white">
-                Quick request, confirmation email, then local pricing and prep follow-up.
-              </p>
+
+          {/* Inline PDF checklist signup */}
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm px-5 py-5 sm:px-8 sm:py-6">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+              Free pre-list check-list
+            </p>
+            <p className="mt-1.5 text-sm text-white/70" id="pdf-checklist">
+              Get the compact PDF sellers actually use — delivered to your inbox.
+            </p>
+            <div className="mt-4">
+              <InlinePdfSignup />
             </div>
           </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white">
-            <Link
-              href="/sell/checklists/declutter-before-selling-house-wa"
-              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-            >
-              Decluttering
-            </Link>
-            <Link
-              href="/sell/checklists/repairs-before-selling-house-wa"
-              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-            >
-              Repairs
-            </Link>
-            <Link
-              href="/sell/checklists/paperwork-needed-to-sell-house-wa"
-              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-            >
-              Paperwork
-            </Link>
-            <Link
-              href="/sell/checklists/show-ready-house-checklist-wa"
-              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-            >
-              Showings
-            </Link>
-            <a
-              href="#cma"
-              className="rounded-full border border-white/15 bg-white/8 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-            >
-              Free CMA
-            </a>
-          </div>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#seller-answers"
-              className="rounded-full bg-[#C6A664] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
+              className="rounded-full bg-[#C6A664] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
             >
               Browse Seller Questions
             </a>
             <a
               href="#cma"
-              className="rounded-full border border-white/20 px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
+              className="rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
             >
               Request Free CMA
             </a>
@@ -544,6 +491,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== SELLER JOURNEY ===== */}
+      <SellerJourney />
+
       {/* ===== SECTION 02 — VERIFIED REVIEWS ===== */}
       <section id="reviews" className="bg-[#111111] text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
@@ -562,6 +512,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== MARKET DATA ===== */}
+      <MarketSnapshotSection />
 
       {/* ===== CMA — NO SECTION DIVIDER — NO NUMBER ===== */}
       <section id="cma" className="bg-[#F8F5F0]">
@@ -667,6 +620,62 @@ export default function Home() {
 
       <JustSoldNeighborhoods />
 
+      {/* ===== ABOUT ===== */}
+      <section id="about" className="bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-14">
+          <div className="mx-auto max-w-3xl text-center mb-10">
+            <LocalGuideSectionHeader
+              index="05"
+              eyebrow="About"
+              title="Meet Matt Salit"
+              description="Realtor with Century 21 North Homes in Lynnwood, WA — helping Snohomish and Skagit County sellers since 2014."
+            />
+            <SectionDivider align="center" />
+          </div>
+          <div className="flex flex-col sm:flex-row items-start gap-8 sm:gap-12">
+            <div className="w-full sm:w-1/3 flex-shrink-0">
+              <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-lg">
+                <Image
+                  src="/img/matt-salit.jpg"
+                  alt="Matt Salit — Realtor with Century 21 North Homes"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="w-full sm:w-2/3">
+              <h3 className="text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                Local expertise, straight answers.
+              </h3>
+              <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
+                I&apos;ve been a realtor with Century 21 North Homes since 2014, and my entire practice has been focused on Snohomish County and the surrounding area. I know these neighborhoods, these schools, and these micro-markets — down to the block.
+              </p>
+              <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
+                I built HomeMarketPrep because I kept hearing the same seller questions: what should I fix, how much does staging matter, what paperwork do I need, and how should I price the home. Instead of scrambling for answers during the busiest weeks of a listing, sellers should have clear local guidance before they ever sign a listing agreement.
+              </p>
+              <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
+                Whether you&apos;re three months from listing or just curious about what your home might sell for, I&apos;m here to give you straight, practical advice — no pressure.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="mailto:mattsalit@writemyoffer.com"
+                  className="rounded-full bg-[#C6A664] px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
+                >
+                  mattsalit@writemyoffer.com
+                </a>
+                <a
+                  href="tel:4256452181"
+                  className="rounded-full border border-[#D8D0C4] bg-white px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.12em] text-[#1A1A1A] transition-colors hover:border-[#C6A664]"
+                >
+                  425-645-2181
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== NEWSLETTER ===== */}
       <section className="bg-[#111111] text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
@@ -709,7 +718,13 @@ export default function Home() {
             </a>
           </p>
         </div>
+        <div className="mx-auto max-w-7xl px-6 py-4 flex flex-wrap items-center justify-center gap-4 text-xs text-white/30">
+          <a href="/privacy" className="hover:text-[#C6A664] transition-colors">Privacy Policy</a>
+          <span>·</span>
+          <a href="/terms" className="hover:text-[#C6A664] transition-colors">Terms of Service</a>
+        </div>
       </footer>
+      <StickyMobileCta />
     </div>
   );
 }

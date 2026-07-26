@@ -136,73 +136,43 @@ export default function LocalGuidesIndexPage() {
 
       <section className="relative overflow-hidden bg-[#111111] text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,166,100,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:py-16 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Local Guides
-            </p>
-            <h1 className="mt-5 max-w-5xl text-4xl font-light leading-tight tracking-tight sm:text-5xl md:text-6xl">
-              Browse seller guides by county, city, and neighborhood
-            </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/80">
-              This is the cleanest way to move through the site if you are trying to
-              price a house, decide what to fix, or narrow down how buyers compare one
-              pocket of Snohomish County or nearby Skagit County against another.
-            </p>
-            <SectionDivider tone="dark" />
-            <p className="text-[11px] leading-6 text-white/40">Local seller guides by Matt Salit · 425-645-2181 · mattsalit@writemyoffer.com · Century 21 North Homes Realty</p>
-            <div className="mt-8 flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/68">
-              {sellerIntentTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/75">
-              <a
-                href="#counties"
-                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-              >
-                Start with counties
-              </a>
-              <a
-                href="#cities"
-                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-              >
-                Jump to cities
-              </a>
-              <a
-                href="#neighborhoods"
-                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-              >
-                Browse neighborhoods
-              </a>
-              <Link
-                href="/#cma"
-                className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
-              >
-                Request free CMA
-              </Link>
-            </div>
+        <div className="relative mx-auto max-w-5xl px-6 py-14 sm:py-16 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+            Local Guides
+          </p>
+          <h1 className="mt-5 mx-auto max-w-3xl text-3xl font-light leading-tight tracking-tight sm:text-4xl md:text-5xl">
+            Browse seller guides by county, city, and neighborhood
+          </h1>
+          <p className="mt-5 mx-auto max-w-2xl text-base leading-relaxed text-white/80">
+            Price a house, decide what to fix, or narrow down how buyers compare one pocket of Snohomish County or nearby Skagit County.
+          </p>
+          <SectionDivider tone="dark" align="center" />
+          <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm text-white/75">
+            <a
+              href="#counties"
+              className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Start with counties
+            </a>
+            <a
+              href="#cities"
+              className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Jump to cities
+            </a>
+            <a
+              href="#neighborhoods"
+              className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Browse neighborhoods
+            </a>
+            <Link
+              href="/#cma"
+              className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:border-[#C6A664] hover:text-white"
+            >
+              Request free CMA
+            </Link>
           </div>
-          <LocalGuideHeroAside
-            eyebrow="What is here"
-            title="A cleaner local map for seller search intent"
-            bullets={[
-              "Browse all local seller guides in one place.",
-              "County → city → neighborhood for faster answers.",
-              "Every page built around seller intent, not vanity metrics.",
-            ]}
-            stats={[
-              { label: "Counties", value: `${countyPages.length}` },
-              { label: "City guides", value: `${cityPages.length}` },
-              { label: "Neighborhoods", value: `${neighborhoodPages.length}` },
-              { label: "Snapshots", value: `${snapshotCount + neighborhoodSnapshotCount}` },
-            ]}
-          />
         </div>
       </section>
 
