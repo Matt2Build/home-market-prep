@@ -313,7 +313,7 @@ export default function Home() {
         </div>
         <div className="relative z-20 mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Snohomish County & Skagit County Seller Guide
+            Snohomish County Seller Guide
           </p>
           <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight text-white sm:text-5xl md:text-7xl">
             Thinking about selling?
@@ -361,7 +361,7 @@ export default function Home() {
                 Local focus
               </p>
               <p className="mt-3 text-sm leading-6 text-white text-center">
-                Built around Snohomish County and nearby Skagit sellers, not generic national advice.
+                Built for Snohomish County sellers first, with Skagit County support — not generic national advice.
               </p>
             </div>
             <div className="flex-1 min-w-[200px] max-w-[280px] rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
@@ -533,7 +533,7 @@ export default function Home() {
             <LocalGuideSectionHeader
               index="02"
               eyebrow="Verified Reviews"
-              title="What sellers and buyers in Snohomish County say"
+              title="What Snohomish County sellers say"
               description="Real feedback from people who worked through a Snohomish County home sale."
               tone="dark"
             />
@@ -636,7 +636,7 @@ export default function Home() {
             <LocalGuideSectionHeader
               index="04"
               eyebrow="Local Guides"
-              title="Browse county, city, and neighborhood seller pages"
+              title="Snohomish County and Skagit County seller pages"
               description="The homepage stays focused on seller questions and CMA requests. The local guide hub breaks out county, city, and smaller neighborhood pages so sellers can move from broad market context to tighter local insight without getting lost."
             />
             <SectionDivider align="center" />
@@ -665,7 +665,7 @@ export default function Home() {
               index="05"
               eyebrow="About"
               title="Meet Matt Salit"
-              description="Matt Salit has been a licensed Realtor since 2014, working out of Century 21 North Homes in Lynnwood, WA and helping Snohomish and Skagit County sellers prepare, price, and sell with clarity."
+              description="Matt Salit has been a licensed Realtor since 2014, working out of Century 21 North Homes in Lynnwood, WA and helping Snohomish County sellers prepare, price, and sell with clarity. Skagit County by request."
             />
             <SectionDivider align="center" />
           </div>
@@ -686,7 +686,7 @@ export default function Home() {
                 Local expertise, straight answers.
               </h3>
               <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
-                Matt Salit has been a licensed Realtor since 2014, working out of Century 21 North Homes in Lynnwood, WA. His entire practice is focused on Snohomish County, Skagit County, and the surrounding area — neighborhoods, schools, and micro-markets down to the block.
+                Matt Salit has been a licensed Realtor since 2014, working out of Century 21 North Homes in Lynnwood, WA. His practice is centered on Snohomish County — neighborhoods, micro-markets, and commute patterns down to the block — with Skagit County support when a seller wants the same prep-driven approach.
               </p>
               <p className="mt-4 text-base leading-7 text-[#5A5A5A]">
                 He built HomeMarketPrep because he kept hearing the same seller questions: what to fix, how much staging matters, what paperwork is needed, and how to price a home for a strong launch. Sellers get clear local guidance before they ever sign a listing agreement — not scrambling during the busiest weeks.
