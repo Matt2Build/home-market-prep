@@ -237,7 +237,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   "@id": "https://home-market-prep.vercel.app/#agent",
-  name: "HomeMarketPrep",
+  name: "HomeMarketPrep — Snohomish County Seller Prep",
   url: "https://home-market-prep.vercel.app/",
   email: "mattsalit@writemyoffer.com",
   telephone: "+1-425-645-2181",
@@ -253,7 +253,7 @@ const serviceSchema = {
   ],
   serviceType: [
     "Comparative Market Analysis",
-    "Seller pre-list preparation guidance",
+    "Seller pre-listing preparation guidance",
     "Home selling consultation",
   ],
   worksFor: {
@@ -392,7 +392,7 @@ export default function Home() {
               Request Free CMA
             </a>
           </div>
-          <div className="mt-8 inline-flex w-full max-w-md mx-auto items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-5 py-3 backdrop-blur-sm">
+          <div className="mt-8 inline-flex w-full max-w-md mx-auto items-center rounded-2xl border border-white/10 bg-white/[0.06] px-5 py-3 backdrop-blur-sm">
             <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] whitespace-nowrap">
               Receive Free Pre-Listing Checklist
             </p>

@@ -36,12 +36,6 @@ export default function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/#about"
-              className="text-xs font-semibold uppercase tracking-[0.14em] text-white/72 transition-colors hover:text-white"
-            >
-              About
-            </Link>
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
@@ -97,13 +91,6 @@ export default function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/#about"
-              onClick={() => setMenuOpen(false)}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/78 transition-colors hover:border-[#C6A664] hover:text-white"
-            >
-              About
-            </Link>
             <a
               href={`tel:${CONTACT_PHONE.replace(/-/g, "")}`}
               className="rounded-2xl border border-[#C6A664]/30 bg-[#C6A664]/10 px-4 py-3 text-center text-[11px] font-semibold tracking-[0.16em] text-[#C6A664] transition-colors hover:bg-[#C6A664]/20"
