@@ -343,7 +343,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664] text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] text-center">
                 Start here
               </p>
               <p className="mt-3 text-sm leading-6 text-white text-center">
@@ -357,7 +357,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664] text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] text-center">
                 Local focus
               </p>
               <p className="mt-3 text-sm leading-6 text-white text-center">
@@ -370,7 +370,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664] text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] text-center">
                 CMA path
               </p>
               <p className="mt-3 text-sm leading-6 text-white text-center">
@@ -393,7 +393,7 @@ export default function Home() {
             </a>
           </div>
           <div className="mt-8 inline-flex w-full max-w-md mx-auto items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-5 py-3 backdrop-blur-sm">
-            <p className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C6A664] whitespace-nowrap">
+            <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] whitespace-nowrap">
               Receive Free Pre-Listing Checklist
             </p>
             <div className="min-w-0 flex-1">
@@ -432,7 +432,7 @@ export default function Home() {
                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#C6A664] text-sm font-bold text-[#1A1A1A]">
                       {cat.slugs.length}
                     </span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#C6A664]">
+                    <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                       {cat.label}
                     </span>
                   </div>
@@ -495,11 +495,11 @@ export default function Home() {
                               {page.shortTitle}
                             </h4>
                           </div>
-                          <span className="rounded-full border border-[#D9CFBF] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5A5A5A] transition-colors group-hover:border-[#C6A664] group-hover:text-[#1A1A1A]">
+                          <span className="rounded-full border border-[#D9CFBF] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-[#5A5A5A] transition-colors group-hover:border-[#C6A664] group-hover:text-[#1A1A1A]">
                             Guide
                           </span>
                         </div>
-                        <p className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-[#1A1A1A]">
+                        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                           {visual.cue}
                         </p>
                         <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
@@ -556,16 +556,16 @@ export default function Home() {
 
       {/* ===== CMA ===== */}
       <section id="cma" className="bg-[#F8F5F0]">
-        <div className="mx-auto max-w-xl px-6 py-12 sm:py-16 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Free CMA
-          </p>
-          <h2 className="mt-3 text-[2rem] font-light tracking-tight sm:text-4xl text-[#1A1A1A]">
-            What could your home sell for?
-          </h2>
-          <p className="mt-3 text-base text-[#5A5A5A] max-w-md mx-auto">
-            Get a free, local pricing analysis. No pressure, just clarity.
-          </p>
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <div className="mx-auto max-w-4xl text-center mb-10">
+            <LocalGuideSectionHeader
+              index=""
+              eyebrow="Free CMA"
+              title="What could your home sell for?"
+              description="Get a free, local pricing analysis. No pressure, just clarity."
+            />
+            <SectionDivider align="center" />
+          </div>
           <div className="mt-8 rounded-[28px] bg-white p-6 sm:p-8 shadow-sm border border-[#E8E4DF]">
             <CmaForm />
           </div>
@@ -610,7 +610,7 @@ export default function Home() {
                       {faq.answer}
                     </p>
                   </div>
-                  <span className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                  <span className="mt-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
                     Open
                   </span>
                 </summary>
@@ -716,16 +716,15 @@ export default function Home() {
       {/* ===== NEWSLETTER ===== */}
       <section className="bg-[#111111] text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-              Newsletter
-            </p>
-            <h2 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl">
-              Seller insights, delivered to your inbox
-            </h2>
-            <p className="mt-3 text-base text-white/60 max-w-md mx-auto">
-              Prep checklists, local market notes, and the occasional reminder about what actually moves a sale.
-            </p>
+          <div className="mx-auto max-w-4xl text-center mb-10">
+            <LocalGuideSectionHeader
+              index=""
+              eyebrow="Newsletter"
+              title="Seller insights, delivered to your inbox"
+              description="Prep checklists, local market notes, and the occasional reminder about what actually moves a sale."
+              tone="dark"
+            />
+            <SectionDivider tone="dark" align="center" />
             <div className="mx-auto mt-8 flex max-w-md">
               <NewsletterSignup />
             </div>

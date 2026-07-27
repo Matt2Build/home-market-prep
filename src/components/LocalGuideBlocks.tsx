@@ -23,7 +23,7 @@ export function LocalGuideAnchorNav({
           <a
             key={link.href}
             href={link.href}
-            className={`whitespace-nowrap rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
+            className={`whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition-colors ${
               isDark
                 ? "border-white/12 bg-white/[0.03] text-white/72 hover:border-[#C6A664] hover:text-white"
                 : "border-[#DDD5C8] bg-[#F8F5F0] text-[#5A5A5A] hover:border-[#C6A664] hover:text-[#1A1A1A]"
@@ -98,7 +98,7 @@ export function LocalGuideSectionHeader({
       </div>
       {badge ? (
         <div
-          className={`inline-flex w-fit rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] ${
+          className={`inline-flex w-fit rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] ${
             isDark
               ? "border-white/12 bg-white/[0.03] text-white/68"
               : "border-[#D9CFBF] bg-[#F8F5F0] text-[#5A5A5A]"
@@ -134,9 +134,9 @@ export function LocalGuideFactGrid({
           <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C6A664] via-[#EBDDAB] to-transparent" />
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                {item.label}
-              </p>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
+        {item.label}
+      </p>
               <p
                 className={`mt-3 text-2xl font-semibold tracking-tight ${
                   isDark ? "text-white" : "text-[#1A1A1A]"
@@ -207,7 +207,7 @@ export function LocalGuideLinkCard({
       />
       <div className="relative flex h-full flex-col">
         <p
-          className={`text-xs font-semibold uppercase tracking-[0.18em] ${
+          className={`text-xs font-semibold uppercase tracking-[0.3em] ${
             isDark ? "text-[#C6A664]" : "text-[#C6A664]"
           }`}
         >
@@ -233,7 +233,7 @@ export function LocalGuideLinkCard({
           }`}
         >
           <span
-            className={`text-[11px] font-semibold uppercase tracking-[0.16em] ${
+            className={`text-xs font-semibold uppercase tracking-[0.3em] ${
               isDark ? "text-white/62" : "text-[#8C8375]"
             }`}
           >
@@ -269,7 +269,7 @@ export function LocalGuidePanel({
         tone="gold"
         className="absolute right-4 top-4 h-12 w-[4.5rem] opacity-80"
       />
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
         {eyebrow}
       </p>
       <h3 className="mt-3 max-w-sm text-2xl font-light leading-tight tracking-tight text-[#1A1A1A]">
@@ -318,7 +318,7 @@ export function LocalGuideStatementCard({
       className={`relative overflow-hidden rounded-[24px] border p-6 shadow-sm ${toneClasses}`}
     >
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#C6A664] via-[#EBDDAB] to-transparent" />
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
         {label}
       </p>
       <p className={`mt-4 text-sm leading-7 ${textClasses}`}>{text}</p>
@@ -343,7 +343,7 @@ export function LocalGuideHeroAside({
         tone="dark"
         className="absolute right-4 top-4 h-12 w-[4.5rem] opacity-50"
       />
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C6A664]">
+      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
         {eyebrow}
       </p>
       <h2 className="mt-3 max-w-sm text-2xl font-light leading-tight tracking-tight text-white">
@@ -355,7 +355,7 @@ export function LocalGuideHeroAside({
             key={`${stat.label}-${stat.value}`}
             className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4"
           >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/58">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/58">
               {stat.label}
             </p>
             <p className="mt-2 text-lg font-semibold tracking-tight text-white">

@@ -63,7 +63,7 @@ function SnapshotCard({ s }: { s: MarketSnapshot }) {
       <CornerAccent tone="gold" className="absolute right-5 top-5 h-10 w-16 opacity-40" />
 
       <div className="flex flex-wrap items-baseline gap-3 mb-6">
-        <h3 className="text-xl font-semibold text-[#1A1A1A]">{s.name}</h3>
+        <h3 className="text-2xl font-light tracking-tight text-[#1A1A1A]">{s.name}</h3>
         <span className={`rounded-full border px-3 py-1 text-xs font-semibold ${badgeColor(s)}`}>
           {s.marketTemp}
         </span>
@@ -92,13 +92,13 @@ export default function MarketSnapshotSection(props: Props) {
     return (
       <div>
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#A1A1A1]">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             {props.eyebrow}
           </p>
-          <h2 className="mt-2 text-2xl font-semibold leading-tight text-[#1A1A1A]">
+          <h2 className="mt-3 text-[2rem] font-light tracking-tight sm:text-4xl text-[#1A1A1A]">
             {props.title}
           </h2>
-          <p className="mt-3 text-base text-[#5A5A5A]">{props.description}</p>
+          <p className="mt-4 text-base leading-7 text-[#5A5A5A]">{props.description}</p>
         </div>
         <SectionDivider tone="light" align="center" />
         <div className="mt-8">
@@ -146,13 +146,13 @@ export default function MarketSnapshotSection(props: Props) {
       <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         {/* Header */}
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#A1A1A1]">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
             Local Market Intelligence
           </p>
-          <h2 className="mt-3 text-2xl font-semibold leading-tight sm:text-3xl text-[#1A1A1A]">
+          <h2 className="mt-3 text-[2rem] font-light tracking-tight sm:text-4xl text-[#1A1A1A]">
             Understand your local market before you decide
           </h2>
-          <p className="mt-3 max-w-2xl mx-auto text-base text-[#5A5A5A]">
+          <p className="mt-4 max-w-2xl mx-auto text-base leading-7 text-[#5A5A5A]">
             Real numbers, not guesses. Pick the market you care about and see what buyers are actually doing right now.
           </p>
         </div>
@@ -202,7 +202,7 @@ export default function MarketSnapshotSection(props: Props) {
             <button
               key={s.slug}
               onClick={() => setSelected(s)}
-              className={`rounded-full border px-3 py-1.5 text-xs font-medium tracking-[0.08em] transition-all ${
+              className={`rounded-full border px-3 py-1.5 text-xs font-medium tracking-[0.10em] transition-all ${
                 selected.slug === s.slug
                   ? "border-[#C6A664] bg-[#C6A664]/10 text-[#C6A664]"
                   : "border-[#E8E4DF] bg-white text-[#5A5A5A] hover:border-[#C6A664]/40"

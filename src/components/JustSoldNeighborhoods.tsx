@@ -121,7 +121,7 @@ export default function JustSoldNeighborhoods() {
               className="group relative flex flex-col gap-3 rounded-[22px] border border-[#E8E4DF] bg-white p-6 transition-shadow hover:shadow-md"
               prefetch={false}
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#8C8375]">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8C8375]">
                 {n.parentName}
               </p>
               <p className="text-lg font-semibold text-[#1A1A1A]">{n.name}</p>
