@@ -319,22 +319,6 @@ export default function Home() {
             Selling in Snohomish County?
             <span className="font-semibold text-[#C6A664]"> Start with what buyers focus on.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white sm:text-xl">
-            What should you fix? How much should you declutter? What paperwork do
-            you need? How do you keep the house show-ready without burning out?
-            Get clear, local answers — then use a free CMA to connect the prep work to a real pricing strategy.
-          </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-white/80">
-            <a href="tel:4256452181" className="transition-colors hover:text-[#C6A664]">
-              425-645-2181
-            </a>
-            <span className="text-white/50">•</span>
-            <a href="mailto:mattsalit@writemyoffer.com" className="transition-colors hover:text-[#C6A664]">
-              mattsalit@writemyoffer.com
-            </a>
-            <span className="text-white/50">•</span>
-            <span>Matt Salit · Century 21 North Homes Realty</span>
-          </div>
           <SectionDivider tone="dark" align="center" />
           <div className="mx-auto mt-8 flex flex-wrap justify-center gap-4 max-w-4xl">
             <div className="flex-1 min-w-[200px] max-w-[280px] rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
@@ -421,7 +405,7 @@ export default function Home() {
           </div>
 
           {/* Category cards */}
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
             {sellerCategories.map((cat) => {
               const pages = cat.slugs.map((slug) => sellerPrepPages.find((p) => p.slug === slug)!).filter(Boolean);
               return (

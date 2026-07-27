@@ -18,7 +18,7 @@ export function LocalGuideAnchorNav({
           : "border-[#E8E4DF] bg-white"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl gap-3 overflow-x-auto px-4 py-3 sm:px-6 sm:py-4">
+      <div className="mx-auto flex max-w-7xl justify-center gap-3 overflow-x-auto px-4 py-3 sm:px-6 sm:py-4">
         {links.map((link) => (
           <a
             key={link.href}
