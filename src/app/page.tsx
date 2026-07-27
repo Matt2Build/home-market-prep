@@ -9,101 +9,104 @@ import NewsletterSignup from "@/components/NewsletterSignup";
 import JustSoldNeighborhoods from "@/components/JustSoldNeighborhoods";
 import {
   LocalGuideAnchorNav,
-  LocalGuideFactGrid,
   LocalGuideSectionHeader,
 } from "@/components/LocalGuideBlocks";
 import SectionDivider from "@/components/SectionDivider";
 import SiteHeader from "@/components/SiteHeader";
 import StickyMobileCta from "@/components/StickyMobileCta";
 import MarketSnapshotSection from "@/components/MarketSnapshotSection";
-import SellerJourney from "@/components/SellerJourney";
 import { sellerPrepPages } from "@/lib/seller-prep-pages";
 
 const sellerQuestionVisuals: Record<
   string,
-  { id: string; cue: string; tone: string }
+  { cue: string; tone: string }
 > = {
   "declutter-before-selling-house-wa": {
-    id: "01",
     cue: "Make the home feel larger",
     tone: "Clear rooms, lighter photos, less visual drag.",
   },
   "moving-storage-checklist-before-selling-wa": {
-    id: "02",
     cue: "Keep the house market-ready",
     tone: "Pack early so showing mode is easier to maintain.",
   },
   "repairs-before-selling-house-wa": {
-    id: "03",
     cue: "Fix what buyers remember",
     tone: "Visible maintenance usually matters more than remodels.",
   },
   "deep-clean-before-listing-house-wa": {
-    id: "04",
     cue: "Clean for trust and light",
     tone: "Odor, brightness, and detail-level upkeep change perception fast.",
   },
   "paperwork-needed-to-sell-house-wa": {
-    id: "05",
     cue: "Get organized before launch",
     tone: "Disclosures and practical docs are easier early than late.",
   },
   "show-ready-house-checklist-wa": {
-    id: "06",
     cue: "Protect the first two weeks",
     tone: "Simple routines create better access and better momentum.",
   },
   "home-staging-tips-to-sell-house-wa": {
-    id: "07",
     cue: "Help buyers read the layout",
     tone: "Furniture edits and better light usually beat extra decor.",
   },
   "seller-disclosures-checklist-wa": {
-    id: "08",
     cue: "Reduce risk before questions hit",
     tone: "Clear disclosures keep property issues from feeling larger.",
   },
   "best-time-to-sell-house-wa": {
-    id: "09",
     cue: "Line up timing with readiness",
     tone: "The right week matters less than a stronger launch.",
   },
   "sell-house-as-is-wa": {
-    id: "10",
     cue: "Be deliberate about condition",
     tone: "As-is still works better with clean prep and pricing discipline.",
   },
   "pre-listing-inspection-wa": {
-    id: "11",
     cue: "Find issues before buyers do",
     tone: "Use inspection clarity to decide repair, disclose, or price around it.",
   },
 };
 
-const featuredPrepSlugs = [
-  "declutter-before-selling-house-wa",
-  "repairs-before-selling-house-wa",
-  "paperwork-needed-to-sell-house-wa",
-  "show-ready-house-checklist-wa",
-  "home-staging-tips-to-sell-house-wa",
-  "best-time-to-sell-house-wa",
+const sellerCategories: Array<{
+  key: string;
+  label: string;
+  sublabel: string;
+  slugs: string[];
+}> = [
+  {
+    key: "pre-listing",
+    label: "Pre-Listing Questions",
+    sublabel: "What to do before your home goes on the market.",
+    slugs: [
+      "declutter-before-selling-house-wa",
+      "repairs-before-selling-house-wa",
+      "deep-clean-before-listing-house-wa",
+      "home-staging-tips-to-sell-house-wa",
+      "paperwork-needed-to-sell-house-wa",
+      "seller-disclosures-checklist-wa",
+      "sell-house-as-is-wa",
+      "best-time-to-sell-house-wa",
+      "pre-listing-inspection-wa",
+    ],
+  },
+  {
+    key: "on-market",
+    label: "On-Market Questions",
+    sublabel: "How to handle showings and stay show-ready.",
+    slugs: ["show-ready-house-checklist-wa"],
+  },
+  {
+    key: "escrow",
+    label: "During Escrow Questions",
+    sublabel: "What happens after an offer is accepted.",
+    slugs: [
+      "moving-storage-checklist-before-selling-wa",
+      "utility-transfers-during-escrow-wa",
+      "accommodating-inspections-during-escrow-wa",
+      "appraisal-prep-during-escrow-wa",
+    ],
+  },
 ];
-
-const additionalPrepSlugs = [
-  "deep-clean-before-listing-house-wa",
-  "moving-storage-checklist-before-selling-wa",
-  "seller-disclosures-checklist-wa",
-  "sell-house-as-is-wa",
-  "pre-listing-inspection-wa",
-];
-
-const featuredPrepPages = sellerPrepPages.filter((page) =>
-  featuredPrepSlugs.includes(page.slug),
-);
-
-const additionalPrepPages = sellerPrepPages.filter((page) =>
-  additionalPrepSlugs.includes(page.slug),
-);
 
 export const metadata: Metadata = {
   title: "Seller Questions Before Listing in Snohomish County",
@@ -333,28 +336,44 @@ export default function Home() {
             <span>Matt Salit · Century 21 North Homes Realty</span>
           </div>
           <SectionDivider tone="dark" align="center" />
-          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-3">
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+          <div className="mx-auto mt-8 flex flex-wrap justify-center gap-4 max-w-4xl">
+            <div className="flex-1 min-w-[200px] max-w-[280px] rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#C6A664]/15">
+                <svg className="h-5 w-5 text-[#C6A664]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664] text-center">
                 Start here
               </p>
-              <p className="mt-3 text-sm leading-6 text-white">
+              <p className="mt-3 text-sm leading-6 text-white text-center">
                 Seller questions first, then pricing. It keeps prep from turning into random projects.
               </p>
             </div>
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+            <div className="flex-1 min-w-[200px] max-w-[280px] rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#C6A664]/15">
+                <svg className="h-5 w-5 text-[#C6A664]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664] text-center">
                 Local focus
               </p>
-              <p className="mt-3 text-sm leading-6 text-white">
+              <p className="mt-3 text-sm leading-6 text-white text-center">
                 Built around Snohomish County and nearby Skagit sellers, not generic national advice.
               </p>
             </div>
-            <div className="rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+            <div className="flex-1 min-w-[200px] max-w-[280px] rounded-[24px] border border-white/10 bg-white/[0.06] px-5 py-5 backdrop-blur-sm">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#C6A664]/15">
+                <svg className="h-5 w-5 text-[#C6A664]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#C6A664] text-center">
                 CMA path
               </p>
-              <p className="mt-3 text-sm leading-6 text-white">
+              <p className="mt-3 text-sm leading-6 text-white text-center">
                 Quick request, confirmation email, then local pricing and prep follow-up.
               </p>
             </div>
@@ -375,7 +394,7 @@ export default function Home() {
           </div>
           <div className="mt-8 inline-flex w-full max-w-md mx-auto items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-5 py-3 backdrop-blur-sm">
             <p className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#C6A664] whitespace-nowrap">
-              Free pre-list PDF:
+              Receive Free Pre-Listing Checklist
             </p>
             <div className="min-w-0 flex-1">
               <InlinePdfSignup compact />
@@ -386,149 +405,128 @@ export default function Home() {
 
       <LocalGuideAnchorNav links={homeAnchorLinks} tone="dark" />
 
-      {/* ===== SECTION 01 — SELLER QUESTIONS ===== */}
+      {/* ===== SELLER QUESTIONS — 4 CATEGORIES ===== */}
       <section id="seller-answers" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center">
             <LocalGuideSectionHeader
-              index="01"
+              index=""
               eyebrow="Seller Questions"
-              title="The questions sellers usually search before they are ready to list"
-              description="These are the prep topics that shape how the home shows, how buyers react, and how stressful the launch feels once the listing goes live."
+              title="Browse by where you are in the process"
+              description="All seller questions organized into four stages — from prep before listing through closing day and beyond."
             />
             <SectionDivider align="center" />
           </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {featuredPrepPages.map((page) => {
-              const visual = sellerQuestionVisuals[page.slug] ?? {
-                id: "00",
-                cue: "Seller prep",
-                tone: "Sharper prep supports cleaner pricing and launch decisions.",
-              };
+
+          {/* Category cards */}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {sellerCategories.map((cat) => {
+              const pages = cat.slugs.map((slug) => sellerPrepPages.find((p) => p.slug === slug)!).filter(Boolean);
               return (
-              <Link
-                key={page.slug}
-                href={`/sell/checklists/${page.slug}`}
-                className="group relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
-              >
-                <CornerAccent
-                  tone="gold"
-                  className="absolute right-4 top-4 h-12 w-18 opacity-80"
-                />
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-xs font-semibold text-[#C6A664]">
-                        {visual.id}
-                      </span>
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
-                        {page.timeframe}
-                      </p>
-                    </div>
-                    <h3 className="mt-4 text-2xl font-semibold leading-snug">
-                      {page.shortTitle}
-                    </h3>
+                <a
+                  key={cat.key}
+                  href={`#${cat.key}`}
+                  className="group rounded-[24px] border border-[#E8E4DF] bg-[#F8F5F0] p-5 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#C6A664] text-sm font-bold text-[#1A1A1A]">
+                      {cat.slugs.length}
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#C6A664]">
+                      {cat.label}
+                    </span>
                   </div>
-                  <span className="rounded-full border border-[#D9CFBF] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5A5A5A] transition-colors group-hover:border-[#C6A664] group-hover:text-[#1A1A1A]">
-                    Guide
-                  </span>
-                </div>
-                <p className="mt-4 text-sm font-medium uppercase tracking-[0.16em] text-[#1A1A1A]">
-                  {visual.cue}
-                </p>
-                <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
-                  {visual.tone}
-                </p>
-                <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
-                  {page.summary}
-                </p>
-                <div className="mt-5 border-t border-[#E8E4DF] pt-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#1A1A1A]">
-                    Starts with
+                  <p className="text-sm leading-6 text-[#5A5A5A]">
+                    {cat.sublabel}
                   </p>
-                  <ul className="mt-3 space-y-2 text-sm leading-6 text-[#5A5A5A]">
-                    {page.checklist.slice(0, 2).map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#C6A664]" />
-                        <span>{item}</span>
+                  <ul className="mt-4 space-y-2">
+                    {pages.map((page) => (
+                      <li key={page.slug} className="text-sm text-[#1A1A1A] flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C6A664]" />
+                        <span>{page.shortTitle}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className="mt-5 flex items-center justify-between border-t border-[#E8E4DF] pt-5">
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
-                    Read full guide
-                  </span>
-                  <span className="text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </div>
-              </Link>
-            );})}
+                </a>
+              );
+            })}
           </div>
-          <div className="mt-12 rounded-[32px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 sm:p-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-              <div className="max-w-3xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-                  More Seller Questions
-                </p>
-                <h3 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl">
-                  The topics sellers realize they need right after the basics
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-[#5A5A5A] sm:text-base">
-                  These pages cover timing, condition, inspection risk, and how much
-                  effort to put in before launch.
-                </p>
-              </div>
-              <div className="rounded-full border border-[#D8D0C4] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
-                Smart extras
-              </div>
-            </div>
-            <div className="mt-8 grid gap-4 lg:grid-cols-2">
-              {additionalPrepPages.map((page) => {
-                const visual = sellerQuestionVisuals[page.slug] ?? {
-                  id: "00",
-                  cue: "Seller prep",
-                  tone: "Sharper prep supports cleaner pricing and launch decisions.",
-                };
 
-                return (
-                  <Link
-                    key={page.slug}
-                    href={`/sell/checklists/${page.slug}`}
-                    className="group rounded-[24px] border border-[#E8E4DF] bg-white p-5 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-md"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C6A664]">
-                          {visual.id} · {page.timeframe}
+          {/* Expanded sections under each category */}
+          {sellerCategories.map((cat) => {
+            const pages = cat.slugs.map((slug) => sellerPrepPages.find((p) => p.slug === slug)!).filter(Boolean);
+            return (
+              <div key={cat.key} id={cat.key} className="mt-14">
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#C6A664] text-base font-bold text-[#1A1A1A]">
+                    {cat.slugs.length}
+                  </span>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight text-[#1A1A1A]">
+                      {cat.label}
+                    </h3>
+                    <p className="text-sm leading-6 text-[#5A5A5A]">
+                      {cat.sublabel}
+                    </p>
+                  </div>
+                </div>
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  {pages.map((page) => {
+                    const visual = sellerQuestionVisuals[page.slug] ?? {
+                      cue: "Seller prep",
+                      tone: "Sharper prep supports cleaner pricing and launch decisions.",
+                    };
+                    return (
+                      <Link
+                        key={page.slug}
+                        href={`/sell/checklists/${page.slug}`}
+                        className="group relative overflow-hidden rounded-[28px] border border-[#E8E4DF] bg-[#F8F5F0] p-6 transition-all hover:-translate-y-1 hover:border-[#C6A664]/40 hover:shadow-lg"
+                      >
+                        <CornerAccent
+                          tone="gold"
+                          className="absolute right-4 top-4 h-12 w-18 opacity-80"
+                        />
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#C6A664]">
+                              {page.timeframe}
+                            </p>
+                            <h4 className="mt-3 text-xl font-semibold leading-snug">
+                              {page.shortTitle}
+                            </h4>
+                          </div>
+                          <span className="rounded-full border border-[#D9CFBF] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5A5A5A] transition-colors group-hover:border-[#C6A664] group-hover:text-[#1A1A1A]">
+                            Guide
+                          </span>
+                        </div>
+                        <p className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-[#1A1A1A]">
+                          {visual.cue}
                         </p>
-                        <h4 className="mt-3 text-xl font-semibold leading-snug">
-                          {page.shortTitle}
-                        </h4>
-                      </div>
-                      <span className="text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
-                        →
-                      </span>
-                    </div>
-                    <p className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-[#1A1A1A]">
-                      {visual.cue}
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
-                      {page.summary}
-                    </p>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
+                        <p className="mt-2 text-sm leading-6 text-[#5A5A5A]">
+                          {visual.tone}
+                        </p>
+                        <p className="mt-4 text-sm leading-6 text-[#5A5A5A]">
+                          {page.summary}
+                        </p>
+                        <div className="mt-5 flex items-center justify-between border-t border-[#E8E4DF] pt-5">
+                          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5A5A5A]">
+                            Read full guide
+                          </span>
+                          <span className="text-sm font-semibold text-[#C6A664] transition-transform group-hover:translate-x-1">
+                            →
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* ===== SELLER JOURNEY ===== */}
-      <SellerJourney />
-
-      {/* ===== SECTION 02 — VERIFIED REVIEWS ===== */}
+      {/* ===== VERIFIED REVIEWS ===== */}
       <section id="reviews" className="bg-[#111111] text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center">
@@ -556,7 +554,7 @@ export default function Home() {
       {/* ===== MARKET DATA ===== */}
       <MarketSnapshotSection />
 
-      {/* ===== CMA — NO SECTION DIVIDER — NO NUMBER ===== */}
+      {/* ===== CMA ===== */}
       <section id="cma" className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-xl px-6 py-12 sm:py-16 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
@@ -585,7 +583,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== FAQS — SECTION 03 ===== */}
+      {/* ===== FAQS ===== */}
       <section id="seller-faqs" className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center mb-10">
@@ -631,13 +629,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== LOCAL GUIDES — SECTION 04 ===== */}
+      {/* ===== LOCAL GUIDES ===== */}
       <section className="bg-[#F8F5F0]">
         <div className="mx-auto max-w-7xl px-6 py-14">
           <div className="mx-auto max-w-4xl text-center mb-10">
             <LocalGuideSectionHeader
               index="04"
-
               eyebrow="Local Guides"
               title="Browse county, city, and neighborhood seller pages"
               description="The homepage stays focused on seller questions and CMA requests. The local guide hub breaks out county, city, and smaller neighborhood pages so sellers can move from broad market context to tighter local insight without getting lost."
@@ -665,7 +662,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-6 py-14">
           <div className="mx-auto max-w-3xl text-center mb-10">
             <LocalGuideSectionHeader
-              index="06"
+              index="05"
               eyebrow="About"
               title="Meet Matt Salit"
               description="Matt Salit has been a licensed Realtor since 2014, working out of Century 21 North Homes in Lynnwood, WA and helping Snohomish and Skagit County sellers prepare, price, and sell with clarity."

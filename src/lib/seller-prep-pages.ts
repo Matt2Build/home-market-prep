@@ -457,6 +457,129 @@ export const sellerPrepPages: SellerPrepPage[] = [
       },
     ],
   },
+  {
+    slug: "utility-transfers-during-escrow-wa",
+    eyebrow: "Setting Up Utility Transfers",
+    title: "How to Handle Utility Transfers During Escrow in Washington",
+    shortTitle: "How to set up utility transfer",
+    metaDescription:
+      "Washington seller guide for handling utility transfers during escrow. Learn what to cancel, what to keep on, and how to avoid service gaps on closing day.",
+    summary:
+      "Utilities rarely feel urgent until closing day is near. Mapping transfers early prevents awkward service gaps, surprise final bills, or last-minute scramble.",
+    timeframe: "Start 1-2 weeks before closing",
+    whyItMatters:
+      "Buyers expect utilities to stay on through closing for their final walkthrough. If water, electric, or gas gets shut off too early, it can delay closing or kill the buyer's confidence.",
+    checklist: [
+      "List every utility tied to the property: electricity, gas, water, sewer, garbage, recycling, and any HOA-managed services.",
+      "Call each provider to ask about their transfer process and whether they require advance notice.",
+      "Schedule cancellations for the day after closing, not before, so the home stays powered for the final walkthrough.",
+      "Check which utilities are prepaid, deposit-based, or auto-pay so you do not get surprise bills after moving.",
+      "Take a final meter reading on closing day if your provider requires one.",
+      "Confirm the buyer has set up their own accounts before you cancel yours.",
+      "Cancel or transfer internet, cable, and security system contracts if those services are not tied to the property.",
+    ],
+    mistakes: [
+      "Shutting off utilities the day you move out instead of the day after closing.",
+      "Assuming all utilities transfer automatically when the title changes.",
+      "Forgetting security system, internet, or irrigation accounts that are easy to overlook.",
+    ],
+    localAngle:
+      "In Snohomish County, utility providers vary by area — PUD, Snohomish County PUD, city water, or well and septic. Knowing which ones apply to the property makes the transfer list clearer and avoids closing-day surprises.",
+    faqs: [
+      {
+        question: "When should I cancel utilities when selling my house?",
+        answer:
+          "Schedule cancelation for the day after closing. The buyer needs water, power, and heat for their final walkthrough, and shutting services off early can delay or complicate closing.",
+      },
+      {
+        question: "Do utilities transfer automatically when the house sells?",
+        answer:
+          "Usually no. Each provider has its own process. The seller needs to cancel and the buyer needs to set up new accounts, so both sides should coordinate ahead of closing.",
+      },
+    ],
+  },
+  {
+    slug: "accommodating-inspections-during-escrow-wa",
+    eyebrow: "Accommodating Buyer Inspections",
+    title: "How to Accommodate Buyer Inspections During Escrow in Washington",
+    shortTitle: "How to handle buyer inspections",
+    metaDescription:
+      "Washington seller guide on accommodating buyer inspections during escrow. Learn what to expect, how to prepare, and what to do after the inspection report arrives.",
+    summary:
+      "Buyer inspections are a standard escrow step. Keeping access easy, utilities on, and records organized makes the process smoother and reduces the chances that small issues become negotiation problems.",
+    timeframe: "Once an offer is accepted",
+    whyItMatters:
+      "The inspection period is where deals often face their first real test. A home that is easy to access, cleanly maintained, and well-documented tends to produce fewer surprise objections.",
+    checklist: [
+      "Make sure all utilities are on and all areas of the home are accessible, including attic, crawlspace, electrical panel, and garage.",
+      "Clear space around the furnace, water heater, and electrical panel so the inspector can reach them.",
+      "Unlock gates, pet doors, and any outbuildings the inspector may need to access.",
+      "Leave any repair receipts, warranty documents, or maintenance records in an obvious spot for the inspector to review.",
+      "Plan to be away during the inspection so the buyer and inspector can move freely.",
+      "Do not try to argue with the inspector or follow them through the home.",
+      "Prepare to receive the inspection report and decide which items to address, disclose further, or negotiate on.",
+      "Work with your agent to respond to repair requests promptly so the timeline stays on track.",
+    ],
+    mistakes: [
+      "Being present and defensive during the buyer inspection, which often creates more tension than value.",
+      "Leaving areas blocked or locked so the inspector cannot complete their report.",
+      "Ignoring the inspection report or delaying a response until the deadline is at risk.",
+    ],
+    localAngle:
+      "In Snohomish County, many buyers include inspection contingencies even in competitive offers. A smooth inspection experience helps keep the deal moving and reduces the chance that minor items derail the timeline.",
+    faqs: [
+      {
+        question: "Should sellers be home during the buyer inspection?",
+        answer:
+          "Usually no. Buyers and their inspectors work better when the home is empty. Being present can make them feel uncomfortable and slow down the process.",
+      },
+      {
+        question: "What should sellers do to prepare for the buyer inspection?",
+        answer:
+          "Make sure utilities are on, all areas are accessible, gates are unlocked, and any repair records are easy to find. Then leave the home so the inspection can happen without interruption.",
+      },
+    ],
+  },
+  {
+    slug: "appraisal-prep-during-escrow-wa",
+    eyebrow: "Appraisal Preparation",
+    title: "How to Prepare for a Buyer Appraisal During Escrow in Washington",
+    shortTitle: "How to prepare for a buyer appraisal",
+    metaDescription:
+      "Washington seller guide on preparing for a buyer appraisal during escrow. Learn what affects appraisal value and how to help the appraiser see the home in its best light.",
+    summary:
+      "The buyer appraisal is a key escrow milestone. Low appraisals can delay or kill deals. Making the home easy to evaluate helps the appraiser see its strongest value.",
+    timeframe: "Once the offer is accepted",
+    whyItMatters:
+      "An appraiser needs to see a home at its best to support the agreed price. When a home is cluttered, poorly maintained, or hard to access, it can drag the valuation down or create unnecessary friction.",
+    checklist: [
+      "Make sure the home is clean, accessible, and visually close to its best condition on appraisal day.",
+      "Leave a list of recent improvements and comparable sales your agent used in pricing so the appraiser has full context.",
+      "Confirm all utilities are on so the appraiser can evaluate systems normally.",
+      "Make sure any permitted improvements or additions are ready to mention so they can be counted.",
+      "Keep the property easy to access and avoid creating conditions that would require a second visit.",
+      "Be ready to review the appraisal result quickly so any gaps can be addressed before deadline.",
+    ],
+    mistakes: [
+      "Treating the appraisal like a home inspection and focusing only on condition instead of market value.",
+      "Not having comparable sales or improvement records available for the appraiser.",
+      "Letting the appraiser encounter a dirty or cluttered home that undercuts the perceived value.",
+    ],
+    localAngle:
+      "In Snohomish County, appraisers compare homes within tight geographic bands. Clear presentation, accessible features, and a solid comparable set help the appraised value align with the agreed purchase price.",
+    faqs: [
+      {
+        question: "What affects the appraisal value most when selling?",
+        answer:
+          "Location, square footage, condition, and recent comparable sales. A clean, well-maintained home with documented improvements gives the appraiser the clearest path to supporting the agreed price.",
+      },
+      {
+        question: "What happens if the appraisal comes in low?",
+        answer:
+          "Options include renegotiating the price, the buyer making up the difference in cash, challenging the appraisal with better comps, or in some cases walking away if the contract allows.",
+      },
+    ],
+  },
 ];
 
 export const sellerPrepPageMap = new Map(
