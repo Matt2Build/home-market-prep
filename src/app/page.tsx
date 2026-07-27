@@ -313,11 +313,11 @@ export default function Home() {
         </div>
         <div className="relative z-20 mx-auto max-w-6xl px-6 py-24 text-center sm:py-28 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664]">
-            Snohomish County Seller Guide
+            Snohomish County Seller Prep
           </p>
           <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-light leading-[1.06] tracking-tight text-white sm:text-5xl md:text-7xl">
-            Thinking about selling?
-            <span className="font-semibold text-[#C6A664]"> Start with topics buyers focus on.</span>
+            Selling in Snohomish County?
+            <span className="font-semibold text-[#C6A664]"> Start with what buyers focus on.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white sm:text-xl">
             What should you fix? How much should you declutter? What paperwork do
@@ -380,25 +380,27 @@ export default function Home() {
           </div>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="#seller-answers"
-              className="rounded-full bg-[#C6A664] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
-            >
-              Browse Seller Questions
-            </a>
-            <a
               href="#cma"
-              className="rounded-full border border-white/20 px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
+              className="rounded-full bg-[#C6A664] px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1A1A1A] transition-colors hover:bg-[#D4BC82]"
             >
               Request Free CMA
             </a>
+            <a
+              href="#seller-answers"
+              className="rounded-full border border-white/20 px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/10"
+            >
+              Browse Seller Questions
+            </a>
           </div>
-          <div className="mt-8 inline-flex w-full max-w-md mx-auto items-center rounded-2xl border border-white/10 bg-white/[0.06] px-5 py-3 backdrop-blur-sm">
-            <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.3em] text-[#C6A664] whitespace-nowrap">
-              Receive Free Pre-Listing Checklist
+          {/* Hero checklist signup — clean stacked layout */}
+          <div className="mt-10 w-full max-w-md mx-auto rounded-2xl border border-white/12 bg-white/[0.08] p-5 backdrop-blur-sm text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C6A664]">
+              Free Pre-Listing Checklist
             </p>
-            <div className="min-w-0 flex-1">
-              <InlinePdfSignup compact />
-            </div>
+            <p className="text-sm text-white/60 mt-1 mb-4">
+              Get the checklist via email — no spam.
+            </p>
+            <InlinePdfSignup compact />
           </div>
         </div>
       </section>
