@@ -93,6 +93,24 @@ const prepVisuals: Record<
     cue: "Use inspection clarity before repair money gets spent blindly.",
     result: "Cleaner decisions on repairs, disclosures, and pricing.",
   },
+  "utility-transfers-during-escrow-wa": {
+    icon: "12E",
+    accent: "Escrow",
+    cue: "Map transfers before closing so there are no service gaps.",
+    result: "Buyers see the home working on walkthrough day.",
+  },
+  "accommodating-inspections-during-escrow-wa": {
+    icon: "13E",
+    accent: "Escrow",
+    cue: "Keep the home accessible and records organized.",
+    result: "Small inspection issues stay small.",
+  },
+  "appraisal-prep-during-escrow-wa": {
+    icon: "14E",
+    accent: "Escrow",
+    cue: "Make the home easy to evaluate so the appraised value lands.",
+    result: "Fewer low-appraisal surprises.",
+  },
 };
 
 const relatedPrepSlugs: Record<string, string[]> = {
@@ -151,6 +169,21 @@ const relatedPrepSlugs: Record<string, string[]> = {
     "seller-disclosures-checklist-wa",
     "sell-house-as-is-wa",
   ],
+  "utility-transfers-during-escrow-wa": [
+    "paperwork-needed-to-sell-house-wa",
+    "accommodating-inspections-during-escrow-wa",
+    "seller-disclosures-checklist-wa",
+  ],
+  "accommodating-inspections-during-escrow-wa": [
+    "utility-transfers-during-escrow-wa",
+    "pre-listing-inspection-wa",
+    "show-ready-house-checklist-wa",
+  ],
+  "appraisal-prep-during-escrow-wa": [
+    "repairs-before-selling-house-wa",
+    "home-staging-tips-to-sell-house-wa",
+    "declutter-before-selling-house-wa",
+  ],
 };
 
 const localGuideSlugs: Record<string, string[]> = {
@@ -165,6 +198,9 @@ const localGuideSlugs: Record<string, string[]> = {
   "best-time-to-sell-house-wa": ["lake-stevens-wa", "everett-wa"],
   "sell-house-as-is-wa": ["arlington-wa", "mount-vernon-wa"],
   "pre-listing-inspection-wa": ["snohomish-wa", "arlington-wa"],
+  "utility-transfers-during-escrow-wa": ["snohomish-wa", "lynnwood-wa"],
+  "accommodating-inspections-during-escrow-wa": ["everett-wa", "marysville-wa"],
+  "appraisal-prep-during-escrow-wa": ["bothell-wa", "mukilteo-wa"],
 };
 
 const localNeighborhoodSlugs: Record<string, string[]> = {
@@ -211,6 +247,18 @@ const localNeighborhoodSlugs: Record<string, string[]> = {
   "pre-listing-inspection-wa": [
     "fobes-hill-snohomish-wa",
     "little-mountain-mount-vernon-wa",
+  ],
+  "utility-transfers-during-escrow-wa": [
+    "mill-creek-west-wa",
+    "frontier-village-wa",
+  ],
+  "accommodating-inspections-during-escrow-wa": [
+    "north-everett-wa",
+    "lakewood-marysville-wa",
+  ],
+  "appraisal-prep-during-escrow-wa": [
+    "dutch-hill-snohomish-wa",
+    "old-town-mukilteo-wa",
   ],
 };
 
